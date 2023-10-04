@@ -17,7 +17,7 @@ import org.jboss.logging.Logger;
 
 /**
  * Interfaccia che implementa tutti i metodi Pilot. Per la documentazione vedere
- * i corrispondenti metodi della classe Pilot
+ * i corrispondenti metodi della classe Pilot.
  * 
  * @author Antonio Corinaldi
  *
