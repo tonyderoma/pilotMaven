@@ -137,9 +137,9 @@ public class Time implements Serializable {
 	}
 
 	/**
-	 * Ritorna la rappresentazione stringa dell'oggetto in formato <numGiorni>
-	 * days, <numOre> hours, <numMinuti> minutes, <numSeconds> seconds,
-	 * <numMilliseconds> milliseconds
+	 * Ritorna la rappresentazione stringa dell'oggetto in formato [numGiorni]
+	 * days, [numOre] hours, [numMinuti] minutes, [numSeconds] seconds,
+	 * [numMilliseconds] milliseconds
 	 * 
 	 * @return String
 	 */

@@ -140,12 +140,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * pagina si desidera caricare. Quanti per pagina indica quanto grande deve
 	 * essere la pagina, ossia quanti record si devono mostrare per pagina.
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param numeroPagina
 	 * @param quantiPerPagina
 	 * @param params
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> selectPaginatedBean(Class<K> c, Integer numeroPagina, Integer quantiPerPagina, Object... params) throws Exception {
@@ -214,12 +213,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Tale oggetto deve avere le variabili istanza uguali nel nome ai parametri
 	 * usati nella where condition
 	 * 
-	 * @param <K>
 	 * @param numeroPagina
 	 * @param c
 	 * @param quantiPerPagina
 	 * @param o
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> selectPaginatedBeanDTO(Class<K> c, Integer numeroPagina, Integer quantiPerPagina, Object o) throws Exception {
@@ -805,10 +803,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Esegue la query di selezione con i parametri passati nella where
 	 * condition e mappa il risultato nella classe c
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param params
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> select(Class<K> c, Object... params) throws Exception {
@@ -1001,10 +998,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * della classe specificata (tipicamente String, Date, BigDecimal o altri
 	 * tipi java)
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param params
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> selectNoBean(Class<K> c, Object... params) throws Exception {
@@ -1061,7 +1057,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * avere le variabili istanza uguali nel nome ai parametri usati nella where
 	 * condition
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param o
 	 * @return K
@@ -1120,10 +1115,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * parametri passati a null vengono automaticamente esclusi nella formazione
 	 * della where condition
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param o
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> selectDTO(Class<K> c, Object o) throws Exception {
@@ -1172,10 +1166,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * passati nell'oggetto o. Tale oggetto deve avere le variabili istanza
 	 * uguali nel nome ai parametri usati nella where condition
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param o
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> selectNoBeanDTO(Class<K> c, Object o) throws Exception {
@@ -1285,10 +1278,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * c è la classe del bean K. Params sono i parametri passati alla query
 	 * secondo l'ordine in cui appaiono all'interno dello statement
 	 * 
-	 * @param <K>
 	 * @param c
 	 * @param params
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	protected <K> PList<K> selectBean(Class<K> c, Object... params) throws Exception {

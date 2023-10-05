@@ -187,7 +187,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Esegue la stampa di log di tipo error (log.error) degli oggetti passati
-	 * come parametri. Se l'ultimo parametro � istanza di Throwable allora
+	 * come parametri. Se l'ultimo parametro è istanza di Throwable allora
 	 * chiama il metodo di log.error che prevede come ultimo argomento
 	 * l'eccezione e ossia log.error(messaggio,e)
 	 * 
@@ -280,7 +280,7 @@ public class Pilot implements Serializable {
 	 * secondo il metodo equals
 	 * 
 	 * @param l
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K extends Comparable<? super K>> List<K> sort(List<K> l) {
 		Collections.sort(safe(l));
@@ -293,7 +293,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l
 	 * 
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K extends Comparable<? super K>> List<K> sortDesc(List<K> l) {
 		return inverti(sort(l));
@@ -303,7 +303,7 @@ public class Pilot implements Serializable {
 	 * Data una lista ne inverte l'ordine
 	 * 
 	 * @param l
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> inverti(List<K> l) {
 		if (notNull(l))
@@ -343,7 +343,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l
 	 * 
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> removeDuplicates(List<K> l) {
 		List<K> nuova = new ArrayList<K>();
@@ -360,7 +360,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l
 	 * @param campi
-	 * @return List<K>
+	 * @return List[K]
 	 */
 
 	public <K> List<K> sort(final List<K> l, final String... campi) {
@@ -435,17 +435,17 @@ public class Pilot implements Serializable {
 	 * in base ai campi indicati dove i campi corrispondono alle variabili
 	 * istanza del bean in dot notation
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param campi
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> sortDesc(final List<K> l, final String... campi) {
 		return inverti(sort(l, campi));
 	}
 
 	/**
-	 * Esegue la scrittura sullo stdOut della stringa s pi� l'oggetto o passato
+	 * Esegue la scrittura sullo stdOut della stringa s piè l'oggetto o passato
 	 * come parametro
 	 * 
 	 * @param s
@@ -483,7 +483,7 @@ public class Pilot implements Serializable {
 	 * parametro. Verranno stampati solo i campi che contengono
 	 * l'annotazione @Column
 	 * 
-	 * @param <K>
+	 * 
 	 * @param o
 	 * @return K
 	 */
@@ -583,7 +583,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un oggetto bean e una proprieta prop in dot notation, torna il
-	 * valore di quella proprieta.Se il bean � null torna null
+	 * valore di quella proprieta.Se il bean è null torna null
 	 * 
 	 * @param bean
 	 * @param prop
@@ -602,7 +602,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un oggetto bean e una proprieta prop in dot notation, torna il
-	 * valore di quella proprieta. Se il bean � null, torna il default value
+	 * valore di quella proprieta. Se il bean è null, torna il default value
 	 * 
 	 * @param bean
 	 * @param prop
@@ -629,7 +629,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param liste
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> sottraiList(List<K> l1, List<K>... liste) {
 		List<K> differenza = new ArrayList<K>(safe(l1));
@@ -647,7 +647,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param insiemi
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 
 	public <K> Set<K> sottraiSet(Set<K> l1, Set<K>... insiemi) {
@@ -689,7 +689,7 @@ public class Pilot implements Serializable {
 	 * altre liste
 	 * 
 	 * @param l
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> aggiungiList(List<K>... l) {
 		List<K> somma = new ArrayList<K>();
@@ -706,7 +706,7 @@ public class Pilot implements Serializable {
 	 * set passati in input
 	 * 
 	 * @param l
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 	public <K> Set<K> aggiungiSet(Set<K>... l) {
 		Set<K> somma = new HashSet<K>();
@@ -732,13 +732,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore separator, ottengo una Lista
-	 * di elementi di tipo c specificato dove c � il tipo dell'elememto.Tipi
+	 * di elementi di tipo c specificato dove c è il tipo dell'elememto.Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
 	 * @param separator
 	 * @param c
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> toList(String s, String separator, Class<K> c) {
 		if (Null(s))
@@ -780,7 +780,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> toListLong(String s, String separator) {
 		return toList(s, separator, Long.class);
@@ -792,7 +792,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<Short>
+	 * @return PList[Short]
 	 */
 	public PList<Integer> toListInteger(String s, String separator) {
 		return toList(s, separator, Integer.class);
@@ -804,7 +804,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> toListString(String s, String separator) {
 		return toList(s, separator, String.class);
@@ -816,7 +816,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<Short>
+	 * @return PList[Short]
 	 */
 	public PList<Short> toListShort(String s, String separator) {
 		return toList(s, separator, Short.class);
@@ -828,7 +828,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> toListDouble(String s, String separator) {
 		return toList(s, separator, Double.class);
@@ -840,7 +840,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return PList<BigDecimal>
+	 * @return PList[BigDecimal]
 	 */
 	public PList<BigDecimal> toListBigDecimal(String s, String separator) {
 		return toList(s, separator, BigDecimal.class);
@@ -850,7 +850,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Short
 	 * 
 	 * @param l
-	 * @return PList<Short>
+	 * @return PList[Short]
 	 */
 	public PList<Short> toShortList(List<String> l) {
 		PList<Short> ll = pl();
@@ -864,7 +864,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Short
 	 * 
 	 * @param l
-	 * @return Set<Short>
+	 * @return Set[Short]
 	 */
 	public Set<Short> toShortSet(Set<String> l) {
 		Set<Short> ll = new HashSet<Short>();
@@ -876,13 +876,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore separator, ottengo un Set di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto. Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto. Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
 	 * @param separator
 	 * @param c
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 	private <K> Set<K> toSet(String s, String separator, Class<K> c) {
 		s = emptyIfNull(s);
@@ -912,7 +912,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<Long>
+	 * @return Set[Long]
 	 */
 	public Set<Long> toSetLong(String s, String separator) {
 		return toSet(s, separator, Long.class);
@@ -924,7 +924,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<Integer>
+	 * @return Set[Integer]
 	 */
 	public Set<Integer> toSetInteger(String s, String separator) {
 		return toSet(s, separator, Integer.class);
@@ -936,7 +936,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<String>
+	 * @return Set[String]
 	 */
 	public Set<String> toSetString(String s, String separator) {
 		return toSet(s, separator, String.class);
@@ -948,7 +948,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<Short>
+	 * @return Set[Short]
 	 */
 	public Set<Short> toSetShort(String s, String separator) {
 		return toSet(s, separator, Short.class);
@@ -960,7 +960,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<Double>
+	 * @return Set[Double]
 	 */
 	public Set<Double> toSetDouble(String s, String separator) {
 		return toSet(s, separator, Double.class);
@@ -972,7 +972,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param s
 	 * @param separator
-	 * @return Set<BigDecimal>
+	 * @return Set[BigDecimal]
 	 */
 	public Set<BigDecimal> toSetBigDecimal(String s, String separator) {
 		return toSet(s, separator, BigDecimal.class);
@@ -982,7 +982,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Integer
 	 * 
 	 * @param l
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> toIntList(List<String> l) {
 		PList<Integer> ll = pl();
@@ -999,7 +999,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Double
 	 * 
 	 * @param l
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> toDoubleList(List<String> l) {
 		PList<Double> ll = pl();
@@ -1016,7 +1016,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di BigDecimal
 	 * 
 	 * @param l
-	 * @return PList<BigDecimal>
+	 * @return PList[BigDecimal]
 	 */
 	public PList<BigDecimal> toBigDecimalList(List<String> l) {
 		PList<BigDecimal> ll = pl();
@@ -1030,7 +1030,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Integer
 	 * 
 	 * @param l
-	 * @return Set<Integer>
+	 * @return Set[Integer]
 	 */
 	public Set<Integer> toIntSet(Set<String> l) {
 		Set<Integer> ll = new HashSet<Integer>();
@@ -1047,7 +1047,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Double
 	 * 
 	 * @param l
-	 * @return Set<Double>
+	 * @return Set[Double]
 	 */
 	public Set<Double> toDoubleSet(Set<String> l) {
 		Set<Double> ll = new HashSet<Double>();
@@ -1064,7 +1064,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Long
 	 * 
 	 * @param l
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> toLongList(List<String> l) {
 		PList<Long> ll = pl();
@@ -1081,7 +1081,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Long
 	 * 
 	 * @param l
-	 * @return Set<Long>
+	 * @return Set[Long]
 	 */
 
 	public Set<Long> toLongSet(Set<String> l) {
@@ -1099,7 +1099,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di BigDecimal
 	 * 
 	 * @param l
-	 * @return Set<BigDecimal>
+	 * @return Set[BigDecimal]
 	 */
 	public Set<BigDecimal> toBigDecimalSet(Set<String> l) {
 		Set<BigDecimal> ll = new HashSet<BigDecimal>();
@@ -1117,7 +1117,7 @@ public class Pilot implements Serializable {
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che hanno valore val
 	 * @throws Exception
 	 */
@@ -1140,7 +1140,7 @@ public class Pilot implements Serializable {
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che NON hanno valore val
 	 * @throws Exception
 	 */
@@ -1157,13 +1157,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation NON �
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation NON è
 	 * uguale al valore val[i]
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che NON hanno valori val
 	 * @throws Exception
 	 */
@@ -1176,13 +1176,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation � uguale
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation è uguale
 	 * al valore val[i]
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che hanno valori val
 	 * @throws Exception
 	 */
@@ -1195,13 +1195,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation � uguale al valore
+	 * quegli oggetti la cui proprietà prop in dot notation è uguale al valore
 	 * val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi delle
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che hanno valori val
 	 * @throws Exception
 	 */
@@ -1215,13 +1215,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation � uguale al valore
+	 * quegli oggetti la cui proprietà prop in dot notation è uguale al valore
 	 * val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi della
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val
 	 * @throws Exception
 	 */
@@ -1238,13 +1238,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation NON � uguale al
+	 * quegli oggetti la cui proprietà prop in dot notation NON è uguale al
 	 * valore val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi della
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che NON hanno valore val
 	 * @throws Exception
 	 */
@@ -1261,13 +1261,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation NON � uguale al
+	 * quegli oggetti la cui proprietà prop in dot notation NON è uguale al
 	 * valore val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi delle
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che NON hanno valori val
 	 * @throws Exception
 	 */
@@ -1282,11 +1282,11 @@ public class Pilot implements Serializable {
 	/**
 	 * Utente String nome Integer eta Date dataNascita
 	 * 
-	 * Da Lista<Utente> con props=dataNascita ottengo una nuova Lista<Date>
+	 * Da Lista[Utente] con props=dataNascita ottengo una nuova Lista[Date]
 	 * 
 	 * @param l1
 	 * @param props
-	 * @return List<R>
+	 * @return List[R]
 	 * 
 	 * 
 	 * @throws Exception
@@ -1302,12 +1302,12 @@ public class Pilot implements Serializable {
 	/**
 	 * Utente String nome Integer eta Date dataNascita
 	 * 
-	 * Da Lista<Utente> con props=dataNascita ottengo una nuova Lista<Date> di
+	 * Da Lista[Utente] con props=dataNascita ottengo una nuova Lista[Date] di
 	 * elementi distinti
 	 * 
 	 * @param l1
 	 * @param props
-	 * @return List<R>
+	 * @return List[R]
 	 * 
 	 * 
 	 * @throws Exception
@@ -1354,7 +1354,7 @@ public class Pilot implements Serializable {
 	 * Dato un array torna una lista
 	 * 
 	 * @param a
-	 * @return PList<T>
+	 * @return PList[T]
 	 */
 	public <T> PList<T> arrayToList(T[] a) {
 		if (null == a)
@@ -1370,7 +1370,7 @@ public class Pilot implements Serializable {
 	 * Data una lista ottengo un set
 	 * 
 	 * @param a
-	 * @return Set<T>
+	 * @return Set[T]
 	 */
 	public <T> Set<T> listToSet(List<T> a) {
 		if (null == a)
@@ -1383,7 +1383,7 @@ public class Pilot implements Serializable {
 	 * Dato un set ottengo una lista
 	 * 
 	 * @param a
-	 * @return PList<T>
+	 * @return PList[T]
 	 */
 	public <T> PList<T> setToList(Set<T> a) {
 		if (null == a)
@@ -1393,7 +1393,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<Utente> recupero quell'unico Utente che abbia la
+	 * Data una lista List[Utente] recupero quell'unico Utente che abbia la
 	 * proprieta campo (in dot notation) uguale a value
 	 * 
 	 * @param lista
@@ -1420,7 +1420,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<Utente> recupero quell'unico Utente che abbia la
+	 * Data una lista List[Utente] recupero quell'unico Utente che abbia la
 	 * proprieta campo[i] (in dot notation) uguale a value[i]
 	 * 
 	 * @param lista
@@ -1434,14 +1434,14 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<Utente> recupero la sottolista di elementi Utente
-	 * (quindi pi� di uno) che abbiano la proprieta campo[i] (in dot notation)
+	 * Data una lista List[Utente] recupero la sottolista di elementi Utente
+	 * (quindi piè di uno) che abbiano la proprieta campo[i] (in dot notation)
 	 * uguale a value[i]
 	 * 
 	 * @param lista
 	 * @param campo
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K, T> List<K> find(List<K> lista, String[] campo, T[] value) throws Exception {
@@ -1473,7 +1473,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � in like ad almeno uno dei %value%
+	 * Torna true se campo è in like ad almeno uno dei %value%
 	 * 
 	 * @param campo
 	 * @param value
@@ -1484,7 +1484,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<Utente> ottengo una nuova lista di elementi Utente
+	 * Data una lista List[Utente] ottengo una nuova lista di elementi Utente
 	 * che abbiano la proprieta campo (in dot notation) uguale a value
 	 * 
 	 * @param lista
@@ -1493,7 +1493,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param value
 	 * 
-	 * @return List<K>
+	 * @return List[K]
 	 * 
 	 * @throws Exception
 	 */
@@ -1761,8 +1761,8 @@ public class Pilot implements Serializable {
 	 * Data una lista di tipi java K calcolo la media aritmetica(di tipo
 	 * numerico) di tutti gli elementi della lista
 	 * 
-	 * @param <K>
-	 * @param <T>
+	 * 
+	 * 
 	 * @param lista
 	 * @param c
 	 * @return T
@@ -1776,8 +1776,8 @@ public class Pilot implements Serializable {
 	 * Data una lista di bean di tipo K calcolo la sommatoria dei valori della
 	 * proprietà campo (di tipo numerico) di tutti gli elementi della lista
 	 * 
-	 * @param <K>
-	 * @param <T>
+	 * 
+	 * 
 	 * @param lista
 	 * @param campo
 	 * @param c
@@ -1848,8 +1848,8 @@ public class Pilot implements Serializable {
 	 * Data una lista di tipi java K calcolo la sommatoria dei valori di tutti
 	 * gli elementi della lista
 	 * 
-	 * @param <K>
-	 * @param <T>
+	 * 
+	 * 
 	 * @param lista
 	 * @param c
 	 * @return T
@@ -1891,12 +1891,12 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di elementi di tipo K raggruppo la lista secondo la
 	 * proprieta campo del bean K e ottengo una Mappa chiave-valore dove chiave
-	 * � il valore della proprieta e valore � una lista di bean K la cui
+	 * è il valore della proprieta e valore è una lista di bean K la cui
 	 * proprieta campo ha quel valore.
 	 * 
 	 * @param lista
 	 * @param campo
-	 * @return Map<T, List<K>>
+	 * @return Map[T, List[K]]
 	 * @throws Exception
 	 */
 	public <K, T> Map<T, List<K>> groupBy(List<K> lista, String campo) throws Exception {
@@ -1909,18 +1909,18 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Serve a recuperare i valori distinti multicampo tramite campi... indicati
-	 * come parametro. Ritorna una PList<String> dove ogni elemento � nel
+	 * come parametro. Ritorna una PList[String] dove ogni elemento è nel
 	 * formato [nomeCampo]=[valoreCampo
 	 * ]|[nomeCampo_1]=[valoreCampo_1]|...|[nomeCampo_n]=[valoreCampo_n]
 	 * 
-	 * Campi � l'elenco dei campi del tipo K di cui si vogliono i valori
+	 * Campi è l'elenco dei campi del tipo K di cui si vogliono i valori
 	 * distinti concatenati insieme in una multipla. Equivale in pratica a una
 	 * select distinct sql
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param campi
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public <K> PList<String> distinctMulti(PList<K> lista, String... campi) {
 		if (null == campi)
@@ -1944,12 +1944,12 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di bean K ottengo una lista di elementi distinti di tipo T
-	 * dove T � il tipo della proprieta campo Utente nome cognome eta
-	 * List<Utente> ottengo una List<Integer> di eta distinte degli utenti
+	 * dove T è il tipo della proprieta campo Utente nome cognome eta
+	 * List[Utente] ottengo una List[Integer] di eta distinte degli utenti
 	 * 
 	 * @param lista
 	 * @param campo
-	 * @return List<T>
+	 * @return List[T]
 	 */
 	public <K, T> List<T> distinct(List<K> lista, String campo) {
 		Method[] methods = null;
@@ -1997,7 +1997,7 @@ public class Pilot implements Serializable {
 	 * Ritorna quanti elementi distinti della proprietà campo ci sono in una
 	 * lista di bean di tipo T
 	 * 
-	 * @param <T>
+	 * 
 	 * @param lista
 	 * @param campo
 	 * @return Integer
@@ -2007,7 +2007,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una mappa<K,T> ottengo l'unico elemento T corrispondente alla chiave
+	 * Data una mappa[K,T] ottengo l'unico elemento T corrispondente alla chiave
 	 * K
 	 * 
 	 * @param mappa
@@ -2020,12 +2020,12 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una mappa<K,T> ottengo una lista di elementi T corrispondenti alla
+	 * Data una mappa[K,T] ottengo una lista di elementi T corrispondenti alla
 	 * chiave K
 	 * 
 	 * @param mappa
 	 * @param chiave
-	 * @return List<T>
+	 * @return List[T]
 	 * @throws Exception
 	 */
 
@@ -2043,7 +2043,7 @@ public class Pilot implements Serializable {
 	 * Trasforma un array in un set
 	 * 
 	 * @param a
-	 * @return Set<T>
+	 * @return Set[T]
 	 */
 
 	public <T> Set<T> arrayToSet(T[] a) {
@@ -2314,7 +2314,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato il valore numerico del mese ottengo la descrizione letterale del
-	 * mese dove 1 � gennaio e 12 � dicembre
+	 * mese dove 1 è gennaio e 12 è dicembre
 	 * 
 	 * @param mese
 	 * @return String
@@ -2328,8 +2328,8 @@ public class Pilot implements Serializable {
 	/**
 	 * Metodo di realizzazione di una mappatura del tipo voglio che ai valori 2
 	 * e 3 corrisponda la stringa "DueOTre" e al valore 5 corrisponda la stringa
-	 * "cinque" allora valueToCheck poniamo ad esempio � 3, defaultValue � il
-	 * valore che torno se non ho corrispondenza valuePipeSeparatorReturn sar�
+	 * "cinque" allora valueToCheck poniamo ad esempio è 3, defaultValue è il
+	 * valore che torno se non ho corrispondenza valuePipeSeparatorReturn sarà
 	 * 2,3|DueoTre e 5|cinque. Con value to check 3 ottengo "DueOTre", con
 	 * valueToCheck 5 ottengo "cinque", con valueToCheck 12 ottengo il
 	 * defaultValue
@@ -2364,10 +2364,10 @@ public class Pilot implements Serializable {
 	 * Metodo di realizzazione di una mappatura condizionale del tipo voglio che
 	 * ai valori 2 e 3 corrisponda la stringa DueOTre in base a una certa
 	 * condizione e al valore 5 corrisponda la stringa cinque in base a un'altra
-	 * condizione. valueToCheck � il valore da sottoporre a traduzione secondo
-	 * la mappatura, defaultValue � il valore che torno se non ho
+	 * condizione. valueToCheck è il valore da sottoporre a traduzione secondo
+	 * la mappatura, defaultValue è il valore che torno se non ho
 	 * corrispondenza. La mappauta condizionale avviene utilizzando la classe
-	 * CaseCondition. Se la condizione � false allora torno il valore originale
+	 * CaseCondition. Se la condizione è false allora torno il valore originale
 	 * senza mapparlo nel nuovo valore
 	 * 
 	 * @param valueToCheck
@@ -2401,7 +2401,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una stringa torna true se value � contenuto ignorecase nella stringa
+	 * Data una stringa torna true se value è contenuto ignorecase nella stringa
 	 * 
 	 * @param campo
 	 * @param value
@@ -2412,7 +2412,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una stringa campo torna true se almeno uno dei value � contenuto
+	 * Data una stringa campo torna true se almeno uno dei value è contenuto
 	 * ignorecase in campo
 	 * 
 	 * @param campo
@@ -2441,7 +2441,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore o uguale a 0
+	 * Torna true se d è maggiore o uguale a 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2451,7 +2451,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore di 0
+	 * Torna true se d è maggiore di 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2461,7 +2461,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore o uguale a 0
+	 * Torna true se d è minore o uguale a 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2471,7 +2471,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore di 0
+	 * Torna true se d è minore di 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2504,7 +2504,7 @@ public class Pilot implements Serializable {
 	 * Dati due valori val e limite, limita val ad assumere come valore massimo
 	 * limite e non oltre
 	 * 
-	 * @param <K>
+	 * 
 	 * @param val
 	 * @param limite
 	 * @return K
@@ -2516,7 +2516,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Limita val all'intervallo [start,end]
 	 * 
-	 * @param <K>
+	 * 
 	 * @param val
 	 * @param start
 	 * @param end
@@ -2562,7 +2562,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore di zero
+	 * Torna true se d è maggiore di zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2572,7 +2572,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore di zero
+	 * Torna true se d è minore di zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2582,7 +2582,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore o uguale a zero
+	 * Torna true se d è maggiore o uguale a zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2592,7 +2592,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore o uguale a zero
+	 * Torna true se d è minore o uguale a zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2602,7 +2602,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2612,7 +2612,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2622,7 +2622,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2632,7 +2632,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una data e un numero intero torna una nuova data che � la precedente
+	 * Data una data e un numero intero torna una nuova data che è la precedente
 	 * meno il numero di mesi indicato
 	 * 
 	 * @param d
@@ -2832,7 +2832,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � A ignorecase
+	 * Torna true se value è A ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2842,7 +2842,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � S o SI ignorecase
+	 * Torna true se value è S o SI ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2852,7 +2852,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � N o NO ignorecase
+	 * Torna true se value è N o NO ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2862,7 +2862,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se data d � compresa tra [start, end] intervalli compresi
+	 * Torna true se data d è compresa tra [start, end] intervalli compresi
 	 * 
 	 * @param d
 	 * @param start
@@ -2882,7 +2882,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se data d � compresa tra ]start,end[ intervalli esclusi
+	 * Torna true se data d è compresa tra ]start,end[ intervalli esclusi
 	 * 
 	 * @param d
 	 * @param start
@@ -3001,7 +3001,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Alla data start aggiunge la quantit� temporale indicata da t e ritorna la
+	 * Alla data start aggiunge la quantitè temporale indicata da t e ritorna la
 	 * nuova data
 	 * 
 	 * @param start
@@ -3035,7 +3035,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se la data d � prima della data limite
+	 * Torna true se la data d è prima della data limite
 	 * 
 	 * @param d
 	 * @param limite
@@ -3050,7 +3050,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se la data d � dopo la data limite
+	 * Torna true se la data d è dopo la data limite
 	 * 
 	 * @param d
 	 * @param limite
@@ -3065,7 +3065,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'array � nullo o vuoto
+	 * Torna true se l'array è nullo o vuoto
 	 * 
 	 * @param array
 	 * @return boolean
@@ -3075,7 +3075,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la string passata � nulla, ha lunghezza 0 oppure contiene
+	 * Ritorna True se la string passata è nulla, ha lunghezza 0 oppure contiene
 	 * la stringa "null"
 	 * 
 	 * @param string
@@ -3086,7 +3086,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la collection passata � nulla o vuota
+	 * Ritorna True se la collection passata è nulla o vuota
 	 * 
 	 * @param collection
 	 * @return boolean
@@ -3096,7 +3096,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la Map passata � nulla o vuota
+	 * Ritorna True se la Map passata è nulla o vuota
 	 * 
 	 * @param map
 	 * @return boolean
@@ -3108,7 +3108,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Torna true se tutti gli oggetti values sono nulli (una stringa si
 	 * considera nulla se nulla , vuota o contiene la stringa "null", una
-	 * collection � nulla se null o vuota)
+	 * collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3136,9 +3136,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se almeno uno degli gli oggetti values � nullo (una stringa si
+	 * Torna true se almeno uno degli gli oggetti values è nullo (una stringa si
 	 * considera nulla se nulla , vuota o contiene la stringa "null", una
-	 * collection � nulla se null o vuota)
+	 * collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3175,7 +3175,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param liste
-	 * @return List<K> ritorna una nuova lista che contiene l'intersezione degli
+	 * @return List[K] ritorna una nuova lista che contiene l'intersezione degli
 	 *         elementi in comune tra la lista l1 e tutte le liste liste
 	 */
 	public <K> List<K> intersection(List<K> l1, List<K>... liste) {
@@ -3315,10 +3315,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se l'array passato � null, ritorna un array di tipi c non nullo e di
+	 * Se l'array passato è null, ritorna un array di tipi c non nullo e di
 	 * dimensione 0, altrimenti torna l'array arr stesso se non nullo
 	 * 
-	 * @param <K>
+	 * 
 	 * @param arr
 	 * @param c
 	 * @return K[]
@@ -3329,11 +3329,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una collection esegue il controllo di nullit� e se null torna una
+	 * Data una collection esegue il controllo di nullità e se null torna una
 	 * collection non nulla ma vuota
 	 * 
 	 * @param elenco
-	 * @return Collection<K>
+	 * @return Collection[K]
 	 */
 	public <K> Collection<K> safe(Collection<K> elenco) {
 		if (elenco instanceof List) {
@@ -3358,8 +3358,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torno true se tutti gli elementi values sono non nulli (una stringa �
-	 * nulla se vuota null o "null", una collection � nulla se null o vuota)
+	 * Torno true se tutti gli elementi values sono non nulli (una stringa è
+	 * nulla se vuota null o "null", una collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3476,8 +3476,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torno true se almeno uno dei values � non nullo (una stringa � nulla se
-	 * vuota null o "null", una collection � nulla se null o vuota)
+	 * Torno true se almeno uno dei values è non nullo (una stringa è nulla se
+	 * vuota null o "null", una collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3493,7 +3493,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Operatore ternario in forma di metodo se la cond � vera torno trueValue
+	 * Operatore ternario in forma di metodo se la cond è vera torno trueValue
 	 * altrimenti torno falseVale
 	 * 
 	 * @param cond
@@ -3506,7 +3506,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * se campo � uguale ad almeno uno dei value torno trueVale altrimento torno
+	 * se campo è uguale ad almeno uno dei value torno trueVale altrimento torno
 	 * falseValue
 	 * 
 	 * @param trueValue
@@ -3667,13 +3667,13 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � uguale ad almeno uno dei value oppure se campo �
-	 * nullo e almeno uno dei value � nullo. Se campo � una collection la
-	 * condizione � uguale significa che la collection contiene almeno uno dei
-	 * value. Se campo � una stringa la condizione � uguale significa che la
-	 * stringa � uguale in base al metodo ignorecase. Se campo � un BigDecimal
-	 * la condizione � uguale significa che ignora gli zeri dopo la virgola. Per
-	 * gli altri casi la condizione � uguale significa che � rispettata la
+	 * Torna true se campo è uguale ad almeno uno dei value oppure se campo è
+	 * nullo e almeno uno dei value è nullo. Se campo è una collection la
+	 * condizione è uguale significa che la collection contiene almeno uno dei
+	 * value. Se campo è una stringa la condizione è uguale significa che la
+	 * stringa è uguale in base al metodo ignorecase. Se campo è un BigDecimal
+	 * la condizione è uguale significa che ignora gli zeri dopo la virgola. Per
+	 * gli altri casi la condizione è uguale significa che è rispettata la
 	 * condizione in base al metodo equals;
 	 * 
 	 * @param campo
@@ -3685,10 +3685,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo NON � uguale a nessuno uno dei value. Se campo � una
+	 * Torna true se campo NON è uguale a nessuno uno dei value. Se campo è una
 	 * collection torna true se la collection non contiene nessuno dei value. Se
-	 * campo � una stringa la verifica di avviene ignorecase. Se campo � un
-	 * BigDecimal la condizione � uguale significa che ignora gli zeri dopo la
+	 * campo è una stringa la verifica di avviene ignorecase. Se campo è un
+	 * BigDecimal la condizione è uguale significa che ignora gli zeri dopo la
 	 * virgola. Per gli altri casi la condizione avviene in base al metodo
 	 * equals
 	 * 
@@ -3711,7 +3711,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se almeno una delle condizioni booleane � vera
+	 * Torna true se almeno una delle condizioni booleane è vera
 	 * 
 	 * @param b
 	 * @return boolean
@@ -3749,7 +3749,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se soltanto una delle condizioni � vera
+	 * Torna true se soltanto una delle condizioni è vera
 	 * 
 	 * @param b
 	 * @return boolean
@@ -3779,7 +3779,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa � nulla torna stringa vuota
+	 * Se la stringa è nulla torna stringa vuota
 	 * 
 	 * @param s
 	 * @return String
@@ -3849,7 +3849,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il BigDecimal a zero se � negativo
+	 * Limita il BigDecimal a zero se è negativo
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -3859,7 +3859,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il double a zero se � negativo
+	 * Limita il double a zero se è negativo
 	 * 
 	 * @param val
 	 * @return Double
@@ -3869,7 +3869,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il double a zero se � negativo
+	 * Limita il double a zero se è negativo
 	 * 
 	 * @param val
 	 * @return double
@@ -3879,7 +3879,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il BigDecimal � null torno ZERO
+	 * Se il BigDecimal è null torno ZERO
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -3889,7 +3889,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il double � null torno ZERO
+	 * Se il double è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Double
@@ -3939,7 +3939,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Esegue lo scale 2 arrotondamento met� superiore del BigDecimal
+	 * Esegue lo scale 2 arrotondamento metè superiore del BigDecimal
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -3999,8 +3999,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un intero positivo in base alla condizione nullable
-	 * true vuol dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un intero positivo in base alla condizione nullable
+	 * true vuol dire che puè ammettere valore nullo, false non puè essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4019,8 +4019,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un intero in base alla condizione nullable true vuol
-	 * dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un intero in base alla condizione nullable true vuol
+	 * dire che puè ammettere valore nullo, false non puè essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4039,9 +4039,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un decimale (formato italiano con la , per i
-	 * decimali) in base alla condizione nullable true vuol dire che pu�
-	 * ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un decimale (formato italiano con la , per i
+	 * decimali) in base alla condizione nullable true vuol dire che puè
+	 * ammettere valore nullo, false non puè essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4060,9 +4060,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un decimale positivo (formato italiano con la , per i
-	 * decimali) in base alla condizione nullable true vuol dire che pu�
-	 * ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un decimale positivo (formato italiano con la , per i
+	 * decimali) in base alla condizione nullable true vuol dire che puè
+	 * ammettere valore nullo, false non puè essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4081,8 +4081,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se b � un decimale positivo in base alla condizione nullable
-	 * true vuol dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se b è un decimale positivo in base alla condizione nullable
+	 * true vuol dire che puè ammettere valore nullo, false non puè essere nullo
 	 * 
 	 * @param b
 	 * @param nullable
@@ -4101,7 +4101,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la maxlength della stringa in base alla condizione booleana
-	 * nullable se true pu� essere nulla se false non pu� essere nulla
+	 * nullable se true puè essere nulla se false non puè essere nulla
 	 * 
 	 * @param s
 	 * @param l
@@ -4121,7 +4121,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la data passata come stringa in base alla condizione nullable se
-	 * true pu� essere nulla se false non pu� essere nulla
+	 * true puè essere nulla se false non puè essere nulla
 	 * 
 	 * @param data
 	 * @param nullable
@@ -4140,7 +4140,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la stringa che sia un numero in base alla condizione nullable se
-	 * true pu� essere nulla se false non pu� essere nulla
+	 * true puè essere nulla se false non puè essere nulla
 	 * 
 	 * @param s
 	 * @param nullable
@@ -4216,7 +4216,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la lunghezza della stringa in base alla condizione booleana
-	 * nullable se true pu� essere nulla se false non pu� essere nulla
+	 * nullable se true puè essere nulla se false non puè essere nulla
 	 * 
 	 * @param s
 	 * @param l
@@ -4419,7 +4419,7 @@ public class Pilot implements Serializable {
 	 * di righe quante sono le righe del file
 	 * 
 	 * @param path
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> readFile(String path) {
 		PList<String> file = plstr();
@@ -4466,7 +4466,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 
@@ -4525,7 +4525,7 @@ public class Pilot implements Serializable {
 	 * Scrive nel file path l'oggetto T di tipo BaseEntity stampando solo i
 	 * campi che riportano l'annotazione @Column
 	 * 
-	 * @param <T>
+	 * 
 	 * @param path
 	 * @param data
 	 */
@@ -4534,10 +4534,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Scrive nel file path l'oggetto PList<T> con T di tipo BaseEntity
+	 * Scrive nel file path l'oggetto PList[T] con T di tipo BaseEntity
 	 * stampando solo i campi che riportano l'annotazione @Column
 	 * 
-	 * @param <T>
+	 * 
 	 * @param path
 	 * @param data
 	 */
@@ -4550,7 +4550,7 @@ public class Pilot implements Serializable {
 	 * inserendo tutto il contenuto della lista di stringhe, ogni elemento della
 	 * lista viene separato dal carattere linefeed per andare a capo
 	 * 
-	 * @param <T>
+	 * 
 	 * @param path
 	 * @param data
 	 */
@@ -4577,14 +4577,14 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un file e una stringa inizio e fine, restituisce tutto il contenuto
 	 * del file compreso tra le stringhe inizio e fine quando queste sono
-	 * individuate all'interno in modalit� like %% e restituisce una lista di
+	 * individuate all'interno in modalitè like %% e restituisce una lista di
 	 * stringhe corrispondenti al contenuto trovato. Le stringhe inizio e fine
 	 * non vengono incluse nel contenuto restituito.
 	 * 
 	 * @param path
 	 * @param inizio
 	 * @param fine
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> readFileBetweenContentLike(String path, String inizio, String fine) {
 		PList<String> file = plstr();
@@ -4620,7 +4620,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un file e una stringa inizio e fine, restituisce tutto il contenuto
 	 * del file compreso tra le stringhe inizio e fine quando queste sono
-	 * individuate all'interno in modalit� is (ossia uguali alle stringhe inizio
+	 * individuate all'interno in modalitè is (ossia uguali alle stringhe inizio
 	 * e fine) e restituisce una lista di stringhe corrispondenti al contenuto
 	 * trovato. Le stringhe inizio e fine non vengono incluse nel contenuto
 	 * restituito.
@@ -4628,7 +4628,7 @@ public class Pilot implements Serializable {
 	 * @param path
 	 * @param inizio
 	 * @param fine
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> readFileBetweenContent(String path, String inizio, String fine) {
 		PList<String> file = plstr();
@@ -4662,7 +4662,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista di stringhe, restituisce una unica stringa che � la
+	 * Data una lista di stringhe, restituisce una unica stringa che è la
 	 * concatenazione degli elementi della lista
 	 * 
 	 * @param l
@@ -4692,7 +4692,7 @@ public class Pilot implements Serializable {
 	 * assoluto ma solo il nome.estensione preceduto dal pkg di appartenenza
 	 * ossia ad esempio /it/inps/queries.properties e una stringa inizio e fine,
 	 * restituisce tutto il contenuto del file compreso tra le stringhe inizio e
-	 * fine quando queste sono individuate all'interno in modalit� like %% e
+	 * fine quando queste sono individuate all'interno in modalitè like %% e
 	 * restituisce una lista di stringhe corrispondenti al contenuto trovato. Le
 	 * stringhe inizio e fine non vengono incluse nel contenuto restituito.
 	 * 
@@ -4705,7 +4705,7 @@ public class Pilot implements Serializable {
 	 *            nella forma it/inpt/eng/nome.estensione
 	 * @param inizio
 	 * @param fine
-	 * @return PList<String>
+	 * @return PList[String]
 	 * @throws Exception
 	 */
 	public <T> PList<String> readFileAsResourceBetweenContentLike(Class<T> c, String nomeFile, String inizio, String fine) throws Exception {
@@ -4765,7 +4765,7 @@ public class Pilot implements Serializable {
 	 *            nella forma it/inpt/eng/nome.estensione
 	 * @param inizio
 	 * @param fine
-	 * @return PList<String>
+	 * @return PList[String]
 	 * @throws Exception
 	 */
 	public <T> PList<String> readFileAsResourceBetweenContent(Class<T> c, String nomeFile, String inizio, String fine) throws Exception {
@@ -4823,7 +4823,7 @@ public class Pilot implements Serializable {
 	 *            (nome.estensione se si trova nello stesso pkg oppure se si
 	 *            trova in un package diverso dal chiamante occorre definirlo
 	 *            nella forma it/inpt/eng/nome.estensione
-	 * @return PList<String>
+	 * @return PList[String]
 	 * @throws Exception
 	 */
 	public <T> PList<String> readFileAsResource(Class<T> c, String nomeFile) throws Exception {
@@ -5165,7 +5165,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di DateInterval, restituisce una mappa Intervallo Data -
 	 * Elenco Intervalli Date in sovrapposizione
 	 * 
-	 * @return Map<String, List<String>>
+	 * @return Map[String, List[String]]
 	 */
 
 	public Map<String, List<String>> validaDateIntervalNotOverlapWithMessages(List<DateInterval> interval) {
@@ -5317,13 +5317,13 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � uguale a tutti i value oppure se campo � nullo e
-	 * tutti i value sono nulli. Se campo � una collection la condizione �
-	 * uguale significa che la collection contiene tutti i value. Se campo � una
-	 * stringa la condizione � uguale significa che la stringa � uguale a tutti
-	 * ivalue in base al metodo ignorecase. Se campo � un BigDecimal la
-	 * condizione � uguale significa che ignora gli zeri dopo la virgola. Per
-	 * gli altri casi la condizione � uguale significa che � rispettata la
+	 * Torna true se campo è uguale a tutti i value oppure se campo è nullo e
+	 * tutti i value sono nulli. Se campo è una collection la condizione è
+	 * uguale significa che la collection contiene tutti i value. Se campo è una
+	 * stringa la condizione è uguale significa che la stringa è uguale a tutti
+	 * ivalue in base al metodo ignorecase. Se campo è un BigDecimal la
+	 * condizione è uguale significa che ignora gli zeri dopo la virgola. Per
+	 * gli altri casi la condizione è uguale significa che è rispettata la
 	 * condizione in base al metodo equals;
 	 * 
 	 * @param campo
@@ -5430,7 +5430,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K> List<K> cleanList(List<K> lista, K value) throws Exception {
@@ -5449,7 +5449,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K> List<K> cleanListNotEqual(List<K> lista, K value) throws Exception {
@@ -5468,7 +5468,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K> List<K> cleanList(List<K> lista, K... value) throws Exception {
@@ -5482,11 +5482,11 @@ public class Pilot implements Serializable {
 	 * Sostituisce il valore valueToUpdate con il valore newValue mantenendo la
 	 * posizione
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param valueToUpdate
 	 * @param newValue
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K> List<K> aggiornaListValue(List<K> lista, K valueToUpdate, K newValue) throws Exception {
@@ -5499,7 +5499,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna una nuova lista da cui ha
-	 * rimosso quegli oggetti la cui proprietà prop in dot notation � uguale al
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation è uguale al
 	 * valore val e lo sostituisce con newElement
 	 * 
 	 * @param l1
@@ -5507,7 +5507,7 @@ public class Pilot implements Serializable {
 	 * @param val
 	 * @return torna la stessa lista da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val e lo
-	 *         sostituisce con newElement List<T>
+	 *         sostituisce con newElement List[T]
 	 * @throws Exception
 	 */
 	public <T, K> List<T> aggiornaListValue(List<T> l1, String props, K val, T newElement) throws Exception {
@@ -5525,7 +5525,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una mappa chiave/valore con valore lista di oggetti,
 	 * aggiunge/aggiorna alla stessa chiave la corrispondente lista aggiungendo
-	 * ad essa l'elemento o se la chiave � presente , mentre se la chiave manca
+	 * ad essa l'elemento o se la chiave è presente , mentre se la chiave manca
 	 * crea una nuova entry con una nuova lista contenente l'elemento o
 	 * 
 	 * @param mappa
@@ -5547,7 +5547,6 @@ public class Pilot implements Serializable {
 	 * @param mappa
 	 * @param elem
 	 * @param o
-	 * @throws Exception
 	 */
 	public <K, T> void rimuoviMappaLista(Map<K, List<T>> mappa, K elem, T o) {
 		if (null != mappa) {
@@ -5562,11 +5561,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista esegue il controllo di nullit� e se null torna una Lista
+	 * Data una lista esegue il controllo di nullità e se null torna una Lista
 	 * non nulla ma vuota
 	 * 
 	 * @param elenco
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> safe(List<K> elenco) {
 		List<K> emptyList = new ArrayList<K>();
@@ -5574,11 +5573,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una LPist esegue il controllo di nullit� e se null torna una PList
+	 * Data una LPist esegue il controllo di nullità e se null torna una PList
 	 * non nulla ma vuota
 	 * 
 	 * @param elenco
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 
 	public <K> PList<K> safe(PList<K> elenco) {
@@ -5587,11 +5586,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Dato un Set esegue il controllo di nullit� e se null torna un Set non
+	 * Dato un Set esegue il controllo di nullità e se null torna un Set non
 	 * nullo ma vuoto
 	 * 
 	 * @param elenco
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 	public <K> Set<K> safe(Set<K> elenco) {
 		Set<K> emptySet = new HashSet<K>();
@@ -5599,7 +5598,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se l'Integer � null torno ZERO
+	 * Se l'Integer è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Integer
@@ -5609,7 +5608,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il Long � null torno ZERO
+	 * Se il Long è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Long
@@ -5620,7 +5619,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa restituisce un'altra stringa in cui la sottostringa old
-	 * � sostituita con la sottostringa nuova
+	 * è sostituita con la sottostringa nuova
 	 * 
 	 * @param s
 	 * @param old
@@ -5654,12 +5653,12 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una mappa<K,List<T>> ottengo l'unica lista<T> corrispondente alla
+	 * Data una mappa[K,List[T]] ottengo l'unica lista[T] corrispondente alla
 	 * chiave K
 	 * 
 	 * @param mappa
 	 * @param chiave
-	 * @return List<T>
+	 * @return List[T]
 	 * @throws Exception
 	 */
 	public <K, T> List<T> findOneMapList(Map<K, List<T>> mappa, K chiave) throws Exception {
@@ -5671,7 +5670,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista ritorna true se ha pi� di un elemento
+	 * Data una lista ritorna true se ha piè di un elemento
 	 * 
 	 * @param elenco
 	 * @return boolean
@@ -5701,7 +5700,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista ritorna true se ha pi� di i elementi
+	 * Data una lista ritorna true se ha piè di i elementi
 	 * 
 	 * @param elenco
 	 * @return boolean
@@ -5761,7 +5760,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di tipi ritorna il numero di occorrenze dell'elemento e
 	 * nella lista in base al metodo equals
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param e
 	 * @return int
@@ -5805,7 +5804,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista di stringhe, ritorna una stringa che � la concatenazione
+	 * Data una lista di stringhe, ritorna una stringa che è la concatenazione
 	 * di tutte le stringhe della lista, mettendo la stringa car come separatore
 	 * tra le stringhe
 	 * 
@@ -5847,9 +5846,9 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna l'elemento della lista alla posizione i. Forza l'indice i
-	 * all'intervallo [0,lista.size()-1]. Se la lista � nulla o vuota torna null
+	 * all'intervallo [0,lista.size()-1]. Se la lista è nulla o vuota torna null
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param i
 	 * @return K
@@ -5868,8 +5867,8 @@ public class Pilot implements Serializable {
 	 * booleani compresoStart e compresoEnd se start e end devono essere
 	 * comprese oppure no e con i booleani lastStart e lastEnd se l'indice di
 	 * riferimento deve essere il lastIndexOf oppure il primo semplice indexOf.
-	 * Se end � null la sottostringa va da start fino alla fine della stringa.
-	 * Se start � null la sottostringa va da inizio stringa fino a end. Se s �
+	 * Se end è null la sottostringa va da start fino alla fine della stringa.
+	 * Se start è null la sottostringa va da inizio stringa fino a end. Se s è
 	 * null o se start e end sono entrambi null, allora ritorno la stringa
 	 * passata come inalterata.
 	 * 
@@ -5926,9 +5925,9 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Concatena la rappresentazione stringa di ogni elemento della lista con il
-	 * carattere car. Se apici � true pone ogni elemento tra apici
+	 * carattere car. Se apici è true pone ogni elemento tra apici
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param car
 	 * @param apici
@@ -5954,7 +5953,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Restituisce la stringa passata mettendola in formato camelCase. La prima
-	 * lettera della stringa � minuscola, tutte quelle che seguono il carattere
+	 * lettera della stringa è minuscola, tutte quelle che seguono il carattere
 	 * separatore, vengono capitalizzate
 	 * 
 	 * @param s
@@ -6089,7 +6088,7 @@ public class Pilot implements Serializable {
 	 * @param estensione
 	 * @param data
 	 * @param ricorsivo
-	 * @return Set<File>
+	 * @return Set[File]
 	 * @throws IOException
 	 */
 	public Set<File> getFiles(String path, String like, String notLike, String estensione, String data, boolean ricorsivo) throws IOException {
@@ -6128,7 +6127,7 @@ public class Pilot implements Serializable {
 	 * @param notLike
 	 * @param estensione
 	 * @param data
-	 * @return Set<File>
+	 * @return Set[File]
 	 * @throws IOException
 	 */
 	public Set<File> getFiles(String path, String[] like, String[] notLike, String[] estensione, String data, boolean ricorsivo) throws IOException {
@@ -6158,11 +6157,11 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di tipi Java (non custom quindi, tipo String, Integer,
 	 * BigDecimal, ecc.) ritorna la stessa lista da cui ho rimosso quel valore
-	 * che � like value
+	 * che è like value
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 
@@ -6182,7 +6181,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param lista
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 	public <K> List<K> cleanListLike(List<K> lista, K... value) throws Exception {
@@ -6194,13 +6193,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui proprietà prop in dot notation � like
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation è like
 	 * valore val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che hanno valore val
 	 * @throws Exception
 	 */
@@ -6218,13 +6217,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation � like al
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation è like al
 	 * val[i]
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return List<T> torna la stessa lista da cui ho rimosso gli elementi
+	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che hanno valori val
 	 * @throws Exception
 	 */
@@ -6237,12 +6236,12 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation � like il valore val
+	 * quegli oggetti la cui proprietà prop in dot notation è like il valore val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi della
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val
 	 * @throws Exception
 	 */
@@ -6261,12 +6260,12 @@ public class Pilot implements Serializable {
 	/**
 	 * 
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui proprietà prop in dot notation � like il valore val
+	 * quegli oggetti la cui proprietà prop in dot notation è like il valore val
 	 * 
 	 * @param l1
 	 * @param props
 	 * @param val
-	 * @return Set<T> torna lo stesso Set da cui ho rimosso gli elementi delle
+	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che hanno valori val
 	 * @throws Exception
 	 */
@@ -6279,16 +6278,16 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<K> ottengo una nuova lista di elementi K che abbiano
+	 * Data una lista List[K] ottengo una nuova lista di elementi K che abbiano
 	 * la proprieta campo (in dot notation) che soddisfa la condizione in base
 	 * all'operatore logico applicato e ai valori passati
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param campo
 	 * @param value
 	 * @param op
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 
@@ -6379,11 +6378,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<K> ottengo il primo elemento K della lista di
+	 * Data una lista List[K] ottengo il primo elemento K della lista di
 	 * elementi K che abbiano la proprieta campo (in dot notation) che soddisfa
 	 * la condizione in base all'operatore logico applicato e ai valori passati
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param campo
 	 * @param value
@@ -6398,15 +6397,15 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<K> ottengo una nuova lista di elementi K (non custom)
+	 * Data una lista List[K] ottengo una nuova lista di elementi K (non custom)
 	 * che cui valori soddisfano la condizione in base all'operatore logico
 	 * applicato e ai valori passati
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param op
 	 * @param value
-	 * @return List<K>
+	 * @return List[K]
 	 * @throws Exception
 	 */
 
@@ -6498,11 +6497,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista List<K> ottengo l'elemento K primo della lista di elementi
+	 * Data una lista List[K] ottengo l'elemento K primo della lista di elementi
 	 * K (non custom) i cui valori soddisfano la condizione in base
 	 * all'operatore logico applicato e ai valori passati
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param op
 	 * @param value
@@ -6567,7 +6566,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6577,7 +6576,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6587,7 +6586,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6600,7 +6599,7 @@ public class Pilot implements Serializable {
 	 * Torna il primo valore non nullo tra i valori passati secondo l'ordine dei
 	 * valori passati
 	 * 
-	 * @param <T>
+	 * 
 	 * @param vals
 	 * @return T
 	 */
@@ -6618,13 +6617,13 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Aggiunge un oggetto DateInteval(inizio,fine) alla lista intervalliDate
-	 * che sar� poi sottoposta a validazione attraverso il metodo
+	 * che sarà poi sottoposta a validazione attraverso il metodo
 	 * validaDateIntervalNotOverlap
 	 * 
 	 * @param intervalliDate
 	 * @param inizio
 	 * @param fine
-	 * @return List<DateInterval>
+	 * @return List[DateInterval]
 	 * @throws Exception
 	 */
 	public List<DateInterval> addDateInterval(List<DateInterval> intervalliDate, String inizio, String fine) throws Exception {
@@ -6639,7 +6638,7 @@ public class Pilot implements Serializable {
 	 * che ha il valore massimo di quelle proprieta
 	 * 
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param prop
 	 * @return T
@@ -6653,7 +6652,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di bean e le proprieta prop, torna l'elemento della lista
 	 * che ha il valore minimo di quelle proprieta
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param prop
 	 * @return T
@@ -6690,7 +6689,7 @@ public class Pilot implements Serializable {
 	 * Ritorna true se la proprieta prop dei bean della lista non ha il valore
 	 * value per tutti gli elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param prop
 	 * @param value
@@ -6714,7 +6713,7 @@ public class Pilot implements Serializable {
 	 * Ritorna true se la proprieta prop dei bean della lista ha il valore value
 	 * per almeno uno degli elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param prop
 	 * @param value
@@ -6737,7 +6736,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna true se la lista ha tutti i suoi elementi con valore value
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param value
 	 * @return boolean
@@ -6759,7 +6758,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna true se la lista non ha alcun elemento con valore value
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param value
 	 * @return boolean
@@ -6781,7 +6780,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna true se la lista ha almeno un elemento con valore value
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l1
 	 * @param value
 	 * @return boolean
@@ -6822,7 +6821,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � uguale ad uno dei valori della stringa valori, traduce
+	 * Se la stringa s è uguale ad uno dei valori della stringa valori, traduce
 	 * la stringa s come tradottoIn, altrimenti ritorna la stringa s originale
 	 * non tradotta
 	 * 
@@ -6856,8 +6855,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � uguale ad uno dei valori della stringa valori, traduce
-	 * la stringa s come tradottoIn qualora condizione di traduzione � true,
+	 * Se la stringa s è uguale ad uno dei valori della stringa valori, traduce
+	 * la stringa s come tradottoIn qualora condizione di traduzione è true,
 	 * altrimenti ritorna la stringa s originale non tradotta
 	 * 
 	 * @param s
@@ -6874,8 +6873,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � like uno dei valori della stringa valori, traduce la
-	 * stringa s come tradottoIn qualora condizione di traduzione � true,
+	 * Se la stringa s è like uno dei valori della stringa valori, traduce la
+	 * stringa s come tradottoIn qualora condizione di traduzione è true,
 	 * altrimenti ritorna la stringa s originale non tradotta
 	 * 
 	 * @param s
@@ -6935,9 +6934,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Metodo che data una lista la trasforma in una PList
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> toPList(List<K> l) {
 		return pl(safe(l));
@@ -6946,9 +6945,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Metodo che data una mappa la trasforma in una PMap
 	 * 
-	 * @param <K>
+	 * 
 	 * @param mp
-	 * @return PMap<K,V>
+	 * @return PMap[K,V]
 	 */
 	public <K, V> PMap<K, V> toPMap(Map<K, V> mp) {
 		return new PHashMap<K, V>(mp);
@@ -6958,9 +6957,9 @@ public class Pilot implements Serializable {
 	 * Metodo che data una lista di oggetti BaseEntity la trasforma in una PList
 	 * di oggetti BaseEntity
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K extends BaseEntity> PList<K> toPListEnt(List<K> l) {
 		return pl(safe(l));
@@ -7011,8 +7010,8 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna un oggetto PArrayList vuoto
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 */
 	public <K> PList<K> getPList() {
 		return new PArrayList<K>(getLog());
@@ -7021,8 +7020,8 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPList()
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 */
 	public <K> PList<K> pl() {
 		return getPList();
@@ -7032,9 +7031,9 @@ public class Pilot implements Serializable {
 	 * Ritorna un oggetto di tipo PList con il limite di elementi impostato a
 	 * limite (elementi aggiunti tramite addElement)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param limite
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> getPList(Integer limite) {
 		return new PArrayList<K>(getLog()).setLimit(limite);
@@ -7043,9 +7042,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPList(Integer limite)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param limite
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> pl(Integer limite) {
 		return getPList(limite);
@@ -7054,9 +7053,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna un oggetto PHashMap vuoto
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K, V>
+	 * @return PMap[K, V]
 	 */
 	public <K, V> PMap<K, V> getPMap() {
 		return new PHashMap<K, V>(getLog());
@@ -7065,20 +7062,16 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPMap();
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K,V>
+	 * @return PMap[K,V]
 	 */
 	public <K, V> PMap<K, V> pmap() {
 		return getPMap();
 	}
 
 	/**
-	 * Ritorna un oggetto PHashMap vuoto con valori di tipo PList<V>
+	 * Ritorna un oggetto PHashMap vuoto con valori di tipo PList[V]
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K, PList<V>>
+	 * @return PMap[K, PList[V]]
 	 */
 	public <K, V> PMap<K, PList<V>> getPMapList() {
 		return new PHashMap<K, PList<V>>(getLog());
@@ -7087,18 +7080,16 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPMapList()
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K, PList<V>>
+	 * @return PMap[K, PList[V]]
 	 */
 	public <K, V> PMap<K, PList<V>> pmapl() {
 		return getPMapList();
 	}
 
 	/**
-	 * Ritorna un oggetto PArrayList<String> vuoto
+	 * Ritorna un oggetto PArrayList[String] vuoto
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> getPListString() {
 		return new PArrayList<String>(getLog());
@@ -7107,7 +7098,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPListString
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> plstr() {
 		return getPListString();
@@ -7117,16 +7108,16 @@ public class Pilot implements Serializable {
 	 * Ritorna un oggetto PArrayList a partire dalla lista list
 	 * 
 	 * @param list
-	 * @return Collection<K>
+	 * @return Collection[K]
 	 */
 	public <K> PList<K> getPList(Collection<K> list) {
 		return new PArrayList<K>(safe(list)).setLog(getLog());
 	}
 
 	/**
-	 * Alias di getPList(Collection<K> list)
+	 * Alias di getPList(Collection[K] list)
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public <K> PList<K> pl(Collection<K> list) {
 		return getPList(list);
@@ -7135,9 +7126,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna un oggetto PArrayList inizializzato con gli elementi items
 	 * 
-	 * @param <K>
+	 * 
 	 * @param items
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> getPList(K... items) {
 		return new PArrayList<K>(items).setLog(getLog());
@@ -7146,9 +7137,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di getPList(K...items)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param items
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	public <K> PList<K> pl(K... items) {
 		return getPList(items);
@@ -7159,7 +7150,7 @@ public class Pilot implements Serializable {
 	 * items
 	 * 
 	 * @param items
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> getPListString(String... items) {
 		return new PArrayList<String>(items).setLog(getLog());
@@ -7169,7 +7160,7 @@ public class Pilot implements Serializable {
 	 * Alias di getPListString(String...items)
 	 * 
 	 * @param items
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> plstr(String... items) {
 		return getPListString(items);
@@ -7178,10 +7169,10 @@ public class Pilot implements Serializable {
 	/**
 	 * Da una lista di bean ritorna una lista di oggetti della proprietà prop
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l
 	 * @param prop
-	 * @return List<R>
+	 * @return List[R]
 	 * @throws Exception
 	 */
 	public <T, R> List<R> narrow(List<T> l, String prop) throws Exception {
@@ -7192,11 +7183,11 @@ public class Pilot implements Serializable {
 	 * Da una lista di bean ritorna una lista di oggetti della proprietà prop
 	 * con valori distinti
 	 * 
-	 * @param <T>
+	 * 
 	 * @param <R>
 	 * @param l
 	 * @param props
-	 * @return List<R>
+	 * @return List[R]
 	 * @throws Exception
 	 */
 	public <T, R> List<R> narrowDistinct(List<T> l, String props) throws Exception {
@@ -7286,10 +7277,10 @@ public class Pilot implements Serializable {
 	 * Data una lista l, ritorna una lista limitata ai primi n elementi
 	 * eliminando i successivi
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param n
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> cutToFirst(List<K> l, Integer n) {
 		l = safe(l);
@@ -7299,10 +7290,10 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna una da cui ha rimosso i primi n elementi della lista l
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param n
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> skip(List<K> l, Integer n) {
 		l = safe(l);
@@ -7312,9 +7303,9 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna la lista da cui ha rimosso il primo elemento
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> skipFirst(List<K> l) {
 		return skip(l, 1);
@@ -7324,10 +7315,10 @@ public class Pilot implements Serializable {
 	 * Dato un set l, ritorna lo stesso set limitato ai primi n elementi
 	 * eliminando i successivi
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param n
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 	public <K> Set<K> cutToFirst(Set<K> l, Integer n) {
 		l = safe(l);
@@ -7441,7 +7432,7 @@ public class Pilot implements Serializable {
 	 */
 	public String elapsedTime(Date startDate) {
 		if (Null(startDate))
-			return "La data inizio � nulla";
+			return "La data inizio è nulla";
 		return computeElapsedTime(startDate, now());
 	}
 
@@ -7501,7 +7492,7 @@ public class Pilot implements Serializable {
 	 * implementata nel metodo validate()
 	 * 
 	 * @param l1
-	 * @return List<Validator>
+	 * @return List[Validator]
 	 * @throws Exception
 	 */
 	public List<Validator> cleanList(List<Validator> l1) throws Exception {
@@ -7521,7 +7512,7 @@ public class Pilot implements Serializable {
 	 * implementata nel metodo validate()
 	 * 
 	 * @param l1
-	 * @return Set<Validator>
+	 * @return Set[Validator]
 	 * @throws Exception
 	 */
 	public Set<Validator> cleanSet(Set<Validator> l1) throws Exception {
@@ -7557,9 +7548,9 @@ public class Pilot implements Serializable {
 	 * Data una lista di numeri qualsiasi, ritorna la corrispondente lista di
 	 * oggetti String
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public <K extends Number> PList<String> toListString(List<K> l) {
 		PList<String> elenco = getPListString();
@@ -7578,7 +7569,7 @@ public class Pilot implements Serializable {
 	 * Long
 	 * 
 	 * @param l
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> toListLong(List<String> l) {
 		PList<Long> elenco = pl();
@@ -7597,7 +7588,7 @@ public class Pilot implements Serializable {
 	 * Integer
 	 * 
 	 * @param l
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> toListInteger(List<String> l) {
 		PList<Integer> elenco = pl();
@@ -7616,7 +7607,7 @@ public class Pilot implements Serializable {
 	 * Double
 	 * 
 	 * @param l
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> toListDouble(List<String> l) {
 		PList<Double> elenco = pl();
@@ -7635,7 +7626,7 @@ public class Pilot implements Serializable {
 	 * Float
 	 * 
 	 * @param l
-	 * @return PList<Float>
+	 * @return PList[Float]
 	 */
 	public PList<Float> toListFloat(List<String> l) {
 		PList<Float> elenco = pl();
@@ -7654,7 +7645,7 @@ public class Pilot implements Serializable {
 	 * BigDecimal
 	 * 
 	 * @param l
-	 * @return PList<BigDecimal>
+	 * @return PList[BigDecimal]
 	 */
 	public PList<BigDecimal> toListBigDecimal(List<String> l) {
 		PList<BigDecimal> elenco = pl();
@@ -7670,7 +7661,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna l'Integer corrispondente al valore s passato come stringa o zero se
-	 * s non � un valore numerico o � nullo o � negativo
+	 * s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return Integer
@@ -7681,7 +7672,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna il Double corrispondente al valore s passato come stringa o zero se
-	 * s non � un valore numerico o � nullo o � negativo
+	 * s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return Double
@@ -7692,7 +7683,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna il BigDecimal corrispondente al valore s passato come stringa o
-	 * zero se s non � un valore numerico o � nullo o � negativo
+	 * zero se s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return BigDecimal
@@ -7706,11 +7697,9 @@ public class Pilot implements Serializable {
 	 * ritorna una lista di liste dove ogni lista ha al massimo pageSize
 	 * elementi
 	 * 
-	 * 
-	 * @param <T>
 	 * @param c
 	 * @param pageSize
-	 * @return List<List<T>>
+	 * @return List[List[T]]
 	 */
 	public <T> List<List<T>> listPagination(Collection<T> c, Integer pageSize) {
 		if (Null(c))
@@ -7772,10 +7761,9 @@ public class Pilot implements Serializable {
 	 * Dato un set l, ritorna lo stesso set limitato agli ultimi n elementi
 	 * eliminando i precedenti
 	 * 
-	 * @param <K>
 	 * @param l
 	 * @param n
-	 * @return Set<K>
+	 * @return Set[K]
 	 */
 	public <K> Set<K> cutToLast(Set<K> l, Integer n) {
 		l = safe(l);
@@ -7786,10 +7774,9 @@ public class Pilot implements Serializable {
 	 * Data una lista l, ritorna una lista limitata agli ultimi n elementi
 	 * eliminando i precedenti
 	 * 
-	 * @param <K>
 	 * @param l
 	 * @param n
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> cutToLast(List<K> l, Integer n) {
 		l = safe(l);
@@ -7825,10 +7812,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Stampa il contenuto della Lista<String> container. Fa precedere il tutto
+	 * Stampa il contenuto della Lista[String] container. Fa precedere il tutto
 	 * da un titolo title con di seguito il numero di occorrenze stampate,
 	 * circondato da una cornice con il carattere "_" per una lunghezza totale
-	 * del titolo cos� composto di length caratteri. Il titolo verr� centrato.
+	 * del titolo cosè composto di length caratteri. Il titolo verrè centrato.
 	 * Esempio: ______________________________________INFOMAZIONI GENERALI
 	 * 4______________________________________
 	 * 
@@ -7845,13 +7832,13 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Stampa il contenuto della Lista<String> container. Fa precedere il tutto
+	 * Stampa il contenuto della Lista[String] container. Fa precedere il tutto
 	 * da un titolo title con di seguito il numero di occorrenze stampate,
 	 * circondato da una cornice con il carattere "_" per una lunghezza totale
-	 * del titolo cos� composto di length caratteri. Il titolo verr� centrato.
+	 * del titolo cosè composto di length caratteri. Il titolo verrè centrato.
 	 * Esempio: ______________________________________INFOMAZIONI GENERALI
 	 * 4______________________________________ Ogni stampa di elemento di lista
-	 * � preceduto dal valore prefixBeforeItem
+	 * è preceduto dal valore prefixBeforeItem
 	 * 
 	 * @param title
 	 * @param prefixBeforeItem
@@ -7869,10 +7856,10 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di bean K, e un valore limite limit, aggiunge alla lista
 	 * l'elemento k solo se tale operazione non fa superare il limite voluto di
-	 * limit elementi. Torna false se dopo aver aggiunto l'elemento � stato
+	 * limit elementi. Torna false se dopo aver aggiunto l'elemento è stato
 	 * raggiunto il limite desiderato, true altrimenti
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param limit
 	 * @param k
@@ -7896,10 +7883,10 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un Set di bean K, e un valore limite limit, aggiunge al Set
 	 * l'elemento k solo se tale operazione non fa superare il limite voluto di
-	 * limit elementi. Torna false se dopo aver aggiunto l'elemento � stato
+	 * limit elementi. Torna false se dopo aver aggiunto l'elemento è stato
 	 * raggiunto il limite desiderato, true altrimenti
 	 * 
-	 * @param <K>
+	 * 
 	 * @param l
 	 * @param limit
 	 * @param k
@@ -7941,12 +7928,12 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista aggiunge la lista a s� stessa per times volte
+	 * Data una lista aggiunge la lista a sè stessa per times volte
 	 * 
-	 * @param <T>
+	 * 
 	 * @param l
 	 * @param times
-	 * @return List<T>
+	 * @return List[T]
 	 */
 	public <T> List<T> selfExtendList(List<T> l, Integer times) {
 		List<T> somma = new ArrayList<T>();
@@ -8124,7 +8111,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Modifica la lunghezza dell'array arr al valore i
 	 * 
-	 * @param <K>
+	 * 
 	 * @param arr
 	 * @param i
 	 * @return K[]
@@ -8138,7 +8125,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Modifica la lunghezza dell'array aggiungendo i elementi vuoti
 	 * 
-	 * @param <K>
+	 * 
 	 * @param arr
 	 * @param i
 	 * @return K[]
@@ -8174,7 +8161,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [start,end] � completamente contenuto
+	 * Torna true se l'intervallo [start,end] è completamente contenuto
 	 * all'interno dell'intervallo [start1,end1]
 	 * 
 	 * @param start
@@ -8188,7 +8175,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [start,end] � completamente contenuto
+	 * Torna true se l'intervallo [start,end] è completamente contenuto
 	 * all'interno dell'intervallo [start1,end1]
 	 * 
 	 * @param start
@@ -8251,8 +8238,8 @@ public class Pilot implements Serializable {
 	 * Ritorna il primo elemento della lista che ha il valore massimo della
 	 * proprieta prop
 	 * 
-	 * @param <K>
-	 * @param <T>
+	 * 
+	 * 
 	 * @param lista
 	 * @param prop
 	 * @return K
@@ -8275,8 +8262,7 @@ public class Pilot implements Serializable {
 	 * Ritorna l'ultimo elemento della lista che ha il valore massimo della
 	 * proprieta prop
 	 * 
-	 * @param <K>
-	 * @param <T>
+	 * 
 	 * @param lista
 	 * @param prop
 	 * @return K
@@ -8298,8 +8284,6 @@ public class Pilot implements Serializable {
 	 * Ritorna il primo elemento della lista che ha il valore minimo della
 	 * proprieta prop
 	 * 
-	 * @param <K>
-	 * @param <T>
 	 * @param lista
 	 * @param prop
 	 * @return K
@@ -8322,8 +8306,6 @@ public class Pilot implements Serializable {
 	 * Ritorna l'ultimo elemento della lista che ha il valore minimo della
 	 * proprieta prop
 	 * 
-	 * @param <K>
-	 * @param <T>
 	 * @param lista
 	 * @param prop
 	 * @return K
@@ -8343,10 +8325,9 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna true se val appartiene all'intervallo [start,end] estremi compresi.
-	 * Se start � null torna true se val<=end. Se end � null torna true se
-	 * val>=start. Se val � null torna false;
+	 * Se start è null torna true se val&lt;=end. Se end è null torna true se
+	 * val&gt;=start. Se val è null torna false;
 	 * 
-	 * @param <K>
 	 * @param val
 	 * @param start
 	 * @param end
@@ -8366,10 +8347,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [val1,val2] � compreso all'interno
+	 * Torna true se l'intervallo [val1,val2] è compreso all'interno
 	 * dell'intervallo [start,end]
 	 * 
-	 * @param <K>
+	 * 
 	 * @param val1
 	 * @param val2
 	 * @param start
@@ -8381,9 +8362,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore uguale d1
+	 * Torna true se d è maggiore uguale d1
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
 	 * @param d1
 	 * @return boolean
@@ -8393,9 +8374,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore d1
+	 * Torna true se d è maggiore d1
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
 	 * @param d1
 	 * @return boolean
@@ -8405,9 +8386,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore uguale d1
+	 * Torna true se d è minore uguale d1
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
 	 * @param d1
 	 * @return boolean
@@ -8417,9 +8398,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore d1
+	 * Torna true se d è minore d1
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
 	 * @param d1
 	 * @return boolean
@@ -8569,9 +8550,9 @@ public class Pilot implements Serializable {
 	 * casualmente rispettando le restrizioni imposte attraverso gli attributi
 	 * dell'annotazione @Mock
 	 * 
-	 * @param <K>
+	 * 
 	 * @param c
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> mockList(Class<K> c) throws Exception {
@@ -8584,10 +8565,10 @@ public class Pilot implements Serializable {
 	 * prelevati dal file indicato nell'annotazione e vengono bypassati i valori
 	 * generati casualmente con le relative restrizioni impostate nella classe
 	 * 
-	 * @param <K>
+	 * 
 	 * @param c
 	 * @param n
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> mockList(Class<K> c, Integer n) throws Exception {
@@ -9764,7 +9745,7 @@ public class Pilot implements Serializable {
 	 * generati casualmente con le relative restrizioni impostate nella
 	 * annotazione @Mock
 	 * 
-	 * @param <K>
+	 * 
 	 * @param c
 	 * @return K
 	 * @throws Exception
@@ -10402,7 +10383,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 10%
+	 * Torna true con una probabilitè del 10%
 	 * 
 	 * @return boolean
 	 */
@@ -10411,7 +10392,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 5%
+	 * Torna true con una probabilitè del 5%
 	 * 
 	 * @return boolean
 	 */
@@ -10420,7 +10401,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 20%
+	 * Torna true con una probabilitè del 20%
 	 * 
 	 * @return boolean
 	 */
@@ -10429,7 +10410,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 30%
+	 * Torna true con una probabilitè del 30%
 	 * 
 	 * @return boolean
 	 */
@@ -10438,7 +10419,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 40%
+	 * Torna true con una probabilitè del 40%
 	 * 
 	 * @return boolean
 	 */
@@ -10447,7 +10428,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 50%
+	 * Torna true con una probabilitè del 50%
 	 * 
 	 * @return boolean
 	 */
@@ -10456,7 +10437,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 60%
+	 * Torna true con una probabilitè del 60%
 	 * 
 	 * @return boolean
 	 */
@@ -10465,7 +10446,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 70%
+	 * Torna true con una probabilitè del 70%
 	 * 
 	 * @return boolean
 	 */
@@ -10474,7 +10455,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 80%
+	 * Torna true con una probabilitè del 80%
 	 * 
 	 * @return boolean
 	 */
@@ -10483,7 +10464,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 90%
+	 * Torna true con una probabilitè del 90%
 	 * 
 	 * @return boolean
 	 */
@@ -10514,13 +10495,13 @@ public class Pilot implements Serializable {
 	 * fields, variabili istanza di quell'oggetto, restituendo un oggetto dello
 	 * stesso tipo con valorizzate le sole variabili istanza indicate fields
 	 * attribuendo loro gli stessi valori dell'oggetto in input k di cui si
-	 * vuole eseguire il masking. Se fields elenco dei campi mask � NULL, allora
+	 * vuole eseguire il masking. Se fields elenco dei campi mask è NULL, allora
 	 * esegue il masking su tutti i campi dell'oggetto restituendo in pratica un
 	 * altro oggetto con tutti i campi variabili istanza impostati agli stessi
 	 * valori dell'oggetto k di input, in pratica fa una copia campo campo
 	 * dell'oggetto passato in input
 	 * 
-	 * @param <K>
+	 * 
 	 * @param k
 	 * @param fields
 	 * @return K
@@ -10560,10 +10541,10 @@ public class Pilot implements Serializable {
 	 * Data una lista di oggetti di tipo K torna una nuova lista di oggetti
 	 * dello stesso tipo masked secondo i campi indicati
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
 	 * @param campi
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	public <K> PList<K> maskList(PList<K> lista, String... campi) throws Exception {
@@ -10634,15 +10615,15 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Esegue una iterazione anno-mese a partire dalla data d1 e fino alla data
-	 * d2. Le date devono essere non nulle, valide e ordinate con d1<=d2;
+	 * d2. Le date devono essere non nulle, valide e ordinate con d1&lt;=d2;
 	 * Ritorna una lista di interi dove ogni elemento rappresenta il mese a
-	 * partire da Gennaio-->1 fino a Dicembre-->12. Esempio le date
+	 * partire da Gennaio 1 fino a Dicembre 12. Esempio le date
 	 * [09/04/2022,10/12/2023] producono in output
 	 * 4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12
 	 * 
 	 * @param d1
 	 * @param d2
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> iterateOverDates(Date d1, Date d2) {
 		PList<Integer> mesi = pl();
@@ -10686,11 +10667,11 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Trasforma una oggetto PList<K> in un classico ArrayList<K> java standard
+	 * Trasforma una oggetto PList[K] in un classico ArrayList[K] java standard
 	 * 
-	 * @param <K>
+	 * 
 	 * @param lista
-	 * @return List<K>
+	 * @return List[K]
 	 */
 	public <K> List<K> toArrayList(PList<K> lista) {
 		List<K> l = new ArrayList<K>();
@@ -10739,7 +10720,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Esegue la deepCopy dell'oggetto K serializzabile
 	 * 
-	 * @param <K>
+	 * 
 	 * @param o
 	 * @return K
 	 */
@@ -10755,7 +10736,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Alias di copyObj
 	 * 
-	 * @param <K>
+	 * 
 	 * @param o
 	 * @return K
 	 */
@@ -10803,7 +10784,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna il valore Integer della key all'interno del file di properties
 	 * specificato precedentemente tramite il metodo setPropertyFile. Se la
-	 * chiave non � mappata o non ha specificato alcun valore, ritorna il
+	 * chiave non è mappata o non ha specificato alcun valore, ritorna il
 	 * defaultValue
 	 * 
 	 * @param key
@@ -10816,7 +10797,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna il valore Long della key all'interno del file di properties
 	 * specificato precedentemente tramite il metodo setPropertyFile. Se la
-	 * chiave non � mappata o non ha specificato alcun valore, ritorna il
+	 * chiave non è mappata o non ha specificato alcun valore, ritorna il
 	 * defaultValue
 	 * 
 	 * @param key
@@ -10850,7 +10831,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se la stringa s � uno tra i valori 1,"true","S","SI","Y",
+	 * Ritorna true se la stringa s è uno tra i valori 1,"true","S","SI","Y",
 	 * false altrimenti
 	 * 
 	 * @param s
@@ -10861,7 +10842,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se il valore corrispondente alla chiave key � uno tra i
+	 * Ritorna true se il valore corrispondente alla chiave key è uno tra i
 	 * valori 1,"true","S","SI","Y", false altrimenti. Il file di properties
 	 * deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
@@ -10874,8 +10855,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se il valore corrispondente alla chiave key � uno tra i
-	 * valori 1,"true","S","SI","Y", false altrimenti. Se il valore � null
+	 * Ritorna true se il valore corrispondente alla chiave key è uno tra i
+	 * valori 1,"true","S","SI","Y", false altrimenti. Se il valore è null
 	 * ritorna il defaultValue booleano. Il file di properties deve essere
 	 * precedentemente impostato attraverso il metodo setPropertyFile.
 	 * 
@@ -10888,104 +10869,104 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna una PList<String> contenente i valori corrispondenti alla chiave
+	 * Ritorna una PList[String] contenente i valori corrispondenti alla chiave
 	 * key quando questi sono separati da ",". Il file di properties deve essere
 	 * precedentemente impostato attraverso il metodo setPropertyFile.
 	 * 
 	 * @param key
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key) {
 		return toListString(getKey(key), COMMA);
 	}
 
 	/**
-	 * Ritorna una PList<String> contenente i valori corrispondenti alla chiave
+	 * Ritorna una PList[String] contenente i valori corrispondenti alla chiave
 	 * key quando questi sono separati dal carattere separator. Il file di
 	 * properties deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
 	 * 
 	 * @param key
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key, String separator) {
 		return toListString(getKey(key), separator);
 	}
 
 	/**
-	 * Ritorna una PList<Integer> contenente i valori Integer corrispondenti
+	 * Ritorna una PList[Integer] contenente i valori Integer corrispondenti
 	 * alla chiave key quando questi sono separati da ",". Il file di properties
 	 * deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
 	 * 
 	 * @param key
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key) {
 		return toListInteger(getKey(key), COMMA);
 	}
 
 	/**
-	 * Ritorna una PList<Integer> contenente i valori Integer corrispondenti
+	 * Ritorna una PList[Integer] contenente i valori Integer corrispondenti
 	 * alla chiave key quando questi sono separati dal carattere separator. Il
 	 * file di properties deve essere precedentemente impostato attraverso il
 	 * metodo setPropertyFile.
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key, String separator) {
 		return toListInteger(getKey(key), separator);
 	}
 
 	/**
-	 * Ritorna una PList<Long> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Long] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati da ",". Il file di properties deve
 	 * essere precedentemente impostato attraverso il metodo setPropertyFile.
 	 * 
 	 * @param key
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key) {
 		return toListLong(getKey(key), COMMA);
 	}
 
 	/**
-	 * Ritorna una PList<Long> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Long] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati dal carattere separator. Il file
 	 * di properties deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key, String separator) {
 		return toListLong(getKey(key), separator);
 	}
 
 	/**
-	 * Ritorna una PList<Double> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Double] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati da ",". Il file di properties deve
 	 * essere precedentemente impostato attraverso il metodo setPropertyFile.
 	 * 
 	 * @param key
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key) {
 		return toListDouble(getKey(key), COMMA);
 	}
 
 	/**
-	 * Ritorna una PList<Double> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Double] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati dal carattere separator. Il file
 	 * di properties deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key, String separator) {
 		return toListDouble(getKey(key), separator);
@@ -11011,7 +10992,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna la stringa "0"+num se num � compreso tra [0,9]. Altrimenti
+	 * Ritorna la stringa "0"+num se num è compreso tra [0,9]. Altrimenti
 	 * ritorna num in formato stringa
 	 * 
 	 * @param num
@@ -11182,7 +11163,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Al TimeCount identificato da timeCounter, aggiunge il tempo trascorso tra
 	 * startDate e now ed esegue la stampa di log dell'intertempo aggiunto al
-	 * totale. Prefix � una stringa descrittiva di libera scelta.
+	 * totale. Prefix è una stringa descrittiva di libera scelta.
 	 * 
 	 * @param prefix
 	 * @param timeCounter
@@ -11213,8 +11194,8 @@ public class Pilot implements Serializable {
 	 * Ritorna la stampa del titolo title al centro di una cornice fatta dalla
 	 * ripetizione del carattere car per length volte. TabIndent indica il
 	 * margine da usare per la stampa delle stringhe di container all'interno
-	 * della cornice. Length � la lunghezza della cornice. Container � la lista
-	 * elenco che contiene il contenuto che verr� stampato all'interno della
+	 * della cornice. Length è la lunghezza della cornice. Container è la lista
+	 * elenco che contiene il contenuto che verrè stampato all'interno della
 	 * cornice.
 	 * 
 	 * 
@@ -11258,8 +11239,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna una stringa incorniciata con il carattere "*". Title � il titolo
-	 * centrato nel lato superiore della cornice. Container � l'elenco delle
+	 * Ritorna una stringa incorniciata con il carattere "*". Title è il titolo
+	 * centrato nel lato superiore della cornice. Container è l'elenco delle
 	 * stringhe da stampare all'interno. Ogni stringa viene stampata con margine
 	 * di 2 tabulazione a sinistra
 	 * 
@@ -11297,10 +11278,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Esegue in modalit� asincrona il codice inserito dentro il metodo execute
+	 * Esegue in modalitè asincrona il codice inserito dentro il metodo execute
 	 * dell'oggetto o che implementa l'interfaccia Execution
 	 * 
-	 * @param <K>
 	 * @param o
 	 * @return Future
 	 */
@@ -11316,7 +11296,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Dato un valore numerico di byte, ritorna la rappresentazione pi� adatta
+	 * Dato un valore numerico di byte, ritorna la rappresentazione piè adatta
 	 * corrispondente in Tb,Gb,Mb,Kb,B
 	 * 
 	 * @param value
@@ -11386,7 +11366,6 @@ public class Pilot implements Serializable {
 	/**
 	 * Trova il massimo tra i valori vals passati
 	 * 
-	 * @param <K>
 	 * @param vals
 	 * @return K
 	 */
@@ -11406,7 +11385,6 @@ public class Pilot implements Serializable {
 	/**
 	 * Trova il minimo tra i valori vals passati
 	 * 
-	 * @param <K>
 	 * @param vals
 	 * @return K
 	 */
@@ -11424,14 +11402,14 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una stringa, ritorna una PList di oggetti KeyValue<String,String>
-	 * dove key � il nome del parametro i-esimo della query string (tutto quello
-	 * dopo ?) e value � il corrispondente valore. Esempio: stringa del tipo:
-	 * stringaconqueryString?par=value&par1=value1&par2=value2 la querystring �
-	 * tutto ci� che si trova a destra del primo ?
+	 * Data una stringa, ritorna una PList di oggetti KeyValue[String,String]
+	 * dove key è il nome del parametro i-esimo della query string (tutto quello
+	 * dopo ?) e value è il corrispondente valore. Esempio: stringa del tipo:
+	 * stringaconqueryString?par=value&amp;par1=value1&amp;par2=value2 la
+	 * querystring è tutto ciò che si trova a destra del primo ?
 	 * 
 	 * @param s
-	 * @return PList<KeyValue<String, String>>
+	 * @return PList[KeyValue[String, String]]
 	 */
 	public PList<KeyValue<String, String>> getQueryString(String s) {
 		PList<KeyValue<String, String>> params = pl();
@@ -11456,7 +11434,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param input
 	 * @param delimiter
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	public PList<String> split(String input, String delimiter) {
 		PList<String> result = plstr();

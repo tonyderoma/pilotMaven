@@ -12,7 +12,6 @@ import java.util.Map;
  * 
  * @author Antonio Corinaldi
  * 
- * @param <E>
  */
 public interface PList<E> extends List<E> {
 
@@ -20,10 +19,10 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge una condizione di filtro che la proprietà campo del bean
 	 * elemento della lista abbia valore val.
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> eq(String campo, T val);
 
@@ -32,7 +31,7 @@ public interface PList<E> extends List<E> {
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> eq(T val);
 
@@ -40,7 +39,7 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge la condizione che l'attributo campo di tipo boolean sia true
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> trueValue(String campo);
 
@@ -48,7 +47,7 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge la condizione che l'attributo campo di tipo boolean sia false
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> falseValue(String campo);
 
@@ -56,7 +55,7 @@ public interface PList<E> extends List<E> {
 	 * Metodo alias di falseValue
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isFalse(String campo);
 
@@ -64,7 +63,7 @@ public interface PList<E> extends List<E> {
 	 * Metodo alias di trueValue
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isTrue(String campo);
 
@@ -75,7 +74,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 
 	<T> PList<E> in(String campo, List<T> val);
@@ -85,7 +84,7 @@ public interface PList<E> extends List<E> {
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> in(List<T> val);
 
@@ -94,7 +93,7 @@ public interface PList<E> extends List<E> {
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> in(T... val);
 
@@ -105,7 +104,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> inVals(String campo, T... val);
 
@@ -116,7 +115,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notIn(String campo, List<T> val);
 
@@ -125,7 +124,7 @@ public interface PList<E> extends List<E> {
 	 * Java (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notIn(List<T> val);
 
@@ -133,9 +132,9 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge una condizione di filtro di insieme NOT IN per liste di tipi
 	 * Java (Integer,String,.....)
 	 * 
-	 * @param <T>
+	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notIn(T... val);
 
@@ -143,10 +142,10 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge una condizione di filtro di insieme NOT IN per liste di tipi
 	 * custom
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notInVals(String campo, T... val);
 
@@ -159,7 +158,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 
 	<T> PList<E> likeValues(String campo, T... vals);
@@ -171,7 +170,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notLikeValues(String campo, T... vals);
 
@@ -180,7 +179,7 @@ public interface PList<E> extends List<E> {
 	 * (Integer,String,.....)
 	 * 
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> like(T... vals);
 
@@ -189,7 +188,7 @@ public interface PList<E> extends List<E> {
 	 * (Integer,String,.....)
 	 * 
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> notLike(T... vals);
 
@@ -199,16 +198,16 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> neqVals(String campo, T... vals);
 
 	/**
-	 * Aggiunge una condizione di filtro <> (not equal) per liste di tipi Java
-	 * (Integer,String,.....)
+	 * Aggiunge una condizione di filtro &lt;&gt; (not equal) per liste di tipi
+	 * Java (Integer,String,.....)
 	 * 
 	 * @param vals
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> neq(T... vals);
 
@@ -219,7 +218,7 @@ public interface PList<E> extends List<E> {
 	 * @param campo
 	 * @param val1
 	 * @param val2
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> between(String campo, T val1, T val2);
 
@@ -229,7 +228,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param val1
 	 * @param val2
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> between(T val1, T val2);
 
@@ -239,7 +238,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> gt(String campo, T val);
 
@@ -249,7 +248,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> gte(String campo, T val);
 
@@ -259,7 +258,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> lt(String campo, T val);
 
@@ -269,43 +268,43 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> lte(String campo, T val);
 
 	/**
-	 * Aggiunge una condizione di filtro > per liste di tipi Java
+	 * Aggiunge una condizione di filtro &gt; per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> gt(T val);
 
 	/**
-	 * Aggiunge una condizione di filtro >= per liste di tipi Java
+	 * Aggiunge una condizione di filtro &gt;= per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> gte(T val);
 
 	/**
-	 * Aggiunge una condizione di filtro < per liste di tipi Java
+	 * Aggiunge una condizione di filtro &lt; per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> lt(T val);
 
 	/**
-	 * Aggiunge una condizione di filtro <= per liste di tipi Java
+	 * Aggiunge una condizione di filtro &lt;= per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	<T> PList<E> lte(T val);
 
@@ -315,7 +314,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isNull(String campo);
 
@@ -325,7 +324,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isNotNull(String campo);
 
@@ -334,7 +333,7 @@ public interface PList<E> extends List<E> {
 	 * impostate e torna una nuova lista contenente i soli elementi che
 	 * soddisfano le condizioni di filtro impostate
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> find() throws Exception;
@@ -369,8 +368,8 @@ public interface PList<E> extends List<E> {
 	 * alla variabile istanza props
 	 * 
 	 * @param props
-	 * @param <T>
-	 * @return PList<T>
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T> PList<T> narrow(String props) throws Exception;
@@ -380,8 +379,8 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza props
 	 * 
 	 * @param props
-	 * @param <T>
-	 * @return PList<T>s
+	 * 
+	 * @return PList[T]s
 	 * @throws Exception
 	 */
 	<T> PList<T> narrowDistinct(String props) throws Exception;
@@ -390,7 +389,7 @@ public interface PList<E> extends List<E> {
 	 * Elimina dalla PList tutti gli oggetti che estendono l'interfaccia
 	 * Validator e che non soddisfano il metodo validate()
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> cleanByValidator();
 
@@ -402,156 +401,156 @@ public interface PList<E> extends List<E> {
 	boolean addElement(E k);
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<=d<=columnEndDate
+	 * Esegue un filtro del tipo columnStartDate&lt;=d&lt;=columnEndDate
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * columnEndDate è la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> betweenStartAndEndDate(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<=sysdate<=columnEndDate
+	 * Esegue un filtro del tipo columnStartDate&lt;=sysdate&lt;=columnEndDate
 	 * 
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * columnEndDate è la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> betweenNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<d
+	 * Esegue un filtro del tipo columnStartDate&lt;d
 	 * 
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startBefore(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<sysdate
+	 * Esegue un filtro del tipo columnStartDate&lt;sysdate
 	 * 
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startBeforeNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<=sysdate
+	 * Esegue un filtro del tipo columnStartDate&lt;=sysdate
 	 * 
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startBeforeEqualNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate>d
+	 * Esegue un filtro del tipo columnStartDate&gt; d
 	 * 
 	 * columnStartDate è la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startAfter(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate>sysdate
+	 * Esegue un filtro del tipo columnStartDate&gt; sysdate
 	 * 
 	 * columnStartDate � la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startAfterNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate>=sysdate
+	 * Esegue un filtro del tipo columnStartDate&gt;=sysdate
 	 * 
 	 * columnStartDate � la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startAfterEqualNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate<d
+	 * Esegue un filtro del tipo columnEndDate&lt;d
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endBefore(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate<sysdate
+	 * Esegue un filtro del tipo columnEndDate&lt;sysdate
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endBeforeNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate<=sysdate
+	 * Esegue un filtro del tipo columnEndDate&lt;=sysdate
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endBeforeEqualNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate>d
+	 * Esegue un filtro del tipo columnEndDate&gt; d
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endAfter(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate>sysdate
+	 * Esegue un filtro del tipo columnEndDate&gt; sysdate
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endAfterNow() throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate>=sysdate
+	 * Esegue un filtro del tipo columnEndDate&gt;=sysdate
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 
@@ -560,9 +559,9 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro sulla colonna *COD_UTENTE=user
 	 * 
-	 * @param <K>
+	 * 
 	 * @param user
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> byUser(String user) throws Exception;
@@ -570,19 +569,19 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro sulla colonna *COD_APPL=app
 	 * 
-	 * @param <K>
+	 * 
 	 * @param app
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> byApp(String app) throws Exception;
 
 	/**
-	 * Esegue un filtro che dataAggiornamento>=d
+	 * Esegue un filtro che dataAggiornamento&gt;=d
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> modifiedSince(Date d) throws Exception;
@@ -590,100 +589,100 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro che dataAggiornamento in [start,end]
 	 * 
-	 * @param <K>
+	 * 
 	 * @param start
 	 * @param end
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> modifiedBetween(Date start, Date end) throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-1 anno, ossia filtra i
-	 * soli record aggiornati nell'ultimo anno
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-1 anno, ossia filtra
+	 * i soli record aggiornati nell'ultimo anno
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> lastYear() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-1 mese, ossia filtra i
-	 * soli record aggiornati nell'ultimo mese
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-1 mese, ossia filtra
+	 * i soli record aggiornati nell'ultimo mese
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> lastMonth() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-1 settimana, ossia
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-1 settimana, ossia
 	 * filtra i soli record aggiornati nell'ultima settimana
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> lastWeek() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-1 giorno, ossia filtra i
-	 * soli record aggiornati nell'ultimo giorno
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-1 giorno, ossia
+	 * filtra i soli record aggiornati nell'ultimo giorno
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> lastDay() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-1 ora, ossia filtra i
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-1 ora, ossia filtra i
 	 * soli record aggiornati nell'ultima ora
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> lastHour() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-30 minuti, ossia filtra
-	 * i soli record aggiornati nell'ultima mezz'ora
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-30 minuti, ossia
+	 * filtra i soli record aggiornati nell'ultima mezz'ora
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> last30Minutes() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-15 minuti, ossia filtra
-	 * i soli record aggiornati nell'ultimo quarto d'ora
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-15 minuti, ossia
+	 * filtra i soli record aggiornati nell'ultimo quarto d'ora
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> last15Minutes() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-10 minuti, ossia filtra
-	 * i soli record aggiornati negli ultimi 10 minuti
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-10 minuti, ossia
+	 * filtra i soli record aggiornati negli ultimi 10 minuti
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> last10Minutes() throws Exception;
 
 	/**
-	 * Esegue un filtro su dataAggiornamento >= sysdate-5 minuti, ossia filtra i
-	 * soli record aggiornati negli ultimi 5 minuti
+	 * Esegue un filtro su dataAggiornamento &gt;= sysdate-5 minuti, ossia
+	 * filtra i soli record aggiornati negli ultimi 5 minuti
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> last5Minutes() throws Exception;
@@ -694,9 +693,9 @@ public interface PList<E> extends List<E> {
 	 * è il valore della proprieta e valore è una lista di bean K la cui
 	 * proprieta campo ha quel valore.
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
-	 * @return Map<T, PList<E>>
+	 * @return Map[T, PList[E}]
 	 * @throws Exception
 	 */
 	<T> PMap<T, PList<E>> groupBy(String campo) throws Exception;
@@ -708,9 +707,9 @@ public interface PList<E> extends List<E> {
 	 * proprieta campo ha quel valore. La lista di ogni key viene poi tagliata
 	 * ai primi n elementi.
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
-	 * @return Map<T, PList<E>>
+	 * @return Map[T, PList[E]]
 	 * @throws Exception
 	 */
 	<T> PMap<T, PList<E>> groupBy(String campo, int n) throws Exception;
@@ -718,7 +717,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue l'ordinamento della lista in base al metodo equals
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> sort();
 
@@ -727,7 +726,7 @@ public interface PList<E> extends List<E> {
 	 * ascendente
 	 * 
 	 * @param campi
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> sort(String... campi);
 
@@ -748,7 +747,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Inverte l'ordine della lista
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> inverti();
 
@@ -756,7 +755,7 @@ public interface PList<E> extends List<E> {
 	 * Data una lista torna una nuova lista da cui ha eliminato gli elementi
 	 * duplicati secondo il metodo equals
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> removeDuplicates();
 
@@ -765,7 +764,7 @@ public interface PList<E> extends List<E> {
 	 * discendente
 	 * 
 	 * @param campi
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> sortDesc(String... campi);
 
@@ -773,7 +772,7 @@ public interface PList<E> extends List<E> {
 	 * Esegue un ordinamento della list in ordine discendente secondo il metodo
 	 * equals
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> sortDesc();
 
@@ -782,7 +781,7 @@ public interface PList<E> extends List<E> {
 	 * la lista risultato
 	 * 
 	 * @param l
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> aggiungiList(PList<E>... l);
 
@@ -791,7 +790,7 @@ public interface PList<E> extends List<E> {
 	 * non presenti nelle altre liste in base al metodo equals
 	 * 
 	 * @param liste
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> sottraiList(PList<E>... liste);
 
@@ -800,7 +799,7 @@ public interface PList<E> extends List<E> {
 	 * n liste in base al metodo equals
 	 * 
 	 * @param liste
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> intersection(PList<E>... liste);
 
@@ -816,15 +815,15 @@ public interface PList<E> extends List<E> {
 	 * ogni lista ha al massimo pageSize elementi
 	 * 
 	 * @param pageSize
-	 * @return PList<PList<E>>
+	 * @return PList[PList[E]]
 	 */
 	PList<PList<E>> listPagination(Integer pageSize);
 
 	/**
-	 * Data una PList aggiunge la PList a s� stessa per times volte
+	 * Data una PList aggiunge la PList a sè stessa per times volte
 	 * 
 	 * @param times
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> selfExtend(Integer times);
 
@@ -832,7 +831,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna una nuova lista contenente solo i primi n elementi
 	 * 
 	 * @param n
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> cutToFirst(Integer n);
 
@@ -840,7 +839,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna una nuova lista contenente solo gli ultimi n elementi
 	 * 
 	 * @param n
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> cutToLast(Integer n);
 
@@ -848,9 +847,9 @@ public interface PList<E> extends List<E> {
 	 * Ritorna una nuova PList di elementi distinti di tipo T dove T � il tipo
 	 * della proprieta campo
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
-	 * @return PList<T>
+	 * @return PList[T]
 	 */
 	<T> PList<T> distinct(String campo);
 
@@ -858,7 +857,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna la sommatoria dei valori della proprietà campo (di tipo numerico)
 	 * di tutti gli elementi della PList
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
 	 * @param c
 	 * @return T
@@ -870,7 +869,7 @@ public interface PList<E> extends List<E> {
 	 * Data una lista di tipi java calcolo la sommatoria dei valori di tutti gli
 	 * elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param c
 	 * @return T
 	 * @throws Exception
@@ -911,7 +910,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna true se la proprieta prop dei bean della lista ha il valore value
 	 * per tutti gli elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param prop
 	 * @param value
 	 * @return boolean
@@ -1014,7 +1013,7 @@ public interface PList<E> extends List<E> {
 	 * campi indicati,di tutti gli elementi della lista originaria
 	 * 
 	 * @param campi
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> mask(String... campi) throws Exception;
@@ -1022,15 +1021,12 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue la conversione di una lista di elementi di tipo K extends
 	 * BaseEntity in una nuova lista di elementi di tipo T seguendo la logica di
-	 * conversione del metodo convert(Class<K> c, PList<T> entities) di
+	 * conversione del metodo convert(Class[K] c, PList[T] entities) di
 	 * BaseDaoEntity
 	 * 
 	 * 
-	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param typeToConvert
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> convert(Class<T> typeToConvert) throws Exception;
@@ -1040,7 +1036,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param valueToUpdate
 	 * @param newValue
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> aggiornaListValue(E valueToUpdate, E newValue) throws Exception;
@@ -1058,7 +1054,7 @@ public interface PList<E> extends List<E> {
 	 * Data una lista di bean, torna il numero di bean della lista che hanno la
 	 * proprieta prop valorizzata con val
 	 * 
-	 * @param <T>
+	 * 
 	 * @param prop
 	 * @param val
 	 * @return int
@@ -1067,16 +1063,16 @@ public interface PList<E> extends List<E> {
 	<T> int countInList(String prop, T val) throws Exception;
 
 	/**
-	 * Ritorna un List<E> a partire da PList<E> in modo da ritornare alle lista
+	 * Ritorna un List[E] a partire da PList[E] in modo da ritornare alle lista
 	 * java standard
 	 * 
-	 * @return List<E>
+	 * @return List[E]
 	 */
 	List<E> toArrayList();
 
 	/**
 	 * Serve a recuperare i valori distinti multicampo tramite campi... indicati
-	 * come parametro. Ritorna una PList<String> dove ogni elemento � nel
+	 * come parametro. Ritorna una PList[String] dove ogni elemento � nel
 	 * formato [nomeCampo]=[valoreCampo
 	 * ]|[nomeCampo_1]=[valoreCampo_1]|...|[nomeCampo_n]=[valoreCampo_n]
 	 * 
@@ -1085,7 +1081,7 @@ public interface PList<E> extends List<E> {
 	 * select distinct sql
 	 * 
 	 * @param campi
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	PList<String> distinctMulti(String... campi);
 
@@ -1093,7 +1089,7 @@ public interface PList<E> extends List<E> {
 	 * Data una lista di bean calcolo la media aritmetica dei valori della
 	 * proprietà campo (di tipo numerico) di tutti gli elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param campo
 	 * @param c
 	 * @return T
@@ -1105,7 +1101,7 @@ public interface PList<E> extends List<E> {
 	 * Data una lista di tipi java calcolo la media aritmetica(di tipo numerico)
 	 * di tutti gli elementi della lista
 	 * 
-	 * @param <T>
+	 * 
 	 * @param c
 	 * @return T
 	 * @throws Exception
@@ -1116,14 +1112,14 @@ public interface PList<E> extends List<E> {
 	 * Salta i primi n elementi ritorna la lista senza i primi n elementi
 	 * 
 	 * @param n
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> skip(Integer n);
 
 	/**
 	 * Ritorna la lista saltando il primo elemento rimuovendolo
 	 * 
-	 * @return PList<EK>
+	 * @return PList[E]
 	 */
 	PList<E> skipFirst();
 
@@ -1158,7 +1154,7 @@ public interface PList<E> extends List<E> {
 	 * Torna true se la lista non ha alcun elemento con valore value della
 	 * proprieta prop
 	 * 
-	 * @param <T>
+	 * 
 	 * @param prop
 	 * @param value
 	 * @return boolean
@@ -1170,7 +1166,7 @@ public interface PList<E> extends List<E> {
 	 * Torna true se la lista ha tutti gli elementi con valore value della
 	 * proprieta prop
 	 * 
-	 * @param <T>
+	 * 
 	 * @param prop
 	 * @param value
 	 * @return boolean
@@ -1182,7 +1178,7 @@ public interface PList<E> extends List<E> {
 	 * Torna true se la lista ha almeno un elemento con valore value della
 	 * proprieta prop
 	 * 
-	 * @param <T>
+	 * 
 	 * @param prop
 	 * @param value
 	 * @return boolean
@@ -1191,46 +1187,46 @@ public interface PList<E> extends List<E> {
 	<T> boolean anyMatch(String prop, T value) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate>=d
+	 * Esegue un filtro del tipo columnEndDate&gt;=d
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endAfterEqual(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate>=d
+	 * Esegue un filtro del tipo columnStartDate&gt;=d
 	 * 
 	 * columnStartDate � la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startAfterEqual(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnEndDate<=d
+	 * Esegue un filtro del tipo columnEndDate&lt;=d
 	 * 
 	 * columnEndDate � la variabile istanza che ha @Column( endDate=true)
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> endBeforeEqual(Date d) throws Exception;
 
 	/**
-	 * Esegue un filtro del tipo columnStartDate<=d
+	 * Esegue un filtro del tipo columnStartDate&lt;=d
 	 * 
 	 * columnStartDate � la variabile istanza che ha @Column( startDate=true)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param d
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<K extends BaseEntity> PList<K> startBeforeEqual(Date d) throws Exception;
@@ -1242,7 +1238,7 @@ public interface PList<E> extends List<E> {
 	 * di elementi che non soddisfano la condizione di test del metodo accessor
 	 * 
 	 * @param campo
-	 * @return Map<Boolean, PList<E>>
+	 * @return Map[Boolean, PList[E]]
 	 */
 	Map<Boolean, PList<E>> splitBy(String campo) throws Exception;
 
@@ -1250,14 +1246,14 @@ public interface PList<E> extends List<E> {
 	 * Elimina gli ultimi n elementi dalla lista
 	 * 
 	 * @param n
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> drop(Integer n);
 
 	/**
 	 * Elimina l'ultimo elemento della lista
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> dropLast();
 
@@ -1265,7 +1261,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna la lista da cui ha rimosso gli elementi uguali a value
 	 * 
 	 * @param value
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanList(E value) throws Exception;
@@ -1275,7 +1271,7 @@ public interface PList<E> extends List<E> {
 	 * value
 	 * 
 	 * @param value
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanList(E... value) throws Exception;
@@ -1286,7 +1282,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param prop
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListBean(String prop, Object val) throws Exception;
@@ -1297,7 +1293,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param props
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListBean(String[] props, Object[] val) throws Exception;
@@ -1306,7 +1302,7 @@ public interface PList<E> extends List<E> {
 	 * Ritorna la lista da cui ha rimosso gli elementi che sono like value
 	 * 
 	 * @param value
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListLike(E value) throws Exception;
@@ -1316,7 +1312,7 @@ public interface PList<E> extends List<E> {
 	 * multipli value
 	 * 
 	 * @param value
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListLike(E... value) throws Exception;
@@ -1327,7 +1323,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param prop
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListBeanLike(String prop, E val) throws Exception;
@@ -1338,7 +1334,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param props
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListBeanLike(String[] props, E[] val) throws Exception;
@@ -1349,7 +1345,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param prop
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListBeanNotEqual(String prop, Object val) throws Exception;
@@ -1360,7 +1356,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param props
 	 * @param val
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 
@@ -1371,7 +1367,7 @@ public interface PList<E> extends List<E> {
 	 * value
 	 * 
 	 * @param value
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> cleanListNotEqual(E value) throws Exception;
@@ -1383,7 +1379,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param name
 	 * @param args
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> forEach(String name, Object... args);
 
@@ -1392,11 +1388,11 @@ public interface PList<E> extends List<E> {
 	 * del bean K della lista che � annotato con @Mapping e il cui attributo
 	 * name � identificato dal parametro name
 	 * 
-	 * @param <T>
+	 * 
 	 * @param name
 	 * @param args
 	 * @param tipo
-	 * @return PList<T>
+	 * @return PList[T]
 	 */
 	<T> PList<T> map(String name, Class<T> tipo, Object... args);
 
@@ -1405,10 +1401,10 @@ public interface PList<E> extends List<E> {
 	 * del bean K della lista che � annotato con @Mapping e il cui attributo
 	 * name � identificato dal parametro name
 	 * 
-	 * @param <T>
+	 * 
 	 * @param name
 	 * @param args
-	 * @return PList<T>
+	 * @return PList[T]
 	 */
 	<T> PList<T> map(String name, Object... args);
 
@@ -1424,7 +1420,7 @@ public interface PList<E> extends List<E> {
 	 * booleana indicata dal metodo accessor is[campo] del bean E
 	 * 
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> removeIf(String campo) throws Exception;
@@ -1437,7 +1433,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param campo
 	 * @param e
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> addElementIf(E e, String campo) throws Exception;
@@ -1448,7 +1444,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param e
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> addIf(E e, String campo) throws Exception;
@@ -1459,7 +1455,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param lista
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> addAllIf(PList<E> lista, String campo) throws Exception;
@@ -1469,7 +1465,7 @@ public interface PList<E> extends List<E> {
 	 * 
 	 * @param lista
 	 * @param campo
-	 * @return PList<E>
+	 * @return PList[E]
 	 * @throws Exception
 	 */
 	PList<E> aggiungiListaIf(PList<E> lista, String campo) throws Exception;
@@ -1478,7 +1474,7 @@ public interface PList<E> extends List<E> {
 	 * Esegue la groupBy multi campo sulla lista
 	 * 
 	 * @param fields
-	 * @return Map<PList<Object>, PList<E>>
+	 * @return Map[PList[Object], PList[E]]
 	 */
 	Map<PList<Object>, PList<E>> groupByFields(String... fields);
 
@@ -1513,9 +1509,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cassa=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowCassa() throws Exception;
@@ -1525,9 +1521,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(progr=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowProgr() throws Exception;
@@ -1537,9 +1533,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(ente=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowEnte() throws Exception;
@@ -1549,9 +1545,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(sede=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowSede() throws Exception;
@@ -1562,9 +1558,9 @@ public interface PList<E> extends List<E> {
 	 * Column(fascicolo=true)
 	 * 
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowFascicolo() throws Exception;
@@ -1574,9 +1570,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(tipo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowTipo() throws Exception;
@@ -1586,9 +1582,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(codice=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowCodice() throws Exception;
@@ -1598,9 +1594,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(stato=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowStato() throws Exception;
@@ -1610,9 +1606,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(stato1=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowStato1() throws Exception;
@@ -1622,9 +1618,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(descr=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDescrizione() throws Exception;
@@ -1634,9 +1630,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(startDate=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowStartDate() throws Exception;
@@ -1646,9 +1642,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(endDate=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowEndDate() throws Exception;
@@ -1658,9 +1654,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(iscritto=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowIscritto() throws Exception;
@@ -1670,9 +1666,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cassa=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctCassa() throws Exception;
@@ -1682,9 +1678,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(progr=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctProgr() throws Exception;
@@ -1694,9 +1690,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(ente=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctEnte() throws Exception;
@@ -1706,9 +1702,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(sede=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctSede() throws Exception;
@@ -1718,9 +1714,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(fascicolo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctFascicolo() throws Exception;
@@ -1730,9 +1726,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(tipo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctTipo() throws Exception;
@@ -1742,9 +1738,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(codice=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctCodice() throws Exception;
@@ -1754,9 +1750,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(stato=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctStato() throws Exception;
@@ -1766,9 +1762,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(stato1=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctStato1() throws Exception;
@@ -1778,9 +1774,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(descr=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctDescrizione() throws Exception;
@@ -1790,9 +1786,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(startDate=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctStartDate() throws Exception;
@@ -1802,9 +1798,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(endDate=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctEndDate() throws Exception;
@@ -1814,9 +1810,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(iscritto=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctIscritto() throws Exception;
@@ -1826,9 +1822,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(id=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctId() throws Exception;
@@ -1838,9 +1834,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(id=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowId() throws Exception;
@@ -1849,67 +1845,67 @@ public interface PList<E> extends List<E> {
 	 * Da una stringa numerica ritorna una stringa di stringhe corrispondenti ai
 	 * valori numerici
 	 * 
-	 * @param <K>
-	 * @return PList<String>
+	 * 
+	 * @return PList[String]
 	 */
 	<K extends Number> PList<String> toListString();
 
 	/**
 	 * Da una lista di stringhe numeriche ritorna una stringa di Double
 	 * 
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	PList<Double> toListDouble();
 
 	/**
 	 * Da una lista di stringhe numeriche ritorna una stringa di Integer
 	 * 
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	PList<Integer> toListInteger();
 
 	/**
 	 * Da una lista di stringhe numeriche ritorna una stringa di Long
 	 * 
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	PList<Long> toListLong();
 
 	/**
 	 * Da una lista di stringhe numeriche ritorna una stringa di Float
 	 * 
-	 * @return PList<Float>
+	 * @return PList [Float]
 	 */
 	PList<Float> toListFloat();
 
 	/**
 	 * Da una lista di stringhe numeriche ritorna una stringa di BigDecimal
 	 * 
-	 * @return PList<BigDecimal>
+	 * @return PList[BigDecimal]
 	 */
 	PList<BigDecimal> toListBigDecimal();
 
 	/**
-	 * Scrive nel file individuato da path, il contenuto della PList<String>
+	 * Scrive nel file individuato da path, il contenuto della PList[String]
 	 * 
 	 * @param path
 	 */
 	void toFile(String path);
 
 	/**
-	 * Dato un file identificato da path, ritorna una PList<String> che contiene
+	 * Dato un file identificato da path, ritorna una PList[String] che contiene
 	 * tutte le righe del file
 	 * 
 	 * @param path
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	PList<String> fromFile(String path);
 
 	/**
-	 * Data una PList<String> torna una nuova PList<String> i cui elementi sono
+	 * Data una PList[String] torna una nuova PList[String] i cui elementi sono
 	 * trimmati;
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	PList<String> trim();
 
@@ -1917,7 +1913,7 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge una condizione di filtro NOTNULL per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isNotNull();
 
@@ -1925,7 +1921,7 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge una condizione di filtro NULL per liste di tipi Java
 	 * (Integer,String,.....)
 	 * 
-	 * @return PList<E>
+	 * @return PList[E]
 	 */
 	PList<E> isNull();
 
@@ -1934,9 +1930,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(nome=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctNome() throws Exception;
@@ -1946,9 +1942,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(nome=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowNome() throws Exception;
@@ -1958,9 +1954,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cognome=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctCognome() throws Exception;
@@ -1970,9 +1966,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cognome=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowCognome() throws Exception;
@@ -1982,9 +1978,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(eta=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctEta() throws Exception;
@@ -1994,9 +1990,9 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(eta=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * 
+	 * 
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowEta() throws Exception;
@@ -2006,9 +2002,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cf=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctCf() throws Exception;
@@ -2018,9 +2012,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(cf=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowCf() throws Exception;
@@ -2030,9 +2022,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(importo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctImporto() throws Exception;
@@ -2042,9 +2032,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(importo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowImporto() throws Exception;
@@ -2054,10 +2042,8 @@ public interface PList<E> extends List<E> {
 	 * citta=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> citta(T val) throws Exception;
@@ -2067,10 +2053,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaLike(T val) throws Exception;
@@ -2080,23 +2064,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna citta (@Column(citta=true)). Colonna citta
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaNeq(T val) throws Exception;
@@ -2106,10 +2086,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaIn(T... val) throws Exception;
@@ -2119,10 +2097,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaNotIn(T... val) throws Exception;
@@ -2132,11 +2108,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cittaBetween(T val1, T val2) throws Exception;
@@ -2146,9 +2120,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(citta=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowCitta() throws Exception;
@@ -2158,9 +2130,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(citta=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctCitta() throws Exception;
@@ -2170,10 +2140,8 @@ public interface PList<E> extends List<E> {
 	 * titolo=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titolo(T val) throws Exception;
@@ -2183,10 +2151,8 @@ public interface PList<E> extends List<E> {
 	 * titolo like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloLike(T val) throws Exception;
@@ -2196,23 +2162,19 @@ public interface PList<E> extends List<E> {
 	 * titolo notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna titolo (@Column(titolo=true)). Colonna
-	 * titolo <>val. Non serve invocare il find() in quanto viene invocato
+	 * titolo &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloNeq(T val) throws Exception;
@@ -2222,10 +2184,8 @@ public interface PList<E> extends List<E> {
 	 * titolo in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloIn(T... val) throws Exception;
@@ -2235,10 +2195,8 @@ public interface PList<E> extends List<E> {
 	 * titolo not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloNotIn(T... val) throws Exception;
@@ -2248,11 +2206,9 @@ public interface PList<E> extends List<E> {
 	 * titolo between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> titoloBetween(T val1, T val2) throws Exception;
@@ -2262,9 +2218,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(titolo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowTitolo() throws Exception;
@@ -2274,9 +2228,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(titolo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctTitolo() throws Exception;
@@ -2286,10 +2238,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo=val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzo(T val) throws Exception;
@@ -2299,10 +2249,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo like val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoLike(T val) throws Exception;
@@ -2312,23 +2260,19 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo notLike val. Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna indirizzo (@Column(indirizzo=true)).
-	 * Colonna indirizzo <>val. Non serve invocare il find() in quanto viene
-	 * invocato automaticamente
+	 * Colonna indirizzo &lt;&gt;val. Non serve invocare il find() in quanto
+	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoNeq(T val) throws Exception;
@@ -2338,10 +2282,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo in (val1,val2,....,val n). Non serve invocare il find()
 	 * in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoIn(T... val) throws Exception;
@@ -2351,10 +2293,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo not in (val1,val2,....,val n). Non serve invocare il
 	 * find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoNotIn(T... val) throws Exception;
@@ -2364,11 +2304,9 @@ public interface PList<E> extends List<E> {
 	 * Colonna indirizzo between (val1,val2). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> indirizzoBetween(T val1, T val2) throws Exception;
@@ -2378,9 +2316,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(indirizzo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowIndirizzo() throws Exception;
@@ -2390,9 +2326,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(indirizzo=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctIndirizzo() throws Exception;
@@ -2402,10 +2336,8 @@ public interface PList<E> extends List<E> {
 	 * piva=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> piva(T val) throws Exception;
@@ -2415,10 +2347,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaLike(T val) throws Exception;
@@ -2428,23 +2358,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna piva (@Column(piva=true)). Colonna piva
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaNeq(T val) throws Exception;
@@ -2454,10 +2380,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaIn(T... val) throws Exception;
@@ -2467,10 +2391,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaNotIn(T... val) throws Exception;
@@ -2480,11 +2402,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> pivaBetween(T val1, T val2) throws Exception;
@@ -2494,9 +2414,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(piva=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowPiva() throws Exception;
@@ -2506,9 +2424,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(piva=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctPiva() throws Exception;
@@ -2518,10 +2434,8 @@ public interface PList<E> extends List<E> {
 	 * nazione=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazione(T val) throws Exception;
@@ -2531,10 +2445,8 @@ public interface PList<E> extends List<E> {
 	 * nazione like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneLike(T val) throws Exception;
@@ -2544,23 +2456,19 @@ public interface PList<E> extends List<E> {
 	 * nazione notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna nazione (@Column(nazione=true)). Colonna
-	 * nazione <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * nazione &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneNeq(T val) throws Exception;
@@ -2570,10 +2478,8 @@ public interface PList<E> extends List<E> {
 	 * nazione in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneIn(T... val) throws Exception;
@@ -2583,10 +2489,8 @@ public interface PList<E> extends List<E> {
 	 * nazione not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneNotIn(T... val) throws Exception;
@@ -2596,9 +2500,7 @@ public interface PList<E> extends List<E> {
 	 * nazione between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nazioneBetween(T val1, T val2) throws Exception;
@@ -2608,9 +2510,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(nazione=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowNazione() throws Exception;
@@ -2620,9 +2520,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza identificata dalla annotazione
 	 * Column(nazione=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctNazione() throws Exception;
@@ -2632,10 +2530,8 @@ public interface PList<E> extends List<E> {
 	 * ente=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> ente(T val) throws Exception;
@@ -2645,10 +2541,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteLike(T val) throws Exception;
@@ -2658,23 +2552,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna ente (@Column(ente=true)). Colonna ente
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteNeq(T val) throws Exception;
@@ -2684,10 +2574,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteIn(T... val) throws Exception;
@@ -2697,10 +2585,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteNotIn(T... val) throws Exception;
@@ -2710,11 +2596,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> enteBetween(T val1, T val2) throws Exception;
@@ -2724,10 +2608,8 @@ public interface PList<E> extends List<E> {
 	 * sede=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sede(T val) throws Exception;
@@ -2737,10 +2619,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeLike(T val) throws Exception;
@@ -2750,23 +2630,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna sede (@Column(sede=true)). Colonna sede
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeNeq(T val) throws Exception;
@@ -2776,10 +2652,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeIn(T... val) throws Exception;
@@ -2789,10 +2663,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeNotIn(T... val) throws Exception;
@@ -2802,11 +2674,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> sedeBetween(T val1, T val2) throws Exception;
@@ -2816,10 +2686,8 @@ public interface PList<E> extends List<E> {
 	 * cassa=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassa(T val) throws Exception;
@@ -2829,10 +2697,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaLike(T val) throws Exception;
@@ -2842,23 +2708,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna cassa (@Column(cassa=true)). Colonna cassa
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaNeq(T val) throws Exception;
@@ -2868,10 +2730,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaIn(T... val) throws Exception;
@@ -2881,10 +2741,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaNotIn(T... val) throws Exception;
@@ -2894,11 +2752,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cassaBetween(T val1, T val2) throws Exception;
@@ -2907,10 +2763,8 @@ public interface PList<E> extends List<E> {
 	 * Esegue un filtro sulla colonna cf (@Column(cf=true)). Colonna cf=val. Non
 	 * serve invocare il find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cf(T val) throws Exception;
@@ -2920,10 +2774,8 @@ public interface PList<E> extends List<E> {
 	 * val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfLike(T val) throws Exception;
@@ -2933,22 +2785,19 @@ public interface PList<E> extends List<E> {
 	 * val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfNotLike(T val) throws Exception;
 
 	/**
-	 * Esegue un filtro sulla colonna cf (@Column(cf=true)). Colonna cf <>val.
-	 * Non serve invocare il find() in quanto viene invocato automaticamente
+	 * Esegue un filtro sulla colonna cf (@Column(cf=true)). Colonna cf
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
+	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfNeq(T val) throws Exception;
@@ -2958,10 +2807,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfIn(T... val) throws Exception;
@@ -2971,10 +2818,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfNotIn(T... val) throws Exception;
@@ -2984,11 +2829,9 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2). Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cfBetween(T val1, T val2) throws Exception;
@@ -2998,10 +2841,8 @@ public interface PList<E> extends List<E> {
 	 * codice=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codice(T val) throws Exception;
@@ -3011,10 +2852,8 @@ public interface PList<E> extends List<E> {
 	 * codice like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceLike(T val) throws Exception;
@@ -3024,23 +2863,19 @@ public interface PList<E> extends List<E> {
 	 * codice notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna codice (@Column(codice=true)). Colonna
-	 * codice <>val. Non serve invocare il find() in quanto viene invocato
+	 * codice &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceNeq(T val) throws Exception;
@@ -3050,10 +2885,8 @@ public interface PList<E> extends List<E> {
 	 * codice in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceIn(T... val) throws Exception;
@@ -3063,10 +2896,8 @@ public interface PList<E> extends List<E> {
 	 * codice not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceNotIn(T... val) throws Exception;
@@ -3076,11 +2907,9 @@ public interface PList<E> extends List<E> {
 	 * codice between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> codiceBetween(T val1, T val2) throws Exception;
@@ -3090,10 +2919,8 @@ public interface PList<E> extends List<E> {
 	 * cognome=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognome(T val) throws Exception;
@@ -3103,10 +2930,8 @@ public interface PList<E> extends List<E> {
 	 * cognome like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeLike(T val) throws Exception;
@@ -3116,23 +2941,19 @@ public interface PList<E> extends List<E> {
 	 * cognome notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna cognome (@Column(cognome=true)). Colonna
-	 * cognome <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * cognome &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeNeq(T val) throws Exception;
@@ -3142,10 +2963,8 @@ public interface PList<E> extends List<E> {
 	 * cognome in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeIn(T... val) throws Exception;
@@ -3155,10 +2974,8 @@ public interface PList<E> extends List<E> {
 	 * cognome not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeNotIn(T... val) throws Exception;
@@ -3168,11 +2985,9 @@ public interface PList<E> extends List<E> {
 	 * cognome between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> cognomeBetween(T val1, T val2) throws Exception;
@@ -3182,10 +2997,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione=val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizione(T val) throws Exception;
@@ -3195,10 +3008,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione like val. Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneLike(T val) throws Exception;
@@ -3208,23 +3019,19 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione notLike val. Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna descrizione (@Column(descrizione=true)).
-	 * Colonna descrizione <>val. Non serve invocare il find() in quanto viene
-	 * invocato automaticamente
+	 * Colonna descrizione &lt;&gt;val. Non serve invocare il find() in quanto
+	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneNeq(T val) throws Exception;
@@ -3234,10 +3041,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione in (val1,val2,....,val n). Non serve invocare il
 	 * find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneIn(T... val) throws Exception;
@@ -3247,10 +3052,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione not in (val1,val2,....,val n). Non serve invocare il
 	 * find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneNotIn(T... val) throws Exception;
@@ -3260,11 +3063,9 @@ public interface PList<E> extends List<E> {
 	 * Colonna descrizione between (val1,val2). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> descrizioneBetween(T val1, T val2) throws Exception;
@@ -3274,10 +3075,8 @@ public interface PList<E> extends List<E> {
 	 * endDate=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDate(T val) throws Exception;
@@ -3287,10 +3086,8 @@ public interface PList<E> extends List<E> {
 	 * endDate like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateLike(T val) throws Exception;
@@ -3300,23 +3097,19 @@ public interface PList<E> extends List<E> {
 	 * endDate notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna endDate (@Column(endDate=true)). Colonna
-	 * endDate <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * endDate &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateNeq(T val) throws Exception;
@@ -3326,10 +3119,8 @@ public interface PList<E> extends List<E> {
 	 * endDate in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateIn(T... val) throws Exception;
@@ -3339,10 +3130,8 @@ public interface PList<E> extends List<E> {
 	 * endDate not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateNotIn(T... val) throws Exception;
@@ -3352,11 +3141,9 @@ public interface PList<E> extends List<E> {
 	 * endDate between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> endDateBetween(T val1, T val2) throws Exception;
@@ -3366,10 +3153,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate=val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDate(T val) throws Exception;
@@ -3379,10 +3164,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate like val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateLike(T val) throws Exception;
@@ -3392,23 +3175,19 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate notLike val. Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna startDate (@Column(startDate=true)).
-	 * Colonna startDate <>val. Non serve invocare il find() in quanto viene
-	 * invocato automaticamente
+	 * Colonna startDate &lt;&gt;val. Non serve invocare il find() in quanto
+	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateNeq(T val) throws Exception;
@@ -3418,10 +3197,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate in (val1,val2,....,val n). Non serve invocare il find()
 	 * in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateIn(T... val) throws Exception;
@@ -3431,10 +3208,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate not in (val1,val2,....,val n). Non serve invocare il
 	 * find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateNotIn(T... val) throws Exception;
@@ -3444,11 +3219,9 @@ public interface PList<E> extends List<E> {
 	 * Colonna startDate between (val1,val2). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> startDateBetween(T val1, T val2) throws Exception;
@@ -3457,10 +3230,8 @@ public interface PList<E> extends List<E> {
 	 * Esegue un filtro sulla colonna eta (@Column(eta=true)). Colonna eta=val.
 	 * Non serve invocare il find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> eta(T val) throws Exception;
@@ -3470,10 +3241,8 @@ public interface PList<E> extends List<E> {
 	 * val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaLike(T val) throws Exception;
@@ -3483,23 +3252,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna eta (@Column(eta=true)). Colonna eta
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaNeq(T val) throws Exception;
@@ -3509,10 +3274,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaIn(T... val) throws Exception;
@@ -3522,10 +3285,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaNotIn(T... val) throws Exception;
@@ -3535,11 +3296,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> etaBetween(T val1, T val2) throws Exception;
@@ -3549,10 +3308,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo=val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicolo(T val) throws Exception;
@@ -3562,10 +3319,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo like val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloLike(T val) throws Exception;
@@ -3575,23 +3330,19 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo notLike val. Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna fascicolo (@Column(fascicolo=true)).
-	 * Colonna fascicolo <>val. Non serve invocare il find() in quanto viene
-	 * invocato automaticamente
+	 * Colonna fascicolo &lt;&gt;val. Non serve invocare il find() in quanto
+	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloNeq(T val) throws Exception;
@@ -3601,10 +3352,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo in (val1,val2,....,val n). Non serve invocare il find()
 	 * in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloIn(T... val) throws Exception;
@@ -3614,10 +3363,8 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo not in (val1,val2,....,val n). Non serve invocare il
 	 * find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloNotIn(T... val) throws Exception;
@@ -3627,11 +3374,9 @@ public interface PList<E> extends List<E> {
 	 * Colonna fascicolo between (val1,val2). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> fascicoloBetween(T val1, T val2) throws Exception;
@@ -3640,10 +3385,8 @@ public interface PList<E> extends List<E> {
 	 * Esegue un filtro sulla colonna id (@Column(id=true)). Colonna id=val. Non
 	 * serve invocare il find() in quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> id(T val) throws Exception;
@@ -3653,10 +3396,8 @@ public interface PList<E> extends List<E> {
 	 * val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idLike(T val) throws Exception;
@@ -3666,22 +3407,19 @@ public interface PList<E> extends List<E> {
 	 * val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idNotLike(T val) throws Exception;
 
 	/**
-	 * Esegue un filtro sulla colonna id (@Column(id=true)). Colonna id <>val.
-	 * Non serve invocare il find() in quanto viene invocato automaticamente
+	 * Esegue un filtro sulla colonna id (@Column(id=true)). Colonna id
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
+	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idNeq(T val) throws Exception;
@@ -3691,10 +3429,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idIn(T... val) throws Exception;
@@ -3704,10 +3440,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idNotIn(T... val) throws Exception;
@@ -3717,11 +3451,9 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2). Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> idBetween(T val1, T val2) throws Exception;
@@ -3731,10 +3463,8 @@ public interface PList<E> extends List<E> {
 	 * importo=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importo(T val) throws Exception;
@@ -3744,10 +3474,8 @@ public interface PList<E> extends List<E> {
 	 * importo like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoLike(T val) throws Exception;
@@ -3757,23 +3485,19 @@ public interface PList<E> extends List<E> {
 	 * importo notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna importo (@Column(importo=true)). Colonna
-	 * importo <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * importo &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoNeq(T val) throws Exception;
@@ -3783,10 +3507,8 @@ public interface PList<E> extends List<E> {
 	 * importo in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoIn(T... val) throws Exception;
@@ -3796,10 +3518,8 @@ public interface PList<E> extends List<E> {
 	 * importo not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoNotIn(T... val) throws Exception;
@@ -3809,11 +3529,9 @@ public interface PList<E> extends List<E> {
 	 * importo between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> importoBetween(T val1, T val2) throws Exception;
@@ -3823,10 +3541,8 @@ public interface PList<E> extends List<E> {
 	 * iscritto=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscritto(T val) throws Exception;
@@ -3836,10 +3552,8 @@ public interface PList<E> extends List<E> {
 	 * iscritto like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoLike(T val) throws Exception;
@@ -3849,23 +3563,19 @@ public interface PList<E> extends List<E> {
 	 * iscritto notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna iscritto (@Column(iscritto=true)). Colonna
-	 * iscritto <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * iscritto &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoNeq(T val) throws Exception;
@@ -3875,10 +3585,8 @@ public interface PList<E> extends List<E> {
 	 * iscritto in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoIn(T... val) throws Exception;
@@ -3888,10 +3596,8 @@ public interface PList<E> extends List<E> {
 	 * iscritto not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoNotIn(T... val) throws Exception;
@@ -3901,11 +3607,9 @@ public interface PList<E> extends List<E> {
 	 * iscritto between (val1,val2). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> iscrittoBetween(T val1, T val2) throws Exception;
@@ -3915,10 +3619,8 @@ public interface PList<E> extends List<E> {
 	 * nome=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nome(T val) throws Exception;
@@ -3928,10 +3630,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeLike(T val) throws Exception;
@@ -3941,23 +3641,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna nome (@Column(nome=true)). Colonna nome
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeNeq(T val) throws Exception;
@@ -3967,10 +3663,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeIn(T... val) throws Exception;
@@ -3980,10 +3674,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeNotIn(T... val) throws Exception;
@@ -3993,11 +3685,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> nomeBetween(T val1, T val2) throws Exception;
@@ -4007,10 +3697,8 @@ public interface PList<E> extends List<E> {
 	 * progr=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progr(T val) throws Exception;
@@ -4020,10 +3708,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrLike(T val) throws Exception;
@@ -4033,23 +3719,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna progr (@Column(progr=true)). Colonna progr
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrNeq(T val) throws Exception;
@@ -4059,10 +3741,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrIn(T... val) throws Exception;
@@ -4072,10 +3752,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrNotIn(T... val) throws Exception;
@@ -4085,11 +3763,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> progrBetween(T val1, T val2) throws Exception;
@@ -4099,10 +3775,8 @@ public interface PList<E> extends List<E> {
 	 * stato=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato(T val) throws Exception;
@@ -4112,10 +3786,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoLike(T val) throws Exception;
@@ -4125,23 +3797,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna stato (@Column(stato=true)). Colonna stato
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoNeq(T val) throws Exception;
@@ -4151,10 +3819,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoIn(T... val) throws Exception;
@@ -4164,10 +3830,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoNotIn(T... val) throws Exception;
@@ -4177,11 +3841,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> statoBetween(T val1, T val2) throws Exception;
@@ -4191,10 +3853,8 @@ public interface PList<E> extends List<E> {
 	 * stato1=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1(T val) throws Exception;
@@ -4204,10 +3864,8 @@ public interface PList<E> extends List<E> {
 	 * stato1 like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1Like(T val) throws Exception;
@@ -4217,23 +3875,19 @@ public interface PList<E> extends List<E> {
 	 * stato1 notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1NotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna stato1 (@Column(stato1=true)). Colonna
-	 * stato1 <>val. Non serve invocare il find() in quanto viene invocato
+	 * stato1 &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1Neq(T val) throws Exception;
@@ -4243,10 +3897,8 @@ public interface PList<E> extends List<E> {
 	 * stato1 in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1In(T... val) throws Exception;
@@ -4256,10 +3908,8 @@ public interface PList<E> extends List<E> {
 	 * stato1 not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1NotIn(T... val) throws Exception;
@@ -4269,11 +3919,9 @@ public interface PList<E> extends List<E> {
 	 * stato1 between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> stato1Between(T val1, T val2) throws Exception;
@@ -4283,10 +3931,8 @@ public interface PList<E> extends List<E> {
 	 * tipo=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipo(T val) throws Exception;
@@ -4296,10 +3942,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoLike(T val) throws Exception;
@@ -4309,23 +3953,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna tipo (@Column(tipo=true)). Colonna tipo
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoNeq(T val) throws Exception;
@@ -4335,10 +3975,8 @@ public interface PList<E> extends List<E> {
 	 * (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoIn(T... val) throws Exception;
@@ -4348,10 +3986,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoNotIn(T... val) throws Exception;
@@ -4361,11 +3997,9 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> tipoBetween(T val1, T val2) throws Exception;
@@ -4375,10 +4009,8 @@ public interface PList<E> extends List<E> {
 	 * totale=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totale(T val) throws Exception;
@@ -4388,10 +4020,8 @@ public interface PList<E> extends List<E> {
 	 * totale like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleLike(T val) throws Exception;
@@ -4401,23 +4031,19 @@ public interface PList<E> extends List<E> {
 	 * totale notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna totale (@Column(totale=true)). Colonna
-	 * totale <>val. Non serve invocare il find() in quanto viene invocato
+	 * totale &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleNeq(T val) throws Exception;
@@ -4427,10 +4053,8 @@ public interface PList<E> extends List<E> {
 	 * totale in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleIn(T... val) throws Exception;
@@ -4440,10 +4064,8 @@ public interface PList<E> extends List<E> {
 	 * totale not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleNotIn(T... val) throws Exception;
@@ -4453,11 +4075,9 @@ public interface PList<E> extends List<E> {
 	 * totale between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> totaleBetween(T val1, T val2) throws Exception;
@@ -4467,9 +4087,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza totale identificata dalla
 	 * annotazione Column(totale=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowTotale() throws Exception;
@@ -4479,9 +4097,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza totale identificata dalla
 	 * annotazione Column(totale=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctTotale() throws Exception;
@@ -4491,10 +4107,8 @@ public interface PList<E> extends List<E> {
 	 * valore=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valore(T val) throws Exception;
@@ -4504,10 +4118,8 @@ public interface PList<E> extends List<E> {
 	 * valore like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreLike(T val) throws Exception;
@@ -4517,23 +4129,19 @@ public interface PList<E> extends List<E> {
 	 * valore notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna valore (@Column(valore=true)). Colonna
-	 * valore <>val. Non serve invocare il find() in quanto viene invocato
+	 * valore &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreNeq(T val) throws Exception;
@@ -4543,10 +4151,8 @@ public interface PList<E> extends List<E> {
 	 * valore in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreIn(T... val) throws Exception;
@@ -4556,10 +4162,8 @@ public interface PList<E> extends List<E> {
 	 * valore not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreNotIn(T... val) throws Exception;
@@ -4569,11 +4173,9 @@ public interface PList<E> extends List<E> {
 	 * valore between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val1
 	 * @param val2
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> valoreBetween(T val1, T val2) throws Exception;
@@ -4583,9 +4185,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza valore identificata dalla
 	 * annotazione Column(valore=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowValore() throws Exception;
@@ -4595,9 +4195,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza valore identificata dalla
 	 * annotazione Column(valore=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctValore() throws Exception;
@@ -4607,10 +4205,8 @@ public interface PList<E> extends List<E> {
 	 * username=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> username(T val) throws Exception;
@@ -4620,10 +4216,8 @@ public interface PList<E> extends List<E> {
 	 * username like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameLike(T val) throws Exception;
@@ -4633,23 +4227,19 @@ public interface PList<E> extends List<E> {
 	 * username notLike val. Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna username (@Column(username=true)). Colonna
-	 * username <>val. Non serve invocare il find() in quanto viene invocato
-	 * automaticamente
+	 * username &lt;&gt;val. Non serve invocare il find() in quanto viene
+	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameNeq(T val) throws Exception;
@@ -4659,10 +4249,8 @@ public interface PList<E> extends List<E> {
 	 * username in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameIn(T... val) throws Exception;
@@ -4672,10 +4260,8 @@ public interface PList<E> extends List<E> {
 	 * username not in (val1,val2,....,val n). Non serve invocare il find() in
 	 * quanto viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameNotIn(T... val) throws Exception;
@@ -4685,9 +4271,7 @@ public interface PList<E> extends List<E> {
 	 * username between (val1,val2). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> usernameBetween(T val1, T val2) throws Exception;
@@ -4697,9 +4281,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza username identificata dalla
 	 * annotazione Column(username=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowUsername() throws Exception;
@@ -4709,9 +4291,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza username identificata dalla
 	 * annotazione Column(username=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctUsername() throws Exception;
@@ -4721,10 +4301,8 @@ public interface PList<E> extends List<E> {
 	 * email=val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> email(T val) throws Exception;
@@ -4734,10 +4312,8 @@ public interface PList<E> extends List<E> {
 	 * like val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailLike(T val) throws Exception;
@@ -4747,23 +4323,19 @@ public interface PList<E> extends List<E> {
 	 * notLike val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailNotLike(T val) throws Exception;
 
 	/**
 	 * Esegue un filtro sulla colonna email (@Column(email=true)). Colonna email
-	 * <>val. Non serve invocare il find() in quanto viene invocato
+	 * &lt;&gt;val. Non serve invocare il find() in quanto viene invocato
 	 * automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailNeq(T val) throws Exception;
@@ -4773,10 +4345,8 @@ public interface PList<E> extends List<E> {
 	 * in (val1,val2,....,val n). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailIn(T... val) throws Exception;
@@ -4786,10 +4356,8 @@ public interface PList<E> extends List<E> {
 	 * not in (val1,val2,....,val n). Non serve invocare il find() in quanto
 	 * viene invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
 	 * @param val
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailNotIn(T... val) throws Exception;
@@ -4799,9 +4367,7 @@ public interface PList<E> extends List<E> {
 	 * between (val1,val2). Non serve invocare il find() in quanto viene
 	 * invocato automaticamente
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<K>
+	 * @return PList[K]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<K> emailBetween(T val1, T val2) throws Exception;
@@ -4811,9 +4377,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza email identificata dalla
 	 * annotazione Column(email=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowEmail() throws Exception;
@@ -4823,9 +4387,7 @@ public interface PList<E> extends List<E> {
 	 * corrispondenti alla variabile istanza email identificata dalla
 	 * annotazione Column(email=true)
 	 * 
-	 * @param <T>
-	 * @param <K>
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	<T, K extends BaseEntity> PList<T> narrowDistinctEmail() throws Exception;

@@ -347,6 +347,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	private boolean _insert() throws Exception {
 		setQuaternaFlagStatoACodUtenteCodApplDataAggiorn();
@@ -589,6 +590,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	private <K extends BaseEntity> boolean _delete() throws Exception {
 
@@ -652,9 +654,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * SET='...'. I valori impostati a NULL saranno impostati con SET='' Le
 	 * variabili istanza non impostate non verranno considerate
 	 * nell'aggiornamento delle rispettive colonne della tabella
-	 * 
+	 *
+	 * @param <K>
+	 *            K
 	 * @return boolean
 	 * @throws Exception
+	 *             ex ex
 	 */
 	public <K extends BaseEntity> boolean update() throws Exception {
 		if (isOverLimit()) {
@@ -777,8 +782,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * abbia appunto il valore successivo al massimo presente n-1 ple
 	 * 
 	 * @param campoProgr
+	 *            progressivo
 	 * @return Long
 	 * @throws Exception
+	 *             ex ex
 	 */
 	public Long getNextProgr(String campoProgr) throws Exception {
 		Long next = null;
@@ -888,6 +895,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return Long
 	 * @throws Exception
+	 *             ex ex
 	 */
 	public Long getNextProgr() throws Exception {
 		return getNextProgr(getFieldProgressivo());
@@ -899,8 +907,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * è istanziato, lo imposta automaticamente a A (ATTIVO) in modo tale da
 	 * recuperare solo i record non cancellati
 	 * 
+	 * 
+	 * @param <K>
+	 *            K
+	 * 
 	 * @return Long
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K> Long selectCount() throws Exception {
 
@@ -951,6 +964,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean isRecordPresente() throws Exception {
 		skipFlagStato = true;
@@ -964,6 +978,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean isRecordAssente() throws Exception {
 		return !isRecordPresente();
@@ -1025,6 +1040,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * condition
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	private void impostaCondizioneFlagStato() throws Exception {
 		if (!skipFlagStato) {
@@ -1090,9 +1106,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	/**
 	 * Esegue una select e salva il result set in una cache interna alla classe
 	 * che estende DaoHelper
-	 * 
-	 * @return PList<T>
+	 *
+	 *
+	 * @param <T>
+	 *            T
+	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> PList<T> selectCache() throws Exception {
 		Map<String, String> mappa = new HashMap<String, String>();
@@ -1126,9 +1146,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * (ATTIVO) in modo tale da recuperare solo i record non cancellati
 	 * logicamente.
 	 * 
+	 * 
 	 * @param <T>
-	 * @return PList<T>
+	 *            T
+	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> PList<T> select() throws Exception {
 		setDistinctCol(plstr());
@@ -1236,8 +1259,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * (path+nomeFile.estensione) indicato. Se il path non esiste viene
 	 * automaticamente creato. Ritorna il nome del file di impatto creato
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
 	 * @param path
+	 *            percorso
 	 * @throws Exception
+	 *             ex
 	 * @return String
 	 */
 	public <T extends BaseEntity> String selectForWrite(String path) throws Exception {
@@ -1362,8 +1390,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Torna le entity risultato della select sotto forma di lista di stringhe
 	 * dove ogni stringa è la rappresentazione stringa della entity
 	 * 
-	 * @return PList<String>
+	 * 
+	 * @param <T>
+	 *            T
+	 * @return PList[String]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> PList<String> selectForWrite() throws Exception {
 		setDistinctCol(plstr());
@@ -1653,8 +1685,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * che soddisfano la where condition applicata
 	 * 
 	 * 
-	 * @return T
+	 * @param <T>
+	 *            T
 	 * @throws Exception
+	 *             ex
+	 * @return T
 	 */
 	public <T extends BaseEntity> T selectOne() throws Exception {
 		return (T) getFirstElement(select());
@@ -1664,8 +1699,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Stessa logica applicativa di selectOne ma sfruttando il meccanismo di
 	 * cache
 	 * 
+	 * @param <T>
+	 *            T
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> T selectOneCache() throws Exception {
 		return (T) getFirstElement(selectCache());
@@ -1741,6 +1779,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean updateOne() throws Exception {
 		boolean ret = false;
@@ -1765,6 +1804,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean updateByPk() throws Exception {
 		setSearchByPk(true);
@@ -1793,6 +1833,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean deleteOne() throws Exception {
 		boolean ret = false;
@@ -1823,6 +1864,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean deleteByPk() throws Exception {
 		setSearchByPk(true);
@@ -1843,6 +1885,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean isDeleted() throws Exception {
 		boolean ret = false;
@@ -1870,6 +1913,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean resumeByPk() throws Exception {
 		setSearchByPk(true);
@@ -1898,6 +1942,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	private boolean deleteLogic() throws Exception {
 		boolean ret = false;
@@ -1916,6 +1961,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean resume() throws Exception {
 		if (!hasDeleteLogic()) {
@@ -2154,6 +2200,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	private Boolean upsert() throws Exception {
 		if (!isAllPkSet()) {
@@ -2217,12 +2264,20 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * della conversione per attributi selettivi dall'entity al dto di
 	 * riferimento
 	 * 
-	 * @param <K>
+	 * 
 	 * @param <T>
+	 *            T
+	 * 
+	 * @param <K>
+	 *            K
 	 * @param c
+	 *            c
 	 * @param entities
-	 * @return PList<K>
+	 *            e
+	 * 
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K, T extends BaseEntity> PList<K> convert(Class<K> c, PList<T> entities) throws Exception {
 		PList<K> output = pl();
@@ -2237,11 +2292,16 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * attributi istanza hanno il riferimento tramite annotazione alla colonna
 	 * di riferimento dell'entity corrispondente
 	 * 
+	 * 
 	 * @param <K>
+	 *            K
 	 * @param c
+	 *            c
 	 * @return K
 	 * @throws InstantiationException
+	 *             ex
 	 * @throws IllegalAccessException
+	 *             ex
 	 */
 	public <K> K convert(Class<K> c) throws InstantiationException, IllegalAccessException {
 		K obj = (K) c.newInstance();
@@ -2358,9 +2418,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una select su chiave primaria e ritorna l'unica entity trovata. Se
 	 * non tutti i valori della chiave primaria sono impostati, ritorna null.
 	 * 
+	 * 
 	 * @param <T>
+	 *            T
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> T selectByPk() throws Exception {
 		setSearchByPk(true);
@@ -2399,6 +2462,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean insert() throws Exception {
 		boolean esito = false;
@@ -2426,6 +2490,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean insertStrong() throws Exception {
 		boolean esito = false;
@@ -2452,6 +2517,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean delete() throws Exception {
 		boolean esito = false;
@@ -2493,6 +2559,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	private boolean isOverLimit() throws Exception {
 		if (isByPassUpdateDeleteLimitation())
@@ -2528,6 +2595,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * imposta su update/delete attraverso la proprietà UPDATE_DELETE_LIMIT
 	 * 
 	 * @param byPassUpdateDeleteLimitation
+	 *            b
 	 * @return BaseDaoEntity
 	 */
 	public BaseDaoEntity setByPassUpdateDeleteLimitation(boolean byPassUpdateDeleteLimitation) {
@@ -2638,6 +2706,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Imposta il nuovo valore della variabile queryTimeout in secondi
 	 * 
 	 * @param queryTimeout
+	 *            qt
 	 */
 	public void setQueryTimeout(Integer queryTimeout) {
 		this.queryTimeout = queryTimeout;
@@ -2662,9 +2731,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * setPrimary passando gli argomenti nello stesso ordine in cui si trovano
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
+	 * @param <T>
+	 *            T
 	 * @param value
+	 *            valori v
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> T selectByPk(Object... value) throws Exception {
 		return (T) setPrimary(value).selectByPk();
@@ -2676,9 +2749,16 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * sul principio di uguaglianza degli alias delle colonne chiave primaria
 	 * tra le due entity.
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
+	 * @param <K>
+	 *            K
 	 * @param ent
+	 *            entity e
 	 * @return K
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> K selectByPk(T ent) throws Exception {
 		if (Null(ent))
@@ -2692,8 +2772,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
+	 *            valori v
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean updateByPk(Object... value) throws Exception {
 		return setPrimary(value).updateByPk();
@@ -2705,9 +2787,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * principio di uguaglianza degli alias delle colonne chiave primaria tra le
 	 * due entity.
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity e
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean updateByPk(T ent) throws Exception {
 		return setPrimaryEnt(ent).updateByPk();
@@ -2717,8 +2804,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una updateByPk su una lista di entity applicando a ogni entity la
 	 * logica della updateByPk per entity
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> void updateByPk(PList<T> ent) throws Exception {
 		try {
@@ -2745,9 +2837,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * principio di uguaglianza degli alias delle colonne chiave primaria tra le
 	 * due entity.
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean update(T ent) throws Exception {
 		excludePk();
@@ -2760,8 +2857,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una update su una lista di entity applicando a ogni entity la
 	 * logica della update per entity
 	 * 
+	 * 
+	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> void update(PList<T> ent) throws Exception {
 		try {
@@ -2788,8 +2890,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
+	 *            valori
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean deleteByPk(Object... value) throws Exception {
 		return setPrimary(value).deleteByPk();
@@ -2803,8 +2907,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
+	 *            valori
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public boolean resumeByPk(Object... value) throws Exception {
 		return setPrimary(value).resumeByPk();
@@ -2817,10 +2923,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * da una entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
 	 * 
+	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean resumeByPk(T ent) throws Exception {
 		if (Null(ent))
@@ -2835,10 +2945,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * passata come parametro e basandosi sul principio di uguaglianza degli
 	 * alias delle colonne chiave primaria tra le due entity.
 	 * 
+	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean resume(T ent) throws Exception {
 		if (Null(ent))
@@ -2850,10 +2964,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	/**
 	 * Esegue una resume su una lista di entity applicando a ogni entity la
 	 * logica della resume per entity
+	 *
 	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> void resume(PList<T> ent) throws Exception {
 		try {
@@ -2879,10 +2997,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
 	 * 
+	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean deleteByPk(T ent) throws Exception {
 		return setPrimaryEnt(ent).deleteByPk();
@@ -2893,8 +3015,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * logica della deleteByPk per entity
 	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> void deleteByPk(PList<T> ent) throws Exception {
 		try {
@@ -2919,12 +3044,15 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una delete secondo la metodologia setPrimary a partire da una
 	 * entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
-	 * *
+	 * 
 	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @return boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> boolean delete(T ent) throws Exception {
 		excludePk();
@@ -2938,8 +3066,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * logica della delete per entity
 	 * 
 	 * @param <T>
+	 *            T
 	 * @param ent
+	 *            entity
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> void delete(PList<T> ent) throws Exception {
 		try {
@@ -2966,9 +3097,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * condizione di uguaglianza degli alias delle colonne tra le due entity
 	 * 
 	 * @param <T>
+	 *            T
+	 * @param <K>
+	 *            K
 	 * @param ent
-	 * @return PList<K>
+	 *            entity
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> select(T ent) throws Exception {
 		if (Null(ent))
@@ -2981,9 +3117,15 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Stessa logica applicativa di select(T ent) ma sfruttando il meccanismo di
 	 * cache
 	 * 
+	 * @param <T>
+	 *            T
+	 * @param <K>
+	 *            K
 	 * @param ent
-	 * @return PList<K>
+	 *            entity
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectCache(T ent) throws Exception {
 		if (Null(ent))
@@ -3015,9 +3157,15 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
 	 * Ritorna la lista di oggetti tornati da ogni select così effettuata
 	 * 
+	 * @param <T>
+	 *            T
+	 * @param <K>
+	 *            K
 	 * @param listEnt
-	 * @return PList<K>
+	 *            listaEntities
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectByPk(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3048,11 +3196,16 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * uguaglianza degli alias delle colonne tra le due entity. Ritorna la lista
 	 * di oggetti tornati da ogni select così effettuata
 	 * 
-	 * @param <K>
 	 * @param <T>
+	 *            T
+	 * 
+	 * @param <K>
+	 *            K
 	 * @param listEnt
-	 * @return PList<K>
+	 *            listaEntities
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> select(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3077,12 +3230,20 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	/**
-	 * Stessa logica applicativa di select(PList<T> listEnt) ma sfruttando il
+	 * Stessa logica applicativa di select(PList[T] listEnt) ma sfruttando il
 	 * meccanismo di cache
 	 * 
+	 * @param <T>
+	 *            T
+	 * 
+	 * @param <K>
+	 *            K
+	 * 
 	 * @param listEnt
-	 * @return PList<K>
+	 *            listaEntities
+	 * @return PList[K]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectCache(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3163,9 +3324,15 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * codAppCostruttore impostate tramite giveMe. La colonna FLAGSTATO se
 	 * esistente viene sempre impostata ad A
 	 * 
+	 * @param <T>
+	 *            T
+	 * 
 	 * @param <X>
+	 *            X
 	 * @param k
+	 *            k
 	 * @throws Exception
+	 *             ex
 	 */
 	public <X extends BaseDaoEntity, T> BaseDaoEntity copyFrom(X k) throws Exception {
 		for (Field att : getAttributi()) {

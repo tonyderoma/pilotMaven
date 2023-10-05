@@ -21,13 +21,15 @@ public interface Entity extends Serializable {
 	 * Lista di condizioni di where
 	 * 
 	 * @param wc
+	 *            wherecondition
+	 * @return BaseEntity
 	 */
 	BaseEntity setWhereCondition(PList<Where> wc);
 
 	/**
 	 * Ritorna l'elenco delle variabili istanza escluse dall'update
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	PList<String> getFieldsToExcludeInUpdate();
 
@@ -37,6 +39,7 @@ public interface Entity extends Serializable {
 	 * 
 	 * 
 	 * @param fieldsToExclude
+	 *            fte
 	 * @return BaseEntity
 	 */
 	BaseEntity setFieldsToExcludeInUpdate(String... fieldsToExclude);
@@ -47,6 +50,7 @@ public interface Entity extends Serializable {
 	 * 
 	 * 
 	 * @param fieldsToExclude
+	 *            fte
 	 * @return BaseEntity
 	 */
 	BaseEntity setFieldsToExcludeInUpdate(PList<String> fieldsToExclude);
@@ -55,6 +59,7 @@ public interface Entity extends Serializable {
 	 * Sinonimo di setFieldsToExcludeInUpdate
 	 * 
 	 * @param fieldsToExclude
+	 *            fte
 	 * @return BaseEntity
 	 */
 	BaseEntity exclude(String... fieldsToExclude);
@@ -62,7 +67,7 @@ public interface Entity extends Serializable {
 	/**
 	 * Ritorna l'elenco di variabili istanza su cui eseguire l'ordinamento
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	PList<String> getOrderBy();
 
@@ -70,6 +75,8 @@ public interface Entity extends Serializable {
 	 * Lista di campi di ordinamento ascendente della select
 	 * 
 	 * @param orderBy
+	 *            ordinamento
+	 * @return BaseEntity
 	 */
 	BaseEntity orderByASC(String... orderBy);
 
@@ -77,6 +84,8 @@ public interface Entity extends Serializable {
 	 * Lista di campi di ordinamento discendente della select
 	 * 
 	 * @param orderBy
+	 *            ordinamento
+	 * @return BaseEntity
 	 */
 	BaseEntity orderByDESC(String... orderBy);
 

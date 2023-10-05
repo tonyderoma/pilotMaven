@@ -397,11 +397,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<String> contenente i valori corrispondenti alla chiave
+	 * Ritorna una PList[String] contenente i valori corrispondenti alla chiave
 	 * key quando questi sono separati da ","
 	 * 
 	 * @param key
-	 * @return (PList<String>))
+	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -416,11 +416,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<String> contenente i valori corrispondenti alla chiave
+	 * Ritorna una PList[String] contenente i valori corrispondenti alla chiave
 	 * key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
-	 * @return (PList<String>))
+	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key, String separator) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -435,11 +435,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Integer> contenente i valori Integer corrispondenti
+	 * Ritorna una PList[Integer] contenente i valori Integer corrispondenti
 	 * alla chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -454,12 +454,12 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Integer> contenente i valori Integer corrispondenti
+	 * Ritorna una PList[Integer] contenente i valori Integer corrispondenti
 	 * alla chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Integer>
+	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key, String separator) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -474,11 +474,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Long> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Long] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -493,12 +493,12 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Long> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Long] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Long>
+	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key, String separator) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -513,11 +513,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Double> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Double] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -532,12 +532,12 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una PList<Double> contenente i valori Integer corrispondenti alla
+	 * Ritorna una PList[Double] contenente i valori Integer corrispondenti alla
 	 * chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
 	 * @param separator
-	 * @return PList<Double>
+	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key, String separator) {
 		String propFile = getClass().getAnnotation(DaoConfig.class).propertyFile();
@@ -776,7 +776,7 @@ public class DaoHelper extends PilotSupport {
 	 * placeholder scritti nel testo della query con i corrispondenti valori
 	 * presi dalla query string. Esempio: provaPeriodi?{cassa}=and
 	 * reprc_id_cassa between to_date('01/98/29898','dd/mm/yyyy') and
-	 * to_date('01/98/29898','dd/mm/yyyy')&{tipo}=OR REPRC_ID_ISCRITTO IN (
+	 * to_date('01/98/29898','dd/mm/yyyy')&amp;{tipo}=OR REPRC_ID_ISCRITTO IN (
 	 * :idiscritto ) la query provaPeriodi presenta dei placeholder {cassa} e
 	 * {tipo} al suo interno. Questi placeholder verranno sostituiti con i
 	 * valori indicati nella parte di querystring ossia dopo il '?'
@@ -877,17 +877,17 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class<T>
+	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class[T]
 	 * c. Parametri è un oggetto che specifica variabili istanza aventi nome
 	 * uguale ai parametri indicati nella query :param. QueryName � il nome
 	 * della chiave nel file queries.properties a cui corrisponde la query sql
 	 * da eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param parametri
 	 * @param c
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> selectDTO(String queryName, Object parametri, Class<T> c) throws Exception {
@@ -1011,7 +1011,7 @@ public class DaoHelper extends PilotSupport {
 	 * funzione tra parentesi tonde sempre attraverso i placeholder ?
 	 * 
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param parametri
 	 * @param c
@@ -1068,7 +1068,7 @@ public class DaoHelper extends PilotSupport {
 	 * della funzione invece vengono messi dopo l'indicazione del nome della
 	 * funzione tra parentesi tonde sempre attraverso i placeholder ?
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param c
 	 * @param parametri
@@ -1096,16 +1096,16 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class<T>
+	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class[T]
 	 * c. Parametri l'elenco ordinato dei parametri indicati nella query
 	 * queryName. QueryName � il nome della chiave nel file queries.properties a
 	 * cui corrisponde la query sql da eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param c
 	 * @param parametri
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> select(String queryName, Class<T> c, Object... parametri) throws Exception {
@@ -1114,12 +1114,12 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna un oggetto di tipo T individuato dal parametro Class<T> c.
+	 * Ritorna un oggetto di tipo T individuato dal parametro Class[T] c.
 	 * Parametri l'elenco ordinato dei parametri indicati nella query queryName.
 	 * QueryName � il nome della chiave nel file queries.properties a cui
 	 * corrisponde la query sql da eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param c
 	 * @param parametri
@@ -1132,13 +1132,13 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna un oggetto di tipo T individuato dal parametro Class<T> c.
+	 * Ritorna un oggetto di tipo T individuato dal parametro Class[T] c.
 	 * Parametri � un oggetto che specifica variabili istanza aventi nome uguale
 	 * ai parametri indicati nella query queryName. QueryName è il nome della
 	 * chiave nel file queries.properties a cui corrisponde la query sql da
 	 * eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param parametri
 	 * @param c
@@ -1160,11 +1160,10 @@ public class DaoHelper extends PilotSupport {
 	 * nome della chiave nel file queries.properties a cui corrisponde la query
 	 * sql da eseguire
 	 * 
-	 * @param <T>
 	 * @param queryName
 	 * @param c
 	 * @param parametri
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> selectNoBean(String queryName, Class<T> c, Object... parametri) throws Exception {
@@ -1180,11 +1179,10 @@ public class DaoHelper extends PilotSupport {
 	 * QueryName è il nome della chiave nel file queries.properties a cui
 	 * corrisponde la query sql da eseguire
 	 * 
-	 * @param <T>
 	 * @param queryName
 	 * @param c
 	 * @param parametri
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> selectNoBeanDTO(String queryName, Class<T> c, Object parametri) throws Exception {
@@ -1200,7 +1198,7 @@ public class DaoHelper extends PilotSupport {
 	 * usati nella where condition. QueryName � il nome della chiave nel file
 	 * queries.properties a cui corrisponde la query sql da eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param c
 	 * @param parametri
@@ -1218,7 +1216,7 @@ public class DaoHelper extends PilotSupport {
 	 * ordinato dei parametri nella query individuata da queryName nel file
 	 * queries.properties
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param c
 	 * @param parametri
@@ -1238,13 +1236,13 @@ public class DaoHelper extends PilotSupport {
 	 * query queryName. QueryName � il nome della chiave nel file
 	 * queries.properties a cui corrisponde la query sql da eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param numeroPagina
 	 * @param quantiPerPagina
 	 * @param c
 	 * @param parametri
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> selectPaginatedBean(String queryName, Integer numeroPagina, Integer quantiPerPagina, Class<T> c, Object... parametri) throws Exception {
@@ -1262,13 +1260,13 @@ public class DaoHelper extends PilotSupport {
 	 * chiave nel file queries.properties a cui corrisponde la query sql da
 	 * eseguire
 	 * 
-	 * @param <T>
+	 * 
 	 * @param queryName
 	 * @param numeroPagina
 	 * @param quantiPerPagina
 	 * @param c
 	 * @param parametri
-	 * @return PList<T>
+	 * @return PList[T]
 	 * @throws Exception
 	 */
 	public <T> PList<T> selectPaginatedBeanDTO(String queryName, Integer numeroPagina, Integer quantiPerPagina, Class<T> c, Object parametri) throws Exception {
@@ -1444,7 +1442,7 @@ public class DaoHelper extends PilotSupport {
 	 * quell'alias, automaticamente istanziata con la connessione, il codice
 	 * utente e il codice applicativo da usare nelle query che la riguardano.
 	 * 
-	 * @param <T>
+	 * 
 	 * @param alias
 	 * @return T
 	 * @throws Exception
@@ -1494,7 +1492,7 @@ public class DaoHelper extends PilotSupport {
 	 * avviene in modalit� mock generando dati casuali secondo il metodo
 	 * copyFrom della classe Pilot a cui si rimanda per la documentazione
 	 * 
-	 * @param <T>
+	 * 
 	 * @param alias
 	 * @return T
 	 * @throws Exception
@@ -1582,7 +1580,7 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Ritorna tutte le query effettuate da questa istanza del dao
 	 * 
-	 * @return (PList<String>))
+	 * @return PList[String]
 	 */
 	public PList<String> getContainer() {
 		return container;
@@ -1645,7 +1643,7 @@ public class DaoHelper extends PilotSupport {
 	 * Il meccanismo di cache � limitato alla sola istanza della classe dao che
 	 * estende DaoHelper. Se creo una nuova istanza avrà un'altra cache.
 	 * 
-	 * @param <T>
+	 * 
 	 * @param <K>
 	 * @param alias
 	 * @param key
@@ -1737,10 +1735,9 @@ public class DaoHelper extends PilotSupport {
 	 * 
 	 * 
 	 * 
-	 * @param <K>
 	 * @param start
 	 * @param entW
-	 * @return PList<?>
+	 * @return PList[?]
 	 * @throws Exception
 	 */
 	protected <K extends BaseEntity> PList<?> selectCascade(PList<K> start, EntityWired... entW) throws Exception {
@@ -1779,10 +1776,9 @@ public class DaoHelper extends PilotSupport {
 	 * Esegue la logica del metodo selectCascade passando però come input un
 	 * solo elemento e non una lista di elementi BaseEntity
 	 * 
-	 * @param <K>
 	 * @param start
 	 * @param entW
-	 * @return PList<?>
+	 * @return PList[?]
 	 * @throws Exception
 	 */
 	protected <K extends BaseEntity> PList<?> selectCascade(K start, EntityWired... entW) throws Exception {
@@ -2805,7 +2801,7 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Metodo alias di getContainer
 	 * 
-	 * @return (PList<String>))
+	 * @return PList[String]
 	 */
 	public PList<String> getAllQueries() {
 		return getContainer();
@@ -2892,7 +2888,7 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Torna il contenuto complessivo del report come lista di stringhe
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 * @throws Exception
 	 */
 	public PList<String> getReportContent() throws Exception {
@@ -3256,7 +3252,7 @@ public class DaoHelper extends PilotSupport {
 	 * di stringhe contenuto del file di impatto per l'entity alias specificata
 	 * 
 	 * @param alias
-	 * @return PList<String>
+	 * @return PList[String]
 	 * @throws Exception
 	 */
 	public PList<String> impact(String alias) throws Exception {
@@ -3276,7 +3272,7 @@ public class DaoHelper extends PilotSupport {
 	 * colonne COD_UTENTE,COD_APPL,DATA_AGGIORNAMENTO. Il path in cui salvare i
 	 * file di resoconto � il valore dell'attributo outPath di @DaoConfig
 	 * 
-	 * @param <T>
+	 * 
 	 * @throws Exception
 	 */
 	private <T extends BaseEntity> void impact() throws Exception {

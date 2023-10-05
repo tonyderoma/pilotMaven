@@ -8,7 +8,11 @@ import org.jboss.logging.Logger;
  * Interfaccia che definisce i metodi disponibili per la classe PHashMap.
  * 
  * @author Antonio Corinaldi
- * @param PMap
+ * 
+ * @param <K>
+ *            K key
+ * @param <V>
+ *            V value
  * 
  */
 public interface PMap<K, V> extends Map<K, V> {
@@ -17,6 +21,9 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Inserisce il valore v corrispondente alla chiave k
 	 * 
 	 * @param k
+	 *            key
+	 * @param v
+	 *            value
 	 * @return V
 	 */
 	V put(K k, V v);
@@ -25,6 +32,7 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Recupera il value corrispondente alla chiave key passata
 	 * 
 	 * @param key
+	 *            key
 	 * @return V
 	 */
 	V getValue(K key);
@@ -41,10 +49,17 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * elem
 	 * 
 	 * @param <K>
+	 *            K
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
 	 * @param elem
+	 *            e
 	 * @param o
+	 *            value
 	 * @throws Exception
+	 *             ex
 	 */
 	<K, V> void rimuoviMappaLista(K elem, V o) throws Exception;
 
@@ -52,10 +67,17 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Aggiunge l'elemento o alla lista di elementi corrispondente alla chiave
 	 * elem
 	 * 
+	 * 
 	 * @param <K>
+	 *            key
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
 	 * @param elem
+	 *            key
 	 * @param o
+	 *            value
 	 */
 	<K, V> void aggiungiMappaLista(K elem, V o);
 
@@ -64,11 +86,19 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * corrispondente alla chiave elem solo se non c'è conflitto di chiave
 	 * primaria (usato per DaoHelper con inMemory=true)
 	 * 
+	 * 
 	 * @param <K>
+	 *            key
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
 	 * @param elem
+	 *            key
 	 * @param o
+	 *            value
 	 * @throws Exception
+	 *             ex
 	 */
 	<K, V extends BaseDaoEntity> void aggiungiMappaListaEnt(K elem, V o) throws Exception;
 
@@ -76,11 +106,19 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Aggiunge l'elemento o alla lista di elementi corrispondente alla chiave
 	 * elem fino a un massimo di elementi limite
 	 * 
+	 * 
 	 * @param <K>
+	 *            key
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
 	 * @param elem
+	 *            key
 	 * @param o
+	 *            value
 	 * @param limite
+	 *            l
 	 */
 	<K, V> void aggiungiMappaLista(K elem, V o, Integer limite);
 
@@ -88,6 +126,7 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Imposta il log passato
 	 * 
 	 * @param log
+	 *            log
 	 * @return PMap
 	 */
 	PHashMap<K, V> setLog(Logger log);
@@ -96,10 +135,18 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Rimuove dalla mappa la lista o corrispondente alla chiave elem
 	 * 
 	 * @param <K>
+	 *            key
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
+	 * 
 	 * @param elem
+	 *            key
 	 * @param o
+	 *            value
 	 * @throws Exception
+	 *             ex
 	 */
 	<K, V extends BaseDaoEntity> void rimuoviMappaListaEnt(K elem, PList<V> o) throws Exception;
 
@@ -107,9 +154,16 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Aggiunge una intera lista alla lista corrispondente alla chiave elem
 	 * 
 	 * @param <K>
+	 *            key
+	 * 
 	 * @param <V>
+	 *            value
+	 * 
+	 * 
 	 * @param elem
+	 *            key
 	 * @param listaDaAggiungere
+	 *            value
 	 */
 	public <K, V> void aggiungiMappaLista(K elem, PList<V> listaDaAggiungere);
 
@@ -118,7 +172,8 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * Ritorna la lista complessiva formata dalla concatenazione di tutte le
 	 * liste valore delle chiavi della mappa
 	 * 
-	 * @return PList<V>
+	 * 
+	 * @return PList[V]
 	 */
 	PList<V> collectAll();
 

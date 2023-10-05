@@ -11,8 +11,6 @@ import org.jboss.logging.Logger;
  * 
  * @author Antonio Corinaldi
  * 
- * @param <K>
- * @param <V>
  */
 public class PHashMap<K, V> extends HashMap<K, V> implements PMap<K, V> {
 

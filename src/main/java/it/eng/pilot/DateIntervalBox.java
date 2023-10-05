@@ -64,7 +64,7 @@ public class DateIntervalBox extends PilotSupport implements Serializable {
 	 * Restituisce una mappa Intervallo Data - Elenco Intervalli Date in
 	 * sovrapposizione
 	 * 
-	 * @return Map<String, List<String>>
+	 * @return Map[String, List[String]]
 	 */
 	public Map<String, List<String>> validaDateIntervalNotOverlappingWithMessages() {
 		return p.validaDateIntervalNotOverlapWithMessages(getIntervalli());

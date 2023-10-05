@@ -700,8 +700,8 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList()
 	 * 
-	 * @param <K>
-	 * @return PList<K>
+	 * 
+	 * @return PList[K]
 	 */
 	protected <K> PList<K> pl() {
 		return getPList();
@@ -710,9 +710,9 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList(Integer)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param limite
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	protected <K> PList<K> pl(Integer limite) {
 		return getPList(limite);
@@ -721,9 +721,7 @@ public class PilotSupport {
 	/**
 	 * Alias di getPMap()
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K, V>
+	 * @return PMap[K, V]
 	 */
 	protected <K, V> PMap<K, V> pmap() {
 		return getPMap();
@@ -732,9 +730,7 @@ public class PilotSupport {
 	/**
 	 * Alias di getPMapList()
 	 * 
-	 * @param <K>
-	 * @param <V>
-	 * @return PMap<K, PList<V>>
+	 * @return PMap[K, PList[V]]
 	 */
 	protected <K, V> PMap<K, PList<V>> pmapl() {
 		return getPMapList();
@@ -743,7 +739,7 @@ public class PilotSupport {
 	/**
 	 * Alias di getPListString()
 	 * 
-	 * @return PList<String>
+	 * @return PList[String]
 	 */
 	protected PList<String> plstr() {
 		return getPListString();
@@ -754,11 +750,11 @@ public class PilotSupport {
 	}
 
 	/**
-	 * Alias di getPList(Collection<K> list)
+	 * Alias di getPList(Collection[K] list)
 	 * 
-	 * @param <K>
+	 * 
 	 * @param list
-	 * @return Collection<K>
+	 * @return Collection[K]
 	 */
 	protected <K> PList<K> pl(Collection<K> list) {
 		return p.pl(list);
@@ -767,9 +763,8 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList(K...items)
 	 * 
-	 * @param <K>
 	 * @param items
-	 * @return PList<K>
+	 * @return PList[K]
 	 */
 	protected <K> PList<K> pl(K... items) {
 		return getPList(items);

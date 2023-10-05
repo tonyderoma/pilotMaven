@@ -40,7 +40,7 @@ public class EntityWired implements Serializable {
 	 */
 	private Object[] stato1;
 	/**
-	 * dateBefore se true esegue un filtro per campoDataInizio<=date dove
+	 * dateBefore se true esegue un filtro per campoDataInizio&lt;=date dove
 	 * campoDataInizio è la colonna dell'Entity con @Column[startDate=true]
 	 */
 	private boolean dateBefore;
@@ -49,7 +49,7 @@ public class EntityWired implements Serializable {
 	 */
 	private Date date;
 	/**
-	 * dateAfter se true esegue un filtro per campoDataInizio<=date dove
+	 * dateAfter se true esegue un filtro per campoDataInizio&lt;=date dove
 	 * campoDataInizio è la colonna dell'Entity con @Column[startDate=true]
 	 */
 	private boolean dateAfter;

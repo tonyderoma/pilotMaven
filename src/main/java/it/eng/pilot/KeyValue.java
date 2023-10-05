@@ -5,8 +5,6 @@ import java.io.Serializable;
 /**
  * Classe di mappatura di oggetti chiave-valore.
  * 
- * @param <K>
- * @param <V>
  * @author Antonio Corinaldi
  */
 public class KeyValue<K, V> implements Serializable {

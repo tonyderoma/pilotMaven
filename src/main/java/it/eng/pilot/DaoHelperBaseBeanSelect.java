@@ -70,7 +70,6 @@ public class DaoHelperBaseBeanSelect extends DaoHelperBaseResult {
 	 * queries.properties)
 	 * 
 	 * @param query
-	 * @throws Exception
 	 */
 	public void setQuery(String query) {
 		this.query = query;
