@@ -44,9 +44,8 @@ public @interface Column {
 	 * Se true identifica la variabile istanza corrispondente al nome di colonna
 	 * che consente la cancellazione logica del record. In ambiente INPS ad
 	 * esempio � la colonna che termina con ....FLAG_STATO. Questa colonna di
-	 * cancellazione logica � fondamentale conoscerla per rendere automatiche
-	 * e intelligenti le funzionalit� di delete fisica/logica e di
-	 * insert/upsert
+	 * cancellazione logica � fondamentale conoscerla per rendere automatiche e
+	 * intelligenti le funzionalit� di delete fisica/logica e di insert/upsert
 	 * 
 	 * @return boolean
 	 */
@@ -74,7 +73,9 @@ public @interface Column {
 	boolean stato() default false;
 
 	/**
-	 * Se true indica che questo campo identifica una colonna di tipo STATO1.
+	 * Se true indica che questo campo identifica una colonna di tipo STATO1
+	 * 
+	 * @return boolean
 	 */
 	boolean stato1() default false;
 

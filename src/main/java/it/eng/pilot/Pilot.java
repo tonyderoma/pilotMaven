@@ -315,6 +315,7 @@ public class Pilot implements Serializable {
 	 * Data una collection trova l'elemento massimo
 	 * 
 	 * @param l
+	 *            l
 	 * @return K
 	 */
 	public <K extends Comparable<K>> K max(Collection<K> l) {
@@ -328,6 +329,7 @@ public class Pilot implements Serializable {
 	 * Data una collection trova l'elemento minimo
 	 * 
 	 * @param l
+	 *            l
 	 * @return K
 	 */
 	public <K extends Comparable<K>> K min(Collection<K> l) {
@@ -342,6 +344,7 @@ public class Pilot implements Serializable {
 	 * duplicati secondo il metodo equals
 	 * 
 	 * @param l
+	 *            l
 	 * 
 	 * @return List[K]
 	 */
@@ -359,6 +362,7 @@ public class Pilot implements Serializable {
 	 * in dot notation
 	 * 
 	 * @param l
+	 *            l
 	 * @param campi
 	 * @return List[K]
 	 */
@@ -437,6 +441,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * 
 	 * @param l
+	 *            l
 	 * @param campi
 	 * @return List[K]
 	 */
@@ -628,7 +633,9 @@ public class Pilot implements Serializable {
 	 * elementi di l1 non presenti nelle altre liste in base al metodo equals
 	 * 
 	 * @param l1
+	 *            l1
 	 * @param liste
+	 *            liste
 	 * @return List[K]
 	 */
 	public <K> List<K> sottraiList(List<K> l1, List<K>... liste) {
@@ -646,7 +653,9 @@ public class Pilot implements Serializable {
 	 * l1 non presenti negli altri set in base al metodo equals
 	 * 
 	 * @param l1
+	 *            l1
 	 * @param insiemi
+	 *            insiemi
 	 * @return Set[K]
 	 */
 
@@ -689,6 +698,7 @@ public class Pilot implements Serializable {
 	 * altre liste
 	 * 
 	 * @param l
+	 *            l
 	 * @return List[K]
 	 */
 	public <K> List<K> aggiungiList(List<K>... l) {
@@ -706,6 +716,7 @@ public class Pilot implements Serializable {
 	 * set passati in input
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[K]
 	 */
 	public <K> Set<K> aggiungiSet(Set<K>... l) {
@@ -850,6 +861,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Short
 	 * 
 	 * @param l
+	 *            l
 	 * @return PList[Short]
 	 */
 	public PList<Short> toShortList(List<String> l) {
@@ -864,6 +876,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Short
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[Short]
 	 */
 	public Set<Short> toShortSet(Set<String> l) {
@@ -982,6 +995,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Integer
 	 * 
 	 * @param l
+	 *            l
 	 * @return PList[Integer]
 	 */
 	public PList<Integer> toIntList(List<String> l) {
@@ -999,6 +1013,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Double
 	 * 
 	 * @param l
+	 *            l
 	 * @return PList[Double]
 	 */
 	public PList<Double> toDoubleList(List<String> l) {
@@ -1016,6 +1031,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di BigDecimal
 	 * 
 	 * @param l
+	 *            l
 	 * @return PList[BigDecimal]
 	 */
 	public PList<BigDecimal> toBigDecimalList(List<String> l) {
@@ -1030,6 +1046,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Integer
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[Integer]
 	 */
 	public Set<Integer> toIntSet(Set<String> l) {
@@ -1047,6 +1064,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Double
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[Double]
 	 */
 	public Set<Double> toDoubleSet(Set<String> l) {
@@ -1064,6 +1082,7 @@ public class Pilot implements Serializable {
 	 * Data una lista di stringhe numeriche ottengo una lista di Long
 	 * 
 	 * @param l
+	 *            l
 	 * @return PList[Long]
 	 */
 	public PList<Long> toLongList(List<String> l) {
@@ -1081,6 +1100,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di Long
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[Long]
 	 */
 
@@ -1099,6 +1119,7 @@ public class Pilot implements Serializable {
 	 * Dato un set di stringhe numeriche ottengo un set di BigDecimal
 	 * 
 	 * @param l
+	 *            l
 	 * @return Set[BigDecimal]
 	 */
 	public Set<BigDecimal> toBigDecimalSet(Set<String> l) {
@@ -1115,7 +1136,9 @@ public class Pilot implements Serializable {
 	 * valore val
 	 * 
 	 * @param l1
+	 *            l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che hanno valore val
@@ -1138,8 +1161,11 @@ public class Pilot implements Serializable {
 	 * al valore val
 	 * 
 	 * @param l1
+	 *            l1
 	 * @param props
+	 *            props props
 	 * @param val
+	 *            val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che NON hanno valore val
 	 * @throws Exception
@@ -1162,6 +1188,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che NON hanno valori val
@@ -1181,6 +1208,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che hanno valori val
@@ -1200,6 +1228,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che hanno valori val
@@ -1220,6 +1249,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val
@@ -1243,6 +1273,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che NON hanno valore val
@@ -1266,6 +1297,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che NON hanno valori val
@@ -1286,6 +1318,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @return List[R]
 	 * 
 	 * 
@@ -1307,6 +1340,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @return List[R]
 	 * 
 	 * 
@@ -5504,6 +5538,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return torna la stessa lista da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val e lo
@@ -6198,6 +6233,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         della proprieta props in dot notation che hanno valore val
@@ -6222,6 +6258,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return List[T] torna la stessa lista da cui ho rimosso gli elementi
 	 *         delle proprieta props in dot notation che hanno valori val
@@ -6240,6 +6277,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi della
 	 *         proprieta props in dot notation che hanno valore val
@@ -6264,6 +6302,7 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l1
 	 * @param props
+	 *            props
 	 * @param val
 	 * @return Set[T] torna lo stesso Set da cui ho rimosso gli elementi delle
 	 *         proprieta props in dot notation che hanno valori val
@@ -7186,7 +7225,9 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param <R>
 	 * @param l
+	 *            l
 	 * @param props
+	 *            props
 	 * @return List[R]
 	 * @throws Exception
 	 */
@@ -7198,7 +7239,9 @@ public class Pilot implements Serializable {
 	 * Esegue la serializzazione dell'oggetto o nel file indicato
 	 * 
 	 * @param o
+	 *            o
 	 * @param file
+	 *            file
 	 */
 	public void serializeToFile(Object o, String file) {
 		FileOutputStream out = null;

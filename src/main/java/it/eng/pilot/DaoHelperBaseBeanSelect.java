@@ -25,6 +25,7 @@ public class DaoHelperBaseBeanSelect extends DaoHelperBaseResult {
 	 * Imposta il logger passato
 	 * 
 	 * @param log
+	 *            log
 	 */
 	public void setExternalLogger(Logger log) {
 		this.log = log;
@@ -70,6 +71,7 @@ public class DaoHelperBaseBeanSelect extends DaoHelperBaseResult {
 	 * queries.properties)
 	 * 
 	 * @param query
+	 *            query
 	 */
 	public void setQuery(String query) {
 		this.query = query;
@@ -81,7 +83,9 @@ public class DaoHelperBaseBeanSelect extends DaoHelperBaseResult {
 	 * lo chiama
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @throws Exception
+	 *             ex
 	 */
 	public void setQueryByName(String queryName) throws Exception {
 		setQueryName(queryName);
@@ -94,7 +98,12 @@ public class DaoHelperBaseBeanSelect extends DaoHelperBaseResult {
 	 * it.eng.queries.properties ad esempio)
 	 * 
 	 * @param queryName
+	 *            queryName
+	 * 
+	 * @param queryFile
+	 *            queryFile
 	 * @throws Exception
+	 *             ex
 	 */
 	public void setQueryByName(String queryFile, String queryName) throws Exception {
 		setQueryName(queryName);

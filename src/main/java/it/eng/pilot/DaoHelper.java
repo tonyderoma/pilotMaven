@@ -239,6 +239,7 @@ public class DaoHelper extends PilotSupport {
 	 * dell'annotazione @DaoConfig.
 	 * 
 	 * @param key
+	 *            key
 	 * @return String
 	 */
 	public String getKey(String key) {
@@ -260,7 +261,9 @@ public class DaoHelper extends PilotSupport {
 	 * valore defaultValue
 	 * 
 	 * @param key
+	 *            key
 	 * @param defaultValue
+	 *            defaultValue
 	 * @return String
 	 */
 	public String getKey(String key, String defaultValue) {
@@ -281,6 +284,7 @@ public class DaoHelper extends PilotSupport {
 	 * mappata ritorna il defaultValue
 	 * 
 	 * @param key
+	 *            key
 	 * @return Integer
 	 */
 	public Integer getKeyInt(String key, Integer defaultValue) {
@@ -300,6 +304,7 @@ public class DaoHelper extends PilotSupport {
 	 * specificato dall'attributo propertyFile di @DaoConfig.
 	 * 
 	 * @param key
+	 *            key
 	 * @return Integer
 	 */
 	public Integer getKeyInt(String key) {
@@ -320,6 +325,7 @@ public class DaoHelper extends PilotSupport {
 	 * mappata ritorna il defaultValue.
 	 * 
 	 * @param key
+	 *            key
 	 * @return Long
 	 */
 	public Long getKeyLong(String key, Long defaultValue) {
@@ -343,6 +349,7 @@ public class DaoHelper extends PilotSupport {
 	 * specificato dall'attributo propertyFile di @DaoConfig.
 	 * 
 	 * @param key
+	 *            key
 	 * @return Long
 	 */
 	public Long getKeyLong(String key) {
@@ -362,6 +369,7 @@ public class DaoHelper extends PilotSupport {
 	 * valori 1,"true","S","SI","Y", false altrimenti
 	 * 
 	 * @param key
+	 *            key
 	 * @return boolean
 	 */
 	public Boolean getKeyBool(String key) {
@@ -377,11 +385,12 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna true se il valore corrispondente alla chiave key � uno tra i
+	 * Ritorna true se il valore corrispondente alla chiave key è uno tra i
 	 * valori 1,"true","S","SI","Y", false altrimenti. Se il valore è null
 	 * ritorna il defaultValue booleano
 	 * 
 	 * @param key
+	 *            key
 	 * @return boolean
 	 */
 	public Boolean getKeyBool(String key, boolean defaultValue) {
@@ -401,6 +410,7 @@ public class DaoHelper extends PilotSupport {
 	 * key quando questi sono separati da ","
 	 * 
 	 * @param key
+	 *            key
 	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key) {
@@ -420,6 +430,7 @@ public class DaoHelper extends PilotSupport {
 	 * key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
+	 *            key
 	 * @return PList[String]
 	 */
 	public PList<String> getKeyList(String key, String separator) {
@@ -439,6 +450,7 @@ public class DaoHelper extends PilotSupport {
 	 * alla chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
+	 *            key
 	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key) {
@@ -458,7 +470,9 @@ public class DaoHelper extends PilotSupport {
 	 * alla chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
+	 *            key
 	 * @param separator
+	 *            separator
 	 * @return PList[Integer]
 	 */
 	public PList<Integer> getKeyListInt(String key, String separator) {
@@ -478,6 +492,7 @@ public class DaoHelper extends PilotSupport {
 	 * chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
+	 *            key
 	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key) {
@@ -497,7 +512,9 @@ public class DaoHelper extends PilotSupport {
 	 * chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
+	 *            key
 	 * @param separator
+	 *            separator
 	 * @return PList[Long]
 	 */
 	public PList<Long> getKeyListLong(String key, String separator) {
@@ -517,6 +534,7 @@ public class DaoHelper extends PilotSupport {
 	 * chiave key quando questi sono separati da ","
 	 * 
 	 * @param key
+	 *            key
 	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key) {
@@ -536,7 +554,9 @@ public class DaoHelper extends PilotSupport {
 	 * chiave key quando questi sono separati dal carattere separator
 	 * 
 	 * @param key
+	 *            key
 	 * @param separator
+	 *            separator
 	 * @return PList[Double]
 	 */
 	public PList<Double> getKeyListDouble(String key, String separator) {
@@ -599,7 +619,9 @@ public class DaoHelper extends PilotSupport {
 	 * Crea la connessione tramite il dataSource e la imposta al dao
 	 * 
 	 * @param nomeDataSource
+	 *            dataSource
 	 * @throws Exception
+	 *             ex
 	 */
 	public void createConnection(String nomeDataSource) throws Exception {
 		setConn(getDs().getConnection());
@@ -623,6 +645,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param pwd
 	 * @param url
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(String userName, String pwd, String url) throws Exception {
 		loadProperties();
@@ -635,7 +658,9 @@ public class DaoHelper extends PilotSupport {
 	 * Costruttore del dao con passaggio della connessione
 	 * 
 	 * @param conn
+	 *            connessione
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(Connection conn) throws Exception {
 		loadProperties();
@@ -647,8 +672,10 @@ public class DaoHelper extends PilotSupport {
 	 * Costruttore del dao con passaggio di connessione/logger
 	 * 
 	 * @param conn
+	 *            connessione
 	 * @param log
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(Connection conn, Logger log) throws Exception {
 		this.log = log;
@@ -671,6 +698,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param ds
 	 * @param log
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(DataSource ds, Logger log) throws Exception {
 		this.log = log;
@@ -689,6 +717,7 @@ public class DaoHelper extends PilotSupport {
 	 * 
 	 * @param ds
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(DataSource ds) throws Exception {
 		this(ds, false);
@@ -697,7 +726,7 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Costruttore per ambienti web in cui passo direttamente il DataSource. La
 	 * connessione verrà prelevata dal DataSource e automaticamente chiusa al
-	 * termine di ogni query restituendola al DataSource. Se fromBatchCall �
+	 * termine di ogni query restituendola al DataSource. Se fromBatchCall è
 	 * true, preservo il report delle query, che quindi conterrà tutte le query
 	 * eseguite e le relative statistiche e al termine della chiamata verrà
 	 * distrutta l'istanza del dao
@@ -706,6 +735,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param ds
 	 * @param fromBatchCall
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(DataSource ds, boolean fromBatchCall) throws Exception {
 		setFromBatchCall(fromBatchCall);
@@ -718,7 +748,7 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Costruttore per ambienti web in cui passo direttamente il DataSource. La
 	 * connessione verrà prelevata dal DataSource e automaticamente chiusa al
-	 * termine di ogni query restituendola al DataSource. Se fromBatchCall �
+	 * termine di ogni query restituendola al DataSource. Se fromBatchCall è
 	 * true, preservo il report delle query, che quindi conterrà tutte le query
 	 * eseguite e le relative statistiche e al termine della chiamata verrò
 	 * distrutta l'istanza del dao
@@ -728,6 +758,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param log
 	 * @param fromBatchCall
 	 * @throws Exception
+	 *             ex
 	 */
 	protected DaoHelper(DataSource ds, Logger log, boolean fromBatchCall) throws Exception {
 		this.log = log;
@@ -758,6 +789,7 @@ public class DaoHelper extends PilotSupport {
 	 * corrispondente alla chiave queryName
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @return String
 	 * @throws IOException
 	 * @throws SQLException
@@ -782,9 +814,12 @@ public class DaoHelper extends PilotSupport {
 	 * valori indicati nella parte di querystring ossia dopo il '?'
 	 * 
 	 * @param queryName
+	 *            queryName queryName
 	 * @return String
 	 * @throws IOException
+	 *             ex
 	 * @throws SQLException
+	 *             ex1
 	 */
 	public String getQueryByName(String queryName) throws IOException, SQLException {
 		if (!isLike(queryName, QS_START))
@@ -879,16 +914,21 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class[T]
 	 * c. Parametri è un oggetto che specifica variabili istanza aventi nome
-	 * uguale ai parametri indicati nella query :param. QueryName � il nome
+	 * uguale ai parametri indicati nella query :param. QueryName è il nome
 	 * della chiave nel file queries.properties a cui corrisponde la query sql
 	 * da eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @param c
+	 *            class
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> selectDTO(String queryName, Object parametri, Class<T> c) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -901,9 +941,12 @@ public class DaoHelper extends PilotSupport {
 	 * query queryName definita all'interno di queries.properties
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean isRecordAssente(String queryName, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -916,9 +959,12 @@ public class DaoHelper extends PilotSupport {
 	 * query queryName definita all'interno di queries.properties
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean isRecordPresente(String queryName, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -931,9 +977,12 @@ public class DaoHelper extends PilotSupport {
 	 * ai parametri indicati nella query queryName.
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean isRecordPresenteDTO(String queryName, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -950,9 +999,12 @@ public class DaoHelper extends PilotSupport {
 	 * ?, ? )}
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean executeStoredProcedure(String queryName, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -969,9 +1021,12 @@ public class DaoHelper extends PilotSupport {
 	 * DBK_PAAP_SISTCONTRIBUTIVE.aggiorna_apsic_da_entrate(?, ?, ?, ?, ? )}
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean executeStoredProcedureDTO(String queryName, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -992,7 +1047,7 @@ public class DaoHelper extends PilotSupport {
 	 * come out parameter. Esempio di definizione della invocazione di SP con
 	 * parametri di IN e OUT in cui il secondo ? è un out parameter:
 	 * feriale={call DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? ,? )}. Se il tipo
-	 * Out Parameter � un Date, occorre definire nella classe una variabile del
+	 * Out Parameter è un Date, occorre definire nella classe una variabile del
 	 * tipo:
 	 * 
 	 * OutParam private Date data;
@@ -1010,13 +1065,17 @@ public class DaoHelper extends PilotSupport {
 	 * della funzione invece vengono messi dopo l'indicazione del nome della
 	 * funzione tra parentesi tonde sempre attraverso i placeholder ?
 	 * 
-	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @param c
+	 *            class
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T executeStoredProcedureOutParameters(String queryName, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1037,7 +1096,7 @@ public class DaoHelper extends PilotSupport {
 	 * Java sono dello stesso tipo che prevede la SP di restituire in uscita
 	 * come out parameter. Esempio di definizione della invocazione di SP con
 	 * parametri di IN e OUT: feriale={call
-	 * DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? )}. Se il tipo Out Parameter � un
+	 * DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? )}. Se il tipo Out Parameter è un
 	 * Date, occorre definire nella classe una variabile del tipo:
 	 * 
 	 * OutParam private Date data;
@@ -1068,12 +1127,17 @@ public class DaoHelper extends PilotSupport {
 	 * della funzione invece vengono messi dopo l'indicazione del nome della
 	 * funzione tra parentesi tonde sempre attraverso i placeholder ?
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T executeStoredProcedureOutParametersDTO(String queryName, Class<T> c, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1082,13 +1146,16 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Torna true se la where condition applicata torna un result set vuoto
-	 * Parametri � un oggetto che specifica variabili istanza aventi nome uguale
+	 * Parametri è un oggetto che specifica variabili istanza aventi nome uguale
 	 * ai parametri indicati nella query queryName.
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Boolean
 	 * @throws Exception
+	 *             ex
 	 */
 	public Boolean isRecordAssenteDTO(String queryName, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1098,15 +1165,19 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Ritorna una lista di oggetti di tipo T individuato dal parametro Class[T]
 	 * c. Parametri l'elenco ordinato dei parametri indicati nella query
-	 * queryName. QueryName � il nome della chiave nel file queries.properties a
+	 * queryName. QueryName è il nome della chiave nel file queries.properties a
 	 * cui corrisponde la query sql da eseguire
-	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> select(String queryName, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1116,15 +1187,20 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Ritorna un oggetto di tipo T individuato dal parametro Class[T] c.
 	 * Parametri l'elenco ordinato dei parametri indicati nella query queryName.
-	 * QueryName � il nome della chiave nel file queries.properties a cui
+	 * QueryName è il nome della chiave nel file queries.properties a cui
 	 * corrisponde la query sql da eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T selectOne(String queryName, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1133,17 +1209,22 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Ritorna un oggetto di tipo T individuato dal parametro Class[T] c.
-	 * Parametri � un oggetto che specifica variabili istanza aventi nome uguale
+	 * Parametri è un oggetto che specifica variabili istanza aventi nome uguale
 	 * ai parametri indicati nella query queryName. QueryName è il nome della
 	 * chiave nel file queries.properties a cui corrisponde la query sql da
 	 * eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @param c
+	 *            classe
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T selectOneDTO(String queryName, Object parametri, Class<T> c) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1155,16 +1236,21 @@ public class DaoHelper extends PilotSupport {
 	 * parametro del metodo.Non esegue quindi un mapping ORM all'interno di un
 	 * bean di mapping del result set ma torna direttamente una lista di oggetti
 	 * della classe specificata (tipicamente String, Date, BigDecimal o altri
-	 * tipi java). Parametri � un oggetto che specifica variabili istanza aventi
-	 * nome uguale ai parametri indicati nella query queryName. QueryName � il
+	 * tipi java). Parametri è un oggetto che specifica variabili istanza aventi
+	 * nome uguale ai parametri indicati nella query queryName. QueryName è il
 	 * nome della chiave nel file queries.properties a cui corrisponde la query
 	 * sql da eseguire
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> selectNoBean(String queryName, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1178,12 +1264,17 @@ public class DaoHelper extends PilotSupport {
 	 * istanza uguali nel nome ai parametri usati nella where condition.
 	 * QueryName è il nome della chiave nel file queries.properties a cui
 	 * corrisponde la query sql da eseguire
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> selectNoBeanDTO(String queryName, Class<T> c, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1195,15 +1286,20 @@ public class DaoHelper extends PilotSupport {
 	 * definito dalla Classe c primo parametro del metodo. I parametri di filtro
 	 * della where condition vengono passati nell'oggetto parametri. Tale
 	 * oggetto deve avere le variabili istanza uguali nel nome ai parametri
-	 * usati nella where condition. QueryName � il nome della chiave nel file
+	 * usati nella where condition. QueryName è il nome della chiave nel file
 	 * queries.properties a cui corrisponde la query sql da eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T selectOneNoBeanDTO(String queryName, Class<T> c, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1216,12 +1312,17 @@ public class DaoHelper extends PilotSupport {
 	 * ordinato dei parametri nella query individuata da queryName nel file
 	 * queries.properties
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> T selectOneNoBean(String queryName, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1232,18 +1333,25 @@ public class DaoHelper extends PilotSupport {
 	 * Esegue le select con paginazione. Numero pagina indica quale numero di
 	 * pagina si desidera caricare. Quanti per pagina indica quanto grande deve
 	 * essere la pagina, ossia quanti record si devono mostrare per pagina.
-	 * Parametri è l'elenco ordinato dei parametri cos� come compaiono nella
-	 * query queryName. QueryName � il nome della chiave nel file
+	 * Parametri è l'elenco ordinato dei parametri così come compaiono nella
+	 * query queryName. QueryName è il nome della chiave nel file
 	 * queries.properties a cui corrisponde la query sql da eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param numeroPagina
+	 *            numeroPagina
 	 * @param quantiPerPagina
+	 *            quantiPerPagina
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> selectPaginatedBean(String queryName, Integer numeroPagina, Integer quantiPerPagina, Class<T> c, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1260,14 +1368,21 @@ public class DaoHelper extends PilotSupport {
 	 * chiave nel file queries.properties a cui corrisponde la query sql da
 	 * eseguire
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param numeroPagina
+	 *            numeroPagina
 	 * @param quantiPerPagina
+	 *            quantiPerPagina
 	 * @param c
+	 *            classe
 	 * @param parametri
+	 *            parametri
 	 * @return PList[T]
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T> PList<T> selectPaginatedBeanDTO(String queryName, Integer numeroPagina, Integer quantiPerPagina, Class<T> c, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1275,16 +1390,19 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Ritorna la cardinalità del result set della query eseguita. Parametri �
+	 * Ritorna la cardinalità del result set della query eseguita. Parametri è
 	 * un oggetto che specifica variabili istanza aventi nome uguale ai
 	 * parametri indicati nella query queryName. QueryName è il nome della
 	 * chiave nel file queries.properties a cui corrisponde la query sql da
 	 * eseguire
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Long
 	 * @throws Exception
+	 *             ex
 	 */
 	public Long selectCountDTO(String queryName, Object parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1298,9 +1416,12 @@ public class DaoHelper extends PilotSupport {
 	 * query sql da eseguire
 	 * 
 	 * @param queryName
+	 *            queryName
 	 * @param parametri
+	 *            parametri
 	 * @return Long
 	 * @throws Exception
+	 *             ex
 	 */
 	public Long selectCount(String queryName, Object... parametri) throws Exception {
 		DaoHelperBeanSelect bs = getBeanSelect(queryName);
@@ -1402,10 +1523,11 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Rimuove dalla table cache i result set delle entity indicate in alias. Se
-	 * l'elenco degli alias � null (ossia non passo alcun parametro), allora
+	 * l'elenco degli alias è null (ossia non passo alcun parametro), allora
 	 * cancella totalmente la table cache del dao
 	 * 
 	 * @param alias
+	 *            alias
 	 */
 	public void clearTableCache(String... alias) {
 		if (alias == null || alias.length == 0) {
@@ -1442,10 +1564,13 @@ public class DaoHelper extends PilotSupport {
 	 * quell'alias, automaticamente istanziata con la connessione, il codice
 	 * utente e il codice applicativo da usare nelle query che la riguardano.
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param alias
+	 *            alias
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> T giveMe(String alias) throws Exception {
 		flushContainer();
@@ -1489,13 +1614,16 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Esegue quanto indicato in giveMe con l'aggiunta che valorizza anche tutte
 	 * le variabili istanza dell'Entity identificata da alias. La valorizzazione
-	 * avviene in modalit� mock generando dati casuali secondo il metodo
+	 * avviene in modalità mock generando dati casuali secondo il metodo
 	 * copyFrom della classe Pilot a cui si rimanda per la documentazione
 	 * 
+	 * @param<T> T
 	 * 
 	 * @param alias
+	 *            alias
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T extends BaseEntity> T giveMeMock(String alias) throws Exception {
 		return (T) giveMe(alias).copyFrom((T) mock(findEntity(alias).getC()));
@@ -1514,6 +1642,7 @@ public class DaoHelper extends PilotSupport {
 	 * Chiude la connessione
 	 * 
 	 * @throws SQLException
+	 *             ex
 	 */
 	public void closeConnection() throws SQLException {
 		if (notNull(conn)) {
@@ -1525,6 +1654,7 @@ public class DaoHelper extends PilotSupport {
 	 * Esegue il commit delle query eseguite
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void commit() throws Exception {
 		if (notNull(getConn())) {
@@ -1550,6 +1680,7 @@ public class DaoHelper extends PilotSupport {
 	 * Eseguo il rollback delle query eseguite
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void rollback() throws Exception {
 		if (notNull(getConn())) {
@@ -1635,21 +1766,24 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Legge da una tipologica chiave-valore utilizzando un meccanismo di cache
-	 * automatico.Alias � l'alias dell'entity sorgente.Key è il valore chiave
+	 * automatico.Alias è l'alias dell'entity sorgente.Key è il valore chiave
 	 * della tipologica.Restituisce il valore della tipologica corrispondente
 	 * alla chiave passata come parametro e utilizzando un meccanismo di cache
 	 * automatico per evitare accessi multipli ridondanti alla base dati
 	 * 
-	 * Il meccanismo di cache � limitato alla sola istanza della classe dao che
+	 * Il meccanismo di cache è limitato alla sola istanza della classe dao che
 	 * estende DaoHelper. Se creo una nuova istanza avrà un'altra cache.
-	 * 
+	 * @param<T> T
 	 * 
 	 * @param <K>
+	 *            K
 	 * @param alias
+	 *            alias
 	 * @param key
-	 *            T
+	 *            key
 	 * @return T
 	 * @throws Exception
+	 *             ex
 	 */
 	public <T, K> T getTipologica(String alias, K key) throws Exception {
 		String keyClass = null;
@@ -1704,6 +1838,7 @@ public class DaoHelper extends PilotSupport {
 	 * parametro
 	 * 
 	 * @param alias
+	 *            alias
 	 * @return EntityWired
 	 */
 	protected EntityWired getEw(String alias) {
@@ -1715,6 +1850,7 @@ public class DaoHelper extends PilotSupport {
 	 * parametro e con stato l'array di stati passato come parametro
 	 * 
 	 * @param alias
+	 *            alias
 	 * @param stato
 	 * @return EntityWired
 	 */
@@ -1739,6 +1875,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param entW
 	 * @return PList[?]
 	 * @throws Exception
+	 *             ex
 	 */
 	protected <K extends BaseEntity> PList<?> selectCascade(PList<K> start, EntityWired... entW) throws Exception {
 		for (int i = 0; i < entW.length - 1; i++) {
@@ -1780,6 +1917,7 @@ public class DaoHelper extends PilotSupport {
 	 * @param entW
 	 * @return PList[?]
 	 * @throws Exception
+	 *             ex
 	 */
 	protected <K extends BaseEntity> PList<?> selectCascade(K start, EntityWired... entW) throws Exception {
 		PList<K> inizio = pl();
@@ -2075,6 +2213,7 @@ public class DaoHelper extends PilotSupport {
 	 * Stampa tutte le query eseguite tramite l'istanza della classe DaoHelper
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void printQueries() throws Exception {
 		log(LF, LF);
@@ -2099,6 +2238,7 @@ public class DaoHelper extends PilotSupport {
 	 * Metodo alias di printQueries
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void printReport() throws Exception {
 		printQueries();
@@ -2154,6 +2294,7 @@ public class DaoHelper extends PilotSupport {
 	 * 
 	 * @return Set<String>
 	 * @throws Exception
+	 *             ex
 	 */
 	private Set<String> getSPCalled() throws Exception {
 		Set<String> sp = new HashSet<String>();
@@ -2844,6 +2985,7 @@ public class DaoHelper extends PilotSupport {
 	 * l'eccezione e ossia log.error(messaggio,e)
 	 * 
 	 * @param k
+	 *            k
 	 */
 	public void logError(Object... k) {
 		if (k != null) {
@@ -2859,6 +3001,7 @@ public class DaoHelper extends PilotSupport {
 	 * Esegue la stampa di log di tipo info (log.info)
 	 * 
 	 * @param k
+	 *            k
 	 */
 	public void log(Object... k) {
 		getLog().info(strSpaced(k));
@@ -2880,6 +3023,7 @@ public class DaoHelper extends PilotSupport {
 	 * rappresentazione numerica della data di sistema
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void saveReport() throws Exception {
 		saveReport(getOutPath());
@@ -2890,6 +3034,7 @@ public class DaoHelper extends PilotSupport {
 	 * 
 	 * @return PList[String]
 	 * @throws Exception
+	 *             ex
 	 */
 	public PList<String> getReportContent() throws Exception {
 		PList<String> fileContent = plstr();
@@ -2918,6 +3063,9 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Imposta a null l'istanza del singleton e chiude la connessione
+	 * 
+	 * @throws Exception
+	 *             ex
 	 */
 	public void destroy() throws Exception {
 		closeConnection();
@@ -2926,25 +3074,27 @@ public class DaoHelper extends PilotSupport {
 
 	/**
 	 * Esegue la finalizzazione delle operazioni del Dao. Se l'attributo in
-	 * memory � true, esegue la serializzazione su file [nomeClasseDao]_DB.log
+	 * memory è true, esegue la serializzazione su file [nomeClasseDao]_DB.log
 	 * del database in memoria. Se printLogReport è true, esegue la stampa del
 	 * log del report finale delle query eseguite dalla classe del dao. Se il
 	 * valore dell'attributo outPath di @DaoConfig è not null, esegue il
-	 * salvataggio del file del report finale nel path indicato.Se impact �
+	 * salvataggio del file del report finale nel path indicato.Se impact è
 	 * impostato su true, stampa nello stesso path, i file di resoconto di
 	 * impatto delle entities indicate da impactAlias.Ripulisce la table cache.
 	 * Esegue la commit. Chiude la connessione. Pone a null la variabile istanza
 	 * del singleton.
 	 * 
 	 * Se sono in ambiente EJB Container (chiamata del costruttore con il nome
-	 * del dataSource) con modalit� CMT Container Managed Transaction, non
+	 * del dataSource) con modalità CMT Container Managed Transaction, non
 	 * vengono eseguite tutte queste operazioni di finalizzazione, l'istanza del
 	 * dao resta attiva in memoria, non vengono loggate le query eseguite dal
 	 * dao, non viene generato il report delle statistiche delle query e non
 	 * viene eseguita la commit.
 	 * 
 	 * @param printLogReport
+	 *            printLogReport
 	 * @throws Exception
+	 *             ex
 	 */
 	public void finalize(boolean printLogReport) throws Exception {
 		if (isFromBatchCall()) {
@@ -2981,13 +3131,14 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Esegue la finalizzazione in caso di dao in ambiente EJB Container e
 	 * invocato da un batch (quindi non WEB). Viene generato il report delle
-	 * statistiche delle query che pu� essere restituito al batch chiamante e
+	 * statistiche delle query che può essere restituito al batch chiamante e
 	 * viene distrutta l'istanza del dao e chiusa la connessione. Vengono
 	 * generati anche i file di impatto della chiamata.Alla prossima chiamata da
-	 * parte del batch, verr� generata una nuova istanza del dao e un nuovo
+	 * parte del batch, verrà generata una nuova istanza del dao e un nuovo
 	 * report delle query.
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	private void finalizeEJBContainerFromBatch() throws Exception {
 		integraContainer();
@@ -3001,6 +3152,7 @@ public class DaoHelper extends PilotSupport {
 	 * file di impatto
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	public void finalizeNoReport() throws Exception {
 		setOutPath(null);
@@ -3052,10 +3204,11 @@ public class DaoHelper extends PilotSupport {
 	}
 
 	/**
-	 * Esporta su file il contenuto del database in memoria. Path � il percorso
+	 * Esporta su file il contenuto del database in memoria. Path è il percorso
 	 * senza il nome. Verrà creato il file [nomeClasseDao]_DBExport.log
 	 * 
 	 * @param path
+	 *            path
 	 */
 	public void exportDb(String path) {
 		if (isInMemory()) {
@@ -3234,13 +3387,16 @@ public class DaoHelper extends PilotSupport {
 	 * impatto creato.
 	 * 
 	 * @param alias
+	 *            alias
 	 * @param path
+	 *            path
 	 * @throws Exception
+	 *             ex
 	 * @return String
 	 */
 	public String impact(String alias, String path) throws Exception {
 		if (tutte(isDsMode(), !isFromBatchCall()))
-			throw new Exception("Modalit� EJB in ambiente WEB. Generazione dei file di impatto disabilitata");
+			throw new Exception("Modalità EJB in ambiente WEB. Generazione dei file di impatto disabilitata");
 		return giveMe(alias).modifiedBetween(getStart(), now()).byApp(getCodAppl()).byUser(getCodUtente()).selectForWrite(path);
 	}
 
@@ -3252,12 +3408,14 @@ public class DaoHelper extends PilotSupport {
 	 * di stringhe contenuto del file di impatto per l'entity alias specificata
 	 * 
 	 * @param alias
+	 *            alias
 	 * @return PList[String]
 	 * @throws Exception
+	 *             ex
 	 */
 	public PList<String> impact(String alias) throws Exception {
 		if (tutte(isDsMode(), !isFromBatchCall()))
-			throw new Exception("Modalit� EJB in ambiente WEB. Generazione dei file di impatto disabilitata");
+			throw new Exception("Modalità EJB in ambiente WEB. Generazione dei file di impatto disabilitata");
 		return giveMe(alias).modifiedBetween(getStart(), now()).byApp(getCodAppl()).byUser(getCodUtente()).selectForWrite();
 	}
 
@@ -3270,10 +3428,11 @@ public class DaoHelper extends PilotSupport {
 	 * impatto del dao. Le entities coinvolte sono quelle indicate
 	 * nell'attributo impactAlias di @DaoConfig e che hanno tutte e tre le
 	 * colonne COD_UTENTE,COD_APPL,DATA_AGGIORNAMENTO. Il path in cui salvare i
-	 * file di resoconto � il valore dell'attributo outPath di @DaoConfig
+	 * file di resoconto è il valore dell'attributo outPath di @DaoConfig
 	 * 
 	 * 
 	 * @throws Exception
+	 *             ex
 	 */
 	private <T extends BaseEntity> void impact() throws Exception {
 		if (isImpact()) {
@@ -3352,6 +3511,7 @@ public class DaoHelper extends PilotSupport {
 	 * 
 	 * @return Connection
 	 * @throws SQLException
+	 *             ex
 	 */
 	public Connection getConnectionDataSource() throws SQLException {
 		return getDs().getConnection();
@@ -3361,7 +3521,9 @@ public class DaoHelper extends PilotSupport {
 	 * Chiude la connessione passata come parametro
 	 * 
 	 * @param conn
+	 *            connessione
 	 * @throws SQLException
+	 *             ex
 	 */
 	public void closeConnection(Connection conn) throws SQLException {
 		if (notNull(conn)) {

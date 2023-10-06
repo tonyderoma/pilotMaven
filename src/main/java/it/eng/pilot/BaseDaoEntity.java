@@ -3331,6 +3331,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 *            X
 	 * @param k
 	 *            k
+	 * 
+	 * @return BaseDaoEntity
 	 * @throws Exception
 	 *             ex
 	 */
