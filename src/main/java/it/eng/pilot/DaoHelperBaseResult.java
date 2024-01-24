@@ -96,7 +96,7 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	private String queryName;
 
 	private void logNoQuery() {
-		log("Occorre definire una query di select da eseguire. La query attuale è vuota, non esiste alcuna key ", getQueryName(), " nel file ", QUERY_FILE);
+		log("Occorre definire una query di select da eseguire. La query attuale � vuota, non esiste alcuna key ", getQueryName(), " nel file ", QUERY_FILE);
 	}
 
 	private class Pagination {
@@ -140,19 +140,13 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * pagina si desidera caricare. Quanti per pagina indica quanto grande deve
 	 * essere la pagina, ossia quanti record si devono mostrare per pagina.
 	 * 
-	 * @param<K> K
-	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param numeroPagina
-	 *            numeroPagina
 	 * @param quantiPerPagina
-	 *            quantiPerPagina
 	 * @param params
-	 *            params
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> selectPaginatedBean(Class<K> c, Integer numeroPagina, Integer quantiPerPagina, Object... params) throws Exception {
 		if (!checkQuery())
@@ -220,20 +214,13 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Tale oggetto deve avere le variabili istanza uguali nel nome ai parametri
 	 * usati nella where condition
 	 * 
-	 * 
-	 * @param<K> K
-	 * 
+	 * @param <K>
 	 * @param numeroPagina
-	 *            numeroPagina
 	 * @param c
-	 *            classe
 	 * @param quantiPerPagina
-	 *            quantiPerPagina
 	 * @param o
-	 *            o
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> selectPaginatedBeanDTO(Class<K> c, Integer numeroPagina, Integer quantiPerPagina, Object o) throws Exception {
 		if (!checkQuery())
@@ -325,32 +312,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 			}
 		}
 		return item;
-	}
-
-	private <K> void invokeMethod(Method method, K item, ResultSet rs, String col) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, SQLException {
-		Class retType = method.getParameterTypes()[0];
-		if (is(retType.getSimpleName(), STRING)) {
-			method.invoke(item, rs.getString(col));
-		} else if (is(retType.getSimpleName(), DATE)) {
-			method.invoke(item, rs.getDate(col));
-		} else if (is(retType.getSimpleName(), BIG_DECIMAL)) {
-			method.invoke(item, rs.getBigDecimal(col));
-		} else if (is(retType.getSimpleName(), LONG_TYPE)) {
-			method.invoke(item, rs.getLong(col));
-		} else if (is(retType.getSimpleName(), INTEGER_TYPE)) {
-			method.invoke(item, rs.getInt(col));
-		} else if (is(retType.getSimpleName(), SHORT)) {
-			method.invoke(item, rs.getShort(col));
-		} else if (is(retType.getSimpleName(), FLOAT)) {
-			method.invoke(item, rs.getFloat(col));
-		} else if (is(retType.getSimpleName(), DOUBLE)) {
-			method.invoke(item, rs.getDouble(col));
-		} else if (is(retType.getSimpleName(), TIMESTAMP)) {
-			method.invoke(item, rs.getTimestamp(col));
-		} else if (is(retType.getSimpleName(), BYTE)) {
-			method.invoke(item, rs.getBlob(col));
-		}
-
 	}
 
 	private String formaStringaCount(String query) {
@@ -479,9 +440,9 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * dell'invocazione conterranno i valori restituiti dalla SP e i cui tipi
 	 * Java sono dello stesso tipo che prevede la SP di restituire in uscita
 	 * come out parameter. Esempio di definizione della invocazione di SP con
-	 * parametri di IN e OUT in cui il secondo ? è un out parameter:
+	 * parametri di IN e OUT in cui il secondo ? � un out parameter:
 	 * feriale={call DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? ,? )}. Se il tipo
-	 * Out Parameter è un Date, occorre definire nella classe una variabile del
+	 * Out Parameter � un Date, occorre definire nella classe una variabile del
 	 * tipo:
 	 * 
 	 * OutParam private Date data;
@@ -501,14 +462,10 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * 
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param params
-	 *            params
 	 * @param c
-	 *            classe
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 
 	public <K> K executeStoredProcedureOutParameters(Class<K> c, Object... params) throws Exception {
@@ -695,7 +652,7 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Java sono dello stesso tipo che prevede la SP di restituire in uscita
 	 * come out parameter. Esempio di definizione della invocazione di SP con
 	 * parametri di IN e OUT: feriale={call
-	 * DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? )}. Se il tipo Out Parameter è un
+	 * DBK_ENEK_UTILITY.DBP_ENEK_GetFeriale( ? )}. Se il tipo Out Parameter � un
 	 * Date, occorre definire nella classe una variabile del tipo:
 	 * 
 	 * OutParam private Date data;
@@ -715,9 +672,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * 
 	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param dto
-	 *            dto La stored procedure ha dei parametri di output in cui va a
+	 *            La stored procedure ha dei parametri di output in cui va a
 	 *            scrivere il risultato e tali parametri di output devono essere
 	 *            messi, nella definizione della SP, dopo i parametri di input.
 	 *            Nella funzione SQL invece, i tipi di ritorno vengono definiti
@@ -734,7 +690,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 *            sempre attraverso i placeholder ?
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> K executeStoredProcedureOutParametersDTO(Class<K> c, Object dto) throws Exception {
 		if (!checkQuerySP())
@@ -761,7 +716,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * @param params
 	 * @return Boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public Boolean executeStoredProcedure(Object... params) throws Exception {
 		if (!checkQuerySP())
@@ -805,10 +759,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * DBK_PAAP_SISTCONTRIBUTIVE.aggiorna_apsic_da_entrate(?, ?, ?, ?, ? )}
 	 * 
 	 * @param dto
-	 *            dto dto
 	 * @return Boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public Boolean executeStoredProcedureDTO(Object dto) throws Exception {
 		if (!checkQuerySP())
@@ -827,12 +779,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Esegue la query di selezione con i parametri passati nella where
 	 * condition e mappa il risultato nella classe c
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param params
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> select(Class<K> c, Object... params) throws Exception {
 		return selectBean(c, params);
@@ -885,7 +836,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * @param params
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordPresente(Object... params) throws Exception {
 		return selectCount(params) > 0;
@@ -897,7 +847,6 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * @param params
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordAssente(Object... params) throws Exception {
 		return !isRecordPresente();
@@ -908,10 +857,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * un record
 	 * 
 	 * @param dto
-	 *            dto
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordPresenteDTO(Object dto) throws Exception {
 		return selectCountDTO(dto) > 0;
@@ -921,10 +868,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Torna true se la where condition applicata torna un result set vuoto
 	 * 
 	 * @param dto
-	 *            dto
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordAssenteDTO(Object dto) throws Exception {
 		return !isRecordPresenteDTO(dto);
@@ -934,10 +879,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Ritorna il numero di record individuati dalla query impostata nel bean
 	 * 
 	 * @param params
-	 *            params
 	 * @return Long
 	 * @throws Exception
-	 *             ex
 	 */
 	public Long selectCount(Object... params) throws Exception {
 		if (!checkQuery())
@@ -984,10 +927,8 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * usati nella where condition
 	 * 
 	 * @param o
-	 *            o
 	 * @return Long
 	 * @throws Exception
-	 *             ex
 	 */
 	public Long selectCountDTO(Object o) throws Exception {
 		if (!checkQuery())
@@ -1034,13 +975,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * della classe specificata (tipicamente String, Date, BigDecimal o altri
 	 * tipi java)
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param params
-	 *            params
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> selectNoBean(Class<K> c, Object... params) throws Exception {
 		return _selectNoBean(c, params);
@@ -1050,14 +989,10 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * Ritorna il primo elemento della lista risultato
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param c
-	 *            classe
 	 * @param params
-	 *            params
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> K selectOne(Class<K> c, Object... params) throws Exception {
 		return (K) getFirstElement(select(c, params));
@@ -1070,14 +1005,10 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * condition
 	 * 
 	 * @param c
-	 *            classe
 	 * @param <K>
-	 *            K
 	 * @param o
-	 *            o
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> K selectOneDTO(Class<K> c, Object o) throws Exception {
 		return (K) getFirstElement(selectDTO(c, o));
@@ -1088,14 +1019,10 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * definito dalla Classe c primo parametro del metodo.
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param c
-	 *            classe
 	 * @param params
-	 *            params
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> K selectOneNoBean(Class<K> c, Object... params) throws Exception {
 		return getFirstElement(selectNoBean(c, params));
@@ -1108,13 +1035,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * avere le variabili istanza uguali nel nome ai parametri usati nella where
 	 * condition
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param o
-	 *            o
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> K selectOneNoBeanDTO(Class<K> c, Object o) throws Exception {
 		return getFirstElement(selectNoBeanDTO(c, o));
@@ -1169,13 +1094,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * parametri passati a null vengono automaticamente esclusi nella formazione
 	 * della where condition
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param o
-	 *            o
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> selectDTO(Class<K> c, Object o) throws Exception {
 		if (!checkQuery())
@@ -1223,13 +1146,11 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	 * passati nell'oggetto o. Tale oggetto deve avere le variabili istanza
 	 * uguali nel nome ai parametri usati nella where condition
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param o
-	 *            o
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> PList<K> selectNoBeanDTO(Class<K> c, Object o) throws Exception {
 		if (!checkQuery())
@@ -1311,7 +1232,7 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 
 				// sostituisco con la condizione colonna=colonna in modo da
 				// annullare la where condition qualora il
-				// valore del parametro è NULL (vedi query per filtri di
+				// valore del parametro � NULL (vedi query per filtri di
 				// ricerca, metto sempre la query completa nel file di query con
 				// tutte
 				// le condizioni e poi a runtime, quando un parametro ha valore
@@ -1335,15 +1256,14 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 	}
 
 	/**
-	 * c è la classe del bean K. Params sono i parametri passati alla query
+	 * c � la classe del bean K. Params sono i parametri passati alla query
 	 * secondo l'ordine in cui appaiono all'interno dello statement
 	 * 
+	 * @param <K>
 	 * @param c
-	 *            classe
 	 * @param params
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	protected <K> PList<K> selectBean(Class<K> c, Object... params) throws Exception {
 		if (!checkQuery())
@@ -1441,11 +1361,13 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 		try {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
+					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 
 				}
 			}
 		} catch (Exception e) {
+			log("ERROREEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!", e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -1478,6 +1400,32 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 		return item;
 	}
 
+	private <K> void invokeMethod(Method method, K item, ResultSet rs, String col) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, SQLException {
+		Class retType = method.getParameterTypes()[0];
+		if (is(retType.getSimpleName(), STRING)) {
+			method.invoke(item, rs.getString(col));
+		} else if (is(retType.getSimpleName(), DATE)) {
+			method.invoke(item, rs.getDate(col));
+		} else if (is(retType.getSimpleName(), BIG_DECIMAL)) {
+			method.invoke(item, rs.getBigDecimal(col));
+		} else if (is(retType.getSimpleName(), LONG_TYPE)) {
+			method.invoke(item, rs.getLong(col));
+		} else if (is(retType.getSimpleName(), INTEGER_TYPE)) {
+			method.invoke(item, rs.getInt(col));
+		} else if (is(retType.getSimpleName(), SHORT)) {
+			method.invoke(item, rs.getShort(col));
+		} else if (is(retType.getSimpleName(), FLOAT)) {
+			method.invoke(item, rs.getFloat(col));
+		} else if (is(retType.getSimpleName(), DOUBLE)) {
+			method.invoke(item, rs.getDouble(col));
+		} else if (is(retType.getSimpleName(), TIMESTAMP)) {
+			method.invoke(item, rs.getTimestamp(col));
+		} else if (is(retType.getSimpleName(), BYTE)) {
+			method.invoke(item, rs.getBlob(col));
+		}
+
+	}
+
 	private String callToLowerCase(String sql) {
 		sql = despaceString(sql);
 		String p1 = substring(sql, "= ", false, false, null, false, false);
@@ -1503,7 +1451,7 @@ public abstract class DaoHelperBaseResult extends PilotSupport implements Serial
 			} else {
 				// sostituisco con la condizione colonna=colonna in modo da
 				// annullare la where condition qualora il
-				// valore del parametro è NULL (vedi query per filtri di
+				// valore del parametro � NULL (vedi query per filtri di
 				// ricerca, metto sempre la query completa nel file di query con
 				// tutte
 				// le condizioni e poi a runtime, quando un parametro ha valore

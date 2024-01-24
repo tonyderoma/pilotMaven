@@ -16,8 +16,8 @@ import java.util.concurrent.Future;
 import org.jboss.logging.Logger;
 
 /**
- * Classe di metodi alias di Pilot. Può essere estesa in modo tale da avere
- * automaticamente un sottoinsieme di metodi di Pilot (metodi più utilizzati
+ * Classe di metodi alias di Pilot. Pu� essere estesa in modo tale da avere
+ * automaticamente un sottoinsieme di metodi di Pilot (metodi pi� utilizzati
  * durante il coding) senza usare la variabile istanza p.nomeMetodo(...) ma
  * accedendo direttamente con nomeMetodo(..). Per la documentazione fare
  * riferimento ai corrispondenti metodi della classe Pilot.
@@ -295,6 +295,10 @@ public class PilotSupport {
 
 	protected boolean almenoUna(Boolean... b) {
 		return p.almenoUna(b);
+	}
+
+	protected boolean nessuna(Boolean... b) {
+		return p.nessuna(b);
 	}
 
 	protected boolean isLike(Object campo, Object... value) {
@@ -633,10 +637,6 @@ public class PilotSupport {
 		return p.mock(c);
 	}
 
-	protected <T> void writeFile(String path, List<T> data) {
-		p.writeFile(path, data);
-	}
-
 	protected <K> K mask(K k, String... fields) throws Exception {
 		return p.mask(k, fields);
 	}
@@ -700,8 +700,8 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList()
 	 * 
-	 * 
-	 * @return PList[K]
+	 * @param <K>
+	 * @return PList<K>
 	 */
 	protected <K> PList<K> pl() {
 		return getPList();
@@ -710,9 +710,9 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList(Integer)
 	 * 
-	 * 
+	 * @param <K>
 	 * @param limite
-	 * @return PList[K]
+	 * @return PList<K>
 	 */
 	protected <K> PList<K> pl(Integer limite) {
 		return getPList(limite);
@@ -721,7 +721,9 @@ public class PilotSupport {
 	/**
 	 * Alias di getPMap()
 	 * 
-	 * @return PMap[K, V]
+	 * @param <K>
+	 * @param <V>
+	 * @return PMap<K, V>
 	 */
 	protected <K, V> PMap<K, V> pmap() {
 		return getPMap();
@@ -730,7 +732,9 @@ public class PilotSupport {
 	/**
 	 * Alias di getPMapList()
 	 * 
-	 * @return PMap[K, PList[V]]
+	 * @param <K>
+	 * @param <V>
+	 * @return PMap<K, PList<V>>
 	 */
 	protected <K, V> PMap<K, PList<V>> pmapl() {
 		return getPMapList();
@@ -739,7 +743,7 @@ public class PilotSupport {
 	/**
 	 * Alias di getPListString()
 	 * 
-	 * @return PList[String]
+	 * @return PList<String>
 	 */
 	protected PList<String> plstr() {
 		return getPListString();
@@ -750,11 +754,11 @@ public class PilotSupport {
 	}
 
 	/**
-	 * Alias di getPList(Collection[K] list)
+	 * Alias di getPList(Collection<K> list)
 	 * 
-	 * 
+	 * @param <K>
 	 * @param list
-	 * @return Collection[K]
+	 * @return Collection<K>
 	 */
 	protected <K> PList<K> pl(Collection<K> list) {
 		return p.pl(list);
@@ -763,8 +767,9 @@ public class PilotSupport {
 	/**
 	 * Alias di getPList(K...items)
 	 * 
+	 * @param <K>
 	 * @param items
-	 * @return PList[K]
+	 * @return PList<K>
 	 */
 	protected <K> PList<K> pl(K... items) {
 		return getPList(items);
@@ -1014,11 +1019,15 @@ public class PilotSupport {
 		p.writeFile(path, data);
 	}
 
+	protected <T extends BaseEntity> void writeFile(String path, T data) {
+		p.writeFile(path, data);
+	}
+
 	protected <T extends BaseEntity> void writeFile(String path, PList<T> data) {
 		p.writeFile(path, data);
 	}
 
-	protected <T extends BaseEntity> void writeFile(String path, T data) {
+	protected <T> void writeFile(String path, List<T> data) {
 		p.writeFile(path, data);
 	}
 
@@ -1154,16 +1163,12 @@ public class PilotSupport {
 		return p.min(vals);
 	}
 
-	protected String primoGiornoDelMese(Date d) {
-		return p.primoGiornoDelMese(d);
-	}
-
 	protected Date primoGiornoDelMeseDate(Date d) {
 		return p.primoGiornoDelMeseDate(d);
 	}
 
-	protected boolean nessuna(Boolean... b) {
-		return p.nessuna(b);
+	protected String primoGiornoDelMese(Date d) {
+		return p.primoGiornoDelMese(d);
 	}
 
 	protected PList<KeyValue<String, String>> getQueryString(String s) {
@@ -1184,5 +1189,61 @@ public class PilotSupport {
 
 	protected String pluraleSingolare(int num, String s) {
 		return p.pluraleSingolare(num, s);
+	}
+
+	protected String strSepDash(Object... values) {
+		return p.strSepDash(values);
+	}
+
+	protected String strSepComma(Object... values) {
+		return p.strSepComma(values);
+	}
+
+	protected String strSepPipe(Object... values) {
+		return p.strSepPipe(values);
+	}
+
+	protected String strSepSpace(Object... values) {
+		return p.strSepSpace(values);
+	}
+
+	protected String concatenaDashListaStringhe(List<String> l) {
+		return p.concatenaDashListaStringhe(l);
+	}
+
+	protected String concatenaCommaListaStringhe(List<String> l) {
+		return p.concatenaCommaListaStringhe(l);
+	}
+
+	protected String concatenaPipeListaStringhe(List<String> l) {
+		return p.concatenaPipeListaStringhe(l);
+	}
+
+	protected String concatenaSpaceListaStringhe(List<String> l) {
+		return p.concatenaSpaceListaStringhe(l);
+	}
+
+	protected <K> PList<K> toListDashSep(String s, Class<K> c) {
+		return p.toListDashSep(s, c);
+	}
+
+	protected <K> PList<K> toListCommaSep(String s, Class<K> c) {
+		return p.toListCommaSep(s, c);
+	}
+
+	protected <K> PList<K> toListPipeSep(String s, Class<K> c) {
+		return p.toListPipeSep(s, c);
+	}
+
+	protected <K> Set<K> toSetDashSep(String s, Class<K> c) {
+		return p.toSetDashSep(s, c);
+	}
+
+	protected <K> Set<K> toSetCommaSep(String s, Class<K> c) {
+		return p.toSetCommaSep(s, c);
+	}
+
+	protected <K> Set<K> toSetPipeSep(String s, Class<K> c) {
+		return p.toSetPipeSep(s, c);
 	}
 }

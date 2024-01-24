@@ -15,8 +15,8 @@ import java.util.Map;
 import org.jboss.logging.Logger;
 
 /**
- * Classe che estende le funzionalità di un classico ArrayList aggiungendo le
- * funzionalità di ricerca su lista in base agli operatori relazionali della
+ * Classe che estende le funzionalit� di un classico ArrayList aggiungendo le
+ * funzionalit� di ricerca su lista in base agli operatori relazionali della
  * Enumeration it.eng.pilot.Operatore.
  * 
  * In tutti i metodi, se il parametro campo lo passo a NULL mi riferisco
@@ -63,7 +63,7 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	/**
-	 * Limit � il limite massimo di elementi che l'oggetto PList può contenere.
+	 * Limit � il limite massimo di elementi che l'oggetto PList pu� contenere.
 	 * Oltre questo limite non si possono pi� aggiungere elementi e il metodo
 	 * addElement torna false
 	 * 
@@ -285,8 +285,8 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	/**
-	 * Metodo che controlla la congruità dei filtri impostati, se sono tutti in
-	 * modalità assoluta (per liste di tipi Java) o tutti in modalità bean
+	 * Metodo che controlla la congruit� dei filtri impostati, se sono tutti in
+	 * modalit� assoluta (per liste di tipi Java) o tutti in modalit� bean
 	 * custom. Se sono misti solleva eccezione.
 	 * 
 	 * @throws Exception
@@ -1378,6 +1378,30 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 		return p.isAnyListBeanValues(this, prop, value);
 	}
 
+	public <T> boolean anyMatch(String prop, T... values) throws Exception {
+		if (null == values || values.length == 0)
+			return false;
+		boolean ret = false;
+		for (T item : values) {
+			ret = p.isAnyListBeanValues(this, prop, item);
+			if (ret)
+				break;
+		}
+		return ret;
+	}
+
+	public <T> boolean noneMatch(String prop, T... values) throws Exception {
+		if (null == values || values.length == 0)
+			return false;
+		boolean ret = true;
+		for (T item : values) {
+			ret = p.isNoneListBeanValues(this, prop, item);
+			if (!ret)
+				break;
+		}
+		return ret;
+	}
+
 	public boolean isAllListValues(K value) throws Exception {
 		return p.isAllListValues(this, value);
 	}
@@ -1705,7 +1729,7 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	private void noBoolean(String campo) {
-		p.logError("Il campo", campo, "non è di tipo boolean");
+		p.logError("Il campo", campo, "non � di tipo boolean");
 	}
 
 	private static String getGetterMethodName(String field) {
