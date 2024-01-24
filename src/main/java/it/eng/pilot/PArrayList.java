@@ -15,8 +15,8 @@ import java.util.Map;
 import org.jboss.logging.Logger;
 
 /**
- * Classe che estende le funzionalit� di un classico ArrayList aggiungendo le
- * funzionalit� di ricerca su lista in base agli operatori relazionali della
+ * Classe che estende le funzionalità di un classico ArrayList aggiungendo le
+ * funzionalità di ricerca su lista in base agli operatori relazionali della
  * Enumeration it.eng.pilot.Operatore.
  * 
  * In tutti i metodi, se il parametro campo lo passo a NULL mi riferisco
@@ -63,8 +63,8 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	/**
-	 * Limit � il limite massimo di elementi che l'oggetto PList pu� contenere.
-	 * Oltre questo limite non si possono pi� aggiungere elementi e il metodo
+	 * Limit è il limite massimo di elementi che l'oggetto PList può contenere.
+	 * Oltre questo limite non si possono più aggiungere elementi e il metodo
 	 * addElement torna false
 	 * 
 	 * @param limit
@@ -285,8 +285,8 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	/**
-	 * Metodo che controlla la congruit� dei filtri impostati, se sono tutti in
-	 * modalit� assoluta (per liste di tipi Java) o tutti in modalit� bean
+	 * Metodo che controlla la congruità dei filtri impostati, se sono tutti in
+	 * modalità assoluta (per liste di tipi Java) o tutti in modalità bean
 	 * custom. Se sono misti solleva eccezione.
 	 * 
 	 * @throws Exception
@@ -1729,7 +1729,7 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 	}
 
 	private void noBoolean(String campo) {
-		p.logError("Il campo", campo, "non � di tipo boolean");
+		p.logError("Il campo", campo, "non è di tipo boolean");
 	}
 
 	private static String getGetterMethodName(String field) {

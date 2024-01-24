@@ -187,7 +187,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Esegue la stampa di log di tipo error (log.error) degli oggetti passati
-	 * come parametri. Se l'ultimo parametro � istanza di Throwable allora
+	 * come parametri. Se l'ultimo parametro è istanza di Throwable allora
 	 * chiama il metodo di log.error che prevede come ultimo argomento
 	 * l'eccezione e ossia log.error(messaggio,e)
 	 * 
@@ -445,7 +445,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Esegue la scrittura sullo stdOut della stringa s pi� l'oggetto o passato
+	 * Esegue la scrittura sullo stdOut della stringa s più l'oggetto o passato
 	 * come parametro
 	 * 
 	 * @param s
@@ -584,7 +584,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un oggetto bean e una proprieta prop in dot notation, torna il
-	 * valore di quella proprieta.Se il bean � null torna null
+	 * valore di quella proprieta.Se il bean è null torna null
 	 * 
 	 * @param bean
 	 * @param prop
@@ -603,7 +603,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un oggetto bean e una proprieta prop in dot notation, torna il
-	 * valore di quella proprieta. Se il bean � null, torna il default value
+	 * valore di quella proprieta. Se il bean è null, torna il default value
 	 * 
 	 * @param bean
 	 * @param prop
@@ -733,7 +733,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore separator, ottengo una Lista
-	 * di elementi di tipo c specificato dove c � il tipo dell'elememto.Tipi
+	 * di elementi di tipo c specificato dove c è il tipo dell'elememto.Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -777,7 +777,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore "-", ottengo una Lista di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto.Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto.Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -790,7 +790,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore ",", ottengo una Lista di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto.Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto.Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -803,7 +803,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore "|", ottengo una Lista di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto.Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto.Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -916,7 +916,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore separator, ottengo un Set di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto. Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto. Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -948,7 +948,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore "-", ottengo un Set di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto. Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto. Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -961,7 +961,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore ",", ottengo un Set di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto. Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto. Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -974,7 +974,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa di elementi con separatore "|", ottengo un Set di
-	 * elementi di tipo c specificato dove c � il tipo dell'elememto. Tipi
+	 * elementi di tipo c specificato dove c è il tipo dell'elememto. Tipi
 	 * previsti sono String, Integer, Long,Short,Double,BigDecimal
 	 * 
 	 * @param s
@@ -1190,7 +1190,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop in dot notation � uguale al
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation è uguale al
 	 * valore val
 	 * 
 	 * @param l1
@@ -1213,7 +1213,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop in dot notation NON � uguale
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation NON è uguale
 	 * al valore val
 	 * 
 	 * @param l1
@@ -1236,7 +1236,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop[i] in dot notation NON �
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation NON è
 	 * uguale al valore val[i]
 	 * 
 	 * @param l1
@@ -1255,7 +1255,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop[i] in dot notation � uguale
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation è uguale
 	 * al valore val[i]
 	 * 
 	 * @param l1
@@ -1274,7 +1274,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation � uguale al valore
+	 * quegli oggetti la cui proprietà prop in dot notation è uguale al valore
 	 * val
 	 * 
 	 * @param l1
@@ -1294,7 +1294,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation � uguale al valore
+	 * quegli oggetti la cui proprietà prop in dot notation è uguale al valore
 	 * val
 	 * 
 	 * @param l1
@@ -1317,7 +1317,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation NON � uguale al
+	 * quegli oggetti la cui proprietà prop in dot notation NON è uguale al
 	 * valore val
 	 * 
 	 * @param l1
@@ -1340,7 +1340,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation NON � uguale al
+	 * quegli oggetti la cui proprietà prop in dot notation NON è uguale al
 	 * valore val
 	 * 
 	 * @param l1
@@ -1514,7 +1514,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista List<Utente> recupero la sottolista di elementi Utente
-	 * (quindi pi� di uno) che abbiano la proprieta campo[i] (in dot notation)
+	 * (quindi più di uno) che abbiano la proprieta campo[i] (in dot notation)
 	 * uguale a value[i]
 	 * 
 	 * @param lista
@@ -1552,7 +1552,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � in like ad almeno uno dei %value%
+	 * Torna true se campo è in like ad almeno uno dei %value%
 	 * 
 	 * @param campo
 	 * @param value
@@ -1807,7 +1807,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di bean di tipo K calcolo la media aritmetica dei valori
-	 * della propriet� campo (di tipo numerico) di tutti gli elementi della
+	 * della proprietà campo (di tipo numerico) di tutti gli elementi della
 	 * lista
 	 * 
 	 * @param lista
@@ -1853,7 +1853,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di bean di tipo K calcolo la sommatoria dei valori della
-	 * propriet� campo (di tipo numerico) di tutti gli elementi della lista
+	 * proprietà campo (di tipo numerico) di tutti gli elementi della lista
 	 * 
 	 * @param <K>
 	 * @param <T>
@@ -1970,7 +1970,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di elementi di tipo K raggruppo la lista secondo la
 	 * proprieta campo del bean K e ottengo una Mappa chiave-valore dove chiave
-	 * � il valore della proprieta e valore � una lista di bean K la cui
+	 * è il valore della proprieta e valore è una lista di bean K la cui
 	 * proprieta campo ha quel valore.
 	 * 
 	 * @param lista
@@ -1988,11 +1988,11 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Serve a recuperare i valori distinti multicampo tramite campi... indicati
-	 * come parametro. Ritorna una PList<String> dove ogni elemento � nel
+	 * come parametro. Ritorna una PList<String> dove ogni elemento è nel
 	 * formato [nomeCampo]=[valoreCampo
 	 * ]|[nomeCampo_1]=[valoreCampo_1]|...|[nomeCampo_n]=[valoreCampo_n]
 	 * 
-	 * Campi � l'elenco dei campi del tipo K di cui si vogliono i valori
+	 * Campi è l'elenco dei campi del tipo K di cui si vogliono i valori
 	 * distinti concatenati insieme in una multipla. Equivale in pratica a una
 	 * select distinct sql
 	 * 
@@ -2023,7 +2023,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di bean K ottengo una lista di elementi distinti di tipo T
-	 * dove T � il tipo della proprieta campo Utente nome cognome eta
+	 * dove T è il tipo della proprieta campo Utente nome cognome eta
 	 * List<Utente> ottengo una List<Integer> di eta distinte degli utenti
 	 * 
 	 * @param lista
@@ -2073,7 +2073,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna quanti elementi distinti della propriet� campo ci sono in una
+	 * Ritorna quanti elementi distinti della proprietà campo ci sono in una
 	 * lista di bean di tipo T
 	 * 
 	 * @param <T>
@@ -2393,7 +2393,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato il valore numerico del mese ottengo la descrizione letterale del
-	 * mese dove 1 � gennaio e 12 � dicembre
+	 * mese dove 1 è gennaio e 12 è dicembre
 	 * 
 	 * @param mese
 	 * @return String
@@ -2407,8 +2407,8 @@ public class Pilot implements Serializable {
 	/**
 	 * Metodo di realizzazione di una mappatura del tipo voglio che ai valori 2
 	 * e 3 corrisponda la stringa "DueOTre" e al valore 5 corrisponda la stringa
-	 * "cinque" allora valueToCheck poniamo ad esempio � 3, defaultValue � il
-	 * valore che torno se non ho corrispondenza valuePipeSeparatorReturn sar�
+	 * "cinque" allora valueToCheck poniamo ad esempio è 3, defaultValue è il
+	 * valore che torno se non ho corrispondenza valuePipeSeparatorReturn sarà
 	 * 2,3|DueoTre e 5|cinque. Con value to check 3 ottengo "DueOTre", con
 	 * valueToCheck 5 ottengo "cinque", con valueToCheck 12 ottengo il
 	 * defaultValue
@@ -2443,10 +2443,10 @@ public class Pilot implements Serializable {
 	 * Metodo di realizzazione di una mappatura condizionale del tipo voglio che
 	 * ai valori 2 e 3 corrisponda la stringa DueOTre in base a una certa
 	 * condizione e al valore 5 corrisponda la stringa cinque in base a un'altra
-	 * condizione. valueToCheck � il valore da sottoporre a traduzione secondo
-	 * la mappatura, defaultValue � il valore che torno se non ho
+	 * condizione. valueToCheck è il valore da sottoporre a traduzione secondo
+	 * la mappatura, defaultValue è il valore che torno se non ho
 	 * corrispondenza. La mappauta condizionale avviene utilizzando la classe
-	 * CaseCondition. Se la condizione � false allora torno il valore originale
+	 * CaseCondition. Se la condizione è false allora torno il valore originale
 	 * senza mapparlo nel nuovo valore
 	 * 
 	 * @param valueToCheck
@@ -2480,7 +2480,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una stringa torna true se value � contenuto ignorecase nella stringa
+	 * Data una stringa torna true se value è contenuto ignorecase nella stringa
 	 * 
 	 * @param campo
 	 * @param value
@@ -2491,7 +2491,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una stringa campo torna true se almeno uno dei value � contenuto
+	 * Data una stringa campo torna true se almeno uno dei value è contenuto
 	 * ignorecase in campo
 	 * 
 	 * @param campo
@@ -2520,7 +2520,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore o uguale a 0
+	 * Torna true se d è maggiore o uguale a 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2530,7 +2530,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore di 0
+	 * Torna true se d è maggiore di 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2540,7 +2540,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore o uguale a 0
+	 * Torna true se d è minore o uguale a 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2550,7 +2550,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore di 0
+	 * Torna true se d è minore di 0
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2641,7 +2641,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore di zero
+	 * Torna true se d è maggiore di zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2651,7 +2651,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore di zero
+	 * Torna true se d è minore di zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2661,7 +2661,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore o uguale a zero
+	 * Torna true se d è maggiore o uguale a zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2671,7 +2671,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore o uguale a zero
+	 * Torna true se d è minore o uguale a zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2681,7 +2681,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2691,7 +2691,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2701,7 +2701,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � zero
+	 * Torna true se d è zero
 	 * 
 	 * @param d
 	 * @return boolean
@@ -2711,7 +2711,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una data e un numero intero torna una nuova data che � la precedente
+	 * Data una data e un numero intero torna una nuova data che è la precedente
 	 * meno il numero di mesi indicato
 	 * 
 	 * @param d
@@ -2911,7 +2911,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � A ignorecase
+	 * Torna true se value è A ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2921,7 +2921,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � S o SI ignorecase
+	 * Torna true se value è S o SI ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2931,7 +2931,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se value � N o NO ignorecase
+	 * Torna true se value è N o NO ignorecase
 	 * 
 	 * @param value
 	 * @return boolean
@@ -2941,7 +2941,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se data d � compresa tra [start, end] intervalli compresi
+	 * Torna true se data d è compresa tra [start, end] intervalli compresi
 	 * 
 	 * @param d
 	 * @param start
@@ -2961,7 +2961,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se data d � compresa tra ]start,end[ intervalli esclusi
+	 * Torna true se data d è compresa tra ]start,end[ intervalli esclusi
 	 * 
 	 * @param d
 	 * @param start
@@ -3080,7 +3080,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Alla data start aggiunge la quantit� temporale indicata da t e ritorna la
+	 * Alla data start aggiunge la quantità temporale indicata da t e ritorna la
 	 * nuova data
 	 * 
 	 * @param start
@@ -3114,7 +3114,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se la data d � prima della data limite
+	 * Torna true se la data d è prima della data limite
 	 * 
 	 * @param d
 	 * @param limite
@@ -3129,7 +3129,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se la data d � dopo la data limite
+	 * Torna true se la data d è dopo la data limite
 	 * 
 	 * @param d
 	 * @param limite
@@ -3144,7 +3144,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'array � nullo o vuoto
+	 * Torna true se l'array è nullo o vuoto
 	 * 
 	 * @param array
 	 * @return boolean
@@ -3154,7 +3154,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la string passata � nulla, ha lunghezza 0 oppure contiene
+	 * Ritorna True se la string passata è nulla, ha lunghezza 0 oppure contiene
 	 * la stringa "null"
 	 * 
 	 * @param string
@@ -3165,7 +3165,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la collection passata � nulla o vuota
+	 * Ritorna True se la collection passata è nulla o vuota
 	 * 
 	 * @param collection
 	 * @return boolean
@@ -3175,7 +3175,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna True se la Map passata � nulla o vuota
+	 * Ritorna True se la Map passata è nulla o vuota
 	 * 
 	 * @param map
 	 * @return boolean
@@ -3187,7 +3187,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Torna true se tutti gli oggetti values sono nulli (una stringa si
 	 * considera nulla se nulla , vuota o contiene la stringa "null", una
-	 * collection � nulla se null o vuota)
+	 * collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3215,9 +3215,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se almeno uno degli gli oggetti values � nullo (una stringa si
+	 * Torna true se almeno uno degli gli oggetti values è nullo (una stringa si
 	 * considera nulla se nulla , vuota o contiene la stringa "null", una
-	 * collection � nulla se null o vuota)
+	 * collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3438,7 +3438,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se l'array passato � null, ritorna un array di tipi c non nullo e di
+	 * Se l'array passato è null, ritorna un array di tipi c non nullo e di
 	 * dimensione 0, altrimenti torna l'array arr stesso se non nullo
 	 * 
 	 * @param <K>
@@ -3452,7 +3452,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una collection esegue il controllo di nullit� e se null torna una
+	 * Data una collection esegue il controllo di nullità e se null torna una
 	 * collection non nulla ma vuota
 	 * 
 	 * @param elenco
@@ -3481,8 +3481,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torno true se tutti gli elementi values sono non nulli (una stringa �
-	 * nulla se vuota null o "null", una collection � nulla se null o vuota)
+	 * Torno true se tutti gli elementi values sono non nulli (una stringa è
+	 * nulla se vuota null o "null", una collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3599,8 +3599,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torno true se almeno uno dei values � non nullo (una stringa � nulla se
-	 * vuota null o "null", una collection � nulla se null o vuota)
+	 * Torno true se almeno uno dei values è non nullo (una stringa è nulla se
+	 * vuota null o "null", una collection è nulla se null o vuota)
 	 * 
 	 * @param values
 	 * @return boolean
@@ -3616,7 +3616,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Operatore ternario in forma di metodo se la cond � vera torno trueValue
+	 * Operatore ternario in forma di metodo se la cond è vera torno trueValue
 	 * altrimenti torno falseVale
 	 * 
 	 * @param cond
@@ -3629,7 +3629,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * se campo � uguale ad almeno uno dei value torno trueVale altrimento torno
+	 * se campo è uguale ad almeno uno dei value torno trueVale altrimento torno
 	 * falseValue
 	 * 
 	 * @param trueValue
@@ -3790,13 +3790,13 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � uguale ad almeno uno dei value oppure se campo �
-	 * nullo e almeno uno dei value � nullo. Se campo � una collection la
-	 * condizione � uguale significa che la collection contiene almeno uno dei
-	 * value. Se campo � una stringa la condizione � uguale significa che la
-	 * stringa � uguale in base al metodo ignorecase. Se campo � un BigDecimal
-	 * la condizione � uguale significa che ignora gli zeri dopo la virgola. Per
-	 * gli altri casi la condizione � uguale significa che � rispettata la
+	 * Torna true se campo è uguale ad almeno uno dei value oppure se campo è
+	 * nullo e almeno uno dei value è nullo. Se campo è una collection la
+	 * condizione è uguale significa che la collection contiene almeno uno dei
+	 * value. Se campo è una stringa la condizione è uguale significa che la
+	 * stringa è uguale in base al metodo ignorecase. Se campo è un BigDecimal
+	 * la condizione è uguale significa che ignora gli zeri dopo la virgola. Per
+	 * gli altri casi la condizione è uguale significa che è rispettata la
 	 * condizione in base al metodo equals;
 	 * 
 	 * @param campo
@@ -3808,10 +3808,10 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo NON � uguale a nessuno uno dei value. Se campo � una
+	 * Torna true se campo NON è uguale a nessuno uno dei value. Se campo è una
 	 * collection torna true se la collection non contiene nessuno dei value. Se
-	 * campo � una stringa la verifica di avviene ignorecase. Se campo � un
-	 * BigDecimal la condizione � uguale significa che ignora gli zeri dopo la
+	 * campo è una stringa la verifica di avviene ignorecase. Se campo è un
+	 * BigDecimal la condizione è uguale significa che ignora gli zeri dopo la
 	 * virgola. Per gli altri casi la condizione avviene in base al metodo
 	 * equals
 	 * 
@@ -3834,7 +3834,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se almeno una delle condizioni booleane � vera
+	 * Torna true se almeno una delle condizioni booleane è vera
 	 * 
 	 * @param b
 	 * @return boolean
@@ -3872,7 +3872,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se soltanto una delle condizioni � vera
+	 * Torna true se soltanto una delle condizioni è vera
 	 * 
 	 * @param b
 	 * @return boolean
@@ -3902,7 +3902,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa � nulla torna stringa vuota
+	 * Se la stringa è nulla torna stringa vuota
 	 * 
 	 * @param s
 	 * @return String
@@ -3972,7 +3972,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il BigDecimal a zero se � negativo
+	 * Limita il BigDecimal a zero se è negativo
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -3982,7 +3982,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il double a zero se � negativo
+	 * Limita il double a zero se è negativo
 	 * 
 	 * @param val
 	 * @return Double
@@ -3992,7 +3992,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Limita il double a zero se � negativo
+	 * Limita il double a zero se è negativo
 	 * 
 	 * @param val
 	 * @return double
@@ -4002,7 +4002,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il BigDecimal � null torno ZERO
+	 * Se il BigDecimal è null torno ZERO
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -4012,7 +4012,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il double � null torno ZERO
+	 * Se il double è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Double
@@ -4062,7 +4062,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Esegue lo scale 2 arrotondamento met� superiore del BigDecimal
+	 * Esegue lo scale 2 arrotondamento metà superiore del BigDecimal
 	 * 
 	 * @param val
 	 * @return BigDecimal
@@ -4122,8 +4122,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un intero positivo in base alla condizione nullable
-	 * true vuol dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un intero positivo in base alla condizione nullable
+	 * true vuol dire che può ammettere valore nullo, false non può essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4142,8 +4142,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un intero in base alla condizione nullable true vuol
-	 * dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un intero in base alla condizione nullable true vuol
+	 * dire che può ammettere valore nullo, false non può essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4162,9 +4162,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un decimale (formato italiano con la , per i
-	 * decimali) in base alla condizione nullable true vuol dire che pu�
-	 * ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un decimale (formato italiano con la , per i
+	 * decimali) in base alla condizione nullable true vuol dire che può
+	 * ammettere valore nullo, false non può essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4183,9 +4183,9 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se num � un decimale positivo (formato italiano con la , per i
-	 * decimali) in base alla condizione nullable true vuol dire che pu�
-	 * ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se num è un decimale positivo (formato italiano con la , per i
+	 * decimali) in base alla condizione nullable true vuol dire che può
+	 * ammettere valore nullo, false non può essere nullo
 	 * 
 	 * @param num
 	 * @param nullable
@@ -4204,8 +4204,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se b � un decimale positivo in base alla condizione nullable
-	 * true vuol dire che pu� ammettere valore nullo, false non pu� essere nullo
+	 * Torna true se b è un decimale positivo in base alla condizione nullable
+	 * true vuol dire che può ammettere valore nullo, false non può essere nullo
 	 * 
 	 * @param b
 	 * @param nullable
@@ -4224,7 +4224,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la maxlength della stringa in base alla condizione booleana
-	 * nullable se true pu� essere nulla se false non pu� essere nulla
+	 * nullable se true può essere nulla se false non può essere nulla
 	 * 
 	 * @param s
 	 * @param l
@@ -4244,7 +4244,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la data passata come stringa in base alla condizione nullable se
-	 * true pu� essere nulla se false non pu� essere nulla
+	 * true può essere nulla se false non può essere nulla
 	 * 
 	 * @param data
 	 * @param nullable
@@ -4263,7 +4263,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la stringa che sia un numero in base alla condizione nullable se
-	 * true pu� essere nulla se false non pu� essere nulla
+	 * true può essere nulla se false non può essere nulla
 	 * 
 	 * @param s
 	 * @param nullable
@@ -4339,7 +4339,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Valida la lunghezza della stringa in base alla condizione booleana
-	 * nullable se true pu� essere nulla se false non pu� essere nulla
+	 * nullable se true può essere nulla se false non può essere nulla
 	 * 
 	 * @param s
 	 * @param l
@@ -4700,7 +4700,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un file e una stringa inizio e fine, restituisce tutto il contenuto
 	 * del file compreso tra le stringhe inizio e fine quando queste sono
-	 * individuate all'interno in modalit� like %% e restituisce una lista di
+	 * individuate all'interno in modalità like %% e restituisce una lista di
 	 * stringhe corrispondenti al contenuto trovato. Le stringhe inizio e fine
 	 * non vengono incluse nel contenuto restituito.
 	 * 
@@ -4743,7 +4743,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un file e una stringa inizio e fine, restituisce tutto il contenuto
 	 * del file compreso tra le stringhe inizio e fine quando queste sono
-	 * individuate all'interno in modalit� is (ossia uguali alle stringhe inizio
+	 * individuate all'interno in modalità is (ossia uguali alle stringhe inizio
 	 * e fine) e restituisce una lista di stringhe corrispondenti al contenuto
 	 * trovato. Le stringhe inizio e fine non vengono incluse nel contenuto
 	 * restituito.
@@ -4785,7 +4785,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista di stringhe, restituisce una unica stringa che � la
+	 * Data una lista di stringhe, restituisce una unica stringa che è la
 	 * concatenazione degli elementi della lista
 	 * 
 	 * @param l
@@ -4815,7 +4815,7 @@ public class Pilot implements Serializable {
 	 * assoluto ma solo il nome.estensione preceduto dal pkg di appartenenza
 	 * ossia ad esempio /it/inps/queries.properties e una stringa inizio e fine,
 	 * restituisce tutto il contenuto del file compreso tra le stringhe inizio e
-	 * fine quando queste sono individuate all'interno in modalit� like %% e
+	 * fine quando queste sono individuate all'interno in modalità like %% e
 	 * restituisce una lista di stringhe corrispondenti al contenuto trovato. Le
 	 * stringhe inizio e fine non vengono incluse nel contenuto restituito.
 	 * 
@@ -5440,13 +5440,13 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se campo � uguale a tutti i value oppure se campo � nullo e
-	 * tutti i value sono nulli. Se campo � una collection la condizione �
-	 * uguale significa che la collection contiene tutti i value. Se campo � una
-	 * stringa la condizione � uguale significa che la stringa � uguale a tutti
-	 * ivalue in base al metodo ignorecase. Se campo � un BigDecimal la
-	 * condizione � uguale significa che ignora gli zeri dopo la virgola. Per
-	 * gli altri casi la condizione � uguale significa che � rispettata la
+	 * Torna true se campo è uguale a tutti i value oppure se campo è nullo e
+	 * tutti i value sono nulli. Se campo è una collection la condizione è
+	 * uguale significa che la collection contiene tutti i value. Se campo è una
+	 * stringa la condizione è uguale significa che la stringa è uguale a tutti
+	 * ivalue in base al metodo ignorecase. Se campo è un BigDecimal la
+	 * condizione è uguale significa che ignora gli zeri dopo la virgola. Per
+	 * gli altri casi la condizione è uguale significa che è rispettata la
 	 * condizione in base al metodo equals;
 	 * 
 	 * @param campo
@@ -5622,7 +5622,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna una nuova lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop in dot notation � uguale al
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation è uguale al
 	 * valore val e lo sostituisce con newElement
 	 * 
 	 * @param l1
@@ -5648,7 +5648,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una mappa chiave/valore con valore lista di oggetti,
 	 * aggiunge/aggiorna alla stessa chiave la corrispondente lista aggiungendo
-	 * ad essa l'elemento o se la chiave � presente , mentre se la chiave manca
+	 * ad essa l'elemento o se la chiave è presente , mentre se la chiave manca
 	 * crea una nuova entry con una nuova lista contenente l'elemento o
 	 * 
 	 * @param mappa
@@ -5685,7 +5685,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista esegue il controllo di nullit� e se null torna una Lista
+	 * Data una lista esegue il controllo di nullità e se null torna una Lista
 	 * non nulla ma vuota
 	 * 
 	 * @param elenco
@@ -5697,7 +5697,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una LPist esegue il controllo di nullit� e se null torna una PList
+	 * Data una LPist esegue il controllo di nullità e se null torna una PList
 	 * non nulla ma vuota
 	 * 
 	 * @param elenco
@@ -5710,7 +5710,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Dato un Set esegue il controllo di nullit� e se null torna un Set non
+	 * Dato un Set esegue il controllo di nullità e se null torna un Set non
 	 * nullo ma vuoto
 	 * 
 	 * @param elenco
@@ -5722,7 +5722,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se l'Integer � null torno ZERO
+	 * Se l'Integer è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Integer
@@ -5732,7 +5732,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se il Long � null torno ZERO
+	 * Se il Long è null torno ZERO
 	 * 
 	 * @param val
 	 * @return Long
@@ -5743,7 +5743,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa restituisce un'altra stringa in cui la sottostringa old
-	 * � sostituita con la sottostringa nuova
+	 * è sostituita con la sottostringa nuova
 	 * 
 	 * @param s
 	 * @param old
@@ -5794,7 +5794,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista ritorna true se ha pi� di un elemento
+	 * Data una lista ritorna true se ha più di un elemento
 	 * 
 	 * @param elenco
 	 * @return boolean
@@ -5824,7 +5824,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista ritorna true se ha pi� di i elementi
+	 * Data una lista ritorna true se ha più di i elementi
 	 * 
 	 * @param elenco
 	 * @return boolean
@@ -5928,7 +5928,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista di stringhe, ritorna una stringa che � la concatenazione
+	 * Data una lista di stringhe, ritorna una stringa che è la concatenazione
 	 * di tutte le stringhe della lista, mettendo la stringa car come separatore
 	 * tra le stringhe
 	 * 
@@ -6010,7 +6010,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna l'elemento della lista alla posizione i. Forza l'indice i
-	 * all'intervallo [0,lista.size()-1]. Se la lista � nulla o vuota torna null
+	 * all'intervallo [0,lista.size()-1]. Se la lista è nulla o vuota torna null
 	 * 
 	 * @param <K>
 	 * @param l
@@ -6031,8 +6031,8 @@ public class Pilot implements Serializable {
 	 * booleani compresoStart e compresoEnd se start e end devono essere
 	 * comprese oppure no e con i booleani lastStart e lastEnd se l'indice di
 	 * riferimento deve essere il lastIndexOf oppure il primo semplice indexOf.
-	 * Se end � null la sottostringa va da start fino alla fine della stringa.
-	 * Se start � null la sottostringa va da inizio stringa fino a end. Se s �
+	 * Se end è null la sottostringa va da start fino alla fine della stringa.
+	 * Se start è null la sottostringa va da inizio stringa fino a end. Se s è
 	 * null o se start e end sono entrambi null, allora ritorno la stringa
 	 * passata come inalterata.
 	 * 
@@ -6089,7 +6089,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Concatena la rappresentazione stringa di ogni elemento della lista con il
-	 * carattere car. Se apici � true pone ogni elemento tra apici
+	 * carattere car. Se apici è true pone ogni elemento tra apici
 	 * 
 	 * @param <K>
 	 * @param l
@@ -6117,7 +6117,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Restituisce la stringa passata mettendola in formato camelCase. La prima
-	 * lettera della stringa � minuscola, tutte quelle che seguono il carattere
+	 * lettera della stringa è minuscola, tutte quelle che seguono il carattere
 	 * separatore, vengono capitalizzate
 	 * 
 	 * @param s
@@ -6321,7 +6321,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di tipi Java (non custom quindi, tipo String, Integer,
 	 * BigDecimal, ecc.) ritorna la stessa lista da cui ho rimosso quel valore
-	 * che � like value
+	 * che è like value
 	 * 
 	 * @param lista
 	 * @param value
@@ -6357,7 +6357,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop in dot notation � like
+	 * rimosso quegli oggetti la cui proprietà prop in dot notation è like
 	 * valore val
 	 * 
 	 * @param l1
@@ -6381,7 +6381,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di oggetti di tipo T , torna la stessa lista da cui ha
-	 * rimosso quegli oggetti la cui propriet� prop[i] in dot notation � like al
+	 * rimosso quegli oggetti la cui proprietà prop[i] in dot notation è like al
 	 * val[i]
 	 * 
 	 * @param l1
@@ -6400,7 +6400,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation � like il valore val
+	 * quegli oggetti la cui proprietà prop in dot notation è like il valore val
 	 * 
 	 * @param l1
 	 * @param props
@@ -6424,7 +6424,7 @@ public class Pilot implements Serializable {
 	/**
 	 * 
 	 * Dato un set di oggetti di tipo T , torna lo stesso set da cui ha rimosso
-	 * quegli oggetti la cui propriet� prop in dot notation � like il valore val
+	 * quegli oggetti la cui proprietà prop in dot notation è like il valore val
 	 * 
 	 * @param l1
 	 * @param props
@@ -6730,7 +6730,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6740,7 +6740,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6750,7 +6750,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � 1
+	 * Torna true se d è 1
 	 * 
 	 * @param d
 	 * @return boolean
@@ -6781,7 +6781,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Aggiunge un oggetto DateInteval(inizio,fine) alla lista intervalliDate
-	 * che sar� poi sottoposta a validazione attraverso il metodo
+	 * che sarà poi sottoposta a validazione attraverso il metodo
 	 * validaDateIntervalNotOverlap
 	 * 
 	 * @param intervalliDate
@@ -6964,7 +6964,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Legge dal classpath la propriet� propName dal file di properties file
+	 * Legge dal classpath la proprietà propName dal file di properties file
 	 * 
 	 * 
 	 * Looks up a resource named 'name' in the classpath. The resource must map
@@ -6985,7 +6985,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � uguale ad uno dei valori della stringa valori, traduce
+	 * Se la stringa s è uguale ad uno dei valori della stringa valori, traduce
 	 * la stringa s come tradottoIn, altrimenti ritorna la stringa s originale
 	 * non tradotta
 	 * 
@@ -7019,8 +7019,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � uguale ad uno dei valori della stringa valori, traduce
-	 * la stringa s come tradottoIn qualora condizione di traduzione � true,
+	 * Se la stringa s è uguale ad uno dei valori della stringa valori, traduce
+	 * la stringa s come tradottoIn qualora condizione di traduzione è true,
 	 * altrimenti ritorna la stringa s originale non tradotta
 	 * 
 	 * @param s
@@ -7037,8 +7037,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Se la stringa s � like uno dei valori della stringa valori, traduce la
-	 * stringa s come tradottoIn qualora condizione di traduzione � true,
+	 * Se la stringa s è like uno dei valori della stringa valori, traduce la
+	 * stringa s come tradottoIn qualora condizione di traduzione è true,
 	 * altrimenti ritorna la stringa s originale non tradotta
 	 * 
 	 * @param s
@@ -7339,7 +7339,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Da una lista di bean ritorna una lista di oggetti della propriet� prop
+	 * Da una lista di bean ritorna una lista di oggetti della proprietà prop
 	 * 
 	 * @param <T>
 	 * @param l
@@ -7352,7 +7352,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Da una lista di bean ritorna una lista di oggetti della propriet� prop
+	 * Da una lista di bean ritorna una lista di oggetti della proprietà prop
 	 * con valori distinti
 	 * 
 	 * @param <T>
@@ -7604,7 +7604,7 @@ public class Pilot implements Serializable {
 	 */
 	public String elapsedTime(Date startDate) {
 		if (Null(startDate))
-			return "La data inizio � nulla";
+			return "La data inizio è nulla";
 		return computeElapsedTime(startDate, now());
 	}
 
@@ -7833,7 +7833,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna l'Integer corrispondente al valore s passato come stringa o zero se
-	 * s non � un valore numerico o � nullo o � negativo
+	 * s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return Integer
@@ -7844,7 +7844,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna il Double corrispondente al valore s passato come stringa o zero se
-	 * s non � un valore numerico o � nullo o � negativo
+	 * s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return Double
@@ -7855,7 +7855,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna il BigDecimal corrispondente al valore s passato come stringa o
-	 * zero se s non � un valore numerico o � nullo o � negativo
+	 * zero se s non è un valore numerico o è nullo o è negativo
 	 * 
 	 * @param s
 	 * @return BigDecimal
@@ -7991,7 +7991,7 @@ public class Pilot implements Serializable {
 	 * Stampa il contenuto della Lista<String> container. Fa precedere il tutto
 	 * da un titolo title con di seguito il numero di occorrenze stampate,
 	 * circondato da una cornice con il carattere "_" per una lunghezza totale
-	 * del titolo cos� composto di length caratteri. Il titolo verr� centrato.
+	 * del titolo così composto di length caratteri. Il titolo verrà centrato.
 	 * Esempio: ______________________________________INFOMAZIONI GENERALI
 	 * 4______________________________________
 	 * 
@@ -8011,10 +8011,10 @@ public class Pilot implements Serializable {
 	 * Stampa il contenuto della Lista<String> container. Fa precedere il tutto
 	 * da un titolo title con di seguito il numero di occorrenze stampate,
 	 * circondato da una cornice con il carattere "_" per una lunghezza totale
-	 * del titolo cos� composto di length caratteri. Il titolo verr� centrato.
+	 * del titolo così composto di length caratteri. Il titolo verrà centrato.
 	 * Esempio: ______________________________________INFOMAZIONI GENERALI
 	 * 4______________________________________ Ogni stampa di elemento di lista
-	 * � preceduto dal valore prefixBeforeItem
+	 * è preceduto dal valore prefixBeforeItem
 	 * 
 	 * @param title
 	 * @param prefixBeforeItem
@@ -8032,7 +8032,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Data una lista di bean K, e un valore limite limit, aggiunge alla lista
 	 * l'elemento k solo se tale operazione non fa superare il limite voluto di
-	 * limit elementi. Torna false se dopo aver aggiunto l'elemento � stato
+	 * limit elementi. Torna false se dopo aver aggiunto l'elemento è stato
 	 * raggiunto il limite desiderato, true altrimenti
 	 * 
 	 * @param <K>
@@ -8059,7 +8059,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Dato un Set di bean K, e un valore limite limit, aggiunge al Set
 	 * l'elemento k solo se tale operazione non fa superare il limite voluto di
-	 * limit elementi. Torna false se dopo aver aggiunto l'elemento � stato
+	 * limit elementi. Torna false se dopo aver aggiunto l'elemento è stato
 	 * raggiunto il limite desiderato, true altrimenti
 	 * 
 	 * @param <K>
@@ -8104,7 +8104,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Data una lista aggiunge la lista a s� stessa per times volte
+	 * Data una lista aggiunge la lista a sè stessa per times volte
 	 * 
 	 * @param <T>
 	 * @param l
@@ -8337,7 +8337,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [start,end] � completamente contenuto
+	 * Torna true se l'intervallo [start,end] è completamente contenuto
 	 * all'interno dell'intervallo [start1,end1]
 	 * 
 	 * @param start
@@ -8351,7 +8351,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [start,end] � completamente contenuto
+	 * Torna true se l'intervallo [start,end] è completamente contenuto
 	 * all'interno dell'intervallo [start1,end1]
 	 * 
 	 * @param start
@@ -8506,8 +8506,8 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Torna true se val appartiene all'intervallo [start,end] estremi compresi.
-	 * Se start � null torna true se val<=end. Se end � null torna true se
-	 * val>=start. Se val � null torna false;
+	 * Se start è null torna true se val<=end. Se end è null torna true se
+	 * val>=start. Se val è null torna false;
 	 * 
 	 * @param <K>
 	 * @param val
@@ -8529,7 +8529,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se l'intervallo [val1,val2] � compreso all'interno
+	 * Torna true se l'intervallo [val1,val2] è compreso all'interno
 	 * dell'intervallo [start,end]
 	 * 
 	 * @param <K>
@@ -8544,7 +8544,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore uguale d1
+	 * Torna true se d è maggiore uguale d1
 	 * 
 	 * @param <K>
 	 * @param d
@@ -8556,7 +8556,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � maggiore d1
+	 * Torna true se d è maggiore d1
 	 * 
 	 * @param <K>
 	 * @param d
@@ -8568,7 +8568,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore uguale d1
+	 * Torna true se d è minore uguale d1
 	 * 
 	 * @param <K>
 	 * @param d
@@ -8580,7 +8580,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true se d � minore d1
+	 * Torna true se d è minore d1
 	 * 
 	 * @param <K>
 	 * @param d
@@ -9926,7 +9926,7 @@ public class Pilot implements Serializable {
 			PList<String> varVal = toListString(el, EQUAL);
 			String vi = varVal.getFirstElement();
 			String valore = varVal.getLastElement();
-			if (like(vi, DOT)) {// gestisco la valorizzazione di propriet�
+			if (like(vi, DOT)) {// gestisco la valorizzazione di proprietà
 				// innestate art.nome
 				PList<String> attributi_ = split(vi, DOT);
 				Field attributo = findAttribute(attributi_.getFirstElement(), attributi);
@@ -10653,7 +10653,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 10%
+	 * Torna true con una probabilità del 10%
 	 * 
 	 * @return boolean
 	 */
@@ -10662,7 +10662,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 5%
+	 * Torna true con una probabilità del 5%
 	 * 
 	 * @return boolean
 	 */
@@ -10671,7 +10671,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 20%
+	 * Torna true con una probabilità del 20%
 	 * 
 	 * @return boolean
 	 */
@@ -10680,7 +10680,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 30%
+	 * Torna true con una probabilità del 30%
 	 * 
 	 * @return boolean
 	 */
@@ -10689,7 +10689,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 40%
+	 * Torna true con una probabilità del 40%
 	 * 
 	 * @return boolean
 	 */
@@ -10698,7 +10698,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 50%
+	 * Torna true con una probabilità del 50%
 	 * 
 	 * @return boolean
 	 */
@@ -10707,7 +10707,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 60%
+	 * Torna true con una probabilità del 60%
 	 * 
 	 * @return boolean
 	 */
@@ -10716,7 +10716,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 70%
+	 * Torna true con una probabilità del 70%
 	 * 
 	 * @return boolean
 	 */
@@ -10725,7 +10725,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 80%
+	 * Torna true con una probabilità del 80%
 	 * 
 	 * @return boolean
 	 */
@@ -10734,7 +10734,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Torna true con una probabilit� del 90%
+	 * Torna true con una probabilità del 90%
 	 * 
 	 * @return boolean
 	 */
@@ -10765,7 +10765,7 @@ public class Pilot implements Serializable {
 	 * fields, variabili istanza di quell'oggetto, restituendo un oggetto dello
 	 * stesso tipo con valorizzate le sole variabili istanza indicate fields
 	 * attribuendo loro gli stessi valori dell'oggetto in input k di cui si
-	 * vuole eseguire il masking. Se fields elenco dei campi mask � NULL, allora
+	 * vuole eseguire il masking. Se fields elenco dei campi mask è NULL, allora
 	 * esegue il masking su tutti i campi dell'oggetto restituendo in pratica un
 	 * altro oggetto con tutti i campi variabili istanza impostati agli stessi
 	 * valori dell'oggetto k di input, in pratica fa una copia campo campo
@@ -11054,7 +11054,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna il valore Integer della key all'interno del file di properties
 	 * specificato precedentemente tramite il metodo setPropertyFile. Se la
-	 * chiave non � mappata o non ha specificato alcun valore, ritorna il
+	 * chiave non è mappata o non ha specificato alcun valore, ritorna il
 	 * defaultValue
 	 * 
 	 * @param key
@@ -11067,7 +11067,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Ritorna il valore Long della key all'interno del file di properties
 	 * specificato precedentemente tramite il metodo setPropertyFile. Se la
-	 * chiave non � mappata o non ha specificato alcun valore, ritorna il
+	 * chiave non è mappata o non ha specificato alcun valore, ritorna il
 	 * defaultValue
 	 * 
 	 * @param key
@@ -11101,7 +11101,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se la stringa s � uno tra i valori 1,"true","S","SI","Y",
+	 * Ritorna true se la stringa s è uno tra i valori 1,"true","S","SI","Y",
 	 * false altrimenti
 	 * 
 	 * @param s
@@ -11112,7 +11112,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se il valore corrispondente alla chiave key � uno tra i
+	 * Ritorna true se il valore corrispondente alla chiave key è uno tra i
 	 * valori 1,"true","S","SI","Y", false altrimenti. Il file di properties
 	 * deve essere precedentemente impostato attraverso il metodo
 	 * setPropertyFile.
@@ -11125,8 +11125,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna true se il valore corrispondente alla chiave key � uno tra i
-	 * valori 1,"true","S","SI","Y", false altrimenti. Se il valore � null
+	 * Ritorna true se il valore corrispondente alla chiave key è uno tra i
+	 * valori 1,"true","S","SI","Y", false altrimenti. Se il valore è null
 	 * ritorna il defaultValue booleano. Il file di properties deve essere
 	 * precedentemente impostato attraverso il metodo setPropertyFile.
 	 * 
@@ -11262,7 +11262,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna la stringa "0"+num se num � compreso tra [0,9]. Altrimenti
+	 * Ritorna la stringa "0"+num se num è compreso tra [0,9]. Altrimenti
 	 * ritorna num in formato stringa
 	 * 
 	 * @param num
@@ -11433,7 +11433,7 @@ public class Pilot implements Serializable {
 	/**
 	 * Al TimeCount identificato da timeCounter, aggiunge il tempo trascorso tra
 	 * startDate e now ed esegue la stampa di log dell'intertempo aggiunto al
-	 * totale. Prefix � una stringa descrittiva di libera scelta.
+	 * totale. Prefix è una stringa descrittiva di libera scelta.
 	 * 
 	 * @param prefix
 	 * @param timeCounter
@@ -11464,8 +11464,8 @@ public class Pilot implements Serializable {
 	 * Ritorna la stampa del titolo title al centro di una cornice fatta dalla
 	 * ripetizione del carattere car per length volte. TabIndent indica il
 	 * margine da usare per la stampa delle stringhe di container all'interno
-	 * della cornice. Length � la lunghezza della cornice. Container � la lista
-	 * elenco che contiene il contenuto che verr� stampato all'interno della
+	 * della cornice. Length è la lunghezza della cornice. Container è la lista
+	 * elenco che contiene il contenuto che verrà stampato all'interno della
 	 * cornice.
 	 * 
 	 * 
@@ -11509,8 +11509,8 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Ritorna una stringa incorniciata con il carattere "*". Title � il titolo
-	 * centrato nel lato superiore della cornice. Container � l'elenco delle
+	 * Ritorna una stringa incorniciata con il carattere "*". Title è il titolo
+	 * centrato nel lato superiore della cornice. Container è l'elenco delle
 	 * stringhe da stampare all'interno. Ogni stringa viene stampata con margine
 	 * di 2 tabulazione a sinistra
 	 * 
@@ -11548,7 +11548,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Esegue in modalit� asincrona il codice inserito dentro il metodo execute
+	 * Esegue in modalità asincrona il codice inserito dentro il metodo execute
 	 * dell'oggetto o che implementa l'interfaccia Execution
 	 * 
 	 * @param <K>
@@ -11567,7 +11567,7 @@ public class Pilot implements Serializable {
 	}
 
 	/**
-	 * Dato un valore numerico di byte, ritorna la rappresentazione pi� adatta
+	 * Dato un valore numerico di byte, ritorna la rappresentazione più adatta
 	 * corrispondente in Tb,Gb,Mb,Kb,B
 	 * 
 	 * @param value
@@ -11676,10 +11676,10 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una stringa, ritorna una PList di oggetti KeyValue<String,String>
-	 * dove key � il nome del parametro i-esimo della query string (tutto quello
-	 * dopo ?) e value � il corrispondente valore. Esempio: stringa del tipo:
-	 * stringaconqueryString?par=value&par1=value1&par2=value2 la querystring �
-	 * tutto ci� che si trova a destra del primo ?
+	 * dove key è il nome del parametro i-esimo della query string (tutto quello
+	 * dopo ?) e value è il corrispondente valore. Esempio: stringa del tipo:
+	 * stringaconqueryString?par=value&par1=value1&par2=value2 la querystring è
+	 * tutto ciò che si trova a destra del primo ?
 	 * 
 	 * @param s
 	 * @return PList<KeyValue<String, String>>
@@ -11759,7 +11759,7 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Ritorna la rappresentazione plurale o singolare della stringa in base al
-	 * valore del parametro num. Singolare se num � 1. Plurale in tutti gli
+	 * valore del parametro num. Singolare se num è 1. Plurale in tutti gli
 	 * altri casi.
 	 * 
 	 * La stringa s deve essere indicata in questo modo : persona/e che

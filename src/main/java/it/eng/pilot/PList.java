@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Interfaccia che definisce i metodi disponibili per la classe PArrayList. I
  * filtri in,notIn,eq,neq,like,notLike,lte,lt,gte,gt non vengono applicati se il
- * valore passato Ë null
+ * valore passato √® null
  * 
  * @author Antonio Corinaldi
  * 
@@ -17,7 +17,7 @@ import java.util.Map;
 public interface PList<E> extends List<E> {
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia valore val.
 	 * 
 	 * @param <T>
@@ -69,7 +69,7 @@ public interface PList<E> extends List<E> {
 	PList<E> isTrue(String campo);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia come valore almeno uno dei valori della lista
 	 * val.
 	 * 
@@ -99,7 +99,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> in(T... val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia come valore almeno uno dei valori della lista
 	 * val.
 	 * 
@@ -110,7 +110,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> inVals(String campo, T... val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia come valore nessuno dei valori della lista
 	 * val.
 	 * 
@@ -152,7 +152,7 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * 
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia come valore un elemento che sia like il valore
 	 * vals.
 	 * 
@@ -165,7 +165,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> likeValues(String campo, T... vals);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia come valore un elemento che sia not like il
 	 * valore vals
 	 * 
@@ -194,7 +194,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> notLike(T... vals);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista non abbia valore val
 	 * 
 	 * @param campo
@@ -213,7 +213,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> neq(T... vals);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia un valore compreso tra val1 e val2
 	 * 
 	 * @param campo
@@ -234,7 +234,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> between(T val1, T val2);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia un valore maggiore di val
 	 * 
 	 * @param campo
@@ -244,7 +244,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> gt(String campo, T val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia un valore maggiore o uguale a val
 	 * 
 	 * @param campo
@@ -254,7 +254,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> gte(String campo, T val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia un valore minore di val
 	 * 
 	 * @param campo
@@ -264,7 +264,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> lt(String campo, T val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista abbia un valore minore o uguale a val
 	 * 
 	 * @param campo
@@ -310,7 +310,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<E> lte(T val);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista sia NULL
 	 * 
 	 * 
@@ -320,7 +320,7 @@ public interface PList<E> extends List<E> {
 	PList<E> isNull(String campo);
 
 	/**
-	 * Aggiunge una condizione di filtro che la propriet‡ campo del bean
+	 * Aggiunge una condizione di filtro che la propriet√† campo del bean
 	 * elemento della lista sia NOT NULL
 	 * 
 	 * 
@@ -396,15 +396,15 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * 
-	 * Aggiunge l'elemento t alla PList. Torna true se non È ancora stato
+	 * Aggiunge l'elemento t alla PList. Torna true se non √© ancora stato
 	 * raggiunto il limite impostato, false altrimenti
 	 */
 	boolean addElement(E k);
 
 	/**
 	 * Esegue un filtro del tipo columnStartDate<=d<=columnEndDate
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -415,8 +415,8 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate<=sysdate<=columnEndDate
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -427,7 +427,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate<d
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -438,7 +438,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate<sysdate
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -449,7 +449,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate<=sysdate
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -460,7 +460,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate>d
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -471,7 +471,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate>sysdate
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -482,7 +482,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate>=sysdate
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -493,7 +493,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate<d
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -504,7 +504,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate<sysdate
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -515,7 +515,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate<=sysdate
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -526,7 +526,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate>d
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -537,7 +537,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate>sysdate
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -548,7 +548,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate>=sysdate
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -691,7 +691,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Data una lista di elementi di tipo K raggruppo la lista secondo la
 	 * proprieta campo del bean K e ottengo una Mappa chiave-valore dove chiave
-	 * Ë il valore della proprieta e valore Ë una lista di bean K la cui
+	 * √® il valore della proprieta e valore √® una lista di bean K la cui
 	 * proprieta campo ha quel valore.
 	 * 
 	 * @param <T>
@@ -704,7 +704,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Data una lista di elementi di tipo K raggruppo la lista secondo la
 	 * proprieta campo del bean K e ottengo una Mappa chiave-valore dove chiave
-	 * Ë il valore della proprieta e valore Ë una lista di bean K la cui
+	 * √® il valore della proprieta e valore √® una lista di bean K la cui
 	 * proprieta campo ha quel valore. La lista di ogni key viene poi tagliata
 	 * ai primi n elementi.
 	 * 
@@ -821,7 +821,7 @@ public interface PList<E> extends List<E> {
 	PList<PList<E>> listPagination(Integer pageSize);
 
 	/**
-	 * Data una PList aggiunge la PList a sË stessa per times volte
+	 * Data una PList aggiunge la PList a s√® stessa per times volte
 	 * 
 	 * @param times
 	 * @return PList<E>
@@ -845,7 +845,7 @@ public interface PList<E> extends List<E> {
 	PList<E> cutToLast(Integer n);
 
 	/**
-	 * Ritorna una nuova PList di elementi distinti di tipo T dove T Ë il tipo
+	 * Ritorna una nuova PList di elementi distinti di tipo T dove T √® il tipo
 	 * della proprieta campo
 	 * 
 	 * @param <T>
@@ -855,7 +855,7 @@ public interface PList<E> extends List<E> {
 	<T> PList<T> distinct(String campo);
 
 	/**
-	 * Ritorna la sommatoria dei valori della propriet‡ campo (di tipo numerico)
+	 * Ritorna la sommatoria dei valori della propriet√† campo (di tipo numerico)
 	 * di tutti gli elementi della PList
 	 * 
 	 * @param <T>
@@ -878,7 +878,7 @@ public interface PList<E> extends List<E> {
 	<T> T sommatoria(Class<T> c) throws Exception;
 
 	/**
-	 * Ritorna true se ha pi˘ di un elemento
+	 * Ritorna true se ha pi√π di un elemento
 	 * 
 	 * @return boolean
 	 */
@@ -900,7 +900,7 @@ public interface PList<E> extends List<E> {
 	boolean atLeast(Integer i);
 
 	/**
-	 * Ritorna true se ha pi˘ di i elementi
+	 * Ritorna true se ha pi√π di i elementi
 	 * 
 	 * @param i
 	 * @return boolean
@@ -929,7 +929,7 @@ public interface PList<E> extends List<E> {
 	boolean isAllListValues(E value) throws Exception;
 
 	/**
-	 * Torna l'elemento della lista che ha il valore massimo delle propriet‡
+	 * Torna l'elemento della lista che ha il valore massimo delle propriet√†
 	 * prop
 	 * 
 	 * @param prop
@@ -939,7 +939,7 @@ public interface PList<E> extends List<E> {
 	E max(String... prop) throws Exception;
 
 	/**
-	 * Torna l'elemento della lista che ha il valore minimo delle propriet‡ prop
+	 * Torna l'elemento della lista che ha il valore minimo delle propriet√† prop
 	 * 
 	 * @param prop
 	 * @return E
@@ -988,7 +988,7 @@ public interface PList<E> extends List<E> {
 	E getLastElementMinValue(String prop) throws Exception;
 
 	/**
-	 * Imposta il limite massimo di elementi che puÚ contenere la PList. Vanno
+	 * Imposta il limite massimo di elementi che pu√≤ contenere la PList. Vanno
 	 * aggiunti tramite addElement
 	 * 
 	 * @param limit
@@ -1076,11 +1076,11 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * Serve a recuperare i valori distinti multicampo tramite campi... indicati
-	 * come parametro. Ritorna una PList<String> dove ogni elemento Ë nel
+	 * come parametro. Ritorna una PList<String> dove ogni elemento √® nel
 	 * formato [nomeCampo]=[valoreCampo
 	 * ]|[nomeCampo_1]=[valoreCampo_1]|...|[nomeCampo_n]=[valoreCampo_n]
 	 * 
-	 * Campi Ë l'elenco dei campi del tipo E di cui si vogliono i valori
+	 * Campi √® l'elenco dei campi del tipo E di cui si vogliono i valori
 	 * distinti concatenati insieme in una multipla. Equivale in pratica a una
 	 * select distinct sql
 	 * 
@@ -1091,7 +1091,7 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * Data una lista di bean calcolo la media aritmetica dei valori della
-	 * propriet‡ campo (di tipo numerico) di tutti gli elementi della lista
+	 * propriet√† campo (di tipo numerico) di tutti gli elementi della lista
 	 * 
 	 * @param <T>
 	 * @param campo
@@ -1193,7 +1193,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate>=d
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -1204,7 +1204,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate>=d
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -1215,7 +1215,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnEndDate<=d
 	 * 
-	 * columnEndDate Ë la variabile istanza che ha @Column( endDate=true)
+	 * columnEndDate √® la variabile istanza che ha @Column( endDate=true)
 	 * 
 	 * @param <K>
 	 * @return PList<K>
@@ -1226,7 +1226,7 @@ public interface PList<E> extends List<E> {
 	/**
 	 * Esegue un filtro del tipo columnStartDate<=d
 	 * 
-	 * columnStartDate Ë la variabile istanza che ha @Column( startDate=true)
+	 * columnStartDate √® la variabile istanza che ha @Column( startDate=true)
 	 * 
 	 * @param <K>
 	 * @param d
@@ -1281,8 +1281,8 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanList(E... value) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ha rimosso gli elementi bean la cui propriet‡
-	 * prop Ë uguale a value
+	 * Ritorna la lista da cui ha rimosso gli elementi bean la cui propriet√†
+	 * prop √® uguale a value
 	 * 
 	 * @param prop
 	 * @param val
@@ -1292,7 +1292,7 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanListBean(String prop, Object val) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ha rimosso gli elementi bean le cui propriet‡
+	 * Ritorna la lista da cui ha rimosso gli elementi bean le cui propriet√†
 	 * props sono uguali ai corrispondenti valori value
 	 * 
 	 * @param props
@@ -1322,8 +1322,8 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanListLike(E... value) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ha rimosso gli elementi bean la cui propriet‡
-	 * prop Ë like value
+	 * Ritorna la lista da cui ha rimosso gli elementi bean la cui propriet√†
+	 * prop √® like value
 	 * 
 	 * @param prop
 	 * @param val
@@ -1333,7 +1333,7 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanListBeanLike(String prop, E val) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ha rimosso gli elementi bean le cui propriet‡
+	 * Ritorna la lista da cui ha rimosso gli elementi bean le cui propriet√†
 	 * props sono like i valori multipli value
 	 * 
 	 * @param props
@@ -1344,7 +1344,7 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanListBeanLike(String[] props, E[] val) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ho rimosso i bean la cui propriet‡ prop non Ë
+	 * Ritorna la lista da cui ho rimosso i bean la cui propriet√† prop non √®
 	 * uguale a val
 	 * 
 	 * @param prop
@@ -1355,7 +1355,7 @@ public interface PList<E> extends List<E> {
 	PList<E> cleanListBeanNotEqual(String prop, Object val) throws Exception;
 
 	/**
-	 * Ritorna la lista da cui ho rimosso i bean le cui propriet‡ props non sono
+	 * Ritorna la lista da cui ho rimosso i bean le cui propriet√† props non sono
 	 * uguali ai corrispondenti valori val
 	 * 
 	 * @param props
@@ -1378,7 +1378,7 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * Esegue l'iterazione identificata da name, eseguendo il metodo del bean K
-	 * della lista che Ë annotato con @Logic e il cui attributo name Ë
+	 * della lista che √® annotato con @Logic e il cui attributo name √®
 	 * identificato dal parametro name
 	 * 
 	 * @param name
@@ -1389,8 +1389,8 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * Esegue la conversione di tipo identificata da name, eseguendo il metodo
-	 * del bean K della lista che Ë annotato con @Mapping e il cui attributo
-	 * name Ë identificato dal parametro name
+	 * del bean K della lista che √® annotato con @Mapping e il cui attributo
+	 * name √® identificato dal parametro name
 	 * 
 	 * @param <T>
 	 * @param name
@@ -1402,8 +1402,8 @@ public interface PList<E> extends List<E> {
 
 	/**
 	 * Esegue la conversione di tipo identificata da name, eseguendo il metodo
-	 * del bean K della lista che Ë annotato con @Mapping e il cui attributo
-	 * name Ë identificato dal parametro name
+	 * del bean K della lista che √® annotato con @Mapping e il cui attributo
+	 * name √® identificato dal parametro name
 	 * 
 	 * @param <T>
 	 * @param name
@@ -1433,7 +1433,7 @@ public interface PList<E> extends List<E> {
 	 * Aggiunge alla lista l'elemento E solo se soddisfa la condizione booleana
 	 * indicata dal metodo accessor is[campo] del bean E. L'aggiunta
 	 * dell'elemento avviene fino al limite di limit elementi stabilito nella
-	 * lista se la lista Ë limitata a un numero massimo di elementi
+	 * lista se la lista √® limitata a un numero massimo di elementi
 	 * 
 	 * @param campo
 	 * @param e
