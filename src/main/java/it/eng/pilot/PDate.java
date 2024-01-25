@@ -16,11 +16,13 @@ public class PDate extends Date {
 	private final Pilot p = new Pilot();
 
 	public PDate(Date d) {
-		setTime(d.getTime());
+		if (p.notNull(d))
+			setTime(d.getTime());
+		else if (p.notNull(p.getLog()))
+			p.getLog().info("Data non valida! Ritorno la data odierna.");
 	}
 
 	public PDate() {
-		super();
 	}
 
 	/**
@@ -134,7 +136,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � anteriore alla data limite impostata
+	 * Ritorna true se la data è anteriore alla data limite impostata
 	 * 
 	 * @param limite
 	 * @return boolean
@@ -145,7 +147,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � anteriore alla data limite impostata in formato
+	 * Ritorna true se la data è anteriore alla data limite impostata in formato
 	 * italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param limite
@@ -157,7 +159,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � posteriore alla data limite impostata
+	 * Ritorna true se la data è posteriore alla data limite impostata
 	 * 
 	 * @param limite
 	 * @return boolean
@@ -168,7 +170,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � posteriore alla data limite impostata in
+	 * Ritorna true se la data è posteriore alla data limite impostata in
 	 * formato italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param limite
@@ -180,7 +182,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � non posteriore alla data limite impostata
+	 * Ritorna true se la data è non posteriore alla data limite impostata
 	 * 
 	 * @param limite
 	 * @return boolean
@@ -191,7 +193,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � non posteriore alla data limite impostata in
+	 * Ritorna true se la data è non posteriore alla data limite impostata in
 	 * formato italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param limite
@@ -203,7 +205,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � non anteriore alla data limite impostata
+	 * Ritorna true se la data è non anteriore alla data limite impostata
 	 * 
 	 * @param limite
 	 * @return boolean
@@ -213,7 +215,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � non anteriore alla data limite impostata in
+	 * Ritorna true se la data è non anteriore alla data limite impostata in
 	 * formato italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param limite
@@ -224,7 +226,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � compresa nell'intervallo [start,end] estremi
+	 * Ritorna true se la data è compresa nell'intervallo [start,end] estremi
 	 * inclusi
 	 * 
 	 * @param start
@@ -236,7 +238,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � compresa nell'intervallo [start,end] estremi
+	 * Ritorna true se la data è compresa nell'intervallo [start,end] estremi
 	 * inclusi espressi in formato italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param start
@@ -248,7 +250,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � compresa nell'intervallo ]start,end[ estremi
+	 * Ritorna true se la data è compresa nell'intervallo ]start,end[ estremi
 	 * esclusi
 	 * 
 	 * @param start
@@ -260,7 +262,7 @@ public class PDate extends Date {
 	}
 
 	/**
-	 * Ritorna true se la data � compresa nell'intervallo ]start,end[ estremi
+	 * Ritorna true se la data è compresa nell'intervallo ]start,end[ estremi
 	 * esclusi espressi in formato italiano dd/MM/yyyy dd/MM/yyyy hh:mm:ss
 	 * 
 	 * @param start
@@ -484,5 +486,4 @@ public class PDate extends Date {
 		return p.pd(p.toDate(s));
 
 	}
-
 }
