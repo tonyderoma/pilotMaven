@@ -80,7 +80,7 @@ public class Pilot implements Serializable {
 	private static final String OPEN_GRAFFA = "{";
 	private static final String OPEN_QUADRA = "[";
 	private static final String TO_STRING = "toString";
-	private static final String DASHTRIM = "-";
+	public static final String DASHTRIM = "-";
 	public static final String PIPE = "|";
 	public static final String DASH = " - ";
 	private static final int MOCK_LIST_SIZE = 10;
@@ -785,7 +785,7 @@ public class Pilot implements Serializable {
 	 * @return PList<K>
 	 */
 	public <K> PList<K> toListDashSep(String s, Class<K> c) {
-		return toList(s, "-", c);
+		return toList(s, DASHTRIM, c);
 	}
 
 	/**
@@ -956,7 +956,7 @@ public class Pilot implements Serializable {
 	 * @return Set<K>
 	 */
 	public <K> Set<K> toSetDashSep(String s, Class<K> c) {
-		return toSet(s, "-", c);
+		return toSet(s, DASHTRIM, c);
 	}
 
 	/**
@@ -3391,7 +3391,7 @@ public class Pilot implements Serializable {
 	 * @return String
 	 */
 	public String strSepDash(Object... values) {
-		return getStringSep("-", values);
+		return getStringSep(DASHTRIM, values);
 	}
 
 	/**
