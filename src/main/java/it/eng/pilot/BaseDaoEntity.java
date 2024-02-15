@@ -25,7 +25,7 @@ import org.jboss.logging.Logger;
 
 /**
  * Classe base astratta per gli oggetti Entity. Tale classe offre tutte le
- * funzionalità di esecuzione delle query di select/delete/insert/update/upsert.
+ * funzionalit� di esecuzione delle query di select/delete/insert/update/upsert.
  * 
  * I parametri passati a Null NON VENGONO APPLICATI nella formazione della where
  * condition.
@@ -355,7 +355,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 			if (notNull(annCol)) {
 				if (annCol.notNull()) {
 					if (Null(invokeGetter(att))) {
-						logError("Il campo", att.getName(), "non può contenere un valore NULL. Operazione non eseguita.");
+						logError("Il campo", att.getName(), "non pu� contenere un valore NULL. Operazione non eseguita.");
 						esito = false;
 					}
 				}
@@ -378,7 +378,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	private boolean _insert() throws Exception {
 		setQuaternaFlagStatoACodUtenteCodApplDataAggiorn();
@@ -621,7 +620,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	private <K extends BaseEntity> boolean _delete() throws Exception {
 
@@ -685,12 +683,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * SET='...'. I valori impostati a NULL saranno impostati con SET='' Le
 	 * variabili istanza non impostate non verranno considerate
 	 * nell'aggiornamento delle rispettive colonne della tabella
-	 *
-	 * @param <K>
-	 *            K
+	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex ex
 	 */
 	public <K extends BaseEntity> boolean update() throws Exception {
 		if (isOverLimit()) {
@@ -706,6 +701,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 		Map<String, String> mappa = new HashMap<String, String>();
 		setTernaCodUtenteCodApplDataAggiorn();
+		if (notNull(getFieldsToUpdate())) {
+			getFieldsToUpdate().add(getFieldCodUtente());
+			getFieldsToUpdate().add(getFieldCodApp());
+			getFieldsToUpdate().add(getFieldDataAggiornamento());
+		}
 		Table tableAnn = getClass().getAnnotation(Table.class);
 		String comma = " , ";
 		String tableName = tableAnn.name();
@@ -721,8 +721,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 			for (Map.Entry<String, String> entry : mappa.entrySet()) {
 				String campo = entry.getValue();
 
-				boolean campoDaEscludere = is(this.getFieldsToExcludeInUpdate(), campo);
-				if (campoDaEscludere)
+				if (notNull(this.getFieldsToExcludeInUpdate()) && is(this.getFieldsToExcludeInUpdate(), campo))
+					continue;
+
+				if (notNull(this.getFieldsToUpdate()) && isNot(this.getFieldsToUpdate(), campo))
 					continue;
 				String colonna = getAnnotazioneCampo(mappa, campo);
 				Object val = get(this, campo);
@@ -752,9 +754,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 			PList<K> elenco = mockSelect();
 			for (Iterator iterator = campiDaAggiornare.iterator(); iterator.hasNext();) {
 				String campo = (String) iterator.next();
-				if (is(getFieldsToExcludeInUpdate(), campo)) {
+				if (notNull(getFieldsToExcludeInUpdate()) && is(getFieldsToExcludeInUpdate(), campo)) {
 					iterator.remove();
+					continue;
 				}
+				if (notNull(getFieldsToUpdate()) && isNot(getFieldsToUpdate(), campo))
+					iterator.remove();
+				continue;
 			}
 
 			for (Field att : getAttributi()) {
@@ -807,16 +813,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	/**
 	 * Metodo che ritorna il prossimo valore da usare come progressivo per la
-	 * creazione di una nuova chiave primaria. Se campoProgr non è chiave
+	 * creazione di una nuova chiave primaria. Se campoProgr non � chiave
 	 * primaria torna NULL. Prende il massimo valore del progressivo presente e
 	 * aggiunge 1 in modo che la n-pla nuova da inserire come chiave primaria
 	 * abbia appunto il valore successivo al massimo presente n-1 ple
 	 * 
 	 * @param campoProgr
-	 *            progressivo
 	 * @return Long
 	 * @throws Exception
-	 *             ex ex
 	 */
 	public Long getNextProgr(String campoProgr) throws Exception {
 		Long next = null;
@@ -926,7 +930,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return Long
 	 * @throws Exception
-	 *             ex ex
 	 */
 	public Long getNextProgr() throws Exception {
 		return getNextProgr(getFieldProgressivo());
@@ -935,16 +938,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	/**
 	 * Dato un entity, torna il numero di occorrenze ritornate dalla where
 	 * condition applicata.Se l'attributo FLAG_STATO di cancellazione logica non
-	 * è istanziato, lo imposta automaticamente a A (ATTIVO) in modo tale da
+	 * � istanziato, lo imposta automaticamente a A (ATTIVO) in modo tale da
 	 * recuperare solo i record non cancellati
-	 * 
-	 * 
-	 * @param <K>
-	 *            K
 	 * 
 	 * @return Long
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> Long selectCount() throws Exception {
 
@@ -995,7 +993,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordPresente() throws Exception {
 		skipFlagStato = true;
@@ -1009,7 +1006,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isRecordAssente() throws Exception {
 		return !isRecordPresente();
@@ -1067,11 +1063,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	/**
-	 * Imposta la condizione FLAG_STATO=A solo se non è impostato nella where
+	 * Imposta la condizione FLAG_STATO=A solo se non � impostato nella where
 	 * condition
 	 * 
 	 * @throws Exception
-	 *             ex
 	 */
 	private void impostaCondizioneFlagStato() throws Exception {
 		if (!skipFlagStato) {
@@ -1134,17 +1129,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		return s;
 	}
 
-	/**
-	 * Esegue una select e salva il result set in una cache interna alla classe
-	 * che estende DaoHelper
-	 *
-	 *
-	 * @param <T>
-	 *            T
-	 * @return PList[T]
-	 * @throws Exception
-	 *             ex
-	 */
 	public <T extends BaseEntity> PList<T> selectCache() throws Exception {
 		Map<String, String> mappa = new HashMap<String, String>();
 		String key = null;
@@ -1173,16 +1157,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Dato un oggetto entity che riporta una where condition (non
 	 * obbligatoria), ritorna una lista di oggetti entity dello stesso tipo che
 	 * soddisfano quella where condition applicata. Se l'attributo FLAG_STATO di
-	 * cancellazione logica non è istanziato, lo imposta automaticamente a A
+	 * cancellazione logica non � istanziato, lo imposta automaticamente a A
 	 * (ATTIVO) in modo tale da recuperare solo i record non cancellati
 	 * logicamente.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
-	 * @return PList[T]
+	 * @return PList<T>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> PList<T> select() throws Exception {
 		setDistinctCol(plstr());
@@ -1290,13 +1271,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * (path+nomeFile.estensione) indicato. Se il path non esiste viene
 	 * automaticamente creato. Ritorna il nome del file di impatto creato
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param path
-	 *            percorso
 	 * @throws Exception
-	 *             ex
 	 * @return String
 	 */
 	public <T extends BaseEntity> String selectForWrite(String path) throws Exception {
@@ -1419,14 +1396,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	/**
 	 * Esegue la select e ritorna come lista di stringhe il result set tornato.
 	 * Torna le entity risultato della select sotto forma di lista di stringhe
-	 * dove ogni stringa è la rappresentazione stringa della entity
-	 * 
+	 * dove ogni stringa � la rappresentazione stringa della entity
 	 * 
 	 * @param <T>
-	 *            T
-	 * @return PList[String]
+	 * @return PList<String>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> PList<String> selectForWrite() throws Exception {
 		setDistinctCol(plstr());
@@ -1717,10 +1691,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * 
 	 * @param <T>
-	 *            T
-	 * @throws Exception
-	 *             ex
 	 * @return T
+	 * @throws Exception
 	 */
 	public <T extends BaseEntity> T selectOne() throws Exception {
 		return (T) getFirstElement(select());
@@ -1731,10 +1703,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * cache
 	 * 
 	 * @param <T>
-	 *            T
 	 * @return T
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> T selectOneCache() throws Exception {
 		return (T) getFirstElement(selectCache());
@@ -1810,7 +1780,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean updateOne() throws Exception {
 		boolean ret = false;
@@ -1835,7 +1804,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean updateByPk() throws Exception {
 		setSearchByPk(true);
@@ -1848,6 +1816,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		setWhereConditionForPk();
 		ret = updateOne();
 		svuotaFieldToExclude();
+		svuotaFieldToUpdate();
 		cleanWhereCondition();
 		return ret;
 	}
@@ -1864,7 +1833,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean deleteOne() throws Exception {
 		boolean ret = false;
@@ -1895,7 +1863,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean deleteByPk() throws Exception {
 		setSearchByPk(true);
@@ -1911,12 +1878,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	/**
-	 * Ritorna true se l'unico record individuato dalla chiave primaria è
+	 * Ritorna true se l'unico record individuato dalla chiave primaria �
 	 * cancellato logicamente, ossia ha la colonna FLAG_STATO a C
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean isDeleted() throws Exception {
 		boolean ret = false;
@@ -1944,7 +1910,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean resumeByPk() throws Exception {
 		setSearchByPk(true);
@@ -1964,6 +1929,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		ret = updateOne();
 		cleanWhereCondition();
 		svuotaFieldToExclude();
+		svuotaFieldToUpdate();
 		return ret;
 	}
 
@@ -1973,7 +1939,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	private boolean deleteLogic() throws Exception {
 		boolean ret = false;
@@ -1983,6 +1948,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		ret = update();
 		cleanWhereCondition();
 		svuotaFieldToExclude();
+		svuotaFieldToUpdate();
 		return ret;
 	}
 
@@ -1992,7 +1958,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean resume() throws Exception {
 		if (!hasDeleteLogic()) {
@@ -2007,6 +1972,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		ret = update();
 		cleanWhereCondition();
 		svuotaFieldToExclude();
+		svuotaFieldToUpdate();
 		return ret;
 	}
 
@@ -2015,7 +1981,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	private void logNoResume() {
-		log("La resume dell'Entity ", getEntityDetail(), " non è stata eseguita in quanto manca la colonna identificativa della cancellazione logica FLAG_STATO");
+		log("La resume dell'Entity ", getEntityDetail(), " non � stata eseguita in quanto manca la colonna identificativa della cancellazione logica FLAG_STATO");
 	}
 
 	private boolean _resume() throws Exception {
@@ -2031,11 +1997,16 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		ret = update();
 		cleanWhereCondition();
 		svuotaFieldToExclude();
+		svuotaFieldToUpdate();
 		return ret;
 	}
 
 	private void svuotaFieldToExclude() {
 		setFieldsToExcludeInUpdate(plstr());
+	}
+
+	private void svuotaFieldToUpdate() {
+		setFieldsToUpdate(plstr());
 	}
 
 	private void setFlagStato(String value) throws IllegalAccessException, InvocationTargetException {
@@ -2221,17 +2192,16 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	protected abstract void setWhereConditionByInstanceVars();
 
 	/**
-	 * Se il numero di occorrenze della where condition dell'entity è uguale a
+	 * Se il numero di occorrenze della where condition dell'entity � uguale a
 	 * 0, esegue l'inserimento dell'entity stessa, altrimenti se il numero di
-	 * occorrenze della where condition è 1 e il record è logicamente cancellato
+	 * occorrenze della where condition � 1 e il record � logicamente cancellato
 	 * ossia ha FLAG_STATO='C', allora esegue l'update INTEGRALE dell'entity
-	 * altrimenti non fa nulla. Quindi, il risultato è o l'inserimento di tutti
+	 * altrimenti non fa nulla. Quindi, il risultato � o l'inserimento di tutti
 	 * i campi dell'entity o il loro totale aggiornamento considerando anche
-	 * quelli NULL che così vengono impostati a NULL e non ignorati
+	 * quelli NULL che cos� vengono impostati a NULL e non ignorati
 	 * 
 	 * @return Boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	private Boolean upsert() throws Exception {
 		setNextProgrForInsert();
@@ -2297,20 +2267,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * della conversione per attributi selettivi dall'entity al dto di
 	 * riferimento
 	 * 
-	 * 
-	 * @param <T>
-	 *            T
-	 * 
 	 * @param <K>
-	 *            K
+	 * @param <T>
 	 * @param c
-	 *            c
 	 * @param entities
-	 *            e
-	 * 
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K, T extends BaseEntity> PList<K> convert(Class<K> c, PList<T> entities) throws Exception {
 		PList<K> output = pl();
@@ -2325,16 +2287,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * attributi istanza hanno il riferimento tramite annotazione alla colonna
 	 * di riferimento dell'entity corrispondente
 	 * 
-	 * 
 	 * @param <K>
-	 *            K
 	 * @param c
-	 *            c
 	 * @return K
 	 * @throws InstantiationException
-	 *             ex
 	 * @throws IllegalAccessException
-	 *             ex
 	 */
 	public <K> K convert(Class<K> c) throws InstantiationException, IllegalAccessException {
 		K obj = (K) c.newInstance();
@@ -2407,7 +2364,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	/**
-	 * Metodo che ritorna true se almeno una delle variabili istanza pk è di
+	 * Metodo che ritorna true se almeno una delle variabili istanza pk � di
 	 * tipo autoincrementale
 	 * 
 	 * @return boolean
@@ -2429,7 +2386,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	/**
 	 * Ritorna true se l'Entity presenta la colonna di cancellazione logica (in
-	 * inps è FLAG_STATO)
+	 * inps � FLAG_STATO)
 	 * 
 	 * @return boolean
 	 */
@@ -2451,12 +2408,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una select su chiave primaria e ritorna l'unica entity trovata. Se
 	 * non tutti i valori della chiave primaria sono impostati, ritorna null.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @return T
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> T selectByPk() throws Exception {
 		setSearchByPk(true);
@@ -2495,7 +2449,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean insert() throws Exception {
 		boolean esito = false;
@@ -2514,8 +2467,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue in maniera intelligente l'insert o l'upsert basandosi sulla sola
 	 * condizione di presenza della stessa chiave primaria a prescrindere dalla
 	 * cancellazione logica del record. Se tento di inserire un record che ha la
-	 * stessa chiave primaria di uno già esistente a prescindere dalla colonna
-	 * di cancellazione logica, allora anzichè l'insert esegue una update per
+	 * stessa chiave primaria di uno gi� esistente a prescindere dalla colonna
+	 * di cancellazione logica, allora anzich� l'insert esegue una update per
 	 * chiave primaria di tutte le altre colonne. Se invece il record che tento
 	 * di inserire non va in conflitto di chiave primaria allora esegue una
 	 * classica insert
@@ -2523,7 +2476,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean insertStrong() throws Exception {
 		boolean esito = false;
@@ -2550,7 +2502,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean delete() throws Exception {
 		boolean esito = false;
@@ -2586,13 +2537,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	/**
 	 * Verifica se il numero di record impattati dalla where condition �
-	 * superiore al valore impostato nella proprietà UPDATE_DELETE_LIMIT nel
-	 * file Pilot.properties. Il controllo non viene eseguito se la proprietà
+	 * superiore al valore impostato nella propriet� UPDATE_DELETE_LIMIT nel
+	 * file Pilot.properties. Il controllo non viene eseguito se la propriet�
 	 * byPassUpdateDeleteLimitation � impostata a true;
 	 * 
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	private boolean isOverLimit() throws Exception {
 		if (isByPassUpdateDeleteLimitation())
@@ -2625,10 +2575,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	/**
 	 * Se impostato a true, disattiva temporaneamente l'eventuale limitazione
-	 * imposta su update/delete attraverso la proprietà UPDATE_DELETE_LIMIT
+	 * imposta su update/delete attraverso la propriet� UPDATE_DELETE_LIMIT
 	 * 
 	 * @param byPassUpdateDeleteLimitation
-	 *            b
 	 * @return BaseDaoEntity
 	 */
 	public BaseDaoEntity setByPassUpdateDeleteLimitation(boolean byPassUpdateDeleteLimitation) {
@@ -2638,7 +2587,7 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	/**
 	 * Disattiva temporaneamente l'eventuale limitazione imposta su
-	 * update/delete attraverso la proprietà UPDATE_DELETE_LIMIT
+	 * update/delete attraverso la propriet� UPDATE_DELETE_LIMIT
 	 * 
 	 * @return BaseDaoEntity
 	 */
@@ -2739,7 +2688,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Imposta il nuovo valore della variabile queryTimeout in secondi
 	 * 
 	 * @param queryTimeout
-	 *            qt
 	 */
 	public void setQueryTimeout(Integer queryTimeout) {
 		this.queryTimeout = queryTimeout;
@@ -2764,13 +2712,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * setPrimary passando gli argomenti nello stesso ordine in cui si trovano
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
-	 * @param <T>
-	 *            T
 	 * @param value
-	 *            valori v
 	 * @return T
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> T selectByPk(Object... value) throws Exception {
 		return (T) setPrimary(value).selectByPk();
@@ -2782,16 +2729,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * sul principio di uguaglianza degli alias delle colonne chiave primaria
 	 * tra le due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
-	 * @param <K>
-	 *            K
 	 * @param ent
-	 *            entity e
 	 * @return K
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> K selectByPk(T ent) throws Exception {
 		if (Null(ent))
@@ -2805,10 +2746,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
-	 *            valori v
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean updateByPk(Object... value) throws Exception {
 		return setPrimary(value).updateByPk();
@@ -2820,14 +2759,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * principio di uguaglianza degli alias delle colonne chiave primaria tra le
 	 * due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity e
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean updateByPk(T ent) throws Exception {
 		return setPrimaryEnt(ent).updateByPk();
@@ -2837,13 +2772,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una updateByPk su una lista di entity applicando a ogni entity la
 	 * logica della updateByPk per entity
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> void updateByPk(PList<T> ent) throws Exception {
 		try {
@@ -2856,7 +2787,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -2870,14 +2800,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * principio di uguaglianza degli alias delle colonne chiave primaria tra le
 	 * due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean update(T ent) throws Exception {
 		excludePk();
@@ -2890,13 +2816,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una update su una lista di entity applicando a ogni entity la
 	 * logica della update per entity
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> void update(PList<T> ent) throws Exception {
 		try {
@@ -2909,7 +2831,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -2923,10 +2844,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * definite le variabili istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
-	 *            valori
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean deleteByPk(Object... value) throws Exception {
 		return setPrimary(value).deleteByPk();
@@ -2940,10 +2859,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * istanza chiavi primarie (pk=true) dell'entity
 	 * 
 	 * @param value
-	 *            valori
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public boolean resumeByPk(Object... value) throws Exception {
 		return setPrimary(value).resumeByPk();
@@ -2956,14 +2873,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * da una entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean resumeByPk(T ent) throws Exception {
 		if (Null(ent))
@@ -2978,14 +2891,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * passata come parametro e basandosi sul principio di uguaglianza degli
 	 * alias delle colonne chiave primaria tra le due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean resume(T ent) throws Exception {
 		if (Null(ent))
@@ -2997,14 +2906,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	/**
 	 * Esegue una resume su una lista di entity applicando a ogni entity la
 	 * logica della resume per entity
-	 *
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> void resume(PList<T> ent) throws Exception {
 		try {
@@ -3017,7 +2922,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3030,14 +2934,10 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
 	 * 
-	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean deleteByPk(T ent) throws Exception {
 		return setPrimaryEnt(ent).deleteByPk();
@@ -3048,11 +2948,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * logica della deleteByPk per entity
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> void deleteByPk(PList<T> ent) throws Exception {
 		try {
@@ -3065,7 +2962,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3077,15 +2973,12 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Esegue una delete secondo la metodologia setPrimary a partire da una
 	 * entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
-	 * 
+	 * *
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @return boolean
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> boolean delete(T ent) throws Exception {
 		excludePk();
@@ -3099,11 +2992,8 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * logica della delete per entity
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            entity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <T extends BaseEntity> void delete(PList<T> ent) throws Exception {
 		try {
@@ -3116,7 +3006,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3130,14 +3019,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * condizione di uguaglianza degli alias delle colonne tra le due entity
 	 * 
 	 * @param <T>
-	 *            T
-	 * @param <K>
-	 *            K
 	 * @param ent
-	 *            entity
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> select(T ent) throws Exception {
 		if (Null(ent))
@@ -3150,15 +3034,11 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * Stessa logica applicativa di select(T ent) ma sfruttando il meccanismo di
 	 * cache
 	 * 
-	 * @param <T>
-	 *            T
 	 * @param <K>
-	 *            K
+	 * @param <T>
 	 * @param ent
-	 *            entity
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectCache(T ent) throws Exception {
 		if (Null(ent))
@@ -3188,17 +3068,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * per chiave primaria impostata secondo la metodologia setPrimary a partire
 	 * da una entity ent passata come parametro e basandosi sul principio di
 	 * uguaglianza degli alias delle colonne chiave primaria tra le due entity.
-	 * Ritorna la lista di oggetti tornati da ogni select così effettuata
+	 * Ritorna la lista di oggetti tornati da ogni select cos� effettuata
 	 * 
-	 * @param <T>
-	 *            T
 	 * @param <K>
-	 *            K
+	 * @param <T>
 	 * @param listEnt
-	 *            listaEntities
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectByPk(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3213,7 +3089,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3227,18 +3102,13 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * impostando automaticamente le colonne pk a partire dalle colonne pk della
 	 * entity ent passata come parametro sulla base della condizione di
 	 * uguaglianza degli alias delle colonne tra le due entity. Ritorna la lista
-	 * di oggetti tornati da ogni select così effettuata
-	 * 
-	 * @param <T>
-	 *            T
+	 * di oggetti tornati da ogni select cos� effettuata
 	 * 
 	 * @param <K>
-	 *            K
+	 * @param <T>
 	 * @param listEnt
-	 *            listaEntities
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> select(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3253,7 +3123,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3263,20 +3132,14 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	}
 
 	/**
-	 * Stessa logica applicativa di select(PList[T] listEnt) ma sfruttando il
+	 * Stessa logica applicativa di select(PList<T> listEnt) ma sfruttando il
 	 * meccanismo di cache
 	 * 
-	 * @param <T>
-	 *            T
-	 * 
 	 * @param <K>
-	 *            K
-	 * 
+	 * @param <T>
 	 * @param listEnt
-	 *            listaEntities
-	 * @return PList[K]
+	 * @return PList<K>
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> PList<K> selectCache(PList<T> listEnt) throws Exception {
 		PList<K> lista = pl();
@@ -3291,7 +3154,6 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 		} finally {
 			if (isDsMode()) {
 				if (notNull(getConnection())) {
-					log("-----------CHIUDO LA CONNESSIONE!!!!!!!!-----------");
 					getConnection().close();
 				}
 				multi = false;
@@ -3357,17 +3219,9 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 	 * codAppCostruttore impostate tramite giveMe. La colonna FLAGSTATO se
 	 * esistente viene sempre impostata ad A
 	 * 
-	 * @param <T>
-	 *            T
-	 * 
 	 * @param <X>
-	 *            X
 	 * @param k
-	 *            k
-	 * 
-	 * @return BaseDaoEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <X extends BaseDaoEntity, T> BaseDaoEntity copyFrom(X k) throws Exception {
 		for (Field att : getAttributi()) {
@@ -3454,6 +3308,39 @@ public abstract class BaseDaoEntity extends PilotSupport implements Entity {
 
 	public void setDsMode(boolean dsMode) {
 		this.dsMode = dsMode;
+	}
+
+	protected String getFieldDataAggiornamento() {
+		String campo = null;
+		for (Field att : getAttributi()) {
+			if (att.getName().toUpperCase().endsWith(METHOD_DATA_AGGIORN)) {
+				campo = att.getName();
+				break;
+			}
+		}
+		return campo;
+	}
+
+	protected String getFieldCodUtente() {
+		String campo = null;
+		for (Field att : getAttributi()) {
+			if (att.getName().toUpperCase().endsWith(METHOD_COD_UTENTE)) {
+				campo = att.getName();
+				break;
+			}
+		}
+		return campo;
+	}
+
+	protected String getFieldCodApp() {
+		String campo = null;
+		for (Field att : getAttributi()) {
+			if (att.getName().toUpperCase().endsWith(METHOD_COD_APPL)) {
+				campo = att.getName();
+				break;
+			}
+		}
+		return campo;
 	}
 
 }

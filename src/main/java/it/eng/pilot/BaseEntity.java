@@ -1,6 +1,7 @@
 package it.eng.pilot;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.util.Date;
@@ -12,7 +13,7 @@ import org.jboss.logging.Logger;
 /**
  * Classe base per gli oggetti Entity. Ogni oggetto Entity, per essere tale ,
  * deve necessariamente estendere questa classe. Tale classe infatti offre tutte
- * le funzionalità di definizione della where condition, ordinamento, e
+ * le funzionalit� di definizione della where condition, ordinamento, e
  * impostazione di campi a null nelle update. I parametri definiti nella where
  * condition e passati a Null VENGONO AUTOMATICAMENTE ESCLUSI dalla formazione
  * della where condition.
@@ -25,6 +26,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	private static final long serialVersionUID = 6198001931561158088L;
 	private PList<Where> wc = pl();
 	private PList<String> fieldsToExcludeInUpdate = pl();
+	private PList<String> fieldsToUpdate = pl();
 	private PList<String> orderBy = plstr();
 	private transient Connection connection;
 	private String codUtenteCostruttore;
@@ -35,7 +37,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Imposta il logger passato
 	 * 
 	 * @param log
-	 *            log
 	 */
 	public void setExternalLogger(Logger log) {
 		this.log = log;
@@ -44,13 +45,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione Column
 	 * stato=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setStato(K value) {
@@ -67,13 +66,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * fascicolo=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setFascicolo(K value) {
@@ -90,13 +87,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione Column
 	 * codice=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setCodice(K value) {
@@ -113,13 +108,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione Column
 	 * descrizione=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setDescrizione(K value) {
@@ -136,13 +129,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione Column
 	 * tipo=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setTipo(K value) {
@@ -159,13 +150,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione Column
 	 * sede=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setSede(K value) {
@@ -185,7 +174,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getStato() {
@@ -207,7 +195,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * fascicolo=true dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getFascicolo() {
@@ -228,7 +215,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getCodice() {
@@ -249,7 +235,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * descrizione=true dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getDescrizione() {
@@ -271,7 +256,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * tipo=true dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 * 
 	 */
@@ -293,7 +277,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 * 
 	 */
@@ -315,7 +298,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione @Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getStato1() {
@@ -336,7 +318,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione @Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 
@@ -358,7 +339,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione @Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getIscritto() {
@@ -379,7 +359,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione @Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getCassa() {
@@ -400,7 +379,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dell'annotazione @Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getProgressivo() {
@@ -422,7 +400,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * startDate=true dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getDataInizio() {
@@ -444,7 +421,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * endDate=true dell'annotazione Column
 	 * 
 	 * @param <K>
-	 *            K
 	 * @return K
 	 */
 	public <K> K getDataFine() {
@@ -472,13 +448,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * stato1=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setStato1(K value) {
@@ -504,13 +478,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * ente=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setEnte(K value) {
@@ -527,13 +499,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * iscritto=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setIscritto(K value) {
@@ -550,13 +520,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * cassa=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setCassa(K value) {
@@ -573,13 +541,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * progr=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setProgr(K value) {
@@ -600,16 +566,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * individuano la terna [Ente-Iscritto-Cassa]
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> BaseEntity setTernaEnteIscrittoCassa(K idEnte, K idIscritto, K idCassa) throws Exception {
 		setEnte(idEnte);
@@ -622,16 +583,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di setTernaEnteIscrittoCassa
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> BaseEntity setTerna(K idEnte, K idIscritto, K idCassa) throws Exception {
 		return setTernaEnteIscrittoCassa(idEnte, idIscritto, idCassa);
@@ -642,13 +598,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * di equality
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity terna(K idEnte, K idIscritto, K idCassa) {
@@ -660,18 +612,12 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * con la relazione di equality
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @param idProgr
-	 *            progressivo
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> BaseEntity quaterna(K idEnte, K idIscritto, K idCassa, K idProgr) throws Exception {
 		return terna(idEnte, idIscritto, idCassa).eq(getFieldProgr(), idProgr);
@@ -683,18 +629,12 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * ossia che individuano la quaterna [Ente-Iscritto-Cassa-Progressivo]
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @param idProgr
-	 *            progressivo
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> BaseEntity setQuaternaEnteIscrittoCassaProgr(K idEnte, K idIscritto, K idCassa, K idProgr) throws Exception {
 		setTernaEnteIscrittoCassa(idEnte, idIscritto, idCassa);
@@ -706,18 +646,12 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di setQuaternaEnteIscrittoCassaProgr
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param idEnte
-	 *            ente
 	 * @param idIscritto
-	 *            iscritto
 	 * @param idCassa
-	 *            cassa
 	 * @param idProgr
-	 *            progressivo
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K> BaseEntity setQuaterna(K idEnte, K idIscritto, K idCassa, K idProgr) throws Exception {
 		return setQuaternaEnteIscrittoCassaProgr(idEnte, idIscritto, idCassa, idProgr);
@@ -728,10 +662,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * codUtente
 	 * 
 	 * @param codUtente
-	 *            codiceUtente
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public BaseEntity setCodUtente(String codUtente) throws Exception {
 		for (Method method : getMetodiEnt()) {
@@ -748,7 +680,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * 
 	 * @return String
 	 * @throws Exception
-	 *             ex
 	 */
 	public String getCodUtente() throws Exception {
 		String codUtente = null;
@@ -766,7 +697,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * 
 	 * @return String
 	 * @throws Exception
-	 *             ex
 	 */
 	public String getCodApp() throws Exception {
 		String codApp = null;
@@ -784,10 +714,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * codApp
 	 * 
 	 * @param codApp
-	 *            codiceApplicazione
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public BaseEntity setCodApp(String codApp) throws Exception {
 		for (Method method : getMetodiEnt()) {
@@ -801,13 +729,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * startDate=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setStartDate(K value) {
@@ -824,13 +750,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta il valore della variabile istanza dell'entity a value. La
-	 * variabile istanza è quella che ha l'attributo dell'annotazione @Column
+	 * variabile istanza � quella che ha l'attributo dell'annotazione @Column
 	 * endDate=true
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setEndDate(K value) {
@@ -849,9 +773,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di setEndDate
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param endDate
-	 *            endDate
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setDataFine(K endDate) {
@@ -862,9 +784,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di setStartDate
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param startDate
-	 *            startDate
 	 * @return BaseEntity
 	 */
 	public <K> BaseEntity setDataInizio(K startDate) {
@@ -873,7 +793,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * @param conn
-	 *            connessione
 	 */
 	public BaseEntity(Connection conn) {
 		setConnection(conn);
@@ -882,13 +801,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Costruttore che oltre a Connection accetta come parametro anche una
-	 * PList[String] destinata a contenere le query sql eseguite e la relativa
+	 * PList<String> destinata a contenere le query sql eseguite e la relativa
 	 * tempistica di esecuzione
 	 * 
 	 * @param conn
-	 *            connessione
 	 * @param container
-	 *            container
 	 */
 	public BaseEntity(Connection conn, PList<String> container) {
 		this(conn);
@@ -904,11 +821,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * questi avranno la precedenza (override) sui valori passati al costruttore
 	 * 
 	 * @param conn
-	 *            connessione
 	 * @param codUtente
-	 *            codiceUtente
 	 * @param codAppl
-	 *            codiceApplicazione
 	 */
 	public BaseEntity(Connection conn, String codUtente, String codAppl) {
 		this(conn);
@@ -922,18 +836,14 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * stessa) ai relativi campi della entity *COD_UTENTE e *COD_APPL nelle
 	 * query di update/delete/insert. Se si impostano i campi nell'Entity,
 	 * questi avranno la precedenza (override) sui valori passati al
-	 * costruttore. Accetta inoltre come parametro anche una PList[String]
+	 * costruttore. Accetta inoltre come parametro anche una PList<String>
 	 * destinata a contenere le query sql eseguite e la relativa tempistica di
 	 * esecuzione
 	 * 
 	 * @param conn
-	 *            connessione
 	 * @param codUtente
-	 *            codiceUtente
 	 * @param codAppl
-	 *            codiceApplicazione
 	 * @param container
-	 *            container
 	 */
 	public BaseEntity(Connection conn, String codUtente, String codAppl, PList<String> container) {
 		this(conn, container);
@@ -942,16 +852,14 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Oltre a connection questo costruttore prevede anche codUtente che verrà
+	 * Oltre a connection questo costruttore prevede anche codUtente che verr�
 	 * applicato automaticamente (quindi senza passarlo nell'entity stessa) al
 	 * relativo campo della entity *COD_UTENTE nelle query di
-	 * update/delete/insert. Se si imposta il campo nell'Entity, questo avrà la
+	 * update/delete/insert. Se si imposta il campo nell'Entity, questo avr� la
 	 * precedenza (override) sul valore passato al costruttore
 	 * 
 	 * @param conn
-	 *            connessione
 	 * @param codUtente
-	 *            codiceUtente
 	 */
 	public BaseEntity(Connection conn, String codUtente) {
 		this(conn);
@@ -959,20 +867,17 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Oltre a connection questo costruttore prevede anche codUtente che verrà
+	 * Oltre a connection questo costruttore prevede anche codUtente che verr�
 	 * applicato automaticamente (quindi senza passarlo nell'entity stessa) al
 	 * relativo campo della entity *COD_UTENTE nelle query di
-	 * update/delete/insert. Se si imposta il campo nell'Entity, questo avrà la
+	 * update/delete/insert. Se si imposta il campo nell'Entity, questo avr� la
 	 * precedenza (override) sul valore passato al costruttore Accetta inoltre
-	 * come parametro anche una PList[String] destinata a contenere le query sql
+	 * come parametro anche una PList<String> destinata a contenere le query sql
 	 * eseguite e la relativa tempistica di esecuzione
 	 * 
 	 * @param conn
-	 *            connessione
 	 * @param codUtente
-	 *            codiceUtente
 	 * @param container
-	 *            container
 	 */
 	public BaseEntity(Connection conn, String codUtente, PList<String> container) {
 		this(conn, container);
@@ -1018,7 +923,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * orderBy
 	 * 
 	 * @param orderBy
-	 *            ordinamento
 	 * @return BaseEntity
 	 */
 	public BaseEntity orderByASC(String... orderBy) {
@@ -1035,7 +939,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * orderBy
 	 * 
 	 * @param orderBy
-	 *            ordinamento
 	 * @return BaseEntity
 	 */
 	public BaseEntity orderByDESC(String... orderBy) {
@@ -1049,18 +952,14 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di = nella clausola where. Termina automaticamente
-	 * con AND per concatenare la prossima condizione. Prefix è il prefisso da
-	 * usare prima della colonna, suffix è il suffisso al nome di colonna,
-	 * esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")"
+	 * con AND per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")"
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity eqPref(String campo, String prefix, String suffix, Object... value) {
@@ -1073,9 +972,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity eq(String campo, Object... value) {
@@ -1088,7 +985,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dalla tabella in select distinct
 	 * 
 	 * @param values
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity distinct(String... values) {
@@ -1101,7 +997,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * dalla tabella in select
 	 * 
 	 * @param values
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity fields(String... values) {
@@ -1113,7 +1008,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di fields
 	 * 
 	 * @param values
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity cols(String... values) {
@@ -1125,7 +1019,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * sono i nomi delle classi entity corrispondenti alle tabelle di join
 	 * 
 	 * @param joinName
-	 *            joinName
 	 * @return BaseEntity
 	 */
 	public BaseEntity join(String joinName) {
@@ -1159,20 +1052,16 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di LIKE nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * Value deve essere del tipo %valore%, ossia i % devono essere indicati nel
 	 * value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity likePref(String campo, String prefix, String suffix, Object... value) {
@@ -1186,9 +1075,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * deve essere del tipo %valore%, ossia i % devono essere indicati nel value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity like(String campo, Object... value) {
@@ -1198,20 +1085,16 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di NOT LIKE nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * Value deve essere del tipo %valore%, ossia i % devono essere indicati nel
 	 * value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity notLikePref(String campo, String prefix, String suffix, Object... value) {
@@ -1225,9 +1108,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * deve essere del tipo %valore%, ossia i % devono essere indicati nel value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity notLike(String campo, Object... value) {
@@ -1236,19 +1117,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di not equal nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di <> nella clausola where. Termina
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity neqPref(String campo, String prefix, String suffix, Object... value) {
@@ -1257,13 +1134,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di not equal nella clausola where. Termina
+	 * Realizza la condizione di <> nella clausola where. Termina
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity neq(String campo, Object... value) {
@@ -1273,20 +1148,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di BETWEEN nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity between(String campo, String prefix, String suffix, Object value, Object value1) {
@@ -1309,11 +1179,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * [campo1,campo2]
 	 * 
 	 * @param value
-	 *            valore
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenFields(Object value, String campo1, String campo2) {
@@ -1325,9 +1192,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * [campo1,campo2] dove campo1 e campo2 sono campi data dell'entity
 	 * 
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenSysdate(String campo1, String campo2) {
@@ -1338,9 +1203,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Alias di betweenSysdate
 	 * 
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity current(String campo1, String campo2) {
@@ -1398,9 +1261,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con la clausola OR per concatenare la prossima condizione
 	 * 
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenOrSysdate(String campo1, String campo2) {
@@ -1411,9 +1272,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Alias di betweenOrSysdate
 	 * 
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity currentOr(String campo1, String campo2) {
@@ -1426,11 +1285,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * condizione
 	 * 
 	 * @param value
-	 *            valore
 	 * @param campo1
-	 *            campo1
 	 * @param campo2
-	 *            campo2
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenFieldsOR(Object value, String campo1, String campo2) {
@@ -1442,11 +1298,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity between(String campo, Object value, Object value1) {
@@ -1465,10 +1318,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= d
+	 * Imposta la condizione che il campo data aggiornamento sia >= d
 	 * 
 	 * @param d
-	 *            data
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSince(Date d) {
@@ -1483,9 +1335,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * nell'intervallo [start,end]
 	 * 
 	 * @param start
-	 *            dataInizio
 	 * @param end
-	 *            dataFine
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedBetween(Date start, Date end) {
@@ -1508,7 +1358,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * modificati dall'utente user
 	 * 
 	 * @param user
-	 *            utente utente
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedBy(String user) {
@@ -1523,7 +1372,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * modificati dall'applicativo app
 	 * 
 	 * @param app
-	 *            codiceApplicazione
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedByApp(String app) {
@@ -1547,7 +1395,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di modifiedByApp
 	 * 
 	 * @param app
-	 *            codiceApplicazione
 	 * @return BaseEntity
 	 */
 	public BaseEntity byApp(String app) {
@@ -1563,7 +1410,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * Metodo alias di modifiedByUser
 	 * 
 	 * @param user
-	 *            utente
 	 * @return BaseEntity
 	 */
 	public BaseEntity byUser(String user) {
@@ -1576,9 +1422,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna dell'anno scorso, ossia ritorna i record modificati
-	 * nell'ultimo anno
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna dell'anno scorso, ossia ritorna i record modificati nell'ultimo
+	 * anno
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1596,12 +1442,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna di i anni fa , ossia ritorna i record modificati negli
-	 * ultimi i anni
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna di i anni fa , ossia ritorna i record modificati negli ultimi i
+	 * anni
 	 * 
 	 * @param i
-	 *            numeroAnni
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSinceNumOfYears(Integer i) {
@@ -1609,9 +1454,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna del mese scorso, ossia ritorna i record modificati
-	 * nell'ultimo mese
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna del mese scorso, ossia ritorna i record modificati nell'ultimo
+	 * mese
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1629,12 +1474,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna di i mesi scorsi, ossia ritorna i record modificati negli
-	 * ultimi i mesi
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna di i mesi scorsi, ossia ritorna i record modificati negli ultimi
+	 * i mesi
 	 * 
 	 * @param i
-	 *            numeroMesi
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSinceNumOfMonths(Integer i) {
@@ -1642,8 +1486,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 7 giorni, ossia ritorna i record modificati nella ultima
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 7 giorni, ossia ritorna i record modificati nella ultima
 	 * settimana
 	 * 
 	 * @return BaseEntity
@@ -1662,12 +1506,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - i giorni, ossia ritorna i record modificati negli ultimi i
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - i giorni, ossia ritorna i record modificati negli ultimi i
 	 * giorni
 	 * 
 	 * @param i
-	 *            numeroGiorni
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSinceNumOfDays(Integer i) {
@@ -1675,9 +1518,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 1 giorno, ossia ritorna i record modificati nell'ultimo
-	 * giorno
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 1 giorno, ossia ritorna i record modificati nell'ultimo giorno
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1695,8 +1537,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 1 ora, ossia ritorna i record modificati nella ultima ora
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 1 ora, ossia ritorna i record modificati nella ultima ora
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1705,12 +1547,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - i minuti, ossia ritorna i record modificati negli ultimi i
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - i minuti, ossia ritorna i record modificati negli ultimi i
 	 * minuti
 	 * 
 	 * @param i
-	 *            numeroMinuti
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSinceMinutes(Integer i) {
@@ -1718,9 +1559,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 10 minuti, ossia ritorna i record modificati negli ultimi
-	 * 10 minuti
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 10 minuti, ossia ritorna i record modificati negli ultimi 10
+	 * minuti
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1729,8 +1570,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 5 minuti, ossia ritorna i record modificati negli ultimi 5
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 5 minuti, ossia ritorna i record modificati negli ultimi 5
 	 * minuti
 	 * 
 	 * @return BaseEntity
@@ -1740,9 +1581,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 15 minuti, ossia ritorna i record modificati negli ultimi
-	 * 15 minuti
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 15 minuti, ossia ritorna i record modificati negli ultimi 15
+	 * minuti
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1751,9 +1592,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - 30 minuti, ossia ritorna i record modificati negli ultimi
-	 * 30 minuti
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - 30 minuti, ossia ritorna i record modificati negli ultimi 30
+	 * minuti
 	 * 
 	 * @return BaseEntity
 	 */
@@ -1771,12 +1612,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Imposta la condizione che il campo data aggiornamento sia &gt;= della
-	 * data odierna - i ore, ossia ritorna i record modificati nelle ultime i
-	 * ore
+	 * Imposta la condizione che il campo data aggiornamento sia >= della data
+	 * odierna - i ore, ossia ritorna i record modificati nelle ultime i ore
 	 * 
 	 * @param i
-	 *            numeroOre
 	 * @return BaseEntity
 	 */
 	public BaseEntity modifiedSinceNumOfHours(Integer i) {
@@ -1784,19 +1623,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt;= nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione.Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di >= nella clausola where. Termina
+	 * automaticamente con AND per concatenare la prossima condizione.Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gte(String campo, String prefix, String suffix, Object value) {
@@ -1807,13 +1642,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt;= nella clausola where. Termina
+	 * Realizza la condizione di >= nella clausola where. Termina
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gte(String campo, Object value) {
@@ -1824,19 +1657,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt; nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di > nella clausola where. Termina automaticamente
+	 * con AND per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gt(String campo, String prefix, String suffix, Object value) {
@@ -1847,13 +1676,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt; nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione.
+	 * Realizza la condizione di > nella clausola where. Termina automaticamente
+	 * con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gt(String campo, Object value) {
@@ -1864,19 +1691,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di <= nella clausola where. Termina
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lte(String campo, String prefix, String suffix, Object value) {
@@ -1887,13 +1710,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
+	 * Realizza la condizione di <= nella clausola where. Termina
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lte(String campo, Object value) {
@@ -1904,19 +1725,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt; nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di < nella clausola where. Termina automaticamente
+	 * con AND per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lt(String campo, String prefix, String suffix, Object value) {
@@ -1927,13 +1744,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione.
+	 * Realizza la condizione di < nella clausola where. Termina automaticamente
+	 * con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lt(String campo, Object value) {
@@ -1945,16 +1760,13 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IS NULL nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione.Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione.Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNull(String campo, String prefix, String suffix) {
@@ -1967,7 +1779,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNull(String campo) {
@@ -1977,16 +1788,13 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IS NOT NULL nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNotNull(String campo, String prefix, String suffix) {
@@ -1999,7 +1807,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNotNull(String campo) {
@@ -2009,20 +1816,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IN nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in(String campo, String prefix, String suffix, PList<T> valori) {
@@ -2037,11 +1839,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in(String campo, PList<T> valori) {
@@ -2056,11 +1855,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in(String campo, T... valori) {
@@ -2069,20 +1865,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di NOT IN nella clausola where. Termina
-	 * automaticamente con AND per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con AND per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn(String campo, String prefix, String suffix, PList<T> valori) {
@@ -2097,11 +1888,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn(String campo, PList<T> valori) {
@@ -2116,11 +1904,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn(String campo, T... valori) {
@@ -2129,18 +1914,14 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di = nella clausola where. Termina automaticamente
-	 * con OR per concatenare la prossima condizione. Prefix è il prefisso da
-	 * usare prima della colonna, suffix è il suffisso al nome di colonna,
-	 * esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")"
+	 * con OR per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")"
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity eqPref_OR(String campo, String prefix, String suffix, Object... value) {
@@ -2153,9 +1934,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity eq_OR(String campo, Object... value) {
@@ -2165,20 +1944,16 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di LIKE nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * Value deve essere del tipo %valore%, ossia i % devono essere indicati nel
 	 * value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity likePref_OR(String campo, String prefix, String suffix, Object... value) {
@@ -2192,9 +1967,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * essere del tipo %valore%, ossia i % devono essere indicati nel value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity like_OR(String campo, Object... value) {
@@ -2274,20 +2047,16 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di NOT LIKE nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * Value deve essere del tipo %valore%, ossia i % devono essere indicati nel
 	 * value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity notLikePref_OR(String campo, String prefix, String suffix, Object... value) {
@@ -2301,9 +2070,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * essere del tipo %valore%, ossia i % devono essere indicati nel value
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity notLike_OR(String campo, Object... value) {
@@ -2312,19 +2079,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di not equal nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di <> nella clausola where. Termina
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity neqPref_OR(String campo, String prefix, String suffix, Object... value) {
@@ -2333,13 +2096,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di not equal nella clausola where. Termina
+	 * Realizza la condizione di <> nella clausola where. Termina
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity neq_OR(String campo, Object... value) {
@@ -2349,20 +2110,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di BETWEEN nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity between_OR(String campo, String prefix, String suffix, Object value, Object value1) {
@@ -2385,11 +2141,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity between_OR(String campo, Object value, Object value1) {
@@ -2408,19 +2161,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt;= nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione.Prefix è il
-	 * prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di >= nella clausola where. Termina
+	 * automaticamente con OR per concatenare la prossima condizione.Prefix � il
+	 * prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gte_OR(String campo, String prefix, String suffix, Object value) {
@@ -2431,13 +2180,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt;= nella clausola where. Termina
+	 * Realizza la condizione di >= nella clausola where. Termina
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gte_OR(String campo, Object value) {
@@ -2448,19 +2195,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt; nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di > nella clausola where. Termina automaticamente
+	 * con OR per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gt_OR(String campo, String prefix, String suffix, Object value) {
@@ -2471,13 +2214,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &gt; nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione.
+	 * Realizza la condizione di > nella clausola where. Termina automaticamente
+	 * con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity gt_OR(String campo, Object value) {
@@ -2488,19 +2229,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di <= nella clausola where. Termina
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lte_OR(String campo, String prefix, String suffix, Object value) {
@@ -2511,13 +2248,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
+	 * Realizza la condizione di <= nella clausola where. Termina
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lte_OR(String campo, Object value) {
@@ -2528,19 +2263,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt;= nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * Realizza la condizione di < nella clausola where. Termina automaticamente
+	 * con OR per concatenare la prossima condizione. Prefix � il prefisso da
+	 * usare prima della colonna, suffix � il suffisso al nome di colonna,
+	 * esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lt_OR(String campo, String prefix, String suffix, Object value) {
@@ -2551,13 +2282,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Realizza la condizione di &lt; nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione.
+	 * Realizza la condizione di < nella clausola where. Termina automaticamente
+	 * con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity lt_OR(String campo, Object value) {
@@ -2569,16 +2298,13 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IS NULL nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione.Prefix è il
-	 * prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione.Prefix � il
+	 * prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNull_OR(String campo, String prefix, String suffix) {
@@ -2591,7 +2317,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNull_OR(String campo) {
@@ -2601,16 +2326,13 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IS NOT NULL nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNotNull_OR(String campo, String prefix, String suffix) {
@@ -2623,7 +2345,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param campo
-	 *            campo
 	 * @return BaseEntity
 	 */
 	public BaseEntity isNotNull_OR(String campo) {
@@ -2633,20 +2354,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di IN nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in_OR(String campo, String prefix, String suffix, PList<T> valori) {
@@ -2661,11 +2377,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in_OR(String campo, PList<T> valori) {
@@ -2680,11 +2393,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity in_OR(String campo, T... valori) {
@@ -2693,20 +2403,15 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Realizza la condizione di NOT IN nella clausola where. Termina
-	 * automaticamente con OR per concatenare la prossima condizione. Prefix è
-	 * il prefisso da usare prima della colonna, suffix è il suffisso al nome di
-	 * colonna, esempio SUM( nome colonna ), prefix è "SUM(" e suffix è ")".
+	 * automaticamente con OR per concatenare la prossima condizione. Prefix �
+	 * il prefisso da usare prima della colonna, suffix � il suffisso al nome di
+	 * colonna, esempio SUM( nome colonna ), prefix � "SUM(" e suffix � ")".
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param prefix
-	 *            prefisso
 	 * @param suffix
-	 *            suffisso
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn_OR(String campo, String prefix, String suffix, PList<T> valori) {
@@ -2721,11 +2426,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn_OR(String campo, PList<T> valori) {
@@ -2740,11 +2442,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con OR per concatenare la prossima condizione.
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param campo
-	 *            campo
 	 * @param valori
-	 *            valori
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity notIn_OR(String campo, T... valori) {
@@ -2776,8 +2475,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Svuota la order by
-	 * 
-	 * @return BaseEntity
 	 */
 	public BaseEntity cleanOrderBy() {
 		this.orderBy = plstr();
@@ -2786,8 +2483,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Svuota la lista dei campi da escludere in una update
-	 * 
-	 * @return BaseEntity
 	 */
 	public BaseEntity cleanFieldsToExclude() {
 		setFieldsToExcludeInUpdate(plstr());
@@ -2797,8 +2492,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	/**
 	 * Svuota la where condition. la order by e i campi da impostare a null in
 	 * una update
-	 * 
-	 * @return BaseEntity
 	 */
 	public BaseEntity cleanAll() {
 		cleanFieldsToExclude();
@@ -2829,8 +2522,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta la where condition sul flagStato
-	 * 
-	 * @return boolean
 	 */
 	protected boolean setWhereConditionForFlagStato() {
 		boolean flagStatoImpostato = false;
@@ -2873,6 +2564,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * variabile istanza dell'Entity. I valori NULL vengono automaticamente
 	 * esclusi
 	 * 
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
 	 */
 	protected void setWhereConditionByInstanceVars() {
 		if (isSearchByPk())
@@ -2937,22 +2630,17 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Legge la tipologica chiave-valore utilizzando un meccanismo di cache
-	 * implementato tramite il parametro Map[K,T].Key è il valore chiave della
+	 * implementato tramite il parametro Map<K,T>.Key � il valore chiave della
 	 * tipologica. Restituisce il valore della tipologica corrispondente alla
 	 * chiave passata come parametro e utilizzando un meccanismo di cache per
 	 * evitare accessi multipli ridondanti alla base dati
 	 * 
 	 * @param <K>
-	 *            K
 	 * @param <T>
-	 *            T
 	 * @param key
-	 *            key
 	 * @param mappa
-	 *            mappa
 	 * @return T
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K, T> T getTipologica(K key, Map<K, T> mappa) throws Exception {
 		try {
@@ -2977,39 +2665,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 			closeAlls(null, null);
 		}
 		return (T) mappa.get(key);
-	}
-
-	private String getFieldDataAggiornamento() {
-		String campo = null;
-		for (Field att : getAttributi()) {
-			if (att.getName().toUpperCase().endsWith(METHOD_DATA_AGGIORN)) {
-				campo = att.getName();
-				break;
-			}
-		}
-		return campo;
-	}
-
-	private String getFieldCodUtente() {
-		String campo = null;
-		for (Field att : getAttributi()) {
-			if (att.getName().toUpperCase().endsWith(METHOD_COD_UTENTE)) {
-				campo = att.getName();
-				break;
-			}
-		}
-		return campo;
-	}
-
-	private String getFieldCodApp() {
-		String campo = null;
-		for (Field att : getAttributi()) {
-			if (att.getName().toUpperCase().endsWith(METHOD_COD_APPL)) {
-				campo = att.getName();
-				break;
-			}
-		}
-		return campo;
 	}
 
 	private String getFieldDataInizio() {
@@ -3103,6 +2758,32 @@ public abstract class BaseEntity extends BaseDaoEntity {
 		return campo;
 	}
 
+	private String getFieldNazione() {
+		String campo = null;
+		for (Field att : getAttributi()) {
+			Column annCol = att.getAnnotation(Column.class);
+			if (notNull(annCol)) {
+				if (annCol.nazione()) {
+					campo = att.getName();
+				}
+			}
+		}
+		return campo;
+	}
+
+	private String getFieldNome() {
+		String campo = null;
+		for (Field att : getAttributi()) {
+			Column annCol = att.getAnnotation(Column.class);
+			if (notNull(annCol)) {
+				if (annCol.nome()) {
+					campo = att.getName();
+				}
+			}
+		}
+		return campo;
+	}
+
 	private String getFieldTotale() {
 		String campo = null;
 		for (Field att : getAttributi()) {
@@ -3148,32 +2829,6 @@ public abstract class BaseEntity extends BaseDaoEntity {
 			Column annCol = att.getAnnotation(Column.class);
 			if (notNull(annCol)) {
 				if (annCol.email()) {
-					campo = att.getName();
-				}
-			}
-		}
-		return campo;
-	}
-
-	private String getFieldNazione() {
-		String campo = null;
-		for (Field att : getAttributi()) {
-			Column annCol = att.getAnnotation(Column.class);
-			if (notNull(annCol)) {
-				if (annCol.nazione()) {
-					campo = att.getName();
-				}
-			}
-		}
-		return campo;
-	}
-
-	private String getFieldNome() {
-		String campo = null;
-		for (Field att : getAttributi()) {
-			Column annCol = att.getAnnotation(Column.class);
-			if (notNull(annCol)) {
-				if (annCol.nome()) {
 					campo = att.getName();
 				}
 			}
@@ -3364,11 +3019,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato=value dove colonnaStato è la variabile
+	 * Crea la condizione colonnaStato=value dove colonnaStato � la variabile
 	 * istanza dell'entity che ha l'attributo stato=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity stato(Object value) {
@@ -3376,11 +3030,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaTipo=value dove colonnaTipo è la variabile
+	 * Crea la condizione colonnaTipo=value dove colonnaTipo � la variabile
 	 * istanza dell'entity che ha l'attributo tipo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity tipo(Object value) {
@@ -3388,12 +3041,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaTipo IN (value) dove colonnaTipo è la variabile
+	 * Crea la condizione colonnaTipo IN (value) dove colonnaTipo � la variabile
 	 * istanza dell'entity che ha l'attributo tipo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoIn(T... value) {
@@ -3401,12 +3052,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaTipo IN (value) dove colonnaTipo è la variabile
+	 * Crea la condizione colonnaTipo IN (value) dove colonnaTipo � la variabile
 	 * istanza dell'entity che ha l'attributo tipo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoIn(PList<T> value) {
@@ -3414,13 +3063,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaTipo NOT IN (value) dove colonnaTipo è la
+	 * Crea la condizione colonnaTipo NOT IN (value) dove colonnaTipo � la
 	 * variabile istanza dell'entity che ha l'attributo tipo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoNotIn(T... value) {
@@ -3428,13 +3075,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaTipo NOT IN (value) dove colonnaTipo è la
+	 * Crea la condizione colonnaTipo NOT IN (value) dove colonnaTipo � la
 	 * variabile istanza dell'entity che ha l'attributo tipo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoNotIn(PList<T> value) {
@@ -3442,11 +3087,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaSede=value dove colonnaSede è la variabile
+	 * Crea la condizione colonnaSede=value dove colonnaSede � la variabile
 	 * istanza dell'entity che ha l'attributo sede=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity sede(Object value) {
@@ -3454,12 +3098,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaSede IN (value) dove colonnaSede è la variabile
+	 * Crea la condizione colonnaSede IN (value) dove colonnaSede � la variabile
 	 * istanza dell'entity che ha l'attributo sede=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity sedeIn(T... value) {
@@ -3467,12 +3109,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaSede IN (value) dove colonnaSede è la variabile
+	 * Crea la condizione colonnaSede IN (value) dove colonnaSede � la variabile
 	 * istanza dell'entity che ha l'attributo sede=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity sedeIn(PList<T> value) {
@@ -3480,13 +3120,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaSede NOT IN (value) dove colonnaSede è la
+	 * Crea la condizione colonnaSede NOT IN (value) dove colonnaSede � la
 	 * variabile istanza dell'entity che ha l'attributo sede=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity sedeNotIn(T... value) {
@@ -3494,13 +3132,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaSede NOT IN (value) dove colonnaSede è la
+	 * Crea la condizione colonnaSede NOT IN (value) dove colonnaSede � la
 	 * variabile istanza dell'entity che ha l'attributo sede=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity sedeNotIn(PList<T> value) {
@@ -3508,12 +3144,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCodice=value dove colonnaCodice è la variabile
+	 * Crea la condizione colonnaCodice=value dove colonnaCodice � la variabile
 	 * istanza dell'entity che ha l'attributo codice=true nell'annotazione
 	 * Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity codice(Object value) {
@@ -3521,13 +3156,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCodice IN (value) dove colonnaCodice è la
+	 * Crea la condizione colonnaCodice IN (value) dove colonnaCodice � la
 	 * variabile istanza dell'entity che ha l'attributo codice=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceIn(T... value) {
@@ -3535,13 +3168,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCodice IN (value) dove colonnaCodice è la
+	 * Crea la condizione colonnaCodice IN (value) dove colonnaCodice � la
 	 * variabile istanza dell'entity che ha l'attributo codice=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceIn(PList<T> value) {
@@ -3549,13 +3180,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCodice NOT IN (value) dove colonnaCodice è la
+	 * Crea la condizione colonnaCodice NOT IN (value) dove colonnaCodice � la
 	 * variabile istanza dell'entity che ha l'attributo codice=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceNotIn(T... value) {
@@ -3563,13 +3192,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCodice NOT IN (value) dove colonnaCodice è la
+	 * Crea la condizione colonnaCodice NOT IN (value) dove colonnaCodice � la
 	 * variabile istanza dell'entity che ha l'attributo codice=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceNotIn(PList<T> value) {
@@ -3577,12 +3204,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaFascicolo=value dove colonnaFascicolo è la
+	 * Crea la condizione colonnaFascicolo=value dove colonnaFascicolo � la
 	 * variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity fascicolo(Object value) {
@@ -3590,13 +3216,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaFascicolo IN (value) dove colonnaFascicolo è la
+	 * Crea la condizione colonnaFascicolo IN (value) dove colonnaFascicolo � la
 	 * variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloIn(T... value) {
@@ -3604,13 +3228,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaFascicolo IN (value) dove colonnaFascicolo è la
+	 * Crea la condizione colonnaFascicolo IN (value) dove colonnaFascicolo � la
 	 * variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloIn(PList<T> value) {
@@ -3619,12 +3241,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaFascicolo NOT IN (value) dove colonnaFascicolo
-	 * è la variabile istanza dell'entity che ha l'attributo fascicolo=true
+	 * � la variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloNotIn(T... value) {
@@ -3633,12 +3253,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaFascicolo NOT IN (value) dove colonnaFascicolo
-	 * è la variabile istanza dell'entity che ha l'attributo fascicolo=true
+	 * � la variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloNotIn(PList<T> value) {
@@ -3646,12 +3264,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaDescrizione=value dove colonnaDescrizione è la
+	 * Crea la condizione colonnaDescrizione=value dove colonnaDescrizione � la
 	 * variabile istanza dell'entity che ha l'attributo descrizione=true
 	 * nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity descrizione(Object value) {
@@ -3660,12 +3277,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaDescrizione IN (value) dove colonnaDescrizione
-	 * è la variabile istanza dell'entity che ha l'attributo descrizione=true
+	 * � la variabile istanza dell'entity che ha l'attributo descrizione=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneIn(T... value) {
@@ -3674,12 +3289,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaDescrizione IN (value) dove colonnaDescrizione
-	 * è la variabile istanza dell'entity che ha l'attributo descrizione=true
+	 * � la variabile istanza dell'entity che ha l'attributo descrizione=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneIn(PList<T> value) {
@@ -3688,12 +3301,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaDescrizione NOT IN (value) dove
-	 * colonnaDescrizione è la variabile istanza dell'entity che ha l'attributo
+	 * colonnaDescrizione � la variabile istanza dell'entity che ha l'attributo
 	 * descrizione=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneNotIn(T... value) {
@@ -3702,12 +3313,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Crea la condizione colonnaDescrizione NOT IN (value) dove
-	 * colonnaDescrizione è la variabile istanza dell'entity che ha l'attributo
+	 * colonnaDescrizione � la variabile istanza dell'entity che ha l'attributo
 	 * descrizione=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneNotIn(PList<T> value) {
@@ -3715,13 +3324,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaIscritto IN (value) dove colonnaIscritto è la
+	 * Crea la condizione colonnaIscritto IN (value) dove colonnaIscritto � la
 	 * variabile istanza dell'entity che ha l'attributo iscritto=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoIn(T... value) {
@@ -3729,13 +3336,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaIscritto IN (value) dove colonnaIscritto è la
+	 * Crea la condizione colonnaIscritto IN (value) dove colonnaIscritto � la
 	 * variabile istanza dell'entity che ha l'attributo iscritto=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoIn(PList<T> value) {
@@ -3743,13 +3348,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaIscritto NOT IN (value) dove colonnaIscritto è
+	 * Crea la condizione colonnaIscritto NOT IN (value) dove colonnaIscritto �
 	 * la variabile istanza dell'entity che ha l'attributo iscritto=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoNotIn(T... value) {
@@ -3757,13 +3360,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaIscritto NOT IN (value) dove colonnaIscritto è
+	 * Crea la condizione colonnaIscritto NOT IN (value) dove colonnaIscritto �
 	 * la variabile istanza dell'entity che ha l'attributo iscritto=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoNotIn(PList<T> value) {
@@ -3771,12 +3372,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaIscritto=value dove colonnaIscritto è la
+	 * Crea la condizione colonnaIscritto=value dove colonnaIscritto � la
 	 * variabile istanza dell'entity che ha l'attributo iscritto=true
 	 * nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity iscritto(Object value) {
@@ -3784,11 +3384,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaEnte=value dove colonnaEnte è la variabile
+	 * Crea la condizione colonnaEnte=value dove colonnaEnte � la variabile
 	 * istanza dell'entity che ha l'attributo ente=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity ente(Object value) {
@@ -3796,12 +3395,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaEnte IN (value) dove colonnaEnte è la variabile
+	 * Crea la condizione colonnaEnte IN (value) dove colonnaEnte � la variabile
 	 * istanza dell'entity che ha l'attributo ente=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteIn(T... value) {
@@ -3809,12 +3406,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaEnte IN (value) dove colonnaEnte è la variabile
+	 * Crea la condizione colonnaEnte IN (value) dove colonnaEnte � la variabile
 	 * istanza dell'entity che ha l'attributo ente=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteIn(PList<T> value) {
@@ -3822,13 +3417,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaEnte NOT IN (value) dove colonnaEnte è la
+	 * Crea la condizione colonnaEnte NOT IN (value) dove colonnaEnte � la
 	 * variabile istanza dell'entity che ha l'attributo ente=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteNotIn(T... value) {
@@ -3836,13 +3429,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaEnte NOT IN (value) dove colonnaEnte è la
+	 * Crea la condizione colonnaEnte NOT IN (value) dove colonnaEnte � la
 	 * variabile istanza dell'entity che ha l'attributo ente=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteNotIn(PList<T> value) {
@@ -3850,11 +3441,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCassa=value dove colonnaStato è la variabile
+	 * Crea la condizione colonnaCassa=value dove colonnaStato � la variabile
 	 * istanza dell'entity che ha l'attributo cassa=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity cassa(Object value) {
@@ -3862,39 +3452,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaDataFine=value dove colonnaDataFine è la
-	 * variabile istanza dell'entity che ha l'attributo endDate=true
-	 * nell'annotazione Column
-	 * 
-	 * @param value
-	 *            valore
-	 * @return BaseEntity
-	 */
-	public BaseEntity dataFine(Object value) {
-		return eq(getFieldDataFine(), value);
-	}
-
-	/**
-	 * Crea la condizione colonnaDataInizio=value dove colonnaDataInizio è la
-	 * variabile istanza dell'entity che ha l'attributo startDate=true
-	 * nell'annotazione Column
-	 * 
-	 * @param value
-	 *            valore
-	 * @return BaseEntity
-	 */
-	public BaseEntity dataInizio(Object value) {
-		return eq(getFieldDataInizio(), value);
-	}
-
-	/**
-	 * Crea la condizione colonnaCassa IN (value) dove colonnaCassa è la
+	 * Crea la condizione colonnaCassa IN (value) dove colonnaCassa � la
 	 * variabile istanza dell'entity che ha l'attributo cassa=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaIn(T... value) {
@@ -3902,13 +3464,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCassa IN (value) dove colonnaCassa è la
+	 * Crea la condizione colonnaCassa IN (value) dove colonnaCassa � la
 	 * variabile istanza dell'entity che ha l'attributo cassa=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaIn(PList<T> value) {
@@ -3916,13 +3476,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCassa NOT IN (value) dove colonnaCassa è la
+	 * Crea la condizione colonnaCassa NOT IN (value) dove colonnaCassa � la
 	 * variabile istanza dell'entity che ha l'attributo cassa=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaNotIn(T... value) {
@@ -3930,13 +3488,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaCassa NOT IN (value) dove colonnaCassa è la
+	 * Crea la condizione colonnaCassa NOT IN (value) dove colonnaCassa � la
 	 * variabile istanza dell'entity che ha l'attributo cassa=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaNotIn(PList<T> value) {
@@ -3944,11 +3500,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaId=value dove colonnaId è la variabile istanza
+	 * Crea la condizione colonnaId=value dove colonnaId � la variabile istanza
 	 * dell'entity che ha l'attributo id=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity id(Object value) {
@@ -3956,12 +3511,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaId IN (value) dove colonnaId è la variabile
+	 * Crea la condizione colonnaId IN (value) dove colonnaId � la variabile
 	 * istanza dell'entity che ha l'attributo id=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity idIn(T... value) {
@@ -3969,12 +3522,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaId IN (value) dove colonnaId è la variabile
+	 * Crea la condizione colonnaId IN (value) dove colonnaId � la variabile
 	 * istanza dell'entity che ha l'attributo id=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity idIn(PList<T> value) {
@@ -3982,12 +3533,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaId NOT IN (value) dove colonnaId è la variabile
+	 * Crea la condizione colonnaId NOT IN (value) dove colonnaId � la variabile
 	 * istanza dell'entity che ha l'attributo id=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity idNotIn(T... value) {
@@ -3995,12 +3544,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaId NOT IN (value) dove colonnaId è la variabile
+	 * Crea la condizione colonnaId NOT IN (value) dove colonnaId � la variabile
 	 * istanza dell'entity che ha l'attributo id=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity idNotIn(PList<T> value) {
@@ -4008,11 +3555,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaProgr=value dove colonnaProgr è la variabile
+	 * Crea la condizione colonnaProgr=value dove colonnaProgr � la variabile
 	 * istanza dell'entity che ha l'attributo progr=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity progr(Object value) {
@@ -4020,13 +3566,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaProgr IN (value) dove colonnaProgr è la
+	 * Crea la condizione colonnaProgr IN (value) dove colonnaProgr � la
 	 * variabile istanza dell'entity che ha l'attributo progr=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity progrIn(T... value) {
@@ -4034,13 +3578,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaProgr IN (value) dove colonnaProgr è la
+	 * Crea la condizione colonnaProgr IN (value) dove colonnaProgr � la
 	 * variabile istanza dell'entity che ha l'attributo progr=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity progrIn(PList<T> value) {
@@ -4048,13 +3590,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaProgr NOT IN (value) dove colonnaProgr è la
+	 * Crea la condizione colonnaProgr NOT IN (value) dove colonnaProgr � la
 	 * variabile istanza dell'entity che ha l'attributo progr=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity progrNotIn(T... value) {
@@ -4062,13 +3602,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaProgr NOT IN (value) dove colonnaProgr è la
+	 * Crea la condizione colonnaProgr NOT IN (value) dove colonnaProgr � la
 	 * variabile istanza dell'entity che ha l'attributo progr=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity progrNotIn(PList<T> value) {
@@ -4076,12 +3614,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1=value dove colonnaStato1 è la variabile
-	 * istanza dell'entity che ha l'attributo stato1=true nell'annotazione
-	 * Column
+	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato1 � la
+	 * variabile istanza dell'entity che ha l'attributo stato1=true
+	 * nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity stato1(Object value) {
@@ -4089,13 +3626,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoIn(T... value) {
@@ -4103,13 +3638,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato IN(value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoIn(PList<T> value) {
@@ -4117,13 +3650,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato NOT IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato NOT IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoNotIn(T... value) {
@@ -4131,13 +3662,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato NOT IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato NOT IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoNotIn(PList<T> value) {
@@ -4145,13 +3674,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato1=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1In(T... value) {
@@ -4159,13 +3686,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato1=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1In(PList<T> value) {
@@ -4173,13 +3698,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1 NOT IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato1 NOT IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato1=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1NotIn(T... value) {
@@ -4187,13 +3710,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1 NOT IN (value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato1 NOT IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato1=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1NotIn(PList<T> value) {
@@ -4201,13 +3722,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato in(..value) dove colonnaStato è la
+	 * Crea la condizione colonnaStato IN (value) dove colonnaStato � la
 	 * variabile istanza dell'entity che ha l'attributo stato=true
 	 * nell'annotazione @Column. Termina con la clausola OR
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoInOr(T... value) {
@@ -4215,13 +3734,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1 in(..value) dove colonnaStato1 è la
+	 * Crea la condizione colonnaStato1 IN (value) dove colonnaStato1 � la
 	 * variabile istanza dell'entity che ha l'attributo stato1=true
 	 * nell'annotazione @Column. Termina con la clausola OR
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1InOr(T... value) {
@@ -4229,13 +3746,12 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato=value dove colonnaStato è la variabile
+	 * Crea la condizione colonnaStato=value dove colonnaStato � la variabile
 	 * istanza dell'entity che ha l'attributo stato=true nell'annotazione
 	 * 
 	 * Column. Concatena OR per la prossima condizione di filtro
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity statoOr(Object value) {
@@ -4243,13 +3759,12 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaStato1=value dove colonnaStato1 è la variabile
+	 * Crea la condizione colonnaStato1=value dove colonnaStato1 � la variabile
 	 * istanza dell'entity che ha l'attributo stato1=true nell'annotazione *
 	 * 
 	 * Column. Concatena OR per la prossima condizione di filtro
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity stato1Or(Object value) {
@@ -4266,10 +3781,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * pk=true
 	 * 
 	 * @param value
-	 *            valore
+	 *            K
 	 * @return K
-	 * @throws Exception
-	 *             ex
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
 	 */
 	public <K extends BaseEntity> K setPrimary(Object... value) throws Exception {
 		int i = 0;
@@ -4289,19 +3805,16 @@ public abstract class BaseEntity extends BaseDaoEntity {
 
 	/**
 	 * Imposta la chiave primaria dell'entity a partire dall'entity ent passata
-	 * come parametro. Il principio regolatore è l'uguaglianza dell'alias della
+	 * come parametro. Il principio regolatore � l'uguaglianza dell'alias della
 	 * colonna tra le due entity per le sole colonne chiave primaria.
 	 * 
 	 * Column.alias= Column.alias e entrambe devono essere chiave primaria
 	 * pk=true
 	 * 
 	 * @param <T>
-	 *            T
 	 * @param ent
-	 *            ent
 	 * @return BaseEntity
 	 * @throws Exception
-	 *             ex
 	 */
 	public <K extends BaseEntity, T extends BaseEntity> BaseEntity setPrimaryEnt(T ent) throws Exception {
 		if (notNull(ent)) {
@@ -4338,10 +3851,9 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Aggiunge la condizione ROWNUM&lt;=limite
+	 * Aggiunge la condizione ROWNUM<=limite
 	 * 
 	 * @param limite
-	 *            limite
 	 * @return BaseEntity
 	 */
 	public BaseEntity limit(Integer limite) {
@@ -4349,6 +3861,30 @@ public abstract class BaseEntity extends BaseDaoEntity {
 			getWhereCondition().add(new Where(Operatore.LIMIT, limite, OperatoreBooleano.AND));
 		}
 		return this;
+	}
+
+	/**
+	 * Crea la condizione colonnaDataFine=value dove colonnaDataFine � la
+	 * variabile istanza dell'entity che ha l'attributo endDate=true
+	 * nell'annotazione Column
+	 * 
+	 * @param value
+	 * @return BaseEntity
+	 */
+	public BaseEntity dataFine(Object value) {
+		return eq(getFieldDataFine(), value);
+	}
+
+	/**
+	 * Crea la condizione colonnaDataInizio=value dove colonnaDataInizio � la
+	 * variabile istanza dell'entity che ha l'attributo startDate=true
+	 * nell'annotazione Column
+	 * 
+	 * @param value
+	 * @return BaseEntity
+	 */
+	public BaseEntity dataInizio(Object value) {
+		return eq(getFieldDataInizio(), value);
 	}
 
 	/**
@@ -4577,9 +4113,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da cassa=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenCassa(Object value, Object value1) {
@@ -4592,9 +4126,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da tipo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenTipo(Object value, Object value1) {
@@ -4606,11 +4138,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da iscritto=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenIscritto(Object value, Object value1) {
@@ -4622,11 +4151,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da descrizione=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenDescrizione(Object value, Object value1) {
@@ -4638,11 +4164,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da fascicolo=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenFascicolo(Object value, Object value1) {
@@ -4654,11 +4177,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da ente=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenEnte(Object value, Object value1) {
@@ -4670,11 +4190,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da sede=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenSede(Object value, Object value1) {
@@ -4686,11 +4203,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da stato=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenStato(Object value, Object value1) {
@@ -4702,11 +4216,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da stato1=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenStato1(Object value, Object value1) {
@@ -4718,11 +4229,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da id=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenId(Object value, Object value1) {
@@ -4734,11 +4242,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da progr=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenProgr(Object value, Object value1) {
@@ -4750,11 +4255,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da dataFine=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenDataFine(Object value, Object value1) {
@@ -4766,11 +4268,8 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * automaticamente con AND per concatenare la prossima condizione. Esegue la
 	 * BETWEEN sul campo individuato da dataInizio=true nell'annotazione Column
 	 * 
-	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenDataInizio(Object value, Object value1) {
@@ -4778,11 +4277,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaNome=value dove colonnaNome è la variabile
+	 * Crea la condizione colonnaNome=value dove colonnaNome � la variabile
 	 * istanza dell'entity che ha l'attributo nome=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity nome(Object value) {
@@ -4790,12 +4288,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaNome IN (value) dove colonnaNome è la variabile
+	 * Crea la condizione colonnaNome IN (value) dove colonnaNome � la variabile
 	 * istanza dell'entity che ha l'attributo nome=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nomeIn(PList<T> value) {
@@ -4803,13 +4299,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaNome IN (value) dove colonnaNome è la variabile
+	 * Crea la condizione colonnaNome IN (value) dove colonnaNome � la variabile
 	 * istanza dell'entity che ha l'attributo nome=true nell'annotazione Column
 	 * 
-	 * @param<T> T
-	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nome(T... value) {
@@ -4817,15 +4310,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaNome NOT IN (value) dove colonnaNome è la
+	 * Crea la condizione colonnaNome NOT IN (value) dove colonnaNome � la
 	 * variabile istanza dell'entity che ha l'attributo nome=true
 	 * nell'annotazione Column
 	 * 
-	 * 
-	 * @param<T> T
-	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nomeNotIn(PList<T> value) {
@@ -4833,15 +4322,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione colonnaNome NOT IN (value) dove colonnaNome è la
+	 * Crea la condizione colonnaNome NOT IN (value) dove colonnaNome � la
 	 * variabile istanza dell'entity che ha l'attributo nome=true
 	 * nell'annotazione Column
 	 * 
-	 * 
-	 * @param<T> T
-	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nomeNotIn(T... value) {
@@ -4854,9 +4339,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da nome=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenNome(Object value, Object value1) {
@@ -4884,11 +4367,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione Cognome=value dove Cognome è la variabile istanza
+	 * Crea la condizione Cognome=value dove Cognome � la variabile istanza
 	 * dell'entity che ha l'attributo Cognome=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity cognome(Object value) {
@@ -4896,12 +4378,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione Cognome IN (value) dove Cognome è la variabile istanza
+	 * Crea la condizione Cognome IN (value) dove Cognome � la variabile istanza
 	 * dell'entity che ha l'attributo Cognome=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognomeIn(PList<T> value) {
@@ -4909,12 +4389,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione Cognome IN (value) dove Cognome è la variabile istanza
+	 * Crea la condizione Cognome IN (value) dove Cognome � la variabile istanza
 	 * dell'entity che ha l'attributo Cognome=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognome(T... value) {
@@ -4922,13 +4400,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione Cognome NOT IN (value) dove Cognome è la variabile
+	 * Crea la condizione Cognome NOT IN (value) dove Cognome � la variabile
 	 * istanza dell'entity che ha l'attributo Cognome=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognomeNotIn(PList<T> value) {
@@ -4936,13 +4412,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione Cognome NOT IN (value) dove Cognome è la variabile
+	 * Crea la condizione Cognome NOT IN (value) dove Cognome � la variabile
 	 * istanza dell'entity che ha l'attributo Cognome=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognomeNotIn(T... value) {
@@ -4955,9 +4429,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da Cognome=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenCognome(Object value, Object value1) {
@@ -4985,11 +4457,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione eta=value dove eta è la variabile istanza dell'entity
+	 * Crea la condizione eta=value dove eta � la variabile istanza dell'entity
 	 * che ha l'attributo eta=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity eta(Object value) {
@@ -4997,12 +4468,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione eta IN (value) dove eta è la variabile istanza
+	 * Crea la condizione eta IN (value) dove eta � la variabile istanza
 	 * dell'entity che ha l'attributo eta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity etaIn(PList<T> value) {
@@ -5010,12 +4479,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione eta IN (value) dove eta è la variabile istanza
+	 * Crea la condizione eta IN (value) dove eta � la variabile istanza
 	 * dell'entity che ha l'attributo eta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity eta(T... value) {
@@ -5023,12 +4490,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione eta NOT IN (value) dove eta è la variabile istanza
+	 * Crea la condizione eta NOT IN (value) dove eta � la variabile istanza
 	 * dell'entity che ha l'attributo eta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity etaNotIn(PList<T> value) {
@@ -5036,12 +4501,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione eta NOT IN (value) dove eta è la variabile istanza
+	 * Crea la condizione eta NOT IN (value) dove eta � la variabile istanza
 	 * dell'entity che ha l'attributo eta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity etaNotIn(T... value) {
@@ -5054,9 +4517,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da eta=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenEta(Object value, Object value1) {
@@ -5084,11 +4545,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf=value dove cf è la variabile istanza dell'entity
+	 * Crea la condizione cf=value dove cf � la variabile istanza dell'entity
 	 * che ha l'attributo cf=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity cf(Object value) {
@@ -5096,12 +4556,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf IN (value) dove cf è la variabile istanza
+	 * Crea la condizione cf IN (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cfIn(PList<T> value) {
@@ -5109,12 +4567,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf IN (value) dove cf è la variabile istanza
+	 * Crea la condizione cf IN (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cf(T... value) {
@@ -5122,12 +4578,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf NOT IN (value) dove cf è la variabile istanza
+	 * Crea la condizione cf NOT IN (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cfNotIn(PList<T> value) {
@@ -5135,12 +4589,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf NOT IN (value) dove cf è la variabile istanza
+	 * Crea la condizione cf NOT IN (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cfNotIn(T... value) {
@@ -5153,9 +4605,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da cf=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenCf(Object value, Object value1) {
@@ -5183,11 +4633,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo=value dove importo è la variabile istanza
+	 * Crea la condizione importo=value dove importo � la variabile istanza
 	 * dell'entity che ha l'attributo importo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity importo(Object value) {
@@ -5195,12 +4644,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo IN (value) dove importo è la variabile istanza
+	 * Crea la condizione importo IN (value) dove importo � la variabile istanza
 	 * dell'entity che ha l'attributo importo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity importoIn(PList<T> value) {
@@ -5208,12 +4655,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo IN (value) dove importo è la variabile istanza
+	 * Crea la condizione importo IN (value) dove importo � la variabile istanza
 	 * dell'entity che ha l'attributo importo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity importo(T... value) {
@@ -5221,13 +4666,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo NOT IN (value) dove importo è la variabile
+	 * Crea la condizione importo NOT IN (value) dove importo � la variabile
 	 * istanza dell'entity che ha l'attributo importo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity importoNotIn(PList<T> value) {
@@ -5235,13 +4678,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo NOT IN (value) dove importo è la variabile
+	 * Crea la condizione importo NOT IN (value) dove importo � la variabile
 	 * istanza dell'entity che ha l'attributo importo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity importoNotIn(T... value) {
@@ -5254,9 +4695,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da importo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenImporto(Object value, Object value1) {
@@ -5284,13 +4723,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione importo like (value) dove importo è la variabile
+	 * Crea la condizione importo like (value) dove importo � la variabile
 	 * istanza dell'entity che ha l'attributo importo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity importoLike(String value) {
@@ -5298,13 +4735,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione descrizione like (value) dove descrizione è la
+	 * Crea la condizione descrizione like (value) dove descrizione � la
 	 * variabile istanza dell'entity che ha l'attributo descrizione=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneLike(Object value) {
@@ -5312,13 +4747,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione descrizione not like (value) dove descrizione è la
+	 * Crea la condizione descrizione not like (value) dove descrizione � la
 	 * variabile istanza dell'entity che ha l'attributo descrizione=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity descrizioneNotLike(Object value) {
@@ -5326,13 +4759,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione iscritto like (value) dove iscritto è la variabile
+	 * Crea la condizione iscritto like (value) dove iscritto � la variabile
 	 * istanza dell'entity che ha l'attributo iscritto=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoLike(Object value) {
@@ -5340,13 +4771,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione iscritto not like (value) dove iscritto è la variabile
+	 * Crea la condizione iscritto not like (value) dove iscritto � la variabile
 	 * istanza dell'entity che ha l'attributo iscritto=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity iscrittoNotLike(Object value) {
@@ -5354,12 +4783,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione ente like (value) dove ente è la variabile istanza
+	 * Crea la condizione ente like (value) dove ente � la variabile istanza
 	 * dell'entity che ha l'attributo ente=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteLike(Object value) {
@@ -5367,12 +4794,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione ente not like (value) dove ente è la variabile istanza
+	 * Crea la condizione ente not like (value) dove ente � la variabile istanza
 	 * dell'entity che ha l'attributo ente=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity enteNotLike(Object value) {
@@ -5380,13 +4805,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione fascicolo like (value) dove fascicolo è la variabile
+	 * Crea la condizione fascicolo like (value) dove fascicolo � la variabile
 	 * istanza dell'entity che ha l'attributo fascicolo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloLike(Object value) {
@@ -5394,13 +4817,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione fascicolo not like (value) dove fascicolo è la
+	 * Crea la condizione fascicolo not like (value) dove fascicolo � la
 	 * variabile istanza dell'entity che ha l'attributo fascicolo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity fascicoloNotLike(Object value) {
@@ -5408,12 +4829,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nome like (value) dove nome è la variabile istanza
+	 * Crea la condizione nome like (value) dove nome � la variabile istanza
 	 * dell'entity che ha l'attributo nome=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nomeLike(Object value) {
@@ -5421,12 +4840,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nome not like (value) dove nome è la variabile istanza
+	 * Crea la condizione nome not like (value) dove nome � la variabile istanza
 	 * dell'entity che ha l'attributo nome=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nomeNotLike(Object value) {
@@ -5434,13 +4851,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cognome like (value) dove cognome è la variabile
+	 * Crea la condizione cognome like (value) dove cognome � la variabile
 	 * istanza dell'entity che ha l'attributo cognome=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognomeLike(Object value) {
@@ -5448,13 +4863,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cognome not like (value) dove cognome è la variabile
+	 * Crea la condizione cognome not like (value) dove cognome � la variabile
 	 * istanza dell'entity che ha l'attributo cognome=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cognomeNotLike(Object value) {
@@ -5462,12 +4875,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf like (value) dove cf è la variabile istanza
+	 * Crea la condizione cf like (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cfLike(Object value) {
@@ -5475,12 +4886,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cf not like (value) dove cf è la variabile istanza
+	 * Crea la condizione cf not like (value) dove cf � la variabile istanza
 	 * dell'entity che ha l'attributo cf=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cfNotLike(Object value) {
@@ -5488,12 +4897,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione tipo like (value) dove tipo è la variabile istanza
+	 * Crea la condizione tipo like (value) dove tipo � la variabile istanza
 	 * dell'entity che ha l'attributo tipo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoLike(Object value) {
@@ -5501,12 +4908,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione tipo not like (value) dove tipo è la variabile istanza
+	 * Crea la condizione tipo not like (value) dove tipo � la variabile istanza
 	 * dell'entity che ha l'attributo tipo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity tipoNotLike(Object value) {
@@ -5514,12 +4919,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione codice like (value) dove codice è la variabile istanza
+	 * Crea la condizione codice like (value) dove codice � la variabile istanza
 	 * dell'entity che ha l'attributo codice=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceLike(Object value) {
@@ -5527,13 +4930,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione codice not like (value) dove codice è la variabile
+	 * Crea la condizione codice not like (value) dove codice � la variabile
 	 * istanza dell'entity che ha l'attributo codice=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity codiceNotLike(Object value) {
@@ -5541,12 +4942,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cassa like (value) dove cassa è la variabile istanza
+	 * Crea la condizione cassa like (value) dove cassa � la variabile istanza
 	 * dell'entity che ha l'attributo cassa=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaLike(Object value) {
@@ -5554,12 +4953,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione cassa not like (value) dove cassa è la variabile
+	 * Crea la condizione cassa not like (value) dove cassa � la variabile
 	 * istanza dell'entity che ha l'attributo cassa=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cassaNotLike(Object value) {
@@ -5567,12 +4964,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione stato like (value) dove stato è la variabile istanza
+	 * Crea la condizione stato like (value) dove stato � la variabile istanza
 	 * dell'entity che ha l'attributo stato=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoLike(Object value) {
@@ -5580,12 +4975,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione stato not like (value) dove stato è la variabile
+	 * Crea la condizione stato not like (value) dove stato � la variabile
 	 * istanza dell'entity che ha l'attributo stato=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity statoNotLike(Object value) {
@@ -5593,12 +4986,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione stato1 like (value) dove stato1 è la variabile istanza
+	 * Crea la condizione stato1 like (value) dove stato1 � la variabile istanza
 	 * dell'entity che ha l'attributo stato1=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1Like(Object value) {
@@ -5606,13 +4997,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione stato1 not like (value) dove stato1 è la variabile
+	 * Crea la condizione stato1 not like (value) dove stato1 � la variabile
 	 * istanza dell'entity che ha l'attributo stato1=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity stato1NotLike(Object value) {
@@ -5620,11 +5009,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta=value dove citta è la variabile istanza
+	 * Crea la condizione citta=value dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity citta(Object value) {
@@ -5632,12 +5020,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta IN (value) dove citta è la variabile istanza
+	 * Crea la condizione citta IN (value) dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cittaIn(PList<T> value) {
@@ -5645,12 +5031,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta IN (value) dove citta è la variabile istanza
+	 * Crea la condizione citta IN (value) dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity citta(T... value) {
@@ -5658,12 +5042,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta NOT IN (value) dove citta è la variabile istanza
+	 * Crea la condizione citta NOT IN (value) dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cittaNotIn(PList<T> value) {
@@ -5671,12 +5053,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta NOT IN (value) dove citta è la variabile istanza
+	 * Crea la condizione citta NOT IN (value) dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cittaNotIn(T... value) {
@@ -5689,9 +5069,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da citta=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenCitta(Object value, Object value1) {
@@ -5719,12 +5097,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta like (value) dove citta è la variabile istanza
+	 * Crea la condizione citta like (value) dove citta � la variabile istanza
 	 * dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cittaLike(Object value) {
@@ -5732,12 +5108,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione citta not like (value) dove citta è la variabile
+	 * Crea la condizione citta not like (value) dove citta � la variabile
 	 * istanza dell'entity che ha l'attributo citta=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity cittaNotLike(Object value) {
@@ -5745,11 +5119,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo=value dove indirizzo è la variabile istanza
+	 * Crea la condizione indirizzo=value dove indirizzo � la variabile istanza
 	 * dell'entity che ha l'attributo indirizzo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity indirizzo(Object value) {
@@ -5757,13 +5130,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo IN (value) dove indirizzo è la variabile
+	 * Crea la condizione indirizzo IN (value) dove indirizzo � la variabile
 	 * istanza dell'entity che ha l'attributo indirizzo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzoIn(PList<T> value) {
@@ -5771,13 +5142,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo IN (value) dove indirizzo è la variabile
+	 * Crea la condizione indirizzo IN (value) dove indirizzo � la variabile
 	 * istanza dell'entity che ha l'attributo indirizzo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzo(T... value) {
@@ -5785,13 +5154,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo NOT IN (value) dove indirizzo è la variabile
+	 * Crea la condizione indirizzo NOT IN (value) dove indirizzo � la variabile
 	 * istanza dell'entity che ha l'attributo indirizzo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzoNotIn(PList<T> value) {
@@ -5799,13 +5166,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo NOT IN (value) dove indirizzo è la variabile
+	 * Crea la condizione indirizzo NOT IN (value) dove indirizzo � la variabile
 	 * istanza dell'entity che ha l'attributo indirizzo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzoNotIn(T... value) {
@@ -5818,9 +5183,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da indirizzo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenIndirizzo(Object value, Object value1) {
@@ -5848,13 +5211,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo like (value) dove indirizzo è la variabile
+	 * Crea la condizione indirizzo like (value) dove indirizzo � la variabile
 	 * istanza dell'entity che ha l'attributo indirizzo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzoLike(Object value) {
@@ -5862,13 +5223,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione indirizzo not like (value) dove indirizzo è la
+	 * Crea la condizione indirizzo not like (value) dove indirizzo � la
 	 * variabile istanza dell'entity che ha l'attributo indirizzo=true
 	 * nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity indirizzoNotLike(Object value) {
@@ -5876,11 +5235,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo=value dove titolo è la variabile istanza
+	 * Crea la condizione titolo=value dove titolo � la variabile istanza
 	 * dell'entity che ha l'attributo titolo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity titolo(Object value) {
@@ -5888,12 +5246,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo IN (value) dove titolo è la variabile istanza
+	 * Crea la condizione titolo IN (value) dove titolo � la variabile istanza
 	 * dell'entity che ha l'attributo titolo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titoloIn(PList<T> value) {
@@ -5901,12 +5257,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo IN (value) dove titolo è la variabile istanza
+	 * Crea la condizione titolo IN (value) dove titolo � la variabile istanza
 	 * dell'entity che ha l'attributo titolo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titolo(T... value) {
@@ -5914,13 +5268,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo NOT IN (value) dove titolo è la variabile
+	 * Crea la condizione titolo NOT IN (value) dove titolo � la variabile
 	 * istanza dell'entity che ha l'attributo titolo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titoloNotIn(PList<T> value) {
@@ -5928,13 +5280,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo NOT IN (value) dove titolo è la variabile
+	 * Crea la condizione titolo NOT IN (value) dove titolo � la variabile
 	 * istanza dell'entity che ha l'attributo titolo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titoloNotIn(T... value) {
@@ -5947,9 +5297,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da titolo=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenTitolo(Object value, Object value1) {
@@ -5977,12 +5325,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo like (value) dove titolo è la variabile istanza
+	 * Crea la condizione titolo like (value) dove titolo � la variabile istanza
 	 * dell'entity che ha l'attributo titolo=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titoloLike(Object value) {
@@ -5990,13 +5336,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione titolo not like (value) dove titolo è la variabile
+	 * Crea la condizione titolo not like (value) dove titolo � la variabile
 	 * istanza dell'entity che ha l'attributo titolo=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity titoloNotLike(Object value) {
@@ -6004,11 +5348,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva=value dove piva è la variabile istanza
+	 * Crea la condizione piva=value dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity piva(Object value) {
@@ -6016,12 +5359,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva IN (value) dove piva è la variabile istanza
+	 * Crea la condizione piva IN (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity pivaIn(PList<T> value) {
@@ -6029,12 +5370,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva IN (value) dove piva è la variabile istanza
+	 * Crea la condizione piva IN (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity piva(T... value) {
@@ -6042,12 +5381,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva NOT IN (value) dove piva è la variabile istanza
+	 * Crea la condizione piva NOT IN (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity pivaNotIn(PList<T> value) {
@@ -6055,12 +5392,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva NOT IN (value) dove piva è la variabile istanza
+	 * Crea la condizione piva NOT IN (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity pivaNotIn(T... value) {
@@ -6073,9 +5408,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da piva=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenPiva(Object value, Object value1) {
@@ -6103,12 +5436,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva like (value) dove piva è la variabile istanza
+	 * Crea la condizione piva like (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity pivaLike(Object value) {
@@ -6116,12 +5447,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione piva not like (value) dove piva è la variabile istanza
+	 * Crea la condizione piva not like (value) dove piva � la variabile istanza
 	 * dell'entity che ha l'attributo piva=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity pivaNotLike(Object value) {
@@ -6129,11 +5458,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione=value dove nazione è la variabile istanza
+	 * Crea la condizione nazione=value dove nazione � la variabile istanza
 	 * dell'entity che ha l'attributo nazione=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity nazione(Object value) {
@@ -6141,12 +5469,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione IN (value) dove nazione è la variabile istanza
+	 * Crea la condizione nazione IN (value) dove nazione � la variabile istanza
 	 * dell'entity che ha l'attributo nazione=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazioneIn(PList<T> value) {
@@ -6154,12 +5480,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione IN (value) dove nazione è la variabile istanza
+	 * Crea la condizione nazione IN (value) dove nazione � la variabile istanza
 	 * dell'entity che ha l'attributo nazione=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazione(T... value) {
@@ -6167,13 +5491,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione NOT IN (value) dove nazione è la variabile
+	 * Crea la condizione nazione NOT IN (value) dove nazione � la variabile
 	 * istanza dell'entity che ha l'attributo nazione=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazioneNotIn(PList<T> value) {
@@ -6181,13 +5503,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione NOT IN (value) dove nazione è la variabile
+	 * Crea la condizione nazione NOT IN (value) dove nazione � la variabile
 	 * istanza dell'entity che ha l'attributo nazione=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazioneNotIn(T... value) {
@@ -6200,9 +5520,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da nazione=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenNazione(Object value, Object value1) {
@@ -6230,13 +5548,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione like (value) dove nazione è la variabile
+	 * Crea la condizione nazione like (value) dove nazione � la variabile
 	 * istanza dell'entity che ha l'attributo nazione=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazioneLike(Object value) {
@@ -6244,13 +5560,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione nazione not like (value) dove nazione è la variabile
+	 * Crea la condizione nazione not like (value) dove nazione � la variabile
 	 * istanza dell'entity che ha l'attributo nazione=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity nazioneNotLike(Object value) {
@@ -6258,11 +5572,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale=value dove totale è la variabile istanza
+	 * Crea la condizione totale=value dove totale � la variabile istanza
 	 * dell'entity che ha l'attributo totale=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity totale(Object value) {
@@ -6270,12 +5583,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale IN (value) dove totale è la variabile istanza
+	 * Crea la condizione totale IN (value) dove totale � la variabile istanza
 	 * dell'entity che ha l'attributo totale=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totaleIn(PList<T> value) {
@@ -6283,12 +5594,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale IN (value) dove totale è la variabile istanza
+	 * Crea la condizione totale IN (value) dove totale � la variabile istanza
 	 * dell'entity che ha l'attributo totale=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totale(T... value) {
@@ -6296,13 +5605,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale NOT IN (value) dove totale è la variabile
+	 * Crea la condizione totale NOT IN (value) dove totale � la variabile
 	 * istanza dell'entity che ha l'attributo totale=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totaleNotIn(PList<T> value) {
@@ -6310,13 +5617,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale NOT IN (value) dove totale è la variabile
+	 * Crea la condizione totale NOT IN (value) dove totale � la variabile
 	 * istanza dell'entity che ha l'attributo totale=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totaleNotIn(T... value) {
@@ -6329,9 +5634,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da totale=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenTotale(Object value, Object value1) {
@@ -6359,12 +5662,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale like (value) dove totale è la variabile istanza
+	 * Crea la condizione totale like (value) dove totale � la variabile istanza
 	 * dell'entity che ha l'attributo totale=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totaleLike(Object value) {
@@ -6372,13 +5673,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione totale not like (value) dove totale è la variabile
+	 * Crea la condizione totale not like (value) dove totale � la variabile
 	 * istanza dell'entity che ha l'attributo totale=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity totaleNotLike(Object value) {
@@ -6386,11 +5685,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore=value dove valore è la variabile istanza
+	 * Crea la condizione valore=value dove valore � la variabile istanza
 	 * dell'entity che ha l'attributo valore=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity valore(Object value) {
@@ -6398,12 +5696,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore IN (value) dove valore è la variabile istanza
+	 * Crea la condizione valore IN (value) dove valore � la variabile istanza
 	 * dell'entity che ha l'attributo valore=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valoreIn(PList<T> value) {
@@ -6411,12 +5707,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore IN (value) dove valore è la variabile istanza
+	 * Crea la condizione valore IN (value) dove valore � la variabile istanza
 	 * dell'entity che ha l'attributo valore=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valore(T... value) {
@@ -6424,13 +5718,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore NOT IN (value) dove valore è la variabile
+	 * Crea la condizione valore NOT IN (value) dove valore � la variabile
 	 * istanza dell'entity che ha l'attributo valore=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valoreNotIn(PList<T> value) {
@@ -6438,13 +5730,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore NOT IN (value) dove valore è la variabile
+	 * Crea la condizione valore NOT IN (value) dove valore � la variabile
 	 * istanza dell'entity che ha l'attributo valore=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valoreNotIn(T... value) {
@@ -6457,9 +5747,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da valore=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenValore(Object value, Object value1) {
@@ -6487,12 +5775,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore like (value) dove valore è la variabile istanza
+	 * Crea la condizione valore like (value) dove valore � la variabile istanza
 	 * dell'entity che ha l'attributo valore=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valoreLike(Object value) {
@@ -6500,13 +5786,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione valore not like (value) dove valore è la variabile
+	 * Crea la condizione valore not like (value) dove valore � la variabile
 	 * istanza dell'entity che ha l'attributo valore=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity valoreNotLike(Object value) {
@@ -6514,11 +5798,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username=value dove username è la variabile istanza
+	 * Crea la condizione username=value dove username � la variabile istanza
 	 * dell'entity che ha l'attributo username=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity username(Object value) {
@@ -6526,13 +5809,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username IN (value) dove username è la variabile
+	 * Crea la condizione username IN (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity usernameIn(PList<T> value) {
@@ -6540,13 +5821,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username IN (value) dove username è la variabile
+	 * Crea la condizione username IN (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity username(T... value) {
@@ -6554,13 +5833,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username NOT IN (value) dove username è la variabile
+	 * Crea la condizione username NOT IN (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity usernameNotIn(PList<T> value) {
@@ -6568,13 +5845,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username NOT IN (value) dove username è la variabile
+	 * Crea la condizione username NOT IN (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity usernameNotIn(T... value) {
@@ -6587,9 +5862,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da username=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenUsername(Object value, Object value1) {
@@ -6617,13 +5890,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username like (value) dove username è la variabile
+	 * Crea la condizione username like (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity usernameLike(Object value) {
@@ -6631,13 +5902,11 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione username not like (value) dove username è la variabile
+	 * Crea la condizione username not like (value) dove username � la variabile
 	 * istanza dell'entity che ha l'attributo username=true nell'annotazione
 	 * Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity usernameNotLike(Object value) {
@@ -6645,11 +5914,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email=value dove email è la variabile istanza
+	 * Crea la condizione email=value dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public BaseEntity email(Object value) {
@@ -6657,12 +5925,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email IN (value) dove email è la variabile istanza
+	 * Crea la condizione email IN (value) dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity emailIn(PList<T> value) {
@@ -6670,12 +5936,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email IN (value) dove email è la variabile istanza
+	 * Crea la condizione email IN (value) dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity email(T... value) {
@@ -6683,12 +5947,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email NOT IN (value) dove email è la variabile istanza
+	 * Crea la condizione email NOT IN (value) dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity emailNotIn(PList<T> value) {
@@ -6696,12 +5958,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email NOT IN (value) dove email è la variabile istanza
+	 * Crea la condizione email NOT IN (value) dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity emailNotIn(T... value) {
@@ -6714,9 +5974,7 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	 * BETWEEN sul campo individuato da email=true nell'annotazione Column
 	 * 
 	 * @param value
-	 *            valore
 	 * @param value1
-	 *            valore1
 	 * @return BaseEntity
 	 */
 	public BaseEntity betweenEmail(Object value, Object value1) {
@@ -6744,12 +6002,10 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email like (value) dove email è la variabile istanza
+	 * Crea la condizione email like (value) dove email � la variabile istanza
 	 * dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity emailLike(Object value) {
@@ -6757,16 +6013,32 @@ public abstract class BaseEntity extends BaseDaoEntity {
 	}
 
 	/**
-	 * Crea la condizione email not like (value) dove email è la variabile
+	 * Crea la condizione email not like (value) dove email � la variabile
 	 * istanza dell'entity che ha l'attributo email=true nell'annotazione Column
-	 * @param<T> T
 	 * 
 	 * @param value
-	 *            valore
 	 * @return BaseEntity
 	 */
 	public <T> BaseEntity emailNotLike(Object value) {
 		return notLike(getFieldEmail(), value);
+	}
+
+	public PList<String> getFieldsToUpdate() {
+		return this.fieldsToUpdate;
+	}
+
+	public BaseEntity setFieldsToUpdate(PList<String> fieldsToExclude) {
+		this.fieldsToUpdate.addAll(fieldsToExclude);
+		return this;
+	}
+
+	public BaseEntity setFieldsToUpdate(String... fieldsToExclude) {
+		this.fieldsToUpdate.addAll(arrayToList(fieldsToExclude));
+		return this;
+	}
+
+	public BaseEntity setOnly(String... fieldsToUpdate) {
+		return setFieldsToUpdate(fieldsToUpdate);
 	}
 
 }
