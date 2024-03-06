@@ -1148,4 +1148,114 @@ public interface Pilotable {
 		return p.split(input, delimiter);
 	}
 
+	default String getLast(String s) {
+		return p.getLast(s);
+	}
+
+	default String getFirst(String s) {
+		return p.getFirst(s);
+	}
+
+	default String pluraleSingolare(int num, String s) {
+		return p.pluraleSingolare(num, s);
+	}
+
+	default String strSepDash(Object... values) {
+		return p.strSepDash(values);
+	}
+
+	default String strSepComma(Object... values) {
+		return p.strSepComma(values);
+	}
+
+	default String strSepPipe(Object... values) {
+		return p.strSepPipe(values);
+	}
+
+	default String strSepSpace(Object... values) {
+		return p.strSepSpace(values);
+	}
+
+	default String concatenaDashListaStringhe(List<String> l) {
+		return p.concatenaDashListaStringhe(l);
+	}
+
+	default String concatenaCommaListaStringhe(List<String> l) {
+		return p.concatenaCommaListaStringhe(l);
+	}
+
+	default String concatenaPipeListaStringhe(List<String> l) {
+		return p.concatenaPipeListaStringhe(l);
+	}
+
+	default String concatenaSpaceListaStringhe(List<String> l) {
+		return p.concatenaSpaceListaStringhe(l);
+	}
+
+	default <K> PList<K> toListDashSep(String s, Class<K> c) {
+		return p.toListDashSep(s, c);
+	}
+
+	default <K> PList<K> toListCommaSep(String s, Class<K> c) {
+		return p.toListCommaSep(s, c);
+	}
+
+	default <K> PList<K> toListPipeSep(String s, Class<K> c) {
+		return p.toListPipeSep(s, c);
+	}
+
+	default <K> Set<K> toSetDashSep(String s, Class<K> c) {
+		return p.toSetDashSep(s, c);
+	}
+
+	default <K> Set<K> toSetCommaSep(String s, Class<K> c) {
+		return p.toSetCommaSep(s, c);
+	}
+
+	default <K> Set<K> toSetPipeSep(String s, Class<K> c) {
+		return p.toSetPipeSep(s, c);
+	}
+
+	/**
+	 * Da un oggetto Date ritorna un oggetto PDate
+	 * 
+	 * @param d
+	 * @return PDate
+	 */
+	default PDate pd(Date d) {
+		return p.pd(d);
+	}
+
+	/**
+	 * Dalla data in formato stringa ritorna un oggetto PDate. Se il valore
+	 * passato non è una data valida secondo il formato italiano, ritorna la
+	 * data odierna
+	 * 
+	 * @param s
+	 * @return PDate
+	 */
+	default PDate pd(String s) {
+		return p.pd().from(s);
+	}
+
+	default PList<String> splitDash(String input) {
+		return p.splitDash(input);
+	}
+
+	default PList<String> splitComma(String input) {
+		return p.splitComma(input);
+	}
+
+	default PList<String> splitPipe(String input) {
+		return p.splitPipe(input);
+	}
+
+	default PList<String> splitSpace(String input) {
+		return p.splitSpace(input);
+	}
+
+	default String getIdUnivoco() {
+		return p.getIdUnivoco();
+	}
+
 }
