@@ -229,6 +229,10 @@ public interface Pilotable {
 		return p.getBigDecimal(val);
 	}
 
+	default BigDecimal getBigDecimal(Long val, Integer precision) {
+		return p.getBigDecimal(val, precision);
+	}
+
 	default String getTitle(String title, Integer lunghezza, String car) {
 		return p.getTitle(title, lunghezza, car);
 	}
@@ -299,6 +303,10 @@ public interface Pilotable {
 
 	default BigDecimal getBigDecimal(String val) {
 		return p.getBigDecimal(val);
+	}
+
+	default BigDecimal getBigDecimal(String val, Integer precision) {
+		return p.getBigDecimal(val, precision);
 	}
 
 	default PList<String> toListString(String s, String separator) {
@@ -517,6 +525,10 @@ public interface Pilotable {
 		return p.getBigDecimal(val);
 	}
 
+	default BigDecimal getBigDecimal(BigDecimal val, Integer precision) {
+		return p.getBigDecimal(val, precision);
+	}
+
 	default String emptyIfNull(String s) {
 		return p.emptyIfNull(s);
 	}
@@ -561,8 +573,16 @@ public interface Pilotable {
 		return p.getBigDecimal(val);
 	}
 
+	default BigDecimal getBigDecimal(Integer val, Integer precision) {
+		return p.getBigDecimal(val, precision);
+	}
+
 	default BigDecimal getBigDecimal(Double val) {
 		return p.getBigDecimal(val);
+	}
+
+	default BigDecimal getBigDecimal(Double val, Integer precision) {
+		return p.getBigDecimal(val, precision);
 	}
 
 	default BigDecimal dividi(BigDecimal b1, BigDecimal b2) {
@@ -910,6 +930,26 @@ public interface Pilotable {
 
 	default BigDecimal bd(String val) {
 		return p.bd(val);
+	}
+
+	default BigDecimal bd(BigDecimal val, Integer precision) {
+		return p.bd(val, precision);
+	}
+
+	default BigDecimal bd(Double val, Integer precision) {
+		return p.bd(val, precision);
+	}
+
+	default BigDecimal bd(Integer val, Integer precision) {
+		return p.bd(val, precision);
+	}
+
+	default BigDecimal bd(Long val, Integer precision) {
+		return p.bd(val, precision);
+	}
+
+	default BigDecimal bd(String val, Integer precision) {
+		return p.bd(val, precision);
 	}
 
 	default boolean endsWith(String s, String... vals) {
