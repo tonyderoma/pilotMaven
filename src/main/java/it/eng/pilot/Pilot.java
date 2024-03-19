@@ -43,6 +43,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
 import java.util.StringTokenizer;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -529,11 +530,6 @@ public class Pilot implements Serializable {
 			sb.append(beanToString(k)).append(EQUAL).append(toStr(mappa.get(k))).append(lf());
 		}
 		return sb.toString();
-	}
-
-	private <K> K[] removeDuplicates(K[] arr) {
-		return arrayToList(arr).removeDuplicates().toArray(arr);
-
 	}
 
 	private <K extends Comparable<? super K>, T extends BaseEntity> String mapEntityToString(Map<K, T> mappa) {
@@ -1326,21 +1322,23 @@ public class Pilot implements Serializable {
 	private Object getProp(Object bean, String prop) throws Exception {
 		Object o = null;
 		if (notNull(bean)) {
-			Method[] methods = bean.getClass().getMethods();
-			boolean trovato = false;
-			for (Method method : methods) {
-				method.setAccessible(true);
-				if (is(method.getName(), getString(GET, prop), getString(IS, prop))) {
-					try {
-						trovato = true;
-						o = method.invoke(bean);
-					} catch (Exception e) {
-					}
-					break;
+			Method m = null;
+			try {
+				m = bean.getClass().getMethod(getString(GET, capFirstLetter(prop)));
+			} catch (Exception e) {
+				try {
+					m = bean.getClass().getMethod(getString(IS, capFirstLetter(prop)));
+				} catch (Exception e1) {
+					throw new Exception(getString("Metodo accessor per ", prop, " mancante"));
 				}
 			}
-			if (!trovato)
+
+			if (notNull(m)) {
+				m.setAccessible(true);
+				o = m.invoke(bean);
+			} else {
 				throw new Exception(getString("Metodo accessor per ", prop, " mancante"));
+			}
 		}
 		return o;
 	}
@@ -9887,49 +9885,6 @@ public class Pilot implements Serializable {
 		return attributo;
 	}
 
-	private <K> K mockFromFileOld(Class<K> c, String row, String separator, Field[] attributi) throws Exception {
-		K o = (K) c.newInstance();
-		PList<String> elementi = toListString(row, separator);
-		for (String el : safe(elementi)) {
-			PList<String> varVal = toListString(el, EQUAL);
-			String vi = varVal.getFirstElement();
-			String valore = varVal.getLastElement();
-			Field attributo = findAttribute(vi, attributi);
-			if (notNull(attributo)) {
-				Class type = attributo.getType();
-				if (String.class.isAssignableFrom(type)) {
-					invokeSetter(o, valore, attributo);
-				}
-				if (Date.class.isAssignableFrom(type)) {
-					invokeSetter(o, toDate(valore), attributo);
-				}
-				if (Integer.class.isAssignableFrom(type)) {
-					invokeSetter(o, getInteger(valore), attributo);
-				}
-				if (Long.class.isAssignableFrom(type)) {
-					invokeSetter(o, getLong(valore), attributo);
-				}
-				if (Double.class.isAssignableFrom(type)) {
-					invokeSetter(o, getDouble(valore), attributo);
-				}
-				if (Short.class.isAssignableFrom(type)) {
-					invokeSetter(o, getShort(valore), attributo);
-				}
-				if (Float.class.isAssignableFrom(type)) {
-					invokeSetter(o, getFloat(valore), attributo);
-				}
-				if (BigDecimal.class.isAssignableFrom(type)) {
-					invokeSetter(o, getBigDecimal(valore), attributo);
-				}
-				if (Boolean.class.isAssignableFrom(type)) {
-					invokeSetter(o, getBoolean(valore), attributo);
-				}
-			}
-
-		}
-		return o;
-	}
-
 	private <K> K mockFromFile(Class<K> c, String row, String separator, Field[] attributi) throws Exception {
 		K o = (K) c.newInstance();
 		PList<String> elementi = toListString(row, separator);
@@ -12034,7 +11989,7 @@ public class Pilot implements Serializable {
 	 * @return String
 	 */
 	public String getIdUnivoco() {
-		return str(System.currentTimeMillis(), Math.random());
+		return UUID.randomUUID().toString();
 	}
 
 }
