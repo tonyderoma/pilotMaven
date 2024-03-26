@@ -130,4 +130,23 @@ public class PHashMap<K, V> extends HashMap<K, V> implements PMap<K, V> {
 		return this;
 	}
 
+	public PMap<K, V> forEach(String name, Object... args) throws Exception {
+		for (Map.Entry<K, V> entry : entrySet()) {
+			if (entry.getValue() instanceof PList) {
+				((PList) entry.getValue()).forEach(name, args);
+			}
+		}
+		return this;
+	}
+
+	public <T> PMap<K, PList<T>> map(String name, Class<T> c, Object... args) throws Exception {
+		PMap<K, PList<T>> mappa = new PHashMap<K, PList<T>>();
+		for (Map.Entry<K, V> entry : entrySet()) {
+			if (entry.getValue() instanceof PList) {
+				mappa.put(entry.getKey(), ((PList) entry.getValue()).map(name, c, args));
+			}
+		}
+		return mappa;
+	}
+
 }
