@@ -3450,9 +3450,9 @@ public class DaoHelper extends PilotSupport {
 	/**
 	 * Ritorna i record dell'alias specificato modificati nell'intervallo
 	 * temporale che va tra l'istanziazione del dao e l'istante in cui si
-	 * richiama il metodo stesso, modificati dall'utente codUtente e dal codice
-	 * applicazione codAppl entrambi attributi di @DaoConfig. Ritorna una lista
-	 * di stringhe contenuto del file di impatto per l'entity alias specificata
+	 * richiama il metodo stesso, modificati dal codice applicazione codAppl
+	 * attributo di @DaoConfig. Ritorna una lista di stringhe contenuto del file
+	 * di impatto per l'entity alias specificata
 	 * 
 	 * @param alias
 	 *            alias
@@ -3463,7 +3463,7 @@ public class DaoHelper extends PilotSupport {
 	public PList<String> impact(String alias) throws Exception {
 		if (tutte(isDsMode(), !isFromBatchCall()))
 			throw new Exception("Modalità EJB in ambiente WEB. Generazione dei file di impatto disabilitata");
-		return giveMe(alias).modifiedBetween(getStart(), now()).byApp(getCodAppl()).byUser(getCodUtente()).selectForWrite();
+		return giveMe(alias).modifiedBetween(getStart(), now()).byApp(getCodAppl()).selectForWrite();
 	}
 
 	public Date getStart() {
