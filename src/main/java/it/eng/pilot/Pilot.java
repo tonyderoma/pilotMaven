@@ -7231,7 +7231,7 @@ public class Pilot implements Serializable {
 	 * @return PMap<K, V>
 	 */
 	public <K, V> PMap<K, V> getPMap() {
-		return new PHashMap<K, V>(getLog());
+		return new PHashMap<K, V>();
 	}
 
 	/**
@@ -7253,7 +7253,7 @@ public class Pilot implements Serializable {
 	 * @return PMap<K, PList<V>>
 	 */
 	public <K, V> PMap<K, PList<V>> getPMapList() {
-		return new PHashMap<K, PList<V>>(getLog());
+		return new PHashMap<K, PList<V>>();
 	}
 
 	/**
