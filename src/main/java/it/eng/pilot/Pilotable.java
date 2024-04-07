@@ -1298,48 +1298,24 @@ public interface Pilotable {
 		return p.getIdUnivoco();
 	}
 
-	default void setStateVal(String key, Object val) {
-		p.setStateVal(key, val);
+	default void setState(String key, Object val) {
+		p.setState(key, val);
 	}
 
-	default void setStateVal(String key, PList<Object> val) {
-		p.setStateVal(key, val);
-	}
-
-	default void setStateVal(String key, PMap<Object, Object> val) {
-		p.setStateVal(key, val);
-	}
-
-	default Object getStateVal(String key) {
-		return p.getStateVal(key);
-	}
-
-	default PList<Object> getStateValList(String key) {
-		return p.getStateValList(key);
-	}
-
-	default PMap<Object, Object> getStateValMap(String key) {
-		return p.getStateValMap(key);
+	default Object getState(String key) {
+		return p.getState(key);
 	}
 
 	default void setStateEmpty() {
 		p.setStateEmpty();
 	}
 
-	default void clearKey(String key) {
-		p.clearKey(key);
+	default void clearState(String key) {
+		p.clearState(key);
 	}
 
-	default void clearKeyList(String key) {
-		p.clearKeyList(key);
-	}
-
-	default void clearKeyMap(String key) {
-		p.clearKeyMap(key);
-	}
-
-	default PMap<String, Object> getState() {
-		return p.getState();
+	default PMap<String, Object> getStateFull() {
+		return p.getStateFull();
 	}
 
 }
