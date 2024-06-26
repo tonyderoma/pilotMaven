@@ -1318,4 +1318,7 @@ public interface Pilotable {
 		return p.getStateFull();
 	}
 
+	default void clearState() {
+		setStateEmpty();
+	}
 }

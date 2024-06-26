@@ -1349,4 +1349,7 @@ public class PilotSupport {
 		return p.getStateFull();
 	}
 
+	protected void clearState() {
+		setStateEmpty();
+	}
 }
