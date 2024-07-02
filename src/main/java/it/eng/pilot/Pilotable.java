@@ -1314,8 +1314,8 @@ public interface Pilotable {
 		p.clearState(key);
 	}
 
-	default PMap<String, Object> getStateFull() {
-		return p.getStateFull();
+	default PMap<String, Object> getState() {
+		return p.getState();
 	}
 
 	default void clearState() {
