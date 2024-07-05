@@ -1352,4 +1352,16 @@ public class PilotSupport {
 	protected void clearState() {
 		setStateEmpty();
 	}
+
+	protected String sn(boolean val) {
+		return p.sn(val);
+	}
+
+	protected String yn(boolean val) {
+		return p.yn(val);
+	}
+
+	protected String unozero(boolean val) {
+		return p.unozero(val);
+	}
 }

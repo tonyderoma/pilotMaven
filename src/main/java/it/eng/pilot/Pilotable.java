@@ -1321,4 +1321,16 @@ public interface Pilotable {
 	default void clearState() {
 		setStateEmpty();
 	}
+
+	default String sn(boolean val) {
+		return p.sn(val);
+	}
+
+	default String yn(boolean val) {
+		return p.yn(val);
+	}
+
+	default String unozero(boolean val) {
+		return p.unozero(val);
+	}
 }
