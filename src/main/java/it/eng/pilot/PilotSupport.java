@@ -1364,4 +1364,16 @@ public class PilotSupport {
 	protected String unozero(boolean val) {
 		return p.unozero(val);
 	}
+
+	protected String sn(Boolean val) {
+		return p.sn(val);
+	}
+
+	protected String yn(Boolean val) {
+		return p.yn(val);
+	}
+
+	protected String unozero(Boolean val) {
+		return p.unozero(val);
+	}
 }

@@ -1333,4 +1333,16 @@ public interface Pilotable {
 	default String unozero(boolean val) {
 		return p.unozero(val);
 	}
+
+	default String sn(Boolean val) {
+		return p.sn(val);
+	}
+
+	default String yn(Boolean val) {
+		return p.yn(val);
+	}
+
+	default String unozero(Boolean val) {
+		return p.unozero(val);
+	}
 }
