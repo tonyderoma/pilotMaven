@@ -1315,6 +1315,18 @@ public interface Pilotable {
 		return p.getState(key);
 	}
 
+	default String getStateStr(String key) {
+		return p.getStateStr(key);
+	}
+
+	default Long getStateLong(String key) {
+		return p.getStateLong(key);
+	}
+
+	default Date getStateDate(String key) {
+		return p.getStateDate(key);
+	}
+
 	default void setStateEmpty() {
 		p.setStateEmpty();
 	}
