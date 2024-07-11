@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Collection;
@@ -1365,5 +1367,9 @@ public interface Pilotable {
 
 	default String unozero(Boolean val) {
 		return p.unozero(val);
+	}
+
+	default void ps(PreparedStatement ps, Object... vals) throws SQLException {
+		p.ps(ps, vals);
 	}
 }
