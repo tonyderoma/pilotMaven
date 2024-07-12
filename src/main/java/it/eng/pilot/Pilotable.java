@@ -25,6 +25,16 @@ import org.jboss.logging.Logger;
  */
 public interface Pilotable {
 
+	public static int SQL_STRING = Pilot.SQL_STRING;
+	public static int SQL_CHAR = Pilot.SQL_CHAR;
+	public static int SQL_LONG = Pilot.SQL_LONG;
+	public static int SQL_INTEGER = Pilot.SQL_INTEGER;
+	public static int SQL_DOUBLE = Pilot.SQL_DOUBLE;
+	public static int SQL_FLOAT = Pilot.SQL_FLOAT;
+	public static int SQL_DATE = Pilot.SQL_DATE;
+	public static int SQL_TIMESTAMP = Pilot.SQL_TIMESTAMP;
+	public static int SQL_BIGDECIMAL = Pilot.SQL_BIGDECIMAL;
+
 	public static final String ATTIVO = Pilot.ATTIVO;
 	public static final String DISATTIVO = Pilot.DISATTIVO;
 	public static final String S = Pilot.S;
@@ -1370,5 +1380,9 @@ public interface Pilotable {
 
 	default void ps(PreparedStatement ps, int[] tipi, Object... vals) throws Exception {
 		p.ps(ps, tipi, vals);
+	}
+
+	default boolean checkParenthesis(String s) {
+		return p.checkParenthesis(s);
 	}
 }
