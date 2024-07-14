@@ -34,6 +34,7 @@ public interface Pilotable {
 	public static int SQL_DATE = Pilot.SQL_DATE;
 	public static int SQL_TIMESTAMP = Pilot.SQL_TIMESTAMP;
 	public static int SQL_BIGDECIMAL = Pilot.SQL_BIGDECIMAL;
+	public static int SQL_BYTEARRAY = Pilot.SQL_BYTEARRAY;
 
 	public static final String ATTIVO = Pilot.ATTIVO;
 	public static final String DISATTIVO = Pilot.DISATTIVO;
@@ -1378,8 +1379,8 @@ public interface Pilotable {
 		return p.unozero(val);
 	}
 
-	default void ps(PreparedStatement ps, int[] tipi, Object... vals) throws Exception {
-		p.ps(ps, tipi, vals);
+	default void ps(String sql, PreparedStatement ps, int[] tipi, Object... vals) throws Exception {
+		p.ps(sql, ps, tipi, vals);
 	}
 
 	default boolean checkParenthesis(String s) {

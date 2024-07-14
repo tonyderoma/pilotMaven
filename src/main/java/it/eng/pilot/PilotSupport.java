@@ -38,6 +38,7 @@ public class PilotSupport {
 	protected static int SQL_DATE = Pilot.SQL_DATE;
 	protected static int SQL_TIMESTAMP = Pilot.SQL_TIMESTAMP;
 	protected static int SQL_BIGDECIMAL = Pilot.SQL_BIGDECIMAL;
+	protected static int SQL_BYTEARRAY = Pilot.SQL_BYTEARRAY;
 
 	protected static final String ATTIVO = Pilot.ATTIVO;
 	protected static final String DISATTIVO = Pilot.DISATTIVO;
@@ -1409,8 +1410,8 @@ public class PilotSupport {
 		return p.unozero(val);
 	}
 
-	protected void ps(PreparedStatement ps, int[] tipi, Object... vals) throws Exception {
-		p.ps(ps, tipi, vals);
+	protected void ps(String sql, PreparedStatement ps, int[] tipi, Object... vals) throws Exception {
+		p.ps(sql, ps, tipi, vals);
 	}
 
 	protected boolean checkParenthesis(String s) {
