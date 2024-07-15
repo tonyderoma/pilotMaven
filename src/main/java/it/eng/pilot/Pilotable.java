@@ -36,6 +36,18 @@ public interface Pilotable {
 	public static int SQL_BIGDECIMAL = Pilot.SQL_BIGDECIMAL;
 	public static int SQL_BYTEARRAY = Pilot.SQL_BYTEARRAY;
 
+	// short versions
+	public static int _S = Pilot._S;
+	public static int _C = Pilot._C;
+	public static int _L = Pilot._L;
+	public static int _I = Pilot._I;
+	public static int _D = Pilot._D;
+	public static int _F = Pilot._F;
+	public static int _DT = Pilot._DT;
+	public static int _TS = Pilot._TS;
+	public static int _BIG = Pilot._BIG;
+	public static int _BARR = Pilot._BARR;
+
 	public static final String ATTIVO = Pilot.ATTIVO;
 	public static final String DISATTIVO = Pilot.DISATTIVO;
 	public static final String S = Pilot.S;
