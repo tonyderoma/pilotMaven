@@ -1528,4 +1528,14 @@ public class PilotSupport {
 		return p.giorniFuturo(n);
 	}
 
+	/**
+	 * Scrive su file in modalità append
+	 * 
+	 * @param <T>
+	 * @param path
+	 * @param data
+	 */
+	protected <T> void appendFile(String path, List<T> data) {
+		p.appendFile(path, data);
+	}
 }
