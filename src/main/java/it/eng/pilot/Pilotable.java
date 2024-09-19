@@ -1507,4 +1507,95 @@ public interface Pilotable {
 	default <T> void appendFile(String path, List<T> data) {
 		p.appendFile(path, data);
 	}
+
+	/**
+	 * Ritorna la stringa "-"
+	 * 
+	 * @return String
+	 */
+	default String dash() {
+		return p.dash();
+	}
+
+	/**
+	 * Ritorna la stringa ","
+	 * 
+	 * @return String
+	 */
+	default String comma() {
+		return p.comma();
+	}
+
+	/**
+	 * Ritorna la stringa ":"
+	 * 
+	 * @return String
+	 */
+	default String colon() {
+		return p.colon();
+	}
+
+	/**
+	 * Ritorna la stringa ";"
+	 * 
+	 * @return String
+	 */
+	default String semicolon() {
+		return p.semicolon();
+	}
+
+	/**
+	 * Ritorna la stringa " "
+	 * 
+	 * @return String
+	 */
+	default String space() {
+		return p.space();
+	}
+
+	/**
+	 * Ritorna la stringa "."
+	 * 
+	 * @return String
+	 */
+	default String dot() {
+		return p.dot();
+	}
+
+	/**
+	 * Ritorna la stringa "|"
+	 * 
+	 * @return String
+	 */
+	default String pipe() {
+		return p.pipe();
+	}
+
+	/**
+	 * Ritorna la stringa "/"
+	 * 
+	 * @return String
+	 */
+	default String slash() {
+		return p.slash();
+	}
+
+	/**
+	 * Ritorna la stringa "_"
+	 * 
+	 * @return String
+	 */
+	default String lodash() {
+		return p.lodash();
+	}
+
+	/**
+	 * Ritorna la stringa "_"
+	 * 
+	 * @return String
+	 */
+	default String underscore() {
+		return p.underscore();
+	}
+
 }
