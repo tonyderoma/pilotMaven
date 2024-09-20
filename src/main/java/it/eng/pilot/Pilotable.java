@@ -1598,4 +1598,13 @@ public interface Pilotable {
 		return p.underscore();
 	}
 
+	/**
+	 * Ritorna la stringa formata da n spazi
+	 * 
+	 * @return String
+	 */
+	default String space(Integer n) {
+		return p.space(n);
+	}
+
 }
