@@ -1661,4 +1661,15 @@ public interface Pilotable {
 		return p.tondaClose();
 	}
 
+	/**
+	 * Genera un numero casuale compreso tra [min,max]
+	 * 
+	 * @param min
+	 * @param max
+	 * @return Integer
+	 */
+	default Integer generaNumeroCasuale(Integer min, Integer max) {
+		return p.generaNumeroCasuale(min, max);
+	}
+
 }
