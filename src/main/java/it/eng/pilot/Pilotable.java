@@ -1672,4 +1672,12 @@ public interface Pilotable {
 		return p.generaNumeroCasuale(min, max);
 	}
 
+	/**
+	 * Ritorna la stringa "-->"
+	 * 
+	 * @return String
+	 */
+	default String arrow() {
+		return p.arrow();
+	}
 }

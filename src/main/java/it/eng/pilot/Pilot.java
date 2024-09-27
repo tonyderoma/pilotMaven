@@ -12706,4 +12706,13 @@ public class Pilot implements Serializable {
 		return Double.valueOf(Math.floor(Math.random() * (max - min + 1)) + min).intValue();
 	}
 
+	/**
+	 * Ritorna la stringa "-->"
+	 * 
+	 * @return String
+	 */
+	public String arrow() {
+		return "-->";
+	}
+
 }
