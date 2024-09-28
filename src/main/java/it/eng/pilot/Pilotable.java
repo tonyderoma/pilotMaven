@@ -353,7 +353,7 @@ public interface Pilotable {
 		return p.nowString();
 	}
 
-	default Date now() {
+	default PDate now() {
 		return p.now();
 	}
 
