@@ -1680,4 +1680,24 @@ public interface Pilotable {
 	default String arrow() {
 		return p.arrow();
 	}
+
+	/**
+	 * Blocca l'esecuzione del current thread per i secondi specificati
+	 * 
+	 * @param secondi
+	 * @throws InterruptedException
+	 */
+	default void attendiSecondi(Integer secondi) throws InterruptedException {
+		p.attendiSecondi(secondi);
+	}
+
+	/**
+	 * Blocca l'esecuzione del current thread per i minuti specificati
+	 * 
+	 * @param minuti
+	 * @throws InterruptedException
+	 */
+	default void attendiMinuti(Integer minuti) throws InterruptedException {
+		p.attendiMinuti(minuti);
+	}
 }
