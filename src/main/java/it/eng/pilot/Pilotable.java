@@ -1700,4 +1700,25 @@ public interface Pilotable {
 	default void attendiMinuti(Integer minuti) throws InterruptedException {
 		p.attendiMinuti(minuti);
 	}
+
+	/**
+	 * Svuota il contenuto del file individuato dal path
+	 * 
+	 * @param path
+	 * @throws IOException
+	 */
+	default void svuotaFile(String path) throws IOException {
+		p.svuotaFile(path);
+	}
+
+	/**
+	 * Svuota il contenuto del file
+	 * 
+	 * @param f
+	 * @throws IOException
+	 */
+	default void svuotaFile(File f) throws IOException {
+		p.svuotaFile(f);
+	}
+
 }
