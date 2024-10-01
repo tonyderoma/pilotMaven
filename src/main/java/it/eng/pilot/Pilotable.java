@@ -737,11 +737,11 @@ public interface Pilotable {
 	/**
 	 * Alias di getPList(Integer)
 	 * 
-	 * 
+	 * @param <K>
 	 * @param limite
-	 * @return PList[K]
+	 * @return PList<K>
 	 */
-	default <K> PList<K> pl(Integer limite) {
+	default <K> PList<K> plLimit(Integer limite) {
 		return getPList(limite);
 	}
 

@@ -758,7 +758,7 @@ public class PilotSupport {
 	 * @param limite
 	 * @return PList<K>
 	 */
-	protected <K> PList<K> pl(Integer limite) {
+	protected <K> PList<K> plLimit(Integer limite) {
 		return getPList(limite);
 	}
 

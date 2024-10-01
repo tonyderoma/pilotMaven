@@ -7248,7 +7248,7 @@ public class Pilot implements Serializable {
 	 * @param limite
 	 * @return PList<K>
 	 */
-	public <K> PList<K> pl(Integer limite) {
+	public <K> PList<K> plLimit(Integer limite) {
 		return getPList(limite);
 	}
 
