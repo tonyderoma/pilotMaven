@@ -373,10 +373,10 @@ public class Pilot implements Serializable {
 	 * 
 	 * @param l
 	 * 
-	 * @return List<K>
+	 * @return PList<K>
 	 */
-	public <K> List<K> removeDuplicates(List<K> l) {
-		List<K> nuova = new ArrayList<K>();
+	public <K> PList<K> removeDuplicates(List<K> l) {
+		PList<K> nuova = new PArrayList<K>();
 		if (notNull(l)) {
 			nuova = setToList(listToSet(l));
 		}
@@ -1972,14 +1972,14 @@ public class Pilot implements Serializable {
 
 	/**
 	 * Data una lista di bean K ottengo una lista di elementi distinti di tipo T
-	 * dove T � il tipo della proprieta campo Utente nome cognome eta
+	 * dove T ï¿½ il tipo della proprieta campo Utente nome cognome eta
 	 * List<Utente> ottengo una List<Integer> di eta distinte degli utenti
 	 * 
 	 * @param lista
 	 * @param campo
-	 * @return List<T>
+	 * @return PList<T>
 	 */
-	public <K, T> List<T> distinct(List<K> lista, String campo) {
+	public <K, T> PList<T> distinct(List<K> lista, String campo) {
 		Method[] methods = null;
 		Set<T> distinti = new HashSet<T>();
 		Integer conta = 0;
@@ -2012,7 +2012,7 @@ public class Pilot implements Serializable {
 			}
 		}
 		List<T> ll = new ArrayList<T>(distinti);
-		List<T> listaOrd = new ArrayList<T>();
+		PList<T> listaOrd = new PArrayList<T>();
 		boolean nullPresent = cleanNullList(ll);
 		if (nullPresent) {
 			listaOrd.add(null);
