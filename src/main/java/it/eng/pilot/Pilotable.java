@@ -1763,4 +1763,34 @@ public interface Pilotable {
 	default String tilde() {
 		return "~";
 	}
+
+	/**
+	 * Concatena il simbolo dell'euro al risultato di money
+	 * 
+	 * @param bd
+	 * @return String
+	 */
+	default String moneyEuro(BigDecimal bd) {
+		return p.moneyEuro(bd);
+	}
+
+	/**
+	 * Concatena il simbolo del dollaro al risultato di money
+	 * 
+	 * @param bd
+	 * @return String
+	 */
+	default String moneyDollar(BigDecimal bd) {
+		return p.moneyDollar(bd);
+	}
+
+	/**
+	 * Concatena il simbolo della sterlina al risultato di money
+	 * 
+	 * @param bd
+	 * @return String
+	 */
+	default String moneyPound(BigDecimal bd) {
+		return p.moneyPound(bd);
+	}
 }
