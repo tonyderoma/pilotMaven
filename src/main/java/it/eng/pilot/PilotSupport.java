@@ -1749,4 +1749,49 @@ public class PilotSupport {
 	protected void svuotaFile(File... f) {
 		p.svuotaFile(f);
 	}
+
+	/**
+	 * Ritorna la stringa "€"
+	 * 
+	 * @return String
+	 */
+	protected String euro() {
+		return p.euro();
+	}
+
+	/**
+	 * Ritorna la stringa "$"
+	 * 
+	 * @return String
+	 */
+	protected String dollar() {
+		return "$";
+	}
+
+	/**
+	 * Ritorna la stringa "£"
+	 * 
+	 * @return String
+	 */
+	protected String pound() {
+		return "£";
+	}
+
+	/**
+	 * Ritorna la stringa "*"
+	 * 
+	 * @return String
+	 */
+	protected String star() {
+		return "*";
+	}
+
+	/**
+	 * Ritorna la stringa "~"
+	 * 
+	 * @return String
+	 */
+	protected String tilde() {
+		return "~";
+	}
 }

@@ -1718,4 +1718,49 @@ public interface Pilotable {
 	default void svuotaFile(File... f) {
 		p.svuotaFile(f);
 	}
+
+	/**
+	 * Ritorna la stringa "€"
+	 * 
+	 * @return String
+	 */
+	default String euro() {
+		return p.euro();
+	}
+
+	/**
+	 * Ritorna la stringa "$"
+	 * 
+	 * @return String
+	 */
+	default String dollar() {
+		return "$";
+	}
+
+	/**
+	 * Ritorna la stringa "£"
+	 * 
+	 * @return String
+	 */
+	default String pound() {
+		return "£";
+	}
+
+	/**
+	 * Ritorna la stringa "*"
+	 * 
+	 * @return String
+	 */
+	default String star() {
+		return "*";
+	}
+
+	/**
+	 * Ritorna la stringa "~"
+	 * 
+	 * @return String
+	 */
+	default String tilde() {
+		return "~";
+	}
 }
