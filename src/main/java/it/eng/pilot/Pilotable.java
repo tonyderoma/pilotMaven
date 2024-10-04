@@ -1793,4 +1793,20 @@ public interface Pilotable {
 	default String moneyPound(BigDecimal bd) {
 		return p.moneyPound(bd);
 	}
+
+	/**
+	 * Ritorna la stringa s con il colore e gli effetti voluti
+	 * 
+	 * @param s
+	 * @param c
+	 * @param grassetto
+	 * @param corsivo
+	 * @param underscore
+	 * @param barrato
+	 * @return String
+	 */
+	default String color(String s, Color c, boolean grassetto, boolean corsivo, boolean underscore, boolean barrato) {
+		return p.color(s, c, grassetto, corsivo, underscore, barrato);
+	}
+
 }
