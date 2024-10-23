@@ -841,9 +841,8 @@ public class DaoHelper extends PilotSupport {
 
 	private Connection getConnection() throws SQLException {
 		if (isDsMode()) {
-			if (Null(getConn()) || getConn().isClosed())
-				// log("APRO LA CONNESSIONE !!!!!!!!!!!!!!!!");
-				setConn(getDs().getConnection());
+			// log("APRO LA CONNESSIONE !!!!!!!!!!!!!!!!");
+			setConn(getDs().getConnection());
 		}
 		return getConn();
 	}
