@@ -1840,4 +1840,14 @@ public class PilotSupport {
 		return p.color(s, c, grassetto, corsivo, underscore, barrato);
 	}
 
+	/**
+	 * Alias di generaNumeroCasuale
+	 * 
+	 * @param min
+	 * @param max
+	 * @return Integer
+	 */
+	protected Integer random(Integer min, Integer max) {
+		return p.random(min, max);
+	}
 }

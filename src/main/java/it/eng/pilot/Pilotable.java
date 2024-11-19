@@ -1809,4 +1809,14 @@ public interface Pilotable {
 		return p.color(s, c, grassetto, corsivo, underscore, barrato);
 	}
 
+	/**
+	 * Alias di generaNumeroCasuale
+	 * 
+	 * @param min
+	 * @param max
+	 * @return Integer
+	 */
+	default Integer random(Integer min, Integer max) {
+		return p.random(min, max);
+	}
 }
