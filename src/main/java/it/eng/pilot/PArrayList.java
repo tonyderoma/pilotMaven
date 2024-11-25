@@ -3084,6 +3084,7 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 		// Utilizza l'algoritmo di Fisher-Yates per mescolare la lista
 		Random random = new Random();
 		for (int i = listaMescolata.size() - 1; i > 0; i--) {
+			random = new Random(System.nanoTime());
 			int j = random.nextInt(i + 1);
 			// Scambia gli elementi in posizione i e j
 			K temp = listaMescolata.get(i);
@@ -3115,5 +3116,17 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 			valoriDaRimuovere.add(get(pos));
 		}
 		return sottraiList(valoriDaRimuovere);
+	}
+
+	public PList<PList<K>> combinations(int k) {
+		return p.combinations(this, k);
+	}
+
+	public PList<PList<K>> getRandomCombinations(int k, int n) {
+		PList<PList<K>> combs = combinations(k);
+		int totali = combs.size();
+		if (n >= totali)
+			return combs;
+		return combs.removeRandom(totali - n);
 	}
 }
