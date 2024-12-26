@@ -3167,4 +3167,8 @@ public class PArrayList<K> extends ArrayList<K> implements PList<K> {
 		this.circular = circular;
 		return this;
 	}
+
+	public int findIndex() throws Exception {
+		return indexOf(findOne());
+	}
 }
