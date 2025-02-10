@@ -58,7 +58,7 @@ public interface PMap<K, V> extends Map<K, V> {
 
 	/**
 	 * Aggiunge l'elemento o di tipo Entity alla lista di elementi
-	 * corrispondente alla chiave elem solo se non c'è conflitto di chiave
+	 * corrispondente alla chiave elem solo se non c'ï¿½ conflitto di chiave
 	 * primaria (usato per DaoHelper con inMemory=true)
 	 * 
 	 * @param <K>
@@ -113,8 +113,8 @@ public interface PMap<K, V> extends Map<K, V> {
 
 	/**
 	 * Per ogni elemento value della PMap<K,List<V>> esegue l'iterazione
-	 * identificata da name, eseguendo il metodo del bean V della lista che è
-	 * annotato con @Logic e il cui attributo name è identificato dal parametro
+	 * identificata da name, eseguendo il metodo del bean V della lista che ï¿½
+	 * annotato con @Logic e il cui attributo name ï¿½ identificato dal parametro
 	 * name
 	 * 
 	 * @param name
@@ -125,9 +125,9 @@ public interface PMap<K, V> extends Map<K, V> {
 
 	/**
 	 * Esegue la conversione di tipo identificata da name, eseguendo il metodo
-	 * del bean K della lista che è annotato con @Mapping e il cui attributo
-	 * name è identificato dal parametro name. Ritorna una nuova mappa key-value
-	 * dove value è un oggetto PList<T> con T nuovo tipo derivante dal mapping
+	 * del bean K della lista che ï¿½ annotato con @Mapping e il cui attributo
+	 * name ï¿½ identificato dal parametro name. Ritorna una nuova mappa key-value
+	 * dove value ï¿½ un oggetto PList<T> con T nuovo tipo derivante dal mapping
 	 * 
 	 * @param <T>
 	 * @param name
@@ -149,4 +149,14 @@ public interface PMap<K, V> extends Map<K, V> {
 	 * @throws Exception
 	 */
 	PMap<K, V> forEach(PMapExecution<K, V> executor, Object... args) throws Exception;
+
+	/**
+	 * Ritorna la lista di tutte le keys i cui values sono compresi tra
+	 * [min,max]
+	 * 
+	 * @param min
+	 * @param max
+	 * @return PList<K>
+	 */
+	PList<K> getKeysWithinValueRange(V min, V max);
 }
